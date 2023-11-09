@@ -3,7 +3,7 @@ Requirements analysis
 
 Actors of the system
 ^^^^^^^^^^^^^^^^^^^^
-1. **Administrators** - system administrators who add, delete, edit information about subjects, lecturers and organization units. They add and edit class schedules, and create accounts for Academic Teachers.
+1. **Administrators** - system administrators who add, delete, edit information about subjects, lecturers, organization units and groups. They add and edit class schedules, and create accounts for Academic Teachers.
 2. **Teachers** - add, delete and edit their consultation appointments.
 3. **Viewers** - view the timetables of individual organization units.
 
@@ -11,123 +11,302 @@ Actors of the system
 High-level requirements
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. hlreq:: System powinien wyświetlać Przeglądającym plan zajęć wybranej Grupy Zajęciowej.
+.. hlreq:: System powinien umożliwiać Przeglądającemu wyświetlenie planu zajęć wybranej Grupy Zajęciowej lub Nauczyciela.
+    :tags: schedule
+    :id: HLR_000
 
-    .. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie i wybieranie Jednostek Organizacyjnych.
+    .. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Jednostek Organizacyjnych.
+        :tags: organization_units
+        :id: HLR_010
+
+    .. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Grup Zajęciowych.
+        :tags: groups
+        :id: HLR_015
 
     .. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranej Grupy Zajęciowej.
+        :tags: schedule
+        :id: HLR_020
 
         Wybór Grupy Zajęciowej powinien polegać na wyborze jednej z możliwie wielu Grup Zajęciowych wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]
 
     .. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranego Nauczyciela w tym jego terminów konsultacji.
+        :tags: schedule; consultations
+        :id: HLR_030
 
         Wybór Nauczyciela powinien polegać na wyborze jednego z możliwie wielu Nauczycieli wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]
 
 .. hlreq:: System powinien dostarczać Nauczycielom panel zarządzania.
+    :tags: teacher_panel
+    :id: HLR_100
 
     .. hlreq:: System powinien umożliwiać Nauczycielom zarządzanie ich terminami konsultacji.
-        :tags: consultations
+        :tags: consultations; teacher_panel
+        :id: HLR_110
+        :requires: HLR_300
 
-        .. hlreq:: Nauczyciele powinni móc dodać swój termin konsultacji.
+        .. hlreq:: System powinien umożliwiać Nauczycielom dodawanie swoich terminów konsultacji.
             :tags: consultations
-        .. hlreq:: Nauczyciele powinni móc przeglądać swoje terminy konsultacji.
+            :id: HLR_111
+
+        .. hlreq:: System powinien umożliwiać Nauczycielom przeglądanie swoich terminów konsultacji.
             :tags: consultations
-        .. hlreq:: Nauczyciele powinni móc edytować swoje terminy konsultacji.
+            :id: HLR_112
+
+        .. hlreq:: System powinien umożliwiać Nauczycielom edytowanie swoich terminów konsultacji.
             :tags: consultations
-        .. hlreq:: Nauczyciele powinni móc usuwać z systemu swoje terminy konsultacji.
+            :id: HLR_113
+
+        .. hlreq:: System powinien umożliwiać Nauczycielom usuwanie z systemu swoich terminów konsultacji.
             :tags: consultations
+            :id: HLR_114
 
 .. hlreq:: System powinien dostarczać Administratorom panel zarządzania.
+    :tags: admin_panel
+    :id: HLR_200
+    :requires: HLR_300
 
     .. hlreq:: System powinien umożliwiać Administratorom zarządzanie Przedmiotami.
-        :tags: courses
+        :tags: courses; admin_panel
+        :id: HLR_210
 
-        .. hlreq:: Administratorzy powinni móc dodawać nowe Przedmioty do systemu.
+        .. hlreq:: System powinien umożliwiać Administratorom dodawanie nowych Przedmiotów do systemu.
             :tags: courses
-        .. hlreq:: Administratorzy powinni móc przeglądać istniejące Przedmioty w systemie.
+            :id: HLR_211
+
+        .. hlreq:: System powinien umożliwiać Administratorom przeglądanie istniejących w systemie Przedmiotów.
             :tags: courses
-        .. hlreq:: Administratorzy powinni móc edytować istniejące w systemie Przedmioty.
+            :id: HLR_212
+
+        .. hlreq:: System powinien umożliwiać Administratorom edytowanie istniejących w systemie Przedmiotów.
             :tags: courses
-        .. hlreq:: Administratorzy powinni móc usuwać z systemu Przedmioty, które nie są już potrzebne.
+            :id: HLR_213
+
+        .. hlreq:: System powinien umożliwiać Administratorom usuwanie z systemu Przedmiotów, które nie są już potrzebne.
             :tags: courses
+            :id: HLR_214
+
 
     .. hlreq:: System powinien umożliwiać Administratorom zarządzanie kontami Nauczycieli.
-        :tags: teachers
+        :tags: teachers; admin_panel
+        :id: HLR_220
 
-        .. hlreq:: Administratorzy powinni móc zakładać nowe konta Nauczycielom.
+        .. hlreq:: System powinien umożliwiać Administratorom zakładanie nowych kont Nauczycielom.
             :tags: teachers
-        .. hlreq:: Administratorzy powinni móc przeglądać listę kont Nauczycieli i informacje o nich.
+            :id: HLR_221
+
+        .. hlreq:: System powinien umożliwiać Administratorom przeglądanie istniejących w systemie kont Nauczycieli.
             :tags: teachers
-        .. hlreq:: Administratorzy powinni móc edytować dane istniejących w systemie Nauczycieli.
+            :id: HLR_222
+
+        .. hlreq:: System powinien umożliwiać Administratorom edytowanie istniejących w systemie kont Nauczycieli.
             :tags: teachers
-        .. hlreq:: Administratorzy powinni móc usuwać z systemu konta Nauczycieli, które nie są już potrzebne.
+            :id: HLR_223
+
+        .. hlreq:: System powinien umożliwiać Administratorom usuwanie z systemu kont Nauczycieli, które nie są już potrzebne.
             :tags: teachers
+            :id: HLR_224
+
 
     .. hlreq:: System powinien umożliwiać Administratorom zarządzanie Jednostkami Organizacyjnymi.
-        :tags: organization_units
+        :tags: organization_units; admin_panel
+        :id: HLR_230
 
-        .. hlreq:: Administratorzy powinni móc dodawać nowe Jednostki Organizacyjne do systemu.
+        .. hlreq:: System powinien umożliwiać Administratorom dodawanie nowych Jednostek Organizacyjnych do systemu.
             :tags: organization_units
-        .. hlreq:: Administratorzy powinni móc przeglądać istniejące Jednostki Organizacyjne w systemie.
+            :id: HLR_231
+
+        .. hlreq:: System powinien umożliwiać Administratorom przeglądanie istniejących Jednostek Organizacyjnych w systemie.
             :tags: organization_units
-        .. hlreq:: Administratorzy powinni móc edytować istniejące w systemie Jednostki Organizacyjne.
+            :id: HLR_232
+
+        .. hlreq:: System powinien umożliwiać Administratorom edytowanie istniejących w systemie Jednostek Organizacyjnych.
             :tags: organization_units
-        .. hlreq:: Administratorzy powinni móc usuwać z systemu Jednostki Organizacyjne, które nie są już potrzebne.
+            :id: HLR_233
+
+        .. hlreq:: System powinien umożliwiać Administratorom usuwanie z systemu Jednostek Organizacyjnych, które nie są już potrzebne.
             :tags: organization_units
+            :id: HLR_234
+
 
     .. hlreq:: System powinien umożliwiać Administratorom zarządzanie Grupami Zajęciowymi.
-        :tags: groups
+        :tags: groups; admin_panel
+        :id: HLR_240
 
-        .. hlreq:: Administratorzy powinni móc dodawać nowe Grupy Zajęciowe do systemu.
+        .. hlreq:: System powinien umożliwiać Administratorom dodawanie nowch Grup Zajęciowych do systemu.
             :tags: groups
-        .. hlreq:: Administratorzy powinni móc przeglądać istniejące Grupy Zajęciowe w systemie.
+            :id: HLR_241
+
+        .. hlreq:: System powinien umożliwiać Administratorom przeglądanie istniejących Grup Zajęciowych w systemie.
             :tags: groups
-        .. hlreq:: Administratorzy powinni móc edytować istniejące w systemie Grupy Zajęciowe.
+            :id: HLR_242
+
+        .. hlreq:: System powinien umożliwiać Administratorom edytowanie istniejących w systemie Grup Zajęciowych.
             :tags: groups
-        .. hlreq:: Administratorzy powinni móc usuwać z systemu Grupy Zajęciowe, które nie są już potrzebne.
+            :id: HLR_243
+
+        .. hlreq:: System powinien umożliwiać Administratorom usuwanie z systemu Grup Zajęciowych, które nie są już potrzebne.
             :tags: groups
+            :id: HLR_244
+
 
     .. hlreq:: System powinien umożliwiać Administratorom zarządzanie planem zajęć Grup Zajęciowej.
-        :tags: classes
+        :tags: classes; admin_panel
+        :id: HLR_250
 
-        .. hlreq:: Administratorzy powinni móc dodawać nowy termin zajęć.
+        .. hlreq:: System powinien umożliwiać Administratorom dodawanie nowych Terminów Zajęć.
             :tags: classes
-        .. hlreq:: Administratorzy powinni móc usuwać termin zajęć.
+            :id: HLR_251
+
+        .. hlreq:: System powinien umożliwiać Administratorom usuwanie nowych Terminów Zajęć.
             :tags: classes
-        .. hlreq:: Administratorzy powinni móc edytować termin zajęć.
+            :id: HLR_252
+
+        .. hlreq:: System powinien umożliwiać Administratorom edytowanie Terminów Zajęć.
             :tags: classes
+            :id: HLR_253
+
 
 .. hlreq:: System powinien umożliwiać Nauczycielom i Administratorom logowanie się do ich paneli zarządzania.
+    :tags: login; admin_panel; teacher_panel
+    :id: HLR_300
 
 
 
 Low-level requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. llreq:: Wymaganie dotyczące formularzy w Systemie
+.. llreq:: Wymaganie dotyczące wszystkich formularzy w Systemie
+    :tags: login
+    :id: LLR_000
+    :specifies: LLR_410
 
-    - Wszystkie pola powinny mieć ograniczenie na liczbę znaków.
+    - Wszystkie tekstowe pola formularza powinny mieć ograniczenie na liczbę znaków.
     - Formularz nie powinien umożliwiać wpisania w polach więcej znaków niż System przyjmie. Przy normalnym używaniu Systemu niemożliwe powinno być uzyskanie komunikatu o zbyt wielkiej liczbie wprowadzonych znaków.
     - Po otrzymaniu błędnych danych System powinien zwrócić stosowny komunikat o błędzie. Tak aby użytkownik wiedział co należy poprawić.
 
+.. llreq:: Wymaganie dotyczące wyświetlania planu zajęć
+    :tags: schedule
+    :id: LLR_100
+
+    - Plan zajęć powinien być wyświetlany w formie tabeli.
+    - Tabela powinna zawierać kolumnę na każdy dzień tygodnia
+    - Tabela powinna zawierać kolumnę z godzinami w ciągu dnia.
+    - Tabela powinna zawierać komórki, które będą odzwierciedlały dany Termin Zajęciowy.
+    - Komórka z Terminem Zajęć powinna być na poziomie i mieć wysokość komórek odpowiadających godzinowemu zakresowi trwania Terminu Zajęć.
+    - Zalogowany Administrator dodatkowo powinien widzieć przycisk dodawania Terminu Zajęć.
+
+    .. llreq:: Wymaganie dotyczące komórki Terminu Zajęć w tabeli
+        :tags: classes
+        :id: LLR_110
+
+        - Każda komórka z danym Terminem Zajęć powinna zawierać:
+            - Nazwę przedmiotu
+            - Godzinowy zakres czasu trwania danej lekcji
+            - Prowadzącego daną lekcję
+            - Miejsce odbywania zajęć
+        - Zalogowany Administrator dodatkowo w każdej komórce Terminu Zajęć powinien widzieć:
+            - Przycisk przenoszący do edycji danego Terminu Zajęć
+            - Przycisk usuwający dany Termin Zajęć
+  
+.. llreq:: Wymaganie opcji przeglądania Jednostek Organizacyjnych i Grup Zajęciowych
+    :tags: organization_units; groups
+    :id: LLR_332
+    :specifies: HLR_010; HLR_015; HLR_232; HLR_242
+
+    - System powinien wyświetlać listę Jednostek Organizacyjnych w formie struktury drzewiastej. Powinna być możliwość wyświetlenia listy podrzędnych jednostek poprzez rozwinięcie jednostki nadrzędnej.
+    - Wyświetlane powinny być następujące dane Jednostki Organizacyjnej:
+        - nazwa.
+    - Kliknięcie na rekord listy Jednostek Organizacyjnych powinno rozwinąć listę Jednostek Organizacyjnych podrzędnych.
+    - Kliknięcie na rekord listy Grupy Zajęciowej powinno przenosić do widoku planu zajęć danej Grupy Zajęciowej.
+    - Rozwinięcie Jednostki Organizacyjnej, która nie ma podrzędnej Jednostki Organizacyjne, powinno powodować pokazanie w formie listy jej Grupy Zajęciowe.
+    - Wyświetlane powinny być następujące dane Grupy Zajęciowej:
+        - nazwa.
+    - Każdy rekord listy Jednostek Organizacyjnych powinien zawierać widoczny tylko dla Administratora:
+        - przycisk pozwalający na przejście do opcji edycji informacji o Jednostce Organizacyjnej,
+        - przycisk pozwalający na usunięcie Jednostki Organizacyjnej.
+        - przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Grupy Zajęciowe.
+        - przycisk pozwalający na dodanie Grupy Zajęciowej, chyba że ma Jednostki Organizacyjne podrzędne. 
+    - Każdy rekord listy Grupy Zajęciowej powinien zawierać widoczny tylko dla Administratora:
+        - przycisk pozwalający na przejście do opcji edycji informacji o Grupie Zajęciowej,
+        - przycisk pozwalający na usunięcie Grupy Zajęciowej.
+    - System powinien wyświetlać Administratorowi przycisk umożliwiający przejście do formularza dodawania głównej Jednostki Organizacyjnej.
 
 .. llreq:: Wymaganie panelu zarządzania Nauczyciela
+    :tags: teacher_panel
+    :id: LLR_200
+    :specifies: HLR_100
 
-    - System powinien dostarczać Nauczycielowi odnośnik do widoku zarządzania jego terminami konsultacji.
+    - System powinien dostarczać Nauczycielowi odnośnik do widoku zarządzania jego Terminami Konsultacji.
+
+    .. llreq:: Wymaganie dotyczące zarządzania Terminami Konsultacji
+        :tags: teacher_panel; consultations
+        :id: LLR_210
+        :specifies: HLR_110
+
+        .. llreq:: Wymaganie dotyczące formularza Terminu Konsultacji
+            :tags: consultations
+            :id: LLR_211
+
+            - Formularz powinien składać się z następujących pól:
+                - miejsce odbywania konsultacji (maks 50 znaków)
+                - dzień tygodnia (wybór z listy)
+                - godzina rozpoczęcia (wybór godziny poprzez mechanizm uniemożlwiający błędny wybór)
+                - godzina zakończenia (wybór godziny poprzez mechanizm uniemożlwiający błędny wybór)
+                - opcjonalny publiczny opis (maks 500 znaków)
+
+        .. llreq:: Wymaganie opcji przeglądania Terminów Konsultacji
+            :tags: consultations
+            :id: LLR_212
+
+            - System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania Terminu Konsultacji.
+            - System powinien wyświetlać listę Terminów Konsultacji w formie tabeli. Wyświetlane powinny być następujące dane:
+                - dzień tygodnia,
+                - godzina rozpoczęcia,
+                - godzina zakończenia,
+                - miejsce odbywania konsultacji.
+            - Każdy rekord tabeli powinien zawierać:
+                - przycisk pozwalający na przejście do opcji edycji Terminu Konsultacji
+                - przycisk pozwalający na usunięcie Terminów Konsultacji.
+
+        .. llreq:: Wymaganie dotyczące opcji dodawania Terminu Konsultacji
+            :tags: consultations
+            :id: LLR_213
+            
+            - Po kliknięciu przycisku dodawania Terminu Konsultacji w widoku zarządzania Terminami Konsultacji System powinien wyświetlić formularz dodania Terminu Konsultacji.
+            - Po otrzymaniu prawidłowych danych System powinien utworzyć nowy Termin Konsultacji w bazie danych.
+
+
+        .. llreq:: Wymaganie dotyczące opcji usuwania Terminu Konsultacji
+            :tags: consultations
+            :id: LLR_214
+            
+            - Po kliknięciu przycisku usuwania Terminu Konsultacji przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.
+            - W przypadku potwierdzeniu wykonania czynności Termin Konsultacji powinien zostać usunięty z bazy danych.
+            - W przypadku odrzucenia wykonania czynności nic się nie powinno stać.
+
 
 
 .. llreq:: Wymaganie panelu zarządzania Administratora
+    :tags: admin_panel
+    :id: LLR_300
+    :specifies: HLR_200
 
     - System powinien dostarczać Administratorowi odnośnik do widoku zarządzania Przedmiotami.
     - System powinien dostarczać Administratorowi odnośnik do widoku zarządzania kontami Nauczycieli.
     - System powinien dostarczać Administratorowi odnośnik do widoku zarządzania Jednostkami Organizacyjnymi.
 
     .. llreq:: Wymaganie dotyczące widoku zarządzania Przedmiotami
-
+        :tags: courses; admin_panel
+        :id: LLR_310
+        :specifies: HLR_210
+        
         - System powinien dostarczyć widok zarządzania Przedmiotami.
         - Domyślnie powinna być wyświetlana opcja przeglądania Przedmiotów.
 
         .. llreq:: Wymaganie dotyczące formularza Przedmiotu
+            :tags: courses
+            :id: LLR_311
+            :specifies: LLR_313; LLR_314
 
             - Formularz powinien składać się z następujących pól:
                 - nazwa przedmiotu (maks 100 znaków),
@@ -137,6 +316,9 @@ Low-level requirements
                 - kod przedmiotu istniejący w bazie.
 
         .. llreq:: Wymaganie opcji przeglądania Przedmiotów
+            :tags: courses
+            :id: LLR_312
+            :specifies: HLR_212
 
             - System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania Przedmiotu.
             - System powinien wyświetlać listę Przedmiotów w formie tabeli. Wyświetlane powinny być następujące dane:
@@ -147,16 +329,25 @@ Low-level requirements
                 - przycisk pozwalający na usunięcie Przedmiotu.
 
         .. llreq:: Wymaganie opcji dodawania Przedmiotów
+            :tags: courses
+            :id: LLR_313
+            :specifies: HLR_211
 
             - System powinien dostarczać formularz dodania Przedmiotu.
             - Po otrzymaniu prawidłowych danych System powinien utworzyć nowy Przedmiot w bazie danych.
 
         .. llreq:: Wymaganie opcji edytowania Przedmiotów
+            :tags: courses
+            :id: LLR_314
+            :specifies: HLR_213
 
             - System powinien dostarczać formularz edytowania Przedmiotu z wstępnie wpisanymi starymi danymi.
             - Po otrzymaniu prawidłowych danych System powinien zmienić dane Przedmiotu w bazie danych.
 
         .. llreq:: Wymaganie opcji usuwania Przedmiotów
+            :tags: courses
+            :id: LLR_315
+            :specifies: HLR_214
 
             - Po kliknięciu przycisku usuwania Przedmiotu przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.
             - W przypadku potwierdzeniu wykonania czynności Przedmiot powinien zostać usunięty z bazy danych wraz z dotyczącymi go informacjami.
@@ -164,11 +355,17 @@ Low-level requirements
 
 
     .. llreq:: Wymaganie dotyczące widoku zarządzania kontami Nauczycieli
+        :tags: teachers; admin_panel
+        :id: LLR_320
+        :specifies: HLR_220
 
         - System powinien dostarczyć widok zarządzania kontami Nauczycieli.
         - Domyślnie powinna być wyświetlana opcja przeglądania kont Nauczycieli.
 
         .. llreq:: Wymaganie dotyczące formularza konta Nauczyciela
+            :tags: teachers
+            :id: LLR_321
+            :specifies: LLR_323; LLR_324
 
             - Formularz powinien składać się z następujących pól:
                 - tytuł naukowy (maks 20 znaków),
@@ -181,6 +378,9 @@ Low-level requirements
                 - błędny lub istniejący w bazie adres email.
 
         .. llreq:: Wymaganie opcji przeglądania kont Nauczycieli
+            :tags: teachers
+            :id: LLR_322
+            :specifies: HLR_222
 
             - System powinien wyświetlać przycisk umożliwiający przejście do formularza zakładania konta Nauczyciela.
             - System powinien wyświetlać listę Nauczycieli w formie tabeli. Wyświetlane powinny być następujące dane:
@@ -192,17 +392,26 @@ Low-level requirements
                 - przycisk pozwalający na usunięcie konta Nauczyciela.
 
         .. llreq:: Wymaganie opcji zakładania konta Nauczyciela
+            :tags: teachers
+            :id: LLR_323
+            :specifies: HLR_221
 
             - System powinien dostarczać formularz zakładania konta Nauczyciela.
             - Po otrzymaniu prawidłowych danych System powinien założyć nowe konto Nauczyciela w bazie danych.
             - System powinien wysłać adres email Nauczycielowi z wygenerowanym dla niego hasłem.
 
         .. llreq:: Wymaganie opcji edytowania informacji o Nauczycielu
+            :tags: teachers
+            :id: LLR_324
+            :specifies: HLR_223
 
             - System powinien dostarczać formularz edytowania informacji o Nauczycielu z wstępnie wpisanymi starymi danymi.
             - Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Nauczycielu.
 
-        .. llreq:: Wymaganie opcji usuwania Nauczycieli
+        .. llreq:: Wymaganie opcji usuwania Nauczycieli XXX
+            :tags: teachers
+            :id: LLR_325
+            :specifies: HLR_224
 
             - Po kliknięciu przycisku usuwania konta Nauczyciela przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.
             - Po potwierdzeniu wykonania czynności konto Nauczyciela powinno zostać usunięte z bazy danych wraz z dotyczącymi go informacjami.
@@ -211,41 +420,43 @@ Low-level requirements
 
 
     .. llreq:: Wymaganie dotyczące widoku zarządzania Jednostkami Organizacyjnymi
+        :tags: organization_units; admin_panel
+        :id: LLR_330
+        :specifies: HLR_230
 
         - System powinien dostarczyć widok zarządzania Jednostkami Organizacyjnymi.
         - Domyślnie powinna być wyświetlana opcja przeglądania Jednostek Organizacyjnych.
 
         .. llreq:: Wymaganie dotyczące formularza Jednostki Organizacyjnej
+            :tags: organization_units
+            :id: LLR_331
+            :specifies: LLR_333; LLR_334
 
             - Formularz powinien składać się z następujących pól:
                 - nazwa (maks 20 znaków),
                 - opis (maks 100 znaków).
                 - opcjonalna jednostka nadrzędna (wybór z listy)
 
-        .. llreq:: Wymaganie opcji przeglądania Jednostek Organizacyjnych
-
-            - System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania nowej Jednostki Organizacyjnej.
-            - System powinien wyświetlać listę Jednostek Organizacyjnych w formie listy o strukturze drzewiastej. Powinna być możliwość wyświetlenia podrzędnych jednostek poprzez rozwinięcie jednostki nadrzędnej.
-            - Wyświetlane powinny być następujące dane:
-                - nazwa,
-                - opis.
-            - Każdy rekord listy powinien zawierać:
-                - przycisk pozwalający na przejście do opcji edycji informacji o Jednostce Organizacyjnej,
-                - przycisk pozwalający na usunięcie Jednostki Organizacyjnej.
-            - Każda rekord listy Jednostki Organizacyjnej najbardziej podrzędnej powinien zawierać:
-                - przycisk przeglądania jej Grup Zajęciowych. 
-
         .. llreq:: Wymaganie opcji dodawania Jednostki Organizacyjnej
+            :tags: organization_units
+            :id: LLR_333
+            :specifies: HLR_231
 
             - System powinien dostarczać formularz dodawania Jednostki Organizacyjnej.
             - Po otrzymaniu prawidłowych danych System powinien dodać nową Jednostkę Organizacyjną.
 
         .. llreq:: Wymaganie opcji edytowania informacji o Jednostce Organizacyjnej
+            :tags: organization_units
+            :id: LLR_334
+            :specifies: HLR_233
 
             - System powinien dostarczać formularz edytowania informacji o Jednostce Organizacyjnej z wstępnie wpisanymi starymi danymi.
             - Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Jednostce Organizacyjnej.
 
         .. llreq:: Wymaganie opcji usuwania Jednostki Organizacyjnej
+            :tags: organization_units
+            :id: LLR_335
+            :specifies: HLR_234
 
             - Po kliknięciu przycisku usuwania Jednostki Organizacyjnej przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.
             - Po potwierdzeniu wykonania czynności Jednostka Organizacyjna powinna zostać usunięta z bazy danych wraz z dotyczącymi jej informacjami.
@@ -254,10 +465,16 @@ Low-level requirements
 
 
     .. llreq:: Wymaganie dotyczące widoku zarządzania Grupami Zajęciowymi
+        :tags: groups; admin_panel
+        :id: LLR_340
+        :specifies: HLR_240
 
         - Przejście do tego widoku za pomocą przycisku. [XXX]
 
         .. llreq:: Wymaganie dotyczące formularza Grupy Zajęciowej
+            :tags: groups
+            :id: LLR_341
+            :specifies: LLR_343; LLR_344
 
             - Formularz powinien składać się z następujących pól:
                 - nazwa (maks 20 znaków),
@@ -265,57 +482,128 @@ Low-level requirements
                 - jednostka organizacyjna (wybór z listy)
             - Formularz powinien akceptować wybór jedynie najbardziej podrzędnej Jednostki Organizacyjnej.
 
-
-        .. llreq:: Wymaganie opcji przeglądania Grup Zajęciowych
-
-            - System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania nowej Grupy Zajęciowej.
-            - System powinien wyświetlać listę Grup Zajęciowych w formie tabeli.
-            - Wyświetlane powinny być następujące dane:
-                - nazwa,
-                - opis.
-            - Każdy rekord listy powinien zawierać:
-                -  przycisk pozwalający na przejście do opcji edycji informacji o Grupie Zajęciowej,
-                -  przycisk usuwania Grupy Zajęciowej,
-                -  przycisk przejścia do widoku planu zajęć danej Grupy Zajęciowej,
-                -  przycisk dodania nowego terminu zajęć dla tej Grupy Zajęciowej.
-
         .. llreq:: Wymaganie opcji dodawania Grupy Zajęciowej
+            :tags: groups
+            :id: LLR_343
+            :specifies: HLR_241
 
             - System powinien dostarczać formularz dodawania Grupy Zajęciowej.
             - Po otrzymaniu prawidłowych danych System powinien dodać nową Grupę Zajęciową.
 
         .. llreq:: Wymaganie opcji edytowania informacji o Grupie Zajęciowej
+            :tags: groups
+            :id: LLR_344
+            :specifies: HLR_243
 
             - System powinien dostarczać formularz edytowania informacji o Grupie Zajęciowej z wstępnie wpisanymi starymi danymi.
             - Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Grupie Zajęciowej.
 
         .. llreq:: Wymaganie opcji usuwania Grupy Zajęciowej
+            :tags: groups
+            :id: LLR_345
+            :specifies: HLR_244
 
             - Po kliknięciu przycisku usuwania Grupy Zajęciowej przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.
             - Po potwierdzeniu wykonania czynności Grupa Zajęciowa powinna zostać usunięta z bazy danych wraz z dotyczącymi jej informacjami.
             - Po odrzuceniu wykonania czynności nic się nie powinno stać.
-            - Wraz z usunięciem Grupy Zajęciowej powinny zostać usunięte jej terminy zajęć.
+            - Wraz z usunięciem Grupy Zajęciowej powinny zostać usunięte jej Terminy Zajęć.
+
+    .. llreq:: Wymaganie dotyczące zarządzania Terminami Zajęć
+        :tags: admin_panel; classes
+        :id: LLR_350
+        :specifies: HLR_250
+
+        .. llreq:: Wymaganie dotyczące formularza Terminu Zajęć
+            :tags: classes
+            :id: LLR_351
+
+            - Formularz powinien składać się z następujących pól:
+                - przedmiotu (wybór z listy),
+                - prowadzący zajęcia (wybór z listy),
+                - miejsce odbywania zajęć (maks 50 znaków)
+                - dzień tygodnia (wybór z listy)
+                - godzina rozpoczęcia (wybór godziny poprzez mechanizm uniemożlwiający błędny wybór)
+                - godzina zakończenia (wybór godziny poprzez mechanizm uniemożlwiający błędny wybór)
+                - typ zajęć (maks 20 znaków)
+
+        .. llreq:: Wymaganie dotyczące opcji dodawania Terminu Zajęć
+            :tags: classes
+            :id: LLR_352
+
+            - Po kliknięciu przycisku dodawania Terminu Zajęć w widoku planu zajęć Grupy Zajęciowej System powinien wyświetlić formularz dodania Przedmiotu.
+            - Po otrzymaniu prawidłowych danych System powinien utworzyć nowy Przedmiot w bazie danych.
 
 
-.. llreq:: Wymagania dotyczące interfejsu logowania
+        .. llreq:: Wymaganie dotyczące opcji usuwania Terminu Zajęć
+            :tags: classes
+            :id: LLR_353
 
-    - System powinien wyświetlać panel logowania.
-    - Panel logowania powinien składać się z pól do wpisania nazwy użytkownika oraz hasła.
-    - Panel logowania powinien zawierać przycisk "Zaloguj się", po którego wciśnięciu System zweryfikuje wprowadzone dane i zaloguje do panelu zarządzania.
-
-
-.. llreq:: Wymagania dotyczące uwierzytelniania
-
-    - Po wprowadzeniu danych logowania system powinien zweryfikować dane w bazie danych.
-    - System powinien dawać dostęp do panelu Nauczyciela tylko Nauczycielom, a do panelu administratora tylko administratorom.
-    - W przypadku nieprawidłowych danych logowania system powinien wyświetlić odpowiedni komunikat o błędzie i nie zezwolić na dostęp do panelu.
+            - Po kliknięciu przycisku usuwania Terminu Zajęć przy danej komórce w tabeli planu zajęć System powinien wyświetlić potwierdzenie wykonania czynności.
+            - W przypadku potwierdzeniu wykonania czynności Termin Zajęć powinien zostać usunięty z bazy danych.
+            - W przypadku odrzucenia wykonania czynności nic się nie powinno stać.
 
 
-.. llreq:: Wymagania dotyczące bezpieczeństwa
 
-    - System powinien przechowywać hasła użytkowników w bezpieczny sposób, np. poprzez haszowanie.
-    - Sesje użytkowników powinny być odpowiednio zarządzane, a użytkownicy powinni być automatycznie wylogowywani po pewnym okresie bezczynności, aby zapobiec nieautoryzowanemu dostępowi do systemu.
+.. llreq:: Wymagania dotyczące logowania
+    :tags: login
+    :id: LLR_400
+    :specifies: HLR_300
 
+    .. llreq:: Wymagania dotyczące interfejsu logowania
+        :tags: login
+        :id: LLR_410
+
+        - System powinien wyświetlać panel logowania.
+        - Panel logowania powinien składać się z pól do wpisania nazwy użytkownika oraz hasła.
+        - Panel logowania powinien zawierać przycisk "Zaloguj się", po którego wciśnięciu System zweryfikuje wprowadzone dane i zaloguje do panelu zarządzania.
+
+
+    .. llreq:: Wymagania dotyczące uwierzytelniania
+        :tags: login
+        :id: LLR_420
+
+        - Po wprowadzeniu danych logowania system powinien zweryfikować dane w bazie danych.
+        - System powinien dawać dostęp do panelu Nauczyciela tylko Nauczycielom, a do panelu administratora tylko administratorom.
+        - W przypadku nieprawidłowych danych logowania system powinien wyświetlić odpowiedni komunikat o błędzie i nie zezwolić na dostęp do panelu.
+
+
+    .. llreq:: Wymagania dotyczące bezpieczeństwa
+        :tags: login
+        :id: LLR_430
+
+        - System powinien przechowywać hasła użytkowników w bezpieczny sposób, np. poprzez haszowanie.
+        - Sesje użytkowników powinny być odpowiednio zarządzane, a użytkownicy powinni być automatycznie wylogowywani po pewnym okresie bezczynności, aby zapobiec nieautoryzowanemu dostępowi do systemu.
+
+Flows
+^^^^^
+
+.. needflow:: Login flow
+    :tags: login
+    :show_link_names:
+
+.. needflow:: Administrator panel flow
+    :tags: admin_panel
+    :show_link_names:
+
+.. needflow:: Teacher panel flow
+    :tags: teacher_panel
+    :show_link_names:
+
+.. needflow:: Organization units flow
+    :tags: organization_units
+    :show_link_names:
+
+.. needflow:: Groups flow
+    :tags: groups
+    :show_link_names:
+
+.. needflow:: Courses flow
+    :tags: courses
+    :show_link_names:
+
+.. needflow:: Teachers flow
+    :tags: teachers
+    :show_link_names:
 
 Nonfunctional requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

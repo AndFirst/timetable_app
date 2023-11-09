@@ -37,6 +37,11 @@ needs_extra_links = [
       "option": "specifies",
       "incoming": "is specified by",
       "outgoing": "specifies",
+   },
+   {
+      "option": "requires",
+      "incoming": "is required by",
+      "outgoing": "requires",
    }
 ]
 
