@@ -5,5 +5,5 @@ Dokumentacja projektu Timetable
    :maxdepth: 2
    :caption: Zawartość:
 
-   aktorzy
+   analiza_i_projektowanie
 

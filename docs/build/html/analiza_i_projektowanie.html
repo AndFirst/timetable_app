@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+
+<html lang="pl" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Requirements analysis &#8212; Timetable 1.0 - dokumentacja</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css?v=bd9ab754" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css?v=ffa536d2" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css?v=448c382f" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=331e28ce"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=a186e9ce"></script>
+    <script src="_static/assets/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="_static/assets/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=f783d6a5"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+    <link rel="prev" title="Dokumentacja projektu Timetable" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="requirements-analysis">
+<h1>Requirements analysis<a class="headerlink" href="#requirements-analysis" title="Link to this heading">¶</a></h1>
+<section id="actors-of-the-system">
+<h2>Actors of the system<a class="headerlink" href="#actors-of-the-system" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Administrators</strong> - system administrators who add, delete, edit information about subjects, lecturers and organization units. They add and edit class schedules, and create accounts for Academic Teachers.</p></li>
+<li><p><strong>Teachers</strong> - add, delete and edit their consultation appointments.</p></li>
+<li><p><strong>Viewers</strong> - view the timetables of individual organization units.</p></li>
+</ol>
+</section>
+<section id="high-level-requirements">
+<h2>High-level requirements<a class="headerlink" href="#high-level-requirements" title="Link to this heading">¶</a></h2>
+<div class="need_container docutils container" id="SNCB-64d6c189">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_111">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien wyświetlać Przeglądającym plan zajęć wybranej Grupy Zajęciowej.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_111" title="HLR_111">HLR_111</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_96A" title="HLR_111">HLR_96A</a>, <a class="reference internal" href="#HLR_781" title="HLR_111">HLR_781</a>, <a class="reference internal" href="#HLR_DBA" title="HLR_111">HLR_DBA</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-c1dbccb4">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_96A">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Przeglądającym wyświetlanie i wybieranie Jednostek Organizacyjnych.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_96A" title="HLR_96A">HLR_96A</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_111" title="HLR_96A">HLR_111</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-84d2b8df">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_781">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranej Grupy Zajęciowej.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_781" title="HLR_781">HLR_781</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_111" title="HLR_781">HLR_111</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><p>Wybór Grupy Zajęciowej powinien polegać na wyborze jednej z możliwie wielu Grup Zajęciowych wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-2bad64ce">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_DBA">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranego Nauczyciela w tym jego terminów konsultacji.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_DBA" title="HLR_DBA">HLR_DBA</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_111" title="HLR_DBA">HLR_111</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><p>Wybór Nauczyciela powinien polegać na wyborze jednego z możliwie wielu Nauczycieli wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-a7eb249b">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_29C">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien dostarczać Nauczycielom panel zarządzania.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_29C" title="HLR_29C">HLR_29C</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_57F" title="HLR_29C">HLR_57F</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-9e8c3a1e">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_57F">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Nauczycielom zarządzanie ich terminami konsultacji.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_57F" title="HLR_57F">HLR_57F</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_29C" title="HLR_57F">HLR_29C</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_E77" title="HLR_57F">HLR_E77</a>, <a class="reference internal" href="#HLR_E4B" title="HLR_57F">HLR_E4B</a>, <a class="reference internal" href="#HLR_D14" title="HLR_57F">HLR_D14</a>, <a class="reference internal" href="#HLR_2C6" title="HLR_57F">HLR_2C6</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-04ac29d7">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_E77">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Nauczyciele powinni móc dodać swój termin konsultacji.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_E77" title="HLR_E77">HLR_E77</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_57F" title="HLR_E77">HLR_57F</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-74f02f3c">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_E4B">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Nauczyciele powinni móc przeglądać swoje terminy konsultacji.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_E4B" title="HLR_E4B">HLR_E4B</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_57F" title="HLR_E4B">HLR_57F</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-885da5f1">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_D14">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Nauczyciele powinni móc edytować swoje terminy konsultacji.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_D14" title="HLR_D14">HLR_D14</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_57F" title="HLR_D14">HLR_57F</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-a330196a">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_2C6">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Nauczyciele powinni móc usuwać z systemu swoje terminy konsultacji.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_2C6" title="HLR_2C6">HLR_2C6</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_57F" title="HLR_2C6">HLR_57F</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-71dd7681">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_550">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien dostarczać Administratorom panel zarządzania.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_550" title="HLR_550">HLR_550</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_ADF" title="HLR_550">HLR_ADF</a>, <a class="reference internal" href="#HLR_2D3" title="HLR_550">HLR_2D3</a>, <a class="reference internal" href="#HLR_0D0" title="HLR_550">HLR_0D0</a>, <a class="reference internal" href="#HLR_C3D" title="HLR_550">HLR_C3D</a>, <a class="reference internal" href="#HLR_C38" title="HLR_550">HLR_C38</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-796b0a34">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_ADF">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Administratorom zarządzanie Przedmiotami.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_ADF" title="HLR_ADF">HLR_ADF</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">courses</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_550" title="HLR_ADF">HLR_550</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C6C" title="HLR_ADF">HLR_C6C</a>, <a class="reference internal" href="#HLR_BF3" title="HLR_ADF">HLR_BF3</a>, <a class="reference internal" href="#HLR_050" title="HLR_ADF">HLR_050</a>, <a class="reference internal" href="#HLR_9AC" title="HLR_ADF">HLR_9AC</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-2c898257">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_C6C">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc dodawać nowe Przedmioty do systemu.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_C6C" title="HLR_C6C">HLR_C6C</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">courses</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_ADF" title="HLR_C6C">HLR_ADF</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-4ed0267d">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_BF3">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc przeglądać istniejące Przedmioty w systemie.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_BF3" title="HLR_BF3">HLR_BF3</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">courses</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_ADF" title="HLR_BF3">HLR_ADF</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-0d7fe811">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_050">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc edytować istniejące w systemie Przedmioty.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_050" title="HLR_050">HLR_050</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">courses</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_ADF" title="HLR_050">HLR_ADF</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-4a199229">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_9AC">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc usuwać z systemu Przedmioty, które nie są już potrzebne.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_9AC" title="HLR_9AC">HLR_9AC</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">courses</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_ADF" title="HLR_9AC">HLR_ADF</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-df5627b0">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_2D3">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Administratorom zarządzanie kontami Nauczycieli.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_2D3" title="HLR_2D3">HLR_2D3</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_550" title="HLR_2D3">HLR_550</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_019" title="HLR_2D3">HLR_019</a>, <a class="reference internal" href="#HLR_93E" title="HLR_2D3">HLR_93E</a>, <a class="reference internal" href="#HLR_F25" title="HLR_2D3">HLR_F25</a>, <a class="reference internal" href="#HLR_F59" title="HLR_2D3">HLR_F59</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-21d95d88">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_019">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc zakładać nowe konta Nauczycielom.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_019" title="HLR_019">HLR_019</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_2D3" title="HLR_019">HLR_2D3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-566e8d8e">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_93E">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc przeglądać listę kont Nauczycieli i informacje o nich.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_93E" title="HLR_93E">HLR_93E</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_2D3" title="HLR_93E">HLR_2D3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-cd00b15c">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_F25">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc edytować dane istniejących w systemie Nauczycieli.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_F25" title="HLR_F25">HLR_F25</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_2D3" title="HLR_F25">HLR_2D3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-b3d2893d">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_F59">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc usuwać z systemu konta Nauczycieli, które nie są już potrzebne.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_F59" title="HLR_F59">HLR_F59</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_2D3" title="HLR_F59">HLR_2D3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-d0c46c97">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_0D0">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Administratorom zarządzanie Jednostkami Organizacyjnymi.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_0D0" title="HLR_0D0">HLR_0D0</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_550" title="HLR_0D0">HLR_550</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_056" title="HLR_0D0">HLR_056</a>, <a class="reference internal" href="#HLR_F42" title="HLR_0D0">HLR_F42</a>, <a class="reference internal" href="#HLR_48E" title="HLR_0D0">HLR_48E</a>, <a class="reference internal" href="#HLR_477" title="HLR_0D0">HLR_477</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-642cd70e">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_056">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc dodawać nowe Jednostki Organizacyjne do systemu.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_056" title="HLR_056">HLR_056</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_0D0" title="HLR_056">HLR_0D0</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-48c08924">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_F42">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc przeglądać istniejące Jednostki Organizacyjne w systemie.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_F42" title="HLR_F42">HLR_F42</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_0D0" title="HLR_F42">HLR_0D0</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-26e721f2">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_48E">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc edytować istniejące w systemie Jednostki Organizacyjne.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_48E" title="HLR_48E">HLR_48E</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_0D0" title="HLR_48E">HLR_0D0</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-2c4b93d6">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_477">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc usuwać z systemu Jednostki Organizacyjne, które nie są już potrzebne.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_477" title="HLR_477">HLR_477</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_0D0" title="HLR_477">HLR_0D0</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-ec6249d2">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_C3D">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Administratorom zarządzanie Grupami Zajęciowymi.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_C3D" title="HLR_C3D">HLR_C3D</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">groups</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_550" title="HLR_C3D">HLR_550</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_EA1" title="HLR_C3D">HLR_EA1</a>, <a class="reference internal" href="#HLR_095" title="HLR_C3D">HLR_095</a>, <a class="reference internal" href="#HLR_87F" title="HLR_C3D">HLR_87F</a>, <a class="reference internal" href="#HLR_060" title="HLR_C3D">HLR_060</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-81c2865d">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_EA1">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc dodawać nowe Grupy Zajęciowe do systemu.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_EA1" title="HLR_EA1">HLR_EA1</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">groups</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C3D" title="HLR_EA1">HLR_C3D</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-0a7a41b8">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_095">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc przeglądać istniejące Grupy Zajęciowe w systemie.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_095" title="HLR_095">HLR_095</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">groups</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C3D" title="HLR_095">HLR_C3D</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-6bd5d3b1">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_87F">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc edytować istniejące w systemie Grupy Zajęciowe.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_87F" title="HLR_87F">HLR_87F</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">groups</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C3D" title="HLR_87F">HLR_C3D</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-afaa79c8">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_060">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc usuwać z systemu Grupy Zajęciowe, które nie są już potrzebne.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_060" title="HLR_060">HLR_060</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">groups</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C3D" title="HLR_060">HLR_C3D</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-1138ec80">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_C38">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Administratorom zarządzanie planem zajęć Grup Zajęciowej.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_C38" title="HLR_C38">HLR_C38</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_550" title="HLR_C38">HLR_550</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_86F" title="HLR_C38">HLR_86F</a>, <a class="reference internal" href="#HLR_B98" title="HLR_C38">HLR_B98</a>, <a class="reference internal" href="#HLR_AAC" title="HLR_C38">HLR_AAC</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-77016784">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_86F">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc dodawać nowy termin zajęć.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_86F" title="HLR_86F">HLR_86F</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C38" title="HLR_86F">HLR_C38</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-2f64f248">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_B98">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc usuwać termin zajęć.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_B98" title="HLR_B98">HLR_B98</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C38" title="HLR_B98">HLR_C38</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-6c9b33ab">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_AAC">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Administratorzy powinni móc edytować termin zajęć.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_AAC" title="HLR_AAC">HLR_AAC</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_C38" title="HLR_AAC">HLR_C38</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-d617f5da">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_6C8">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Nauczycielom i Administratorom logowanie się do ich paneli zarządzania.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_6C8" title="HLR_6C8">HLR_6C8</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="low-level-requirements">
+<h2>Low-level requirements<a class="headerlink" href="#low-level-requirements" title="Link to this heading">¶</a></h2>
+<div class="need_container docutils container" id="SNCB-94d2eba4">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_C32">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące formularzy w Systemie</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_C32" title="LLR_C32">LLR_C32</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Wszystkie pola powinny mieć ograniczenie na liczbę znaków.</p></li>
+<li><p>Formularz nie powinien umożliwiać wpisania w polach więcej znaków niż System przyjmie. Przy normalnym używaniu Systemu niemożliwe powinno być uzyskanie komunikatu o zbyt wielkiej liczbie wprowadzonych znaków.</p></li>
+<li><p>Po otrzymaniu błędnych danych System powinien zwrócić stosowny komunikat o błędzie. Tak aby użytkownik wiedział co należy poprawić.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-f0bcbf45">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_DAE">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie panelu zarządzania Nauczyciela</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_DAE" title="LLR_DAE">LLR_DAE</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać Nauczycielowi odnośnik do widoku zarządzania jego terminami konsultacji.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-0c6aa655">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_F3E">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie panelu zarządzania Administratora</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_F3E" title="LLR_F3E">LLR_F3E</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_247" title="LLR_F3E">LLR_247</a>, <a class="reference internal" href="#LLR_CA3" title="LLR_F3E">LLR_CA3</a>, <a class="reference internal" href="#LLR_A50" title="LLR_F3E">LLR_A50</a>, <a class="reference internal" href="#LLR_337" title="LLR_F3E">LLR_337</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać Administratorowi odnośnik do widoku zarządzania Przedmiotami.</p></li>
+<li><p>System powinien dostarczać Administratorowi odnośnik do widoku zarządzania kontami Nauczycieli.</p></li>
+<li><p>System powinien dostarczać Administratorowi odnośnik do widoku zarządzania Jednostkami Organizacyjnymi.</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-ffaeaf43">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_247">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące widoku zarządzania Przedmiotami</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_247" title="LLR_247">LLR_247</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_F3E" title="LLR_247">LLR_F3E</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_1AB" title="LLR_247">LLR_1AB</a>, <a class="reference internal" href="#LLR_A72" title="LLR_247">LLR_A72</a>, <a class="reference internal" href="#LLR_BA0" title="LLR_247">LLR_BA0</a>, <a class="reference internal" href="#LLR_25C" title="LLR_247">LLR_25C</a>, <a class="reference internal" href="#LLR_CA0" title="LLR_247">LLR_CA0</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczyć widok zarządzania Przedmiotami.</p></li>
+<li><p>Domyślnie powinna być wyświetlana opcja przeglądania Przedmiotów.</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-7c968af2">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_1AB">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące formularza Przedmiotu</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_1AB" title="LLR_1AB">LLR_1AB</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_247" title="LLR_1AB">LLR_247</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><dl class="simple">
+<dt>Formularz powinien składać się z następujących pól:</dt><dd><ul>
+<li><p>nazwa przedmiotu (maks 100 znaków),</p></li>
+<li><p>unikalny kod przedmiotu (maks 20 znaków),</p></li>
+<li><p>opcjonalny opis przedmiotu (maks 500 znaków).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Formularz powinien nie przyjąć błędnych danych takich jak:</dt><dd><ul>
+<li><p>kod przedmiotu istniejący w bazie.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-9ed42a16">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_A72">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji przeglądania Przedmiotów</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_A72" title="LLR_A72">LLR_A72</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_247" title="LLR_A72">LLR_247</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania Przedmiotu.</p></li>
+<li><dl class="simple">
+<dt>System powinien wyświetlać listę Przedmiotów w formie tabeli. Wyświetlane powinny być następujące dane:</dt><dd><ul>
+<li><p>nazwa przedmiotu,</p></li>
+<li><p>kod przedmiotu.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Każdy rekord tabeli powinien zawierać:</dt><dd><ul>
+<li><p>przycisk pozwalający na przejście do opcji edycji Przedmiotu</p></li>
+<li><p>przycisk pozwalający na usunięcie Przedmiotu.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-72f64a8d">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_BA0">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji dodawania Przedmiotów</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_BA0" title="LLR_BA0">LLR_BA0</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_247" title="LLR_BA0">LLR_247</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz dodania Przedmiotu.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien utworzyć nowy Przedmiot w bazie danych.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-6567ee5b">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_25C">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji edytowania Przedmiotów</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_25C" title="LLR_25C">LLR_25C</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_247" title="LLR_25C">LLR_247</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz edytowania Przedmiotu z wstępnie wpisanymi starymi danymi.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien zmienić dane Przedmiotu w bazie danych.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-73e4428f">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_CA0">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji usuwania Przedmiotów</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_CA0" title="LLR_CA0">LLR_CA0</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_247" title="LLR_CA0">LLR_247</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Po kliknięciu przycisku usuwania Przedmiotu przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.</p></li>
+<li><p>W przypadku potwierdzeniu wykonania czynności Przedmiot powinien zostać usunięty z bazy danych wraz z dotyczącymi go informacjami.</p></li>
+<li><p>W przypadku odrzucenia wykonania czynności nic się nie powinno stać.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-4bdbf96b">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_CA3">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące widoku zarządzania kontami Nauczycieli</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_CA3" title="LLR_CA3">LLR_CA3</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_F3E" title="LLR_CA3">LLR_F3E</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_8DD" title="LLR_CA3">LLR_8DD</a>, <a class="reference internal" href="#LLR_F70" title="LLR_CA3">LLR_F70</a>, <a class="reference internal" href="#LLR_725" title="LLR_CA3">LLR_725</a>, <a class="reference internal" href="#LLR_279" title="LLR_CA3">LLR_279</a>, <a class="reference internal" href="#LLR_F2E" title="LLR_CA3">LLR_F2E</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczyć widok zarządzania kontami Nauczycieli.</p></li>
+<li><p>Domyślnie powinna być wyświetlana opcja przeglądania kont Nauczycieli.</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-9b7a1103">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_8DD">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące formularza konta Nauczyciela</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_8DD" title="LLR_8DD">LLR_8DD</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_CA3" title="LLR_8DD">LLR_CA3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><dl class="simple">
+<dt>Formularz powinien składać się z następujących pól:</dt><dd><ul>
+<li><p>tytuł naukowy (maks 20 znaków),</p></li>
+<li><p>imię (maks 50 znaków),</p></li>
+<li><p>nazwisko (maks 50 znaków),</p></li>
+<li><p>unikalny adres email (maks 100 znaków),</p></li>
+<li><p>opcjonalny numer telefonu (maks 15 znaków),</p></li>
+<li><p>opcjonalna biografia (maks 1000 znaków).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Formularz powinien nie przyjąć błędnych danych takich jak:</dt><dd><ul>
+<li><p>błędny lub istniejący w bazie adres email.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-a63a523a">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_F70">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji przeglądania kont Nauczycieli</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_F70" title="LLR_F70">LLR_F70</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_CA3" title="LLR_F70">LLR_CA3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien wyświetlać przycisk umożliwiający przejście do formularza zakładania konta Nauczyciela.</p></li>
+<li><dl class="simple">
+<dt>System powinien wyświetlać listę Nauczycieli w formie tabeli. Wyświetlane powinny być następujące dane:</dt><dd><ul>
+<li><p>tytuł naukowy,</p></li>
+<li><p>imię i nazwisko,</p></li>
+<li><p>adres email.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Każdy rekord tabeli powinien zawierać:</dt><dd><ul>
+<li><p>przycisk pozwalający na przejście do opcji edycji informacji o Nauczycielu</p></li>
+<li><p>przycisk pozwalający na usunięcie konta Nauczyciela.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-bd1a61fe">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_725">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji zakładania konta Nauczyciela</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_725" title="LLR_725">LLR_725</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_CA3" title="LLR_725">LLR_CA3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz zakładania konta Nauczyciela.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien założyć nowe konto Nauczyciela w bazie danych.</p></li>
+<li><p>System powinien wysłać adres email Nauczycielowi z wygenerowanym dla niego hasłem.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-4e6e7dcd">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_279">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji edytowania informacji o Nauczycielu</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_279" title="LLR_279">LLR_279</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_CA3" title="LLR_279">LLR_CA3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz edytowania informacji o Nauczycielu z wstępnie wpisanymi starymi danymi.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Nauczycielu.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-2bc942da">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_F2E">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji usuwania Nauczycieli</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_F2E" title="LLR_F2E">LLR_F2E</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_CA3" title="LLR_F2E">LLR_CA3</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Po kliknięciu przycisku usuwania konta Nauczyciela przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.</p></li>
+<li><p>Po potwierdzeniu wykonania czynności konto Nauczyciela powinno zostać usunięte z bazy danych wraz z dotyczącymi go informacjami.</p></li>
+<li><p>Po odrzuceniu wykonania czynności nic się nie powinno stać.</p></li>
+<li><p>Terminy konsultacji Nauczyciela również powinny zostać usunięte.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-7e825e45">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_A50">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące widoku zarządzania Jednostkami Organizacyjnymi</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_A50" title="LLR_A50">LLR_A50</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_F3E" title="LLR_A50">LLR_F3E</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_EC7" title="LLR_A50">LLR_EC7</a>, <a class="reference internal" href="#LLR_CD8" title="LLR_A50">LLR_CD8</a>, <a class="reference internal" href="#LLR_823" title="LLR_A50">LLR_823</a>, <a class="reference internal" href="#LLR_787" title="LLR_A50">LLR_787</a>, <a class="reference internal" href="#LLR_B5F" title="LLR_A50">LLR_B5F</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczyć widok zarządzania Jednostkami Organizacyjnymi.</p></li>
+<li><p>Domyślnie powinna być wyświetlana opcja przeglądania Jednostek Organizacyjnych.</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-db3bc7a2">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_EC7">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące formularza Jednostki Organizacyjnej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_EC7" title="LLR_EC7">LLR_EC7</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_A50" title="LLR_EC7">LLR_A50</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><dl class="simple">
+<dt>Formularz powinien składać się z następujących pól:</dt><dd><ul>
+<li><p>nazwa (maks 20 znaków),</p></li>
+<li><p>opis (maks 100 znaków).</p></li>
+<li><p>opcjonalna jednostka nadrzędna (wybór z listy)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-f9fdb1d6">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_CD8">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji przeglądania Jednostek Organizacyjnych</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_CD8" title="LLR_CD8">LLR_CD8</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_A50" title="LLR_CD8">LLR_A50</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania nowej Jednostki Organizacyjnej.</p></li>
+<li><p>System powinien wyświetlać listę Jednostek Organizacyjnych w formie listy o strukturze drzewiastej. Powinna być możliwość wyświetlenia podrzędnych jednostek poprzez rozwinięcie jednostki nadrzędnej.</p></li>
+<li><dl class="simple">
+<dt>Wyświetlane powinny być następujące dane:</dt><dd><ul>
+<li><p>nazwa,</p></li>
+<li><p>opis.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Każdy rekord listy powinien zawierać:</dt><dd><ul>
+<li><p>przycisk pozwalający na przejście do opcji edycji informacji o Jednostce Organizacyjnej,</p></li>
+<li><p>przycisk pozwalający na usunięcie Jednostki Organizacyjnej.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Każda rekord listy Jednostki Organizacyjnej najbardziej podrzędnej powinien zawierać:</dt><dd><ul>
+<li><p>przycisk przeglądania jej Grup Zajęciowych.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-e6b0f31a">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_823">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji dodawania Jednostki Organizacyjnej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_823" title="LLR_823">LLR_823</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_A50" title="LLR_823">LLR_A50</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz dodawania Jednostki Organizacyjnej.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien dodać nową Jednostkę Organizacyjną.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-3db4b59b">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_787">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji edytowania informacji o Jednostce Organizacyjnej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_787" title="LLR_787">LLR_787</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_A50" title="LLR_787">LLR_A50</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz edytowania informacji o Jednostce Organizacyjnej z wstępnie wpisanymi starymi danymi.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Jednostce Organizacyjnej.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-f995b21d">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_B5F">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji usuwania Jednostki Organizacyjnej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_B5F" title="LLR_B5F">LLR_B5F</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_A50" title="LLR_B5F">LLR_A50</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Po kliknięciu przycisku usuwania Jednostki Organizacyjnej przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.</p></li>
+<li><p>Po potwierdzeniu wykonania czynności Jednostka Organizacyjna powinna zostać usunięta z bazy danych wraz z dotyczącymi jej informacjami.</p></li>
+<li><p>Po odrzuceniu wykonania czynności nic się nie powinno stać.</p></li>
+<li><p>Wraz z usunięciem Jednostki Organizacyjnej powinny zostać usunięte jej Grupy Zajęciowe.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-7762b61f">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_337">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące widoku zarządzania Grupami Zajęciowymi</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_337" title="LLR_337">LLR_337</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_F3E" title="LLR_337">LLR_F3E</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_6DA" title="LLR_337">LLR_6DA</a>, <a class="reference internal" href="#LLR_D75" title="LLR_337">LLR_D75</a>, <a class="reference internal" href="#LLR_A66" title="LLR_337">LLR_A66</a>, <a class="reference internal" href="#LLR_A70" title="LLR_337">LLR_A70</a>, <a class="reference internal" href="#LLR_732" title="LLR_337">LLR_732</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Przejście do tego widoku za pomocą przycisku. [XXX]</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-3f717fc6">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_6DA">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie dotyczące formularza Grupy Zajęciowej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_6DA" title="LLR_6DA">LLR_6DA</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_337" title="LLR_6DA">LLR_337</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><dl class="simple">
+<dt>Formularz powinien składać się z następujących pól:</dt><dd><ul>
+<li><p>nazwa (maks 20 znaków),</p></li>
+<li><p>opis (maks 100 znaków).</p></li>
+<li><p>jednostka organizacyjna (wybór z listy)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Formularz powinien akceptować wybór jedynie najbardziej podrzędnej Jednostki Organizacyjnej.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-b7ea58aa">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_D75">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji przeglądania Grup Zajęciowych</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_D75" title="LLR_D75">LLR_D75</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_337" title="LLR_D75">LLR_337</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania nowej Grupy Zajęciowej.</p></li>
+<li><p>System powinien wyświetlać listę Grup Zajęciowych w formie tabeli.</p></li>
+<li><dl class="simple">
+<dt>Wyświetlane powinny być następujące dane:</dt><dd><ul>
+<li><p>nazwa,</p></li>
+<li><p>opis.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Każdy rekord listy powinien zawierać:</dt><dd><ul>
+<li><p>przycisk pozwalający na przejście do opcji edycji informacji o Grupie Zajęciowej,</p></li>
+<li><p>przycisk usuwania Grupy Zajęciowej,</p></li>
+<li><p>przycisk przejścia do widoku planu zajęć danej Grupy Zajęciowej,</p></li>
+<li><p>przycisk dodania nowego terminu zajęć dla tej Grupy Zajęciowej.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-8b97e8a9">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_A66">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji dodawania Grupy Zajęciowej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_A66" title="LLR_A66">LLR_A66</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_337" title="LLR_A66">LLR_337</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz dodawania Grupy Zajęciowej.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien dodać nową Grupę Zajęciową.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-f7706f0d">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_A70">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji edytowania informacji o Grupie Zajęciowej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_A70" title="LLR_A70">LLR_A70</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_337" title="LLR_A70">LLR_337</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz edytowania informacji o Grupie Zajęciowej z wstępnie wpisanymi starymi danymi.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Grupie Zajęciowej.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-1bde5b43">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_732">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji usuwania Grupy Zajęciowej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_732" title="LLR_732">LLR_732</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_337" title="LLR_732">LLR_337</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Po kliknięciu przycisku usuwania Grupy Zajęciowej przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.</p></li>
+<li><p>Po potwierdzeniu wykonania czynności Grupa Zajęciowa powinna zostać usunięta z bazy danych wraz z dotyczącymi jej informacjami.</p></li>
+<li><p>Po odrzuceniu wykonania czynności nic się nie powinno stać.</p></li>
+<li><p>Wraz z usunięciem Grupy Zajęciowej powinny zostać usunięte jej terminy zajęć.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-4095f596">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_EC9">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymagania dotyczące interfejsu logowania</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_EC9" title="LLR_EC9">LLR_EC9</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien wyświetlać panel logowania.</p></li>
+<li><p>Panel logowania powinien składać się z pól do wpisania nazwy użytkownika oraz hasła.</p></li>
+<li><p>Panel logowania powinien zawierać przycisk „Zaloguj się”, po którego wciśnięciu System zweryfikuje wprowadzone dane i zaloguje do panelu zarządzania.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-4e446b10">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_2C3">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymagania dotyczące uwierzytelniania</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_2C3" title="LLR_2C3">LLR_2C3</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>Po wprowadzeniu danych logowania system powinien zweryfikować dane w bazie danych.</p></li>
+<li><p>System powinien dawać dostęp do panelu Nauczyciela tylko Nauczycielom, a do panelu administratora tylko administratorom.</p></li>
+<li><p>W przypadku nieprawidłowych danych logowania system powinien wyświetlić odpowiedni komunikat o błędzie i nie zezwolić na dostęp do panelu.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-eb6812a7">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_691">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymagania dotyczące bezpieczeństwa</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_691" title="LLR_691">LLR_691</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien przechowywać hasła użytkowników w bezpieczny sposób, np. poprzez haszowanie.</p></li>
+<li><p>Sesje użytkowników powinny być odpowiednio zarządzane, a użytkownicy powinni być automatycznie wylogowywani po pewnym okresie bezczynności, aby zapobiec nieautoryzowanemu dostępowi do systemu.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="nonfunctional-requirements">
+<h2>Nonfunctional requirements<a class="headerlink" href="#nonfunctional-requirements" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>The system should feature an intuitive user interface.</p></li>
+<li><p>The system should feature data and access security.</p></li>
+<li><p>The system should be scalable according to the number of classes and class groups.</p></li>
+<li><p>The system should be accessible to the visually impaired.</p></li>
+</ol>
+</section>
+<section id="biznesowe-przypadki-uzycia">
+<h2>Biznesowe przypadki użycia<a class="headerlink" href="#biznesowe-przypadki-uzycia" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>The Viewer selects the top-level organization unit.</p></li>
+<li><p>The Viewer selects subsequent subordinate organization units to the selected one.</p></li>
+</ol>
+<ol class="arabic simple">
+<li><p>The Viewer selects the organization unit whose schedule he wants to view.</p></li>
+<li><p>The Viewer views the schedule of the selected organization unit.</p></li>
+</ol>
+<section id="pb2-dodanie-jednostki-organizacyjnej">
+<h3>PB2. Dodanie Jednostki Organizacyjnej<a class="headerlink" href="#pb2-dodanie-jednostki-organizacyjnej" title="Link to this heading">¶</a></h3>
+<p><strong>Aktorzy</strong>: Administrator</p>
+<p><strong>Scenariusz główny</strong>:</p>
+<ol class="arabic simple">
+<li><p>System sprawdza tożsamość administratora.</p></li>
+<li><p>Administrator wybiera opcję dodania Jednostki Organizacyjnej.</p></li>
+<li><p>Administrator wybiera nazwę Jednostki Organizacyjnej i jej Jednostkę nadrzędną.</p></li>
+<li><p>System zapisuje nową Jednostkę Organizacyjną.</p></li>
+</ol>
+</section>
+<section id="pb3-dodanie-nauczyciela-akademickiego">
+<h3>PB3. Dodanie Nauczyciela akademickiego<a class="headerlink" href="#pb3-dodanie-nauczyciela-akademickiego" title="Link to this heading">¶</a></h3>
+<p><strong>Aktorzy</strong>: Administrator</p>
+<p><strong>Scenariusz główny</strong>:</p>
+<ol class="arabic simple">
+<li><p>System sprawdza tożsamość administratora.</p></li>
+<li><p>Administrator wybiera opcję dodania Nauczyciela akademickiego.</p></li>
+<li><p>Administrator uzupełnia pola z jego danymi.</p></li>
+<li><p>System potwierdza utworzenie nowego Nauczyciela</p></li>
+<li><p>System wysyła email nowo utworzonemu Nauczycielowi z jego danymi logowania.</p></li>
+</ol>
+</section>
+<section id="pb4-dodanie-przedmiotu">
+<h3>PB4. Dodanie Przedmiotu<a class="headerlink" href="#pb4-dodanie-przedmiotu" title="Link to this heading">¶</a></h3>
+<p><strong>Aktorzy</strong>: Administrator</p>
+<p><strong>Scenariusz główny</strong>:</p>
+<ol class="arabic simple">
+<li><p>System sprawdza tożsamość administratora.</p></li>
+<li><p>Administrator wybiera opcję dodania Przedmiotu.</p></li>
+<li><p>Administrator wpisuje nazwę nowego Przedmiotu.</p></li>
+<li><p>System potwierdza utworzenie nowego Przedmiotu.</p></li>
+</ol>
+</section>
+<section id="pb5-dodanie-terminu-zajec-do-planu">
+<h3>PB5. Dodanie terminu zajęć do planu<a class="headerlink" href="#pb5-dodanie-terminu-zajec-do-planu" title="Link to this heading">¶</a></h3>
+<p><strong>Aktorzy</strong>: Administrator</p>
+<p><strong>Scenariusz główny</strong>:</p>
+<ol class="arabic simple">
+<li><p>System sprawdza tożsamość administratora.</p></li>
+<li><p>Administrator wybiera opcję dodania terminu zajęć.</p></li>
+<li><p>Administrator wybiera Jednostkę Organizacyjną, Nauczyciela i Przedmiot zajęć.</p></li>
+<li><p>Administrator uzupełnia termin, lokalizację i typ zajęć.</p></li>
+<li><p>System potwierdza zapisanie nowego terminu do planu zajęć.</p></li>
+</ol>
+</section>
+</section>
+<section id="systemowe-przypadki-uzycia">
+<h2>Systemowe przypadki użycia<a class="headerlink" href="#systemowe-przypadki-uzycia" title="Link to this heading">¶</a></h2>
+<section id="fu1-przegladanie-katalogu-jednostek-organizacyjnych">
+<h3>FU1. Przeglądanie katalogu Jednostek Organizacyjnych<a class="headerlink" href="#fu1-przegladanie-katalogu-jednostek-organizacyjnych" title="Link to this heading">¶</a></h3>
+<p><strong>Aktorzy</strong>: Przeglądający</p>
+<p><strong>Scenariusz główny</strong>:</p>
+<ol class="arabic simple">
+<li><p>System prezentuje Jednostki Organizacyjne w strukturze drzewiastej</p></li>
+<li><p>Przeglądający kolejno wybiera interesujące go Jednostki Organizacyjne</p></li>
+</ol>
+</section>
+<section id="fu2-logowanie-do-systemu">
+<h3>FU2. Logowanie do systemu<a class="headerlink" href="#fu2-logowanie-do-systemu" title="Link to this heading">¶</a></h3>
+<p><strong>Aktorzy</strong>: Administratorzy, Nauczyciele</p>
+<p><strong>Scenariusz główny</strong>:</p>
+<ol class="arabic simple">
+<li><p>Użytkownik systemu wybiera opcję logowania do systemu.</p></li>
+<li><p>System wyświetla pola logowania – nazwa użytkownika i hasło.</p></li>
+<li><p>Użytkownik systemu wpisuje swoje dane logowania.</p></li>
+<li><p>System przekierowuje użytkownika systemu do jego panelu zarządzania.</p></li>
+</ol>
+<p><strong>Scenariusz alternatywny 1 - użytkownik podał nieprawidłowe dane logowania</strong>:</p>
+<ol class="arabic simple">
+<li><p>Kroki 1-3 scenariusza głównego.</p></li>
+<li><p>System wyświetla informację o nieprawidłowych danych logowania i prosi użytkownika o ponowne podanie danych.</p></li>
+<li><p>Powrót do kroku 3 scenariusza głównego.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Timetable</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+<p class="caption" role="heading"><span class="caption-text">Zawartość:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Requirements analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#actors-of-the-system">Actors of the system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#high-level-requirements">High-level requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#low-level-requirements">Low-level requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nonfunctional-requirements">Nonfunctional requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#biznesowe-przypadki-uzycia">Biznesowe przypadki użycia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#systemowe-przypadki-uzycia">Systemowe przypadki użycia</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="poprzedni rozdział">Dokumentacja projektu Timetable</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Szukaj" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Bartłomiej Ściseł.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/analiza_i_projektowanie.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
