@@ -1,39 +1,48 @@
 Requirements analysis
-=====================
+*********************
+
+Project goal
+============
+
+The primary goal of this project is to develop a comprehensive academic management system that empowers administrators, teachers, and viewers to efficiently manage and access information related to subjects, lecturers, organization units, groups, and class schedules. The system aims to streamline administrative tasks for system administrators, provide academic teachers with the ability to manage their consultation appointments seamlessly, and offer viewers an intuitive interface to view schedules for individual groups and teachers.
 
 Actors of the system
-^^^^^^^^^^^^^^^^^^^^
+====================
 1. **Administrators** - system administrators who add, delete, edit information about subjects, lecturers, organization units and groups. They add and edit class schedules, and create accounts for Academic Teachers.
 2. **Teachers** - add, delete and edit their consultation appointments.
 3. **Viewers** - view the timetables of individual organization units.
 
 
 High-level requirements
-^^^^^^^^^^^^^^^^^^^^^^^
+=======================
 
-.. hlreq:: System powinien umożliwiać Przeglądającemu wyświetlenie planu zajęć wybranej Grupy Zajęciowej lub Nauczyciela.
-    :tags: schedule
-    :id: HLR_000
+.. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Jednostek Organizacyjnych.
+    :tags: organization_units
+    :id: HLR_010
 
-    .. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Jednostek Organizacyjnych.
-        :tags: organization_units
-        :id: HLR_010
+.. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Grup Zajęciowych.
+    :tags: groups
+    :id: HLR_015
+    :requires: HLR_010
 
-    .. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Grup Zajęciowych.
-        :tags: groups
-        :id: HLR_015
+.. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranej Grupy Zajęciowej.
+    :tags: schedule; classes_viewing
+    :id: HLR_020
+    :requires: HLR_015
 
-    .. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranej Grupy Zajęciowej.
-        :tags: schedule
-        :id: HLR_020
+    Wybór Grupy Zajęciowej powinien polegać na wyborze jednej z możliwie wielu Grup Zajęciowych wybranej Jednostki Organizacyjnej.
 
-        Wybór Grupy Zajęciowej powinien polegać na wyborze jednej z możliwie wielu Grup Zajęciowych wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]
+.. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Nauczycieli.
+    :tags: teachers
+    :id: HLR_023
+    :requires: HLR_010
 
-    .. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranego Nauczyciela w tym jego terminów konsultacji.
-        :tags: schedule; consultations
-        :id: HLR_030
+.. hlreq:: System powinien umożliwiać Przeglądającym wyświetlanie planu zajęć wybranego Nauczyciela w tym jego terminów konsultacji.
+    :tags: schedule; consultations; classes_viewing
+    :id: HLR_030
+    :requires: HLR_023
 
-        Wybór Nauczyciela powinien polegać na wyborze jednego z możliwie wielu Nauczycieli wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]
+    Wybór Nauczyciela powinien polegać na wyborze jednego z możliwie wielu Nauczycieli wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]
 
 .. hlreq:: System powinien dostarczać Nauczycielom panel zarządzania.
     :tags: teacher_panel
@@ -150,19 +159,19 @@ High-level requirements
 
 
     .. hlreq:: System powinien umożliwiać Administratorom zarządzanie planem zajęć Grup Zajęciowej.
-        :tags: classes; admin_panel
+        :tags: classes_management; admin_panel
         :id: HLR_250
 
         .. hlreq:: System powinien umożliwiać Administratorom dodawanie nowych Terminów Zajęć.
-            :tags: classes
+            :tags: classes_management
             :id: HLR_251
 
         .. hlreq:: System powinien umożliwiać Administratorom usuwanie nowych Terminów Zajęć.
-            :tags: classes
+            :tags: classes_management
             :id: HLR_252
 
         .. hlreq:: System powinien umożliwiać Administratorom edytowanie Terminów Zajęć.
-            :tags: classes
+            :tags: classes_management
             :id: HLR_253
 
 
@@ -170,10 +179,11 @@ High-level requirements
     :tags: login; admin_panel; teacher_panel
     :id: HLR_300
 
+.. hlreq:: arg1
 
 
 Low-level requirements
-^^^^^^^^^^^^^^^^^^^^^^
+======================
 
 .. llreq:: Wymaganie dotyczące wszystkich formularzy w Systemie
     :tags: login
@@ -185,18 +195,20 @@ Low-level requirements
     - Po otrzymaniu błędnych danych System powinien zwrócić stosowny komunikat o błędzie. Tak aby użytkownik wiedział co należy poprawić.
 
 .. llreq:: Wymaganie dotyczące wyświetlania planu zajęć
-    :tags: schedule
+    :tags: schedule; consultations; classes_viewing
     :id: LLR_100
+    :specifies: HLR_020; HLR_030
 
     - Plan zajęć powinien być wyświetlany w formie tabeli.
     - Tabela powinna zawierać kolumnę na każdy dzień tygodnia
     - Tabela powinna zawierać kolumnę z godzinami w ciągu dnia.
     - Tabela powinna zawierać komórki, które będą odzwierciedlały dany Termin Zajęciowy.
     - Komórka z Terminem Zajęć powinna być na poziomie i mieć wysokość komórek odpowiadających godzinowemu zakresowi trwania Terminu Zajęć.
-    - Zalogowany Administrator dodatkowo powinien widzieć przycisk dodawania Terminu Zajęć.
+    - W przypadku wyświetlenia planu zajęć Nauczyciela powinny być rónież wyświetlone jego Terminy Konsultacji.
+    - W przypadku wyświetlenia planu zajęć Grupy Zajęciowej zalogowany Administrator dodatkowo powinien widzieć przycisk dodawania Terminu Zajęć.
 
     .. llreq:: Wymaganie dotyczące komórki Terminu Zajęć w tabeli
-        :tags: classes
+        :tags: classes_viewing
         :id: LLR_110
 
         - Każda komórka z danym Terminem Zajęć powinna zawierać:
@@ -207,28 +219,37 @@ Low-level requirements
         - Zalogowany Administrator dodatkowo w każdej komórce Terminu Zajęć powinien widzieć:
             - Przycisk przenoszący do edycji danego Terminu Zajęć
             - Przycisk usuwający dany Termin Zajęć
-  
-.. llreq:: Wymaganie opcji przeglądania Jednostek Organizacyjnych i Grup Zajęciowych
-    :tags: organization_units; groups
+
+.. llreq:: Wymaganie opcji przeglądania Jednostek Organizacyjnych, Grup Zajęciowych i Nauczycieli
+    :tags: organization_units; groups; teachers
     :id: LLR_332
-    :specifies: HLR_010; HLR_015; HLR_232; HLR_242
+    :specifies: HLR_010; HLR_015; HLR_023; HLR_232; HLR_242; HLR_222
 
     - System powinien wyświetlać listę Jednostek Organizacyjnych w formie struktury drzewiastej. Powinna być możliwość wyświetlenia listy podrzędnych jednostek poprzez rozwinięcie jednostki nadrzędnej.
     - Wyświetlane powinny być następujące dane Jednostki Organizacyjnej:
         - nazwa.
     - Kliknięcie na rekord listy Jednostek Organizacyjnych powinno rozwinąć listę Jednostek Organizacyjnych podrzędnych.
+    - Rozwinięcie Jednostki Organizacyjnej, która nie ma podrzędnej Jednostki Organizacyjne, powinno powodować pokazanie w formie listy w zależności od trybu jej Grupy Zajęciowe lub Nauczycieli.
     - Kliknięcie na rekord listy Grupy Zajęciowej powinno przenosić do widoku planu zajęć danej Grupy Zajęciowej.
-    - Rozwinięcie Jednostki Organizacyjnej, która nie ma podrzędnej Jednostki Organizacyjne, powinno powodować pokazanie w formie listy jej Grupy Zajęciowe.
+    - Kliknięcie na rekord listy Nauczyciela powinno przenosić do widoku planu zajęć danego Nauczyciela w tym jego Terminów Konsultacji.
     - Wyświetlane powinny być następujące dane Grupy Zajęciowej:
         - nazwa.
+    - Wyświetlane powinny być następujące dane Nauczyciela:
+        - tytuł naukowy,
+        - imię i nazwisko. :
     - Każdy rekord listy Jednostek Organizacyjnych powinien zawierać widoczny tylko dla Administratora:
         - przycisk pozwalający na przejście do opcji edycji informacji o Jednostce Organizacyjnej,
         - przycisk pozwalający na usunięcie Jednostki Organizacyjnej.
-        - przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Grupy Zajęciowe.
-        - przycisk pozwalający na dodanie Grupy Zajęciowej, chyba że ma Jednostki Organizacyjne podrzędne. 
+        - w trybie Grup Zajęciowych: przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Grupy Zajęciowe.
+        - w trybie Grup Zajęciowych: przycisk pozwalający na dodanie Grupy Zajęciowej, chyba że ma Jednostki Organizacyjne podrzędne.
+        - w trybie Nauczycieli: przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Nauczycieli.
+        - w trybie Nauczycieli: przycisk pozwalający na dodanie Nauczyciela, chyba że ma Jednostki Organizacyjne podrzędne.
     - Każdy rekord listy Grupy Zajęciowej powinien zawierać widoczny tylko dla Administratora:
         - przycisk pozwalający na przejście do opcji edycji informacji o Grupie Zajęciowej,
         - przycisk pozwalający na usunięcie Grupy Zajęciowej.
+    - Każdy rekord listy Nauczycieli powinien zawierać widoczny tylko dla Administratora:
+        - przycisk pozwalający na przejście do opcji edycji informacji o Nauczycielu,
+        - przycisk pozwalający na usunięcie Nauczyciela.
     - System powinien wyświetlać Administratorowi przycisk umożliwiający przejście do formularza dodawania głównej Jednostki Organizacyjnej.
 
 .. llreq:: Wymaganie panelu zarządzania Nauczyciela
@@ -246,6 +267,7 @@ Low-level requirements
         .. llreq:: Wymaganie dotyczące formularza Terminu Konsultacji
             :tags: consultations
             :id: LLR_211
+            :specifies: LLR_213; LLR_215
 
             - Formularz powinien składać się z następujących pól:
                 - miejsce odbywania konsultacji (maks 50 znaków)
@@ -257,6 +279,7 @@ Low-level requirements
         .. llreq:: Wymaganie opcji przeglądania Terminów Konsultacji
             :tags: consultations
             :id: LLR_212
+            :specifies: HLR_112
 
             - System powinien wyświetlać przycisk umożliwiający przejście do formularza dodawania Terminu Konsultacji.
             - System powinien wyświetlać listę Terminów Konsultacji w formie tabeli. Wyświetlane powinny być następujące dane:
@@ -271,15 +294,24 @@ Low-level requirements
         .. llreq:: Wymaganie dotyczące opcji dodawania Terminu Konsultacji
             :tags: consultations
             :id: LLR_213
-            
+            :specifies: HLR_111
+
             - Po kliknięciu przycisku dodawania Terminu Konsultacji w widoku zarządzania Terminami Konsultacji System powinien wyświetlić formularz dodania Terminu Konsultacji.
             - Po otrzymaniu prawidłowych danych System powinien utworzyć nowy Termin Konsultacji w bazie danych.
 
+        .. llreq:: Wymaganie opcji edytowania Terminu Konsultacji
+            :tags: consultations
+            :id: LLR_215
+            :specifies: HLR_113
+
+            - System powinien dostarczać formularz edytowania Terminu Konsultacji z wstępnie wpisanymi starymi danymi.
+            - Po otrzymaniu prawidłowych danych System powinien zmienić dane Terminu Konsultacji w bazie danych.
 
         .. llreq:: Wymaganie dotyczące opcji usuwania Terminu Konsultacji
             :tags: consultations
             :id: LLR_214
-            
+            :specifies: HLR_114
+
             - Po kliknięciu przycisku usuwania Terminu Konsultacji przy danym rekordzie System powinien wyświetlić potwierdzenie wykonania czynności.
             - W przypadku potwierdzeniu wykonania czynności Termin Konsultacji powinien zostać usunięty z bazy danych.
             - W przypadku odrzucenia wykonania czynności nic się nie powinno stać.
@@ -299,7 +331,7 @@ Low-level requirements
         :tags: courses; admin_panel
         :id: LLR_310
         :specifies: HLR_210
-        
+
         - System powinien dostarczyć widok zarządzania Przedmiotami.
         - Domyślnie powinna być wyświetlana opcja przeglądania Przedmiotów.
 
@@ -509,13 +541,15 @@ Low-level requirements
             - Wraz z usunięciem Grupy Zajęciowej powinny zostać usunięte jej Terminy Zajęć.
 
     .. llreq:: Wymaganie dotyczące zarządzania Terminami Zajęć
-        :tags: admin_panel; classes
+        :tags: admin_panel; classes_management
         :id: LLR_350
         :specifies: HLR_250
+        :requires: LLR_100
 
         .. llreq:: Wymaganie dotyczące formularza Terminu Zajęć
-            :tags: classes
+            :tags: classes_management
             :id: LLR_351
+            :specifies: LLR_352; LLR_354
 
             - Formularz powinien składać się z następujących pól:
                 - przedmiotu (wybór z listy),
@@ -527,16 +561,25 @@ Low-level requirements
                 - typ zajęć (maks 20 znaków)
 
         .. llreq:: Wymaganie dotyczące opcji dodawania Terminu Zajęć
-            :tags: classes
+            :tags: classes_management
             :id: LLR_352
+            :specifies: HLR_251
 
             - Po kliknięciu przycisku dodawania Terminu Zajęć w widoku planu zajęć Grupy Zajęciowej System powinien wyświetlić formularz dodania Przedmiotu.
             - Po otrzymaniu prawidłowych danych System powinien utworzyć nowy Przedmiot w bazie danych.
 
+        .. llreq:: Wymaganie opcji edytowania informacji o Terminie Zajęć
+            :tags: classes_management
+            :id: LLR_354
+            :specifies: HLR_253
+
+            - System powinien dostarczać formularz edytowania informacji o Terminie Zajęć z wstępnie wpisanymi starymi danymi.
+            - Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Terminie Zajęć.
 
         .. llreq:: Wymaganie dotyczące opcji usuwania Terminu Zajęć
-            :tags: classes
+            :tags: classes_management
             :id: LLR_353
+            :specifies: HLR_252
 
             - Po kliknięciu przycisku usuwania Terminu Zajęć przy danej komórce w tabeli planu zajęć System powinien wyświetlić potwierdzenie wykonania czynności.
             - W przypadku potwierdzeniu wykonania czynności Termin Zajęć powinien zostać usunięty z bazy danych.
@@ -575,136 +618,186 @@ Low-level requirements
         - Sesje użytkowników powinny być odpowiednio zarządzane, a użytkownicy powinni być automatycznie wylogowywani po pewnym okresie bezczynności, aby zapobiec nieautoryzowanemu dostępowi do systemu.
 
 Flows
-^^^^^
+=====
 
-.. needflow:: Login flow
+Login flow
+^^^^^^^^^^
+
+.. needflow::
     :tags: login
     :show_link_names:
 
-.. needflow:: Administrator panel flow
+Administrator panel flow
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. needflow::
     :tags: admin_panel
     :show_link_names:
 
-.. needflow:: Teacher panel flow
+Teacher panel flow
+^^^^^^^^^^^^^^^^^^
+
+.. needflow::
     :tags: teacher_panel
     :show_link_names:
 
-.. needflow:: Organization units flow
+Organization units flow
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. needflow::
     :tags: organization_units
     :show_link_names:
 
-.. needflow:: Groups flow
+Groups flow
+^^^^^^^^^^^
+
+.. needflow::
     :tags: groups
     :show_link_names:
 
-.. needflow:: Courses flow
+Courses flow
+^^^^^^^^^^^^
+
+.. needflow::
     :tags: courses
     :show_link_names:
 
-.. needflow:: Teachers flow
+Classes viewing flow
+^^^^^^^^^^^^^^^^^^^^
+
+.. needflow::
+    :tags: classes_viewing
+    :show_link_names:
+
+Classes management flow
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. needflow::
+    :tags: classes_management
+    :show_link_names:
+
+Teachers flow
+^^^^^^^^^^^^^
+
+.. needflow::
     :tags: teachers
     :show_link_names:
 
+Schedule flow
+^^^^^^^^^^^^^
+
+.. needflow::
+    :tags: schedule
+    :show_link_names:
+
+Consultations flow
+^^^^^^^^^^^^^^^^^^
+
+.. needflow::
+    :tags: consultations
+    :show_link_names:
+
 Nonfunctional requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
 
 1. The system should feature an intuitive user interface.
 2. The system should feature data and access security.
 3. The system should be scalable according to the number of classes and class groups.
 4. The system should be accessible to the visually impaired.
 
-Biznesowe przypadki użycia
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+..
+    Biznesowe przypadki użycia
+    ==========================
 
-1. The Viewer selects the top-level organization unit.
-2. The Viewer selects subsequent subordinate organization units to the selected one.
+    1. The Viewer selects the top-level organization unit.
+    2. The Viewer selects subsequent subordinate organization units to the selected one.
 
-1. The Viewer selects the organization unit whose schedule he wants to view.
-2. The Viewer views the schedule of the selected organization unit.
-
-
-
-PB2. Dodanie Jednostki Organizacyjnej
--------------------------------------
-
-**Aktorzy**: Administrator
-
-**Scenariusz główny**:
-
-1. System sprawdza tożsamość administratora.
-2. Administrator wybiera opcję dodania Jednostki Organizacyjnej.
-3. Administrator wybiera nazwę Jednostki Organizacyjnej i jej Jednostkę nadrzędną.
-4. System zapisuje nową Jednostkę Organizacyjną.
-
-PB3. Dodanie Nauczyciela akademickiego
---------------------------------------
-
-**Aktorzy**: Administrator
-
-**Scenariusz główny**:
-
-1. System sprawdza tożsamość administratora.
-2. Administrator wybiera opcję dodania Nauczyciela akademickiego.
-3. Administrator uzupełnia pola z jego danymi.
-4. System potwierdza utworzenie nowego Nauczyciela
-5. System wysyła email nowo utworzonemu Nauczycielowi z jego danymi logowania.
-
-PB4. Dodanie Przedmiotu
------------------------
-
-**Aktorzy**: Administrator
-
-**Scenariusz główny**:
-
-1. System sprawdza tożsamość administratora.
-2. Administrator wybiera opcję dodania Przedmiotu.
-3. Administrator wpisuje nazwę nowego Przedmiotu.
-4. System potwierdza utworzenie nowego Przedmiotu.
-
-PB5. Dodanie terminu zajęć do planu
------------------------------------
-
-**Aktorzy**: Administrator
-
-**Scenariusz główny**:
-
-1. System sprawdza tożsamość administratora.
-2. Administrator wybiera opcję dodania terminu zajęć.
-3. Administrator wybiera Jednostkę Organizacyjną, Nauczyciela i Przedmiot zajęć.
-4. Administrator uzupełnia termin, lokalizację i typ zajęć.
-5. System potwierdza zapisanie nowego terminu do planu zajęć.
+    1. The Viewer selects the organization unit whose schedule he wants to view.
+    2. The Viewer views the schedule of the selected organization unit.
 
 
-Systemowe przypadki użycia
-^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-FU1. Przeglądanie katalogu Jednostek Organizacyjnych
-----------------------------------------------------
+    PB2. Dodanie Jednostki Organizacyjnej
+    -------------------------------------
 
-**Aktorzy**: Przeglądający
+    **Aktorzy**: Administrator
 
-**Scenariusz główny**:
+    **Scenariusz główny**:
 
-1. System prezentuje Jednostki Organizacyjne w strukturze drzewiastej
-2. Przeglądający kolejno wybiera interesujące go Jednostki Organizacyjne
+    1. System sprawdza tożsamość administratora.
+    2. Administrator wybiera opcję dodania Jednostki Organizacyjnej.
+    3. Administrator wybiera nazwę Jednostki Organizacyjnej i jej Jednostkę nadrzędną.
+    4. System zapisuje nową Jednostkę Organizacyjną.
 
-FU2. Logowanie do systemu
-----------------------------------------------------
+    PB3. Dodanie Nauczyciela akademickiego
+    --------------------------------------
 
-**Aktorzy**: Administratorzy, Nauczyciele
+    **Aktorzy**: Administrator
 
-**Scenariusz główny**:
+    **Scenariusz główny**:
 
-1. Użytkownik systemu wybiera opcję logowania do systemu.
-2. System wyświetla pola logowania -- nazwa użytkownika i hasło.
-3. Użytkownik systemu wpisuje swoje dane logowania.
-4. System przekierowuje użytkownika systemu do jego panelu zarządzania.
+    1. System sprawdza tożsamość administratora.
+    2. Administrator wybiera opcję dodania Nauczyciela akademickiego.
+    3. Administrator uzupełnia pola z jego danymi.
+    4. System potwierdza utworzenie nowego Nauczyciela
+    5. System wysyła email nowo utworzonemu Nauczycielowi z jego danymi logowania.
 
-**Scenariusz alternatywny 1 - użytkownik podał nieprawidłowe dane logowania**:
+    PB4. Dodanie Przedmiotu
+    -----------------------
 
-1. Kroki 1-3 scenariusza głównego.
-2. System wyświetla informację o nieprawidłowych danych logowania i prosi użytkownika o ponowne podanie danych.
-3. Powrót do kroku 3 scenariusza głównego.
+    **Aktorzy**: Administrator
+
+    **Scenariusz główny**:
+
+    1. System sprawdza tożsamość administratora.
+    2. Administrator wybiera opcję dodania Przedmiotu.
+    3. Administrator wpisuje nazwę nowego Przedmiotu.
+    4. System potwierdza utworzenie nowego Przedmiotu.
+
+    PB5. Dodanie terminu zajęć do planu
+    -----------------------------------
+
+    **Aktorzy**: Administrator
+
+    **Scenariusz główny**:
+
+    1. System sprawdza tożsamość administratora.
+    2. Administrator wybiera opcję dodania terminu zajęć.
+    3. Administrator wybiera Jednostkę Organizacyjną, Nauczyciela i Przedmiot zajęć.
+    4. Administrator uzupełnia termin, lokalizację i typ zajęć.
+    5. System potwierdza zapisanie nowego terminu do planu zajęć.
+
+
+    Systemowe przypadki użycia
+    ==========================
+
+    FU1. Przeglądanie katalogu Jednostek Organizacyjnych
+    ----------------------------------------------------
+
+    **Aktorzy**: Przeglądający
+
+    **Scenariusz główny**:
+
+    1. System prezentuje Jednostki Organizacyjne w strukturze drzewiastej
+    2. Przeglądający kolejno wybiera interesujące go Jednostki Organizacyjne
+
+    FU2. Logowanie do systemu
+    ----------------------------------------------------
+
+    **Aktorzy**: Administratorzy, Nauczyciele
+
+    **Scenariusz główny**:
+
+    1. Użytkownik systemu wybiera opcję logowania do systemu.
+    2. System wyświetla pola logowania -- nazwa użytkownika i hasło.
+    3. Użytkownik systemu wpisuje swoje dane logowania.
+    4. System przekierowuje użytkownika systemu do jego panelu zarządzania.
+
+    **Scenariusz alternatywny 1 - użytkownik podał nieprawidłowe dane logowania**:
+
+    1. Kroki 1-3 scenariusza głównego.
+    2. System wyświetla informację o nieprawidłowych danych logowania i prosi użytkownika o ponowne podanie danych.
+    3. Powrót do kroku 3 scenariusza głównego.
 
 
 ..
@@ -746,3 +839,4 @@ FU2. Logowanie do systemu
         ipa --> zjo
 
         ipw --> pz
+

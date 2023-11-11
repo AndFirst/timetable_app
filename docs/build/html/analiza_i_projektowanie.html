@@ -46,6 +46,10 @@
             
   <section id="requirements-analysis">
 <h1>Requirements analysis<a class="headerlink" href="#requirements-analysis" title="Link to this heading">¶</a></h1>
+<section id="project-goal">
+<h2>Project goal<a class="headerlink" href="#project-goal" title="Link to this heading">¶</a></h2>
+<p>The primary goal of this project is to develop a comprehensive academic management system that empowers administrators, teachers, and viewers to efficiently manage and access information related to subjects, lecturers, organization units, groups, and class schedules. The system aims to streamline administrative tasks for system administrators, provide academic teachers with the ability to manage their consultation appointments seamlessly, and offer viewers an intuitive interface to view schedules for individual groups and teachers.</p>
+</section>
 <section id="actors-of-the-system">
 <h2>Actors of the system<a class="headerlink" href="#actors-of-the-system" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
@@ -56,23 +60,7 @@
 </section>
 <section id="high-level-requirements">
 <h2>High-level requirements<a class="headerlink" href="#high-level-requirements" title="Link to this heading">¶</a></h2>
-<div class="need_container docutils container" id="SNCB-ed0da8ea">
-<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_000">
-<tbody>
-<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Przeglądającemu wyświetlenie planu zajęć wybranej Grupy Zajęciowej lub Nauczyciela.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_000" title="HLR_000">HLR_000</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
-</div>
-</td>
-</tr>
-<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span></span></span></div>
-</span></span></div>
-<div class="line"><span><div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_010" title="HLR_000">HLR_010</a>, <a class="reference internal" href="#HLR_015" title="HLR_000">HLR_015</a>, <a class="reference internal" href="#HLR_020" title="HLR_000">HLR_020</a>, <a class="reference internal" href="#HLR_030" title="HLR_000">HLR_030</a></span></span></div>
-</span></div>
-</div>
-</td>
-</tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-96c52334">
+<div class="need_container docutils container" id="SNCB-c500144b">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_010">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -83,8 +71,8 @@
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_000" title="HLR_010">HLR_000</a></span></span></div>
-<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_332" title="HLR_010">LLR_332</a></span></span></div>
+<div class="line"><span><div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_332" title="HLR_010">LLR_332</a></span></span></div>
+<div class="line">is required by: <span class="requires"><span><a class="reference internal" href="#HLR_015" title="HLR_010">HLR_015</a>, <a class="reference internal" href="#HLR_023" title="HLR_010">HLR_023</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -94,7 +82,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-0853c5a0">
+<div class="need_container docutils container" id="SNCB-0db451e8">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_015">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -105,8 +93,9 @@
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">groups</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_000" title="HLR_015">HLR_000</a></span></span></div>
-<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_332" title="HLR_015">LLR_332</a></span></span></div>
+<div class="line"><span><div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_332" title="HLR_015">LLR_332</a></span></span></div>
+<div class="line">requires: <span class="requires"><span><a class="reference internal" href="#HLR_010" title="HLR_015">HLR_010</a></span></span></div>
+<div class="line">is required by: <span class="requires"><span><a class="reference internal" href="#HLR_020" title="HLR_015">HLR_020</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -116,7 +105,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-7ed649b4">
+<div class="need_container docutils container" id="SNCB-f710e063">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_020">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -125,19 +114,43 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span><span class="needs_spacer">, </span><span class="needs_data">classes_viewing</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_000" title="HLR_020">HLR_000</a></span></span></div>
+<div class="line"><span><div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_100" title="HLR_020">LLR_100</a></span></span></div>
+<div class="line">requires: <span class="requires"><span><a class="reference internal" href="#HLR_015" title="HLR_020">HLR_015</a></span></span></div>
 </span></div>
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><p>Wybór Grupy Zajęciowej powinien polegać na wyborze jednej z możliwie wielu Grup Zajęciowych wybranej Jednostki Organizacyjnej. [XXX do wybierania JO]</p></td>
+<tr class="need content row-odd"><td class="need content" colspan="1"><p>Wybór Grupy Zajęciowej powinien polegać na wyborze jednej z możliwie wielu Grup Zajęciowych wybranej Jednostki Organizacyjnej.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-b3476d38">
+<div class="need_container docutils container" id="SNCB-43a89e87">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_023">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">System powinien umożliwiać Przeglądającym przeglądanie Nauczycieli.</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_023" title="HLR_023">HLR_023</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_332" title="HLR_023">LLR_332</a></span></span></div>
+<div class="line">requires: <span class="requires"><span><a class="reference internal" href="#HLR_010" title="HLR_023">HLR_010</a></span></span></div>
+<div class="line">is required by: <span class="requires"><span><a class="reference internal" href="#HLR_030" title="HLR_023">HLR_030</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-a90a083b">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_030">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -146,9 +159,10 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span><span class="needs_spacer">, </span><span class="needs_data">consultations</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span><span class="needs_spacer">, </span><span class="needs_data">consultations</span><span class="needs_spacer">, </span><span class="needs_data">classes_viewing</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_000" title="HLR_030">HLR_000</a></span></span></div>
+<div class="line"><span><div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_100" title="HLR_030">LLR_100</a></span></span></div>
+<div class="line">requires: <span class="requires"><span><a class="reference internal" href="#HLR_023" title="HLR_030">HLR_023</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -158,12 +172,7 @@
 </tbody>
 </table>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="need_container docutils container" id="SNCB-93abb500">
+<div class="need_container docutils container" id="SNCB-8e0301fb">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_100">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -180,7 +189,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-268af4d5">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-79eb6b03">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_110">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -199,7 +208,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-ed7147c8">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-07d81af2">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_111">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -211,6 +220,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_110" title="HLR_111">HLR_110</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_213" title="HLR_111">LLR_213</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -220,7 +230,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-69274b53">
+<div class="need_container docutils container" id="SNCB-51043604">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_112">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -232,6 +242,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_110" title="HLR_112">HLR_110</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_212" title="HLR_112">LLR_212</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -241,7 +252,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-6a5987cf">
+<div class="need_container docutils container" id="SNCB-7281d278">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_113">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -253,6 +264,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_110" title="HLR_113">HLR_110</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_215" title="HLR_113">LLR_215</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -262,7 +274,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-ce458882">
+<div class="need_container docutils container" id="SNCB-18c6ba46">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_114">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -274,6 +286,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_110" title="HLR_114">HLR_110</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_214" title="HLR_114">LLR_214</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -293,7 +306,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-9ab065f0">
+<div class="need_container docutils container" id="SNCB-9ffd430a">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_200">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -311,7 +324,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-e8458401">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-bbc6ad50">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_210">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -329,7 +342,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-296edb89">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-4e45e928">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_211">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -351,7 +364,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-55e87802">
+<div class="need_container docutils container" id="SNCB-6f0a75e3">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_212">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -373,7 +386,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-ebd61251">
+<div class="need_container docutils container" id="SNCB-38cb1207">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_213">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -395,7 +408,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-5fead75f">
+<div class="need_container docutils container" id="SNCB-3718cacd">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_214">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -422,7 +435,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-37b9888f">
+<div class="need_container docutils container" id="SNCB-2608c9c1">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_220">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -440,7 +453,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-25723095">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-134ee2d7">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_221">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -462,7 +475,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-3016ced5">
+<div class="need_container docutils container" id="SNCB-b80f10aa">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_222">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -474,7 +487,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teachers</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_220" title="HLR_222">HLR_220</a></span></span></div>
-<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_322" title="HLR_222">LLR_322</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_332" title="HLR_222">LLR_332</a>, <a class="reference internal" href="#LLR_322" title="HLR_222">LLR_322</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -484,7 +497,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-c17a7164">
+<div class="need_container docutils container" id="SNCB-bff467f9">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_223">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -506,7 +519,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-d5b0bde6">
+<div class="need_container docutils container" id="SNCB-fc352ef8">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_224">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -533,7 +546,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-dfca72e4">
+<div class="need_container docutils container" id="SNCB-6cc8ed04">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_230">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -551,7 +564,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-f56bacee">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-11461a24">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_231">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -573,7 +586,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-cf9aa5ce">
+<div class="need_container docutils container" id="SNCB-3b9d184d">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_232">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -595,7 +608,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-1dc8eb4d">
+<div class="need_container docutils container" id="SNCB-b88f91af">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_233">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -617,7 +630,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-fdf34737">
+<div class="need_container docutils container" id="SNCB-c7434663">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_234">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -644,7 +657,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-6a301004">
+<div class="need_container docutils container" id="SNCB-1d04fc00">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_240">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -662,7 +675,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-3b8c8791">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-415a9beb">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_241">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -684,7 +697,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-bf6ffceb">
+<div class="need_container docutils container" id="SNCB-048fed08">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_242">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -706,7 +719,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-2c6d7440">
+<div class="need_container docutils container" id="SNCB-41c84681">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_243">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -728,7 +741,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-da9e0670">
+<div class="need_container docutils container" id="SNCB-fccc2a68">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_244">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -755,7 +768,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-20d7d67f">
+<div class="need_container docutils container" id="SNCB-5f943bcb">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_250">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -764,7 +777,7 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span><span class="needs_spacer">, </span><span class="needs_data">admin_panel</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span><span class="needs_spacer">, </span><span class="needs_data">admin_panel</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_200" title="HLR_250">HLR_200</a></span></span></div>
 <div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_251" title="HLR_250">HLR_251</a>, <a class="reference internal" href="#HLR_252" title="HLR_250">HLR_252</a>, <a class="reference internal" href="#HLR_253" title="HLR_250">HLR_253</a></span></span></div>
@@ -773,7 +786,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-815548bc">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-04f2ab50">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_251">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -782,9 +795,10 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_250" title="HLR_251">HLR_250</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_352" title="HLR_251">LLR_352</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -794,7 +808,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-8af35732">
+<div class="need_container docutils container" id="SNCB-978ce75c">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_252">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -803,9 +817,10 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_250" title="HLR_252">HLR_250</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_353" title="HLR_252">LLR_353</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -815,7 +830,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-688fd56c">
+<div class="need_container docutils container" id="SNCB-90d89419">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_253">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -824,9 +839,10 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#HLR_250" title="HLR_253">HLR_250</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_354" title="HLR_253">LLR_354</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -846,7 +862,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-30752019">
+<div class="need_container docutils container" id="SNCB-12deb99f">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_300">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -868,10 +884,29 @@
 </tbody>
 </table>
 </div>
+<div class="need_container docutils container" id="SNCB-8dad4827">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_hlreq docutils align-default" id="HLR_E04">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">High-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">arg1</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#HLR_E04" title="HLR_E04">HLR_E04</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="low-level-requirements">
 <h2>Low-level requirements<a class="headerlink" href="#low-level-requirements" title="Link to this heading">¶</a></h2>
-<div class="need_container docutils container" id="SNCB-5caa4104">
+<div class="need_container docutils container" id="SNCB-f8c5f92c">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_000">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -897,7 +932,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-f626e677">
+<div class="need_container docutils container" id="SNCB-d0723a6f">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_100">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -906,9 +941,11 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">schedule</span><span class="needs_spacer">, </span><span class="needs_data">consultations</span><span class="needs_spacer">, </span><span class="needs_data">classes_viewing</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_110" title="LLR_100">LLR_110</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_020" title="LLR_100">HLR_020</a>, <a class="reference internal" href="#HLR_030" title="LLR_100">HLR_030</a></span></span></div>
+<div class="line">is required by: <span class="requires"><span><a class="reference internal" href="#LLR_350" title="LLR_100">LLR_350</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -919,9 +956,10 @@
 <li><p>Tabela powinna zawierać kolumnę z godzinami w ciągu dnia.</p></li>
 <li><p>Tabela powinna zawierać komórki, które będą odzwierciedlały dany Termin Zajęciowy.</p></li>
 <li><p>Komórka z Terminem Zajęć powinna być na poziomie i mieć wysokość komórek odpowiadających godzinowemu zakresowi trwania Terminu Zajęć.</p></li>
-<li><p>Zalogowany Administrator dodatkowo powinien widzieć przycisk dodawania Terminu Zajęć.</p></li>
+<li><p>W przypadku wyświetlenia planu zajęć Nauczyciela powinny być rónież wyświetlone jego Terminy Konsultacji.</p></li>
+<li><p>W przypadku wyświetlenia planu zajęć Grupy Zajęciowej zalogowany Administrator dodatkowo powinien widzieć przycisk dodawania Terminu Zajęć.</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-bfebbe86">
+<div class="need_container docutils container" id="SNCB-be6f62fb">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_110">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -930,7 +968,7 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_viewing</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_100" title="LLR_110">LLR_100</a></span></span></div>
 </span></div>
@@ -967,18 +1005,18 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-5c9a3027">
+<div class="need_container docutils container" id="SNCB-8f96b5de">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_332">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji przeglądania Jednostek Organizacyjnych i Grup Zajęciowych</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_332" title="LLR_332">LLR_332</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji przeglądania Jednostek Organizacyjnych, Grup Zajęciowych i Nauczycieli</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_332" title="LLR_332">LLR_332</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
 </div>
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span><span class="needs_spacer">, </span><span class="needs_data">groups</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">organization_units</span><span class="needs_spacer">, </span><span class="needs_data">groups</span><span class="needs_spacer">, </span><span class="needs_data">teachers</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_010" title="LLR_332">HLR_010</a>, <a class="reference internal" href="#HLR_015" title="LLR_332">HLR_015</a>, <a class="reference internal" href="#HLR_232" title="LLR_332">HLR_232</a>, <a class="reference internal" href="#HLR_242" title="LLR_332">HLR_242</a></span></span></div>
+<div class="line"><span><div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_010" title="LLR_332">HLR_010</a>, <a class="reference internal" href="#HLR_015" title="LLR_332">HLR_015</a>, <a class="reference internal" href="#HLR_023" title="LLR_332">HLR_023</a>, <a class="reference internal" href="#HLR_232" title="LLR_332">HLR_232</a>, <a class="reference internal" href="#HLR_242" title="LLR_332">HLR_242</a>, <a class="reference internal" href="#HLR_222" title="LLR_332">HLR_222</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -993,8 +1031,9 @@
 </dl>
 </li>
 <li><p>Kliknięcie na rekord listy Jednostek Organizacyjnych powinno rozwinąć listę Jednostek Organizacyjnych podrzędnych.</p></li>
+<li><p>Rozwinięcie Jednostki Organizacyjnej, która nie ma podrzędnej Jednostki Organizacyjne, powinno powodować pokazanie w formie listy w zależności od trybu jej Grupy Zajęciowe lub Nauczycieli.</p></li>
 <li><p>Kliknięcie na rekord listy Grupy Zajęciowej powinno przenosić do widoku planu zajęć danej Grupy Zajęciowej.</p></li>
-<li><p>Rozwinięcie Jednostki Organizacyjnej, która nie ma podrzędnej Jednostki Organizacyjne, powinno powodować pokazanie w formie listy jej Grupy Zajęciowe.</p></li>
+<li><p>Kliknięcie na rekord listy Nauczyciela powinno przenosić do widoku planu zajęć danego Nauczyciela w tym jego Terminów Konsultacji.</p></li>
 <li><dl class="simple">
 <dt>Wyświetlane powinny być następujące dane Grupy Zajęciowej:</dt><dd><ul>
 <li><p>nazwa.</p></li>
@@ -1003,11 +1042,21 @@
 </dl>
 </li>
 <li><dl class="simple">
+<dt>Wyświetlane powinny być następujące dane Nauczyciela:</dt><dd><ul>
+<li><p>tytuł naukowy,</p></li>
+<li><p>imię i nazwisko. :</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
 <dt>Każdy rekord listy Jednostek Organizacyjnych powinien zawierać widoczny tylko dla Administratora:</dt><dd><ul>
 <li><p>przycisk pozwalający na przejście do opcji edycji informacji o Jednostce Organizacyjnej,</p></li>
 <li><p>przycisk pozwalający na usunięcie Jednostki Organizacyjnej.</p></li>
-<li><p>przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Grupy Zajęciowe.</p></li>
-<li><p>przycisk pozwalający na dodanie Grupy Zajęciowej, chyba że ma Jednostki Organizacyjne podrzędne.</p></li>
+<li><p>w trybie Grup Zajęciowych: przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Grupy Zajęciowe.</p></li>
+<li><p>w trybie Grup Zajęciowych: przycisk pozwalający na dodanie Grupy Zajęciowej, chyba że ma Jednostki Organizacyjne podrzędne.</p></li>
+<li><p>w trybie Nauczycieli: przycisk pozwalający na dodanie podrzędnej Jednostki Organizacyjnej, chyba że zawiera ona Nauczycieli.</p></li>
+<li><p>w trybie Nauczycieli: przycisk pozwalający na dodanie Nauczyciela, chyba że ma Jednostki Organizacyjne podrzędne.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1020,6 +1069,14 @@
 </dd>
 </dl>
 </li>
+<li><dl class="simple">
+<dt>Każdy rekord listy Nauczycieli powinien zawierać widoczny tylko dla Administratora:</dt><dd><ul>
+<li><p>przycisk pozwalający na przejście do opcji edycji informacji o Nauczycielu,</p></li>
+<li><p>przycisk pozwalający na usunięcie Nauczyciela.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p>System powinien wyświetlać Administratorowi przycisk umożliwiający przejście do formularza dodawania głównej Jednostki Organizacyjnej.</p></li>
 </ul>
 </td>
@@ -1027,7 +1084,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-3616eff7">
+<div class="need_container docutils container" id="SNCB-9fde2ad7">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_200">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1047,7 +1104,7 @@
 <tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
 <li><p>System powinien dostarczać Nauczycielowi odnośnik do widoku zarządzania jego Terminami Konsultacji.</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-2a4cd834">
+<div class="need_container docutils container" id="SNCB-8524fd4c">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_210">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1059,13 +1116,13 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">teacher_panel</span><span class="needs_spacer">, </span><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_200" title="LLR_210">LLR_200</a></span></span></div>
-<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_211" title="LLR_210">LLR_211</a>, <a class="reference internal" href="#LLR_212" title="LLR_210">LLR_212</a>, <a class="reference internal" href="#LLR_213" title="LLR_210">LLR_213</a>, <a class="reference internal" href="#LLR_214" title="LLR_210">LLR_214</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_211" title="LLR_210">LLR_211</a>, <a class="reference internal" href="#LLR_212" title="LLR_210">LLR_212</a>, <a class="reference internal" href="#LLR_213" title="LLR_210">LLR_213</a>, <a class="reference internal" href="#LLR_215" title="LLR_210">LLR_215</a>, <a class="reference internal" href="#LLR_214" title="LLR_210">LLR_214</a></span></span></div>
 <div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_110" title="LLR_210">HLR_110</a></span></span></div>
 </span></div>
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-a541aaea">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-8fd05689">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_211">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1077,6 +1134,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_210" title="LLR_211">LLR_210</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#LLR_213" title="LLR_211">LLR_213</a>, <a class="reference internal" href="#LLR_215" title="LLR_211">LLR_215</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1099,7 +1157,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-ab5b9232">
+<div class="need_container docutils container" id="SNCB-5abb0b4c">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_212">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1111,6 +1169,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_210" title="LLR_212">LLR_210</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_112" title="LLR_212">HLR_112</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1141,7 +1200,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-a3f2f95a">
+<div class="need_container docutils container" id="SNCB-af9f4091">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_213">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1153,6 +1212,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_210" title="LLR_213">LLR_210</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_111" title="LLR_213">HLR_111</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_211" title="LLR_213">LLR_211</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1166,7 +1227,34 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-15256751">
+<div class="need_container docutils container" id="SNCB-b95c8b0a">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_215">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji edytowania Terminu Konsultacji</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_215" title="LLR_215">LLR_215</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_210" title="LLR_215">LLR_210</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_113" title="LLR_215">HLR_113</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_211" title="LLR_215">LLR_211</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz edytowania Terminu Konsultacji z wstępnie wpisanymi starymi danymi.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien zmienić dane Terminu Konsultacji w bazie danych.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-06c14c38">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_214">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1178,6 +1266,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">consultations</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_210" title="LLR_214">LLR_210</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_114" title="LLR_214">HLR_114</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1202,7 +1291,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-112cd0da">
+<div class="need_container docutils container" id="SNCB-f76704b9">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_300">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1224,7 +1313,7 @@
 <li><p>System powinien dostarczać Administratorowi odnośnik do widoku zarządzania kontami Nauczycieli.</p></li>
 <li><p>System powinien dostarczać Administratorowi odnośnik do widoku zarządzania Jednostkami Organizacyjnymi.</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-e9c27a91">
+<div class="need_container docutils container" id="SNCB-cc5b5b6d">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_310">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1246,7 +1335,7 @@
 <li><p>System powinien dostarczyć widok zarządzania Przedmiotami.</p></li>
 <li><p>Domyślnie powinna być wyświetlana opcja przeglądania Przedmiotów.</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-cb98ca10">
+<div class="need_container docutils container" id="SNCB-3bf89f87">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_311">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1286,7 +1375,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-156ab4d8">
+<div class="need_container docutils container" id="SNCB-9feee46c">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_312">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1327,7 +1416,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-b027521f">
+<div class="need_container docutils container" id="SNCB-c59d29fa">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_313">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1354,7 +1443,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-2279460e">
+<div class="need_container docutils container" id="SNCB-aed155ef">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_314">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1381,7 +1470,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-b50a55aa">
+<div class="need_container docutils container" id="SNCB-d7c57186">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_315">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1413,7 +1502,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-f0b7c7bd">
+<div class="need_container docutils container" id="SNCB-9a66cd54">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_320">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1435,7 +1524,7 @@
 <li><p>System powinien dostarczyć widok zarządzania kontami Nauczycieli.</p></li>
 <li><p>Domyślnie powinna być wyświetlana opcja przeglądania kont Nauczycieli.</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-c444a40f">
+<div class="need_container docutils container" id="SNCB-0d3cfbf6">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_321">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1478,7 +1567,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-99178667">
+<div class="need_container docutils container" id="SNCB-9e6f3619">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_322">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1520,7 +1609,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-ea9906ee">
+<div class="need_container docutils container" id="SNCB-5ba86bbb">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_323">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1548,7 +1637,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-14fa87df">
+<div class="need_container docutils container" id="SNCB-e86c5a11">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_324">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1575,7 +1664,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-fe7e05ff">
+<div class="need_container docutils container" id="SNCB-498c4c23">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_325">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1608,7 +1697,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-84bdebb1">
+<div class="need_container docutils container" id="SNCB-e797f33c">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_330">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1630,7 +1719,7 @@
 <li><p>System powinien dostarczyć widok zarządzania Jednostkami Organizacyjnymi.</p></li>
 <li><p>Domyślnie powinna być wyświetlana opcja przeglądania Jednostek Organizacyjnych.</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-5c029a76">
+<div class="need_container docutils container" id="SNCB-f60b3b59">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_331">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1663,7 +1752,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-38984553">
+<div class="need_container docutils container" id="SNCB-b1973aae">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_333">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1690,7 +1779,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-a7e6c329">
+<div class="need_container docutils container" id="SNCB-0ed4c7fa">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_334">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1717,7 +1806,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-aef9a302">
+<div class="need_container docutils container" id="SNCB-139a507b">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_335">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1750,7 +1839,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-054542fc">
+<div class="need_container docutils container" id="SNCB-480195ca">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_340">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1771,7 +1860,7 @@
 <tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
 <li><p>Przejście do tego widoku za pomocą przycisku. [XXX]</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-fab4c362">
+<div class="need_container docutils container" id="SNCB-f3a0dba5">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_341">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1805,7 +1894,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-d52eb83b">
+<div class="need_container docutils container" id="SNCB-25dc2d4b">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_343">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1832,7 +1921,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-c1cd35fe">
+<div class="need_container docutils container" id="SNCB-9cf9c506">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_344">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1859,7 +1948,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-fdd4efdc">
+<div class="need_container docutils container" id="SNCB-9a9f4029">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_345">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1892,7 +1981,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-ed5320f9">
+<div class="need_container docutils container" id="SNCB-8b268012">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_350">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1901,16 +1990,17 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">admin_panel</span><span class="needs_spacer">, </span><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">admin_panel</span><span class="needs_spacer">, </span><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_300" title="LLR_350">LLR_300</a></span></span></div>
-<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_351" title="LLR_350">LLR_351</a>, <a class="reference internal" href="#LLR_352" title="LLR_350">LLR_352</a>, <a class="reference internal" href="#LLR_353" title="LLR_350">LLR_353</a></span></span></div>
+<div class="line">child needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_351" title="LLR_350">LLR_351</a>, <a class="reference internal" href="#LLR_352" title="LLR_350">LLR_352</a>, <a class="reference internal" href="#LLR_354" title="LLR_350">LLR_354</a>, <a class="reference internal" href="#LLR_353" title="LLR_350">LLR_353</a></span></span></div>
 <div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_250" title="LLR_350">HLR_250</a></span></span></div>
+<div class="line">requires: <span class="requires"><span><a class="reference internal" href="#LLR_100" title="LLR_350">LLR_100</a></span></span></div>
 </span></div>
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-6f4c54f4">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-9c67cf9f">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_351">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1919,9 +2009,10 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_350" title="LLR_351">LLR_350</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#LLR_352" title="LLR_351">LLR_352</a>, <a class="reference internal" href="#LLR_354" title="LLR_351">LLR_354</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1946,7 +2037,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-3712e9d7">
+<div class="need_container docutils container" id="SNCB-c9c9d553">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_352">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1955,9 +2046,11 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_350" title="LLR_352">LLR_350</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_251" title="LLR_352">HLR_251</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_351" title="LLR_352">LLR_351</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1971,7 +2064,34 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-d062516f">
+<div class="need_container docutils container" id="SNCB-05a1dec6">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_354">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Low-level requirement</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wymaganie opcji edytowania informacji o Terminie Zajęć</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#LLR_354" title="LLR_354">LLR_354</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_350" title="LLR_354">LLR_350</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_253" title="LLR_354">HLR_253</a></span></span></div>
+<div class="line">is specified by: <span class="specifies"><span><a class="reference internal" href="#LLR_351" title="LLR_354">LLR_351</a></span></span></div>
+</span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><ul class="simple">
+<li><p>System powinien dostarczać formularz edytowania informacji o Terminie Zajęć z wstępnie wpisanymi starymi danymi.</p></li>
+<li><p>Po otrzymaniu prawidłowych danych System powinien zmienić informacje o Terminie Zajęć.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-7908f364">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_353">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -1980,9 +2100,10 @@
 </td>
 </tr>
 <tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">classes_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">parent needs: <span class="parent_needs"><span><a class="reference internal" href="#LLR_350" title="LLR_353">LLR_350</a></span></span></div>
+<div class="line">specifies: <span class="specifies"><span><a class="reference internal" href="#HLR_252" title="LLR_353">HLR_252</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2007,7 +2128,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-ac5de10b">
+<div class="need_container docutils container" id="SNCB-460eb024">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_400">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -2024,7 +2145,7 @@
 </div>
 </td>
 </tr>
-<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-cc9d1bf5">
+<tr class="need content row-odd"><td class="need content" colspan="1"><div class="need_container docutils container" id="SNCB-e601e7f7">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_410">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -2051,7 +2172,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-9840fb19">
+<div class="need_container docutils container" id="SNCB-e4b8269a">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_420">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -2077,7 +2198,7 @@
 </tbody>
 </table>
 </div>
-<div class="need_container docutils container" id="SNCB-cff311ff">
+<div class="need_container docutils container" id="SNCB-ea8ff6a6">
 <table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_llreq docutils align-default" id="LLR_430">
 <tbody>
 <tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
@@ -2110,6 +2231,8 @@
 </section>
 <section id="flows">
 <h2>Flows<a class="headerlink" href="#flows" title="Link to this heading">¶</a></h2>
+<section id="login-flow">
+<h3>Login flow<a class="headerlink" href="#login-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-0">
 <p class="plantuml">
 <a href="_images/plantuml-c696da7c8f2b677eadb620e0e2817c2eb840ea38.png"><img src="_images/plantuml-c696da7c8f2b677eadb620e0e2817c2eb840ea38.png" alt="&#64;startuml
@@ -2132,10 +2255,10 @@ LLR_400 --&gt; HLR_300: specifies
 
 &#64;enduml" style="width: 779.0px; height: 721.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-c696da7c8f2b677eadb620e0e2817c2eb840ea38.png">Login flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-0" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="administrator-panel-flow">
+<h3>Administrator panel flow<a class="headerlink" href="#administrator-panel-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-1">
 <p class="plantuml">
 <a href="_images/plantuml-213f5f416b6d923b983f8b8315b1e77f5df85a03.png"><img src="_images/plantuml-213f5f416b6d923b983f8b8315b1e77f5df85a03.png" alt="&#64;startuml
@@ -2192,10 +2315,10 @@ LLR_350 --&gt; HLR_250: specifies
 
 &#64;enduml" style="width: 1227.0px; height: 959.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-213f5f416b6d923b983f8b8315b1e77f5df85a03.png">Administrator panel flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-1" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="teacher-panel-flow">
+<h3>Teacher panel flow<a class="headerlink" href="#teacher-panel-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-2">
 <p class="plantuml">
 <a href="_images/plantuml-a1a4edfa91fbd49652b0b444c7a38be6d77c7975.png"><img src="_images/plantuml-a1a4edfa91fbd49652b0b444c7a38be6d77c7975.png" alt="&#64;startuml
@@ -2224,13 +2347,13 @@ LLR_210 --&gt; HLR_110: specifies
 
 &#64;enduml" style="width: 281.0px; height: 926.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-a1a4edfa91fbd49652b0b444c7a38be6d77c7975.png">Teacher panel flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-2" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="organization-units-flow">
+<h3>Organization units flow<a class="headerlink" href="#organization-units-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-3">
 <p class="plantuml">
-<a href="_images/plantuml-3d3f59c25448f5e00344876207fbafab2627b104.png"><img src="_images/plantuml-3d3f59c25448f5e00344876207fbafab2627b104.png" alt="&#64;startuml
+<a href="_images/plantuml-8779114f6a20c1bd20694b2ef71fdf10f89b994e.png"><img src="_images/plantuml-8779114f6a20c1bd20694b2ef71fdf10f89b994e.png" alt="&#64;startuml
 
 ' Nodes definition 
 
@@ -2242,7 +2365,7 @@ node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**edytowanie**\n**istniejących w**\n**systemie**\n**Jednostek Organ**\n**izacyjnych.**\n&lt;size:10&gt;HLR_233&lt;/size&gt;&quot; as HLR_233 [[../analiza_i_projektowanie.html#HLR_233]] #BFD8D2
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**usuwanie z**\n**systemu**\n**Jednostek Organ**\n**izacyjnych,**\n**które nie są**\n**już potrzebne.**\n&lt;size:10&gt;HLR_234&lt;/size&gt;&quot; as HLR_234 [[../analiza_i_projektowanie.html#HLR_234]] #BFD8D2
 }
-node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**przeglądania**\n**Jednostek**\n**Organizacyjnych**\n**i Grup**\n**Zajęciowych**\n&lt;size:10&gt;LLR_332&lt;/size&gt;&quot; as LLR_332 [[../analiza_i_projektowanie.html#LLR_332]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**przeglądania**\n**Jednostek Organ**\n**izacyjnych,**\n**Grup**\n**Zajęciowych i**\n**Nauczycieli**\n&lt;size:10&gt;LLR_332&lt;/size&gt;&quot; as LLR_332 [[../analiza_i_projektowanie.html#LLR_332]] #FEDCD2
 node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**widoku**\n**zarządzania**\n**Jednostkami**\n**Organizacyjnymi**\n&lt;size:10&gt;LLR_330&lt;/size&gt;&quot; as LLR_330 [[../analiza_i_projektowanie.html#LLR_330]] #FEDCD2{
 'child needs:
 node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**formularza**\n**Jednostki**\n**Organizacyjnej**\n&lt;size:10&gt;LLR_331&lt;/size&gt;&quot; as LLR_331 [[../analiza_i_projektowanie.html#LLR_331]] #FEDCD2
@@ -2262,15 +2385,15 @@ LLR_333 --&gt; HLR_231: specifies
 LLR_334 --&gt; HLR_233: specifies
 LLR_335 --&gt; HLR_234: specifies
 
-&#64;enduml" style="width: 1146.0px; height: 1006.0px"/></a>
+&#64;enduml" style="width: 1146.0px; height: 1014.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-3d3f59c25448f5e00344876207fbafab2627b104.png">Organization units flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-3" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="groups-flow">
+<h3>Groups flow<a class="headerlink" href="#groups-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-4">
 <p class="plantuml">
-<a href="_images/plantuml-5738005539888e4012cb4ce0b542a79230047696.png"><img src="_images/plantuml-5738005539888e4012cb4ce0b542a79230047696.png" alt="&#64;startuml
+<a href="_images/plantuml-fc4629e80a340427b2e694ce2958ecf6b0ec6fcb.png"><img src="_images/plantuml-fc4629e80a340427b2e694ce2958ecf6b0ec6fcb.png" alt="&#64;startuml
 
 ' Nodes definition 
 
@@ -2282,7 +2405,7 @@ node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**edytowanie**\n**istniejących w**\n**systemie Grup**\n**Zajęciowych.**\n&lt;size:10&gt;HLR_243&lt;/size&gt;&quot; as HLR_243 [[../analiza_i_projektowanie.html#HLR_243]] #BFD8D2
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**usuwanie z**\n**systemu Grup**\n**Zajęciowych,**\n**które nie są**\n**już potrzebne.**\n&lt;size:10&gt;HLR_244&lt;/size&gt;&quot; as HLR_244 [[../analiza_i_projektowanie.html#HLR_244]] #BFD8D2
 }
-node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**przeglądania**\n**Jednostek**\n**Organizacyjnych**\n**i Grup**\n**Zajęciowych**\n&lt;size:10&gt;LLR_332&lt;/size&gt;&quot; as LLR_332 [[../analiza_i_projektowanie.html#LLR_332]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**przeglądania**\n**Jednostek Organ**\n**izacyjnych,**\n**Grup**\n**Zajęciowych i**\n**Nauczycieli**\n&lt;size:10&gt;LLR_332&lt;/size&gt;&quot; as LLR_332 [[../analiza_i_projektowanie.html#LLR_332]] #FEDCD2
 node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**widoku**\n**zarządzania**\n**Grupami**\n**Zajęciowymi**\n&lt;size:10&gt;LLR_340&lt;/size&gt;&quot; as LLR_340 [[../analiza_i_projektowanie.html#LLR_340]] #FEDCD2{
 'child needs:
 node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**formularza**\n**Grupy**\n**Zajęciowej**\n&lt;size:10&gt;LLR_341&lt;/size&gt;&quot; as LLR_341 [[../analiza_i_projektowanie.html#LLR_341]] #FEDCD2
@@ -2302,12 +2425,12 @@ LLR_343 --&gt; HLR_241: specifies
 LLR_344 --&gt; HLR_243: specifies
 LLR_345 --&gt; HLR_244: specifies
 
-&#64;enduml" style="width: 1150.0px; height: 990.0px"/></a>
+&#64;enduml" style="width: 1150.0px; height: 998.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-5738005539888e4012cb4ce0b542a79230047696.png">Groups flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-4" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="courses-flow">
+<h3>Courses flow<a class="headerlink" href="#courses-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-5">
 <p class="plantuml">
 <a href="_images/plantuml-aa08a1fd1c6052e1e81275fd472f9679ce60144a.png"><img src="_images/plantuml-aa08a1fd1c6052e1e81275fd472f9679ce60144a.png" alt="&#64;startuml
@@ -2342,16 +2465,76 @@ LLR_315 --&gt; HLR_214: specifies
 
 &#64;enduml" style="width: 936.0px; height: 902.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-aa08a1fd1c6052e1e81275fd472f9679ce60144a.png">Courses flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-5" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="classes-viewing-flow">
+<h3>Classes viewing flow<a class="headerlink" href="#classes-viewing-flow" title="Link to this heading">¶</a></h3>
 <figure class="align-center" id="needflow-analiza_i_projektowanie-6">
 <p class="plantuml">
-<a href="_images/plantuml-3670671e47325c83b0dd5b97ba6f2883775d1333.png"><img src="_images/plantuml-3670671e47325c83b0dd5b97ba6f2883775d1333.png" alt="&#64;startuml
+<a href="_images/plantuml-350b0f3227c52cc1f4ad2351f69d303fdca17dc8.png"><img src="_images/plantuml-350b0f3227c52cc1f4ad2351f69d303fdca17dc8.png" alt="&#64;startuml
 
 ' Nodes definition 
 
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Przeglądającym**\n**wyświetlanie**\n**planu zajęć**\n**wybranej Grupy**\n**Zajęciowej.**\n&lt;size:10&gt;HLR_020&lt;/size&gt;&quot; as HLR_020 [[../analiza_i_projektowanie.html#HLR_020]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Przeglądającym**\n**wyświetlanie**\n**planu zajęć**\n**wybranego**\n**Nauczyciela w**\n**tym jego**\n**terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_030&lt;/size&gt;&quot; as HLR_030 [[../analiza_i_projektowanie.html#HLR_030]] #BFD8D2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**wyświetlania**\n**planu zajęć**\n&lt;size:10&gt;LLR_100&lt;/size&gt;&quot; as LLR_100 [[../analiza_i_projektowanie.html#LLR_100]] #FEDCD2{
+'child needs:
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**komórki Terminu**\n**Zajęć w tabeli**\n&lt;size:10&gt;LLR_110&lt;/size&gt;&quot; as LLR_110 [[../analiza_i_projektowanie.html#LLR_110]] #FEDCD2
+}
+
+' Connection definition 
+
+LLR_100 --&gt; HLR_020: specifies
+LLR_100 --&gt; HLR_030: specifies
+
+&#64;enduml" style="width: 465.0px; height: 578.0px"/></a>
+</p>
+</figure>
+</section>
+<section id="classes-management-flow">
+<h3>Classes management flow<a class="headerlink" href="#classes-management-flow" title="Link to this heading">¶</a></h3>
+<figure class="align-center" id="needflow-analiza_i_projektowanie-7">
+<p class="plantuml">
+<a href="_images/plantuml-9a0fcc29da1363708e55c8e7d4398d04765c8db7.png"><img src="_images/plantuml-9a0fcc29da1363708e55c8e7d4398d04765c8db7.png" alt="&#64;startuml
+
+' Nodes definition 
+
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**zarządzanie**\n**planem zajęć**\n**Grup**\n**Zajęciowej.**\n&lt;size:10&gt;HLR_250&lt;/size&gt;&quot; as HLR_250 [[../analiza_i_projektowanie.html#HLR_250]] #BFD8D2{
+'child needs:
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**dodawanie**\n**nowych Terminów**\n**Zajęć.**\n&lt;size:10&gt;HLR_251&lt;/size&gt;&quot; as HLR_251 [[../analiza_i_projektowanie.html#HLR_251]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**usuwanie nowych**\n**Terminów Zajęć.**\n&lt;size:10&gt;HLR_252&lt;/size&gt;&quot; as HLR_252 [[../analiza_i_projektowanie.html#HLR_252]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**edytowanie**\n**Terminów Zajęć.**\n&lt;size:10&gt;HLR_253&lt;/size&gt;&quot; as HLR_253 [[../analiza_i_projektowanie.html#HLR_253]] #BFD8D2
+}
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**zarządzania**\n**Terminami Zajęć**\n&lt;size:10&gt;LLR_350&lt;/size&gt;&quot; as LLR_350 [[../analiza_i_projektowanie.html#LLR_350]] #FEDCD2{
+'child needs:
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**formularza**\n**Terminu Zajęć**\n&lt;size:10&gt;LLR_351&lt;/size&gt;&quot; as LLR_351 [[../analiza_i_projektowanie.html#LLR_351]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące opcji**\n**dodawania**\n**Terminu Zajęć**\n&lt;size:10&gt;LLR_352&lt;/size&gt;&quot; as LLR_352 [[../analiza_i_projektowanie.html#LLR_352]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**edytowania**\n**informacji o**\n**Terminie Zajęć**\n&lt;size:10&gt;LLR_354&lt;/size&gt;&quot; as LLR_354 [[../analiza_i_projektowanie.html#LLR_354]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące opcji**\n**usuwania**\n**Terminu Zajęć**\n&lt;size:10&gt;LLR_353&lt;/size&gt;&quot; as LLR_353 [[../analiza_i_projektowanie.html#LLR_353]] #FEDCD2
+}
+
+' Connection definition 
+
+LLR_350 --&gt; HLR_250: specifies
+LLR_351 --&gt; LLR_352: specifies
+LLR_351 --&gt; LLR_354: specifies
+LLR_352 --&gt; HLR_251: specifies
+LLR_354 --&gt; HLR_253: specifies
+LLR_353 --&gt; HLR_252: specifies
+
+&#64;enduml" style="width: 730.0px; height: 900.0px"/></a>
+</p>
+</figure>
+</section>
+<section id="teachers-flow">
+<h3>Teachers flow<a class="headerlink" href="#teachers-flow" title="Link to this heading">¶</a></h3>
+<figure class="align-center" id="needflow-analiza_i_projektowanie-8">
+<p class="plantuml">
+<a href="_images/plantuml-c320ff7b432053e8ca551fe82ebeb443fc7b0648.png"><img src="_images/plantuml-c320ff7b432053e8ca551fe82ebeb443fc7b0648.png" alt="&#64;startuml
+
+' Nodes definition 
+
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Przeglądającym**\n**przeglądanie**\n**Nauczycieli.**\n&lt;size:10&gt;HLR_023&lt;/size&gt;&quot; as HLR_023 [[../analiza_i_projektowanie.html#HLR_023]] #BFD8D2
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**zarządzanie**\n**kontami**\n**Nauczycieli.**\n&lt;size:10&gt;HLR_220&lt;/size&gt;&quot; as HLR_220 [[../analiza_i_projektowanie.html#HLR_220]] #BFD8D2{
 'child needs:
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**zakładanie**\n**nowych kont**\n**Nauczycielom.**\n&lt;size:10&gt;HLR_221&lt;/size&gt;&quot; as HLR_221 [[../analiza_i_projektowanie.html#HLR_221]] #BFD8D2
@@ -2359,6 +2542,7 @@ node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**edytowanie**\n**istniejących w**\n**systemie kont**\n**Nauczycieli.**\n&lt;size:10&gt;HLR_223&lt;/size&gt;&quot; as HLR_223 [[../analiza_i_projektowanie.html#HLR_223]] #BFD8D2
 node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Administratorom**\n**usuwanie z**\n**systemu kont**\n**Nauczycieli,**\n**które nie są**\n**już potrzebne.**\n&lt;size:10&gt;HLR_224&lt;/size&gt;&quot; as HLR_224 [[../analiza_i_projektowanie.html#HLR_224]] #BFD8D2
 }
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**przeglądania**\n**Jednostek Organ**\n**izacyjnych,**\n**Grup**\n**Zajęciowych i**\n**Nauczycieli**\n&lt;size:10&gt;LLR_332&lt;/size&gt;&quot; as LLR_332 [[../analiza_i_projektowanie.html#LLR_332]] #FEDCD2
 node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**widoku**\n**zarządzania**\n**kontami**\n**Nauczycieli**\n&lt;size:10&gt;LLR_320&lt;/size&gt;&quot; as LLR_320 [[../analiza_i_projektowanie.html#LLR_320]] #FEDCD2{
 'child needs:
 node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**formularza**\n**konta**\n**Nauczyciela**\n&lt;size:10&gt;LLR_321&lt;/size&gt;&quot; as LLR_321 [[../analiza_i_projektowanie.html#LLR_321]] #FEDCD2
@@ -2370,6 +2554,8 @@ node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji*
 
 ' Connection definition 
 
+LLR_332 --&gt; HLR_023: specifies
+LLR_332 --&gt; HLR_222: specifies
 LLR_320 --&gt; HLR_220: specifies
 LLR_321 --&gt; LLR_323: specifies
 LLR_321 --&gt; LLR_324: specifies
@@ -2378,12 +2564,76 @@ LLR_323 --&gt; HLR_221: specifies
 LLR_324 --&gt; HLR_223: specifies
 LLR_325 --&gt; HLR_224: specifies
 
-&#64;enduml" style="width: 939.0px; height: 966.0px"/></a>
+&#64;enduml" style="width: 1148.0px; height: 997.0px"/></a>
 </p>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="_images/plantuml-3670671e47325c83b0dd5b97ba6f2883775d1333.png">Teachers flow</a></span><a class="headerlink" href="#needflow-analiza_i_projektowanie-6" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
+</section>
+<section id="schedule-flow">
+<h3>Schedule flow<a class="headerlink" href="#schedule-flow" title="Link to this heading">¶</a></h3>
+<figure class="align-center" id="needflow-analiza_i_projektowanie-9">
+<p class="plantuml">
+<a href="_images/plantuml-3e902998db8948680d29eb53936069c508c826de.png"><img src="_images/plantuml-3e902998db8948680d29eb53936069c508c826de.png" alt="&#64;startuml
+
+' Nodes definition 
+
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Przeglądającym**\n**wyświetlanie**\n**planu zajęć**\n**wybranej Grupy**\n**Zajęciowej.**\n&lt;size:10&gt;HLR_020&lt;/size&gt;&quot; as HLR_020 [[../analiza_i_projektowanie.html#HLR_020]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Przeglądającym**\n**wyświetlanie**\n**planu zajęć**\n**wybranego**\n**Nauczyciela w**\n**tym jego**\n**terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_030&lt;/size&gt;&quot; as HLR_030 [[../analiza_i_projektowanie.html#HLR_030]] #BFD8D2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**wyświetlania**\n**planu zajęć**\n&lt;size:10&gt;LLR_100&lt;/size&gt;&quot; as LLR_100 [[../analiza_i_projektowanie.html#LLR_100]] #FEDCD2{
+'child needs:
+}
+
+' Connection definition 
+
+LLR_100 --&gt; HLR_020: specifies
+LLR_100 --&gt; HLR_030: specifies
+
+&#64;enduml" style="width: 429.0px; height: 438.0px"/></a>
+</p>
+</figure>
+</section>
+<section id="consultations-flow">
+<h3>Consultations flow<a class="headerlink" href="#consultations-flow" title="Link to this heading">¶</a></h3>
+<figure class="align-center" id="needflow-analiza_i_projektowanie-10">
+<p class="plantuml">
+<a href="_images/plantuml-a2cca9ece5167e4bb01351a005041ebfc850f089.png"><img src="_images/plantuml-a2cca9ece5167e4bb01351a005041ebfc850f089.png" alt="&#64;startuml
+
+' Nodes definition 
+
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Przeglądającym**\n**wyświetlanie**\n**planu zajęć**\n**wybranego**\n**Nauczyciela w**\n**tym jego**\n**terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_030&lt;/size&gt;&quot; as HLR_030 [[../analiza_i_projektowanie.html#HLR_030]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Nauczycielom**\n**zarządzanie ich**\n**terminami**\n**konsultacji.**\n&lt;size:10&gt;HLR_110&lt;/size&gt;&quot; as HLR_110 [[../analiza_i_projektowanie.html#HLR_110]] #BFD8D2{
+'child needs:
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Nauczycielom**\n**dodawanie**\n**swoich terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_111&lt;/size&gt;&quot; as HLR_111 [[../analiza_i_projektowanie.html#HLR_111]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Nauczycielom**\n**przeglądanie**\n**swoich terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_112&lt;/size&gt;&quot; as HLR_112 [[../analiza_i_projektowanie.html#HLR_112]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Nauczycielom**\n**edytowanie**\n**swoich terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_113&lt;/size&gt;&quot; as HLR_113 [[../analiza_i_projektowanie.html#HLR_113]] #BFD8D2
+node &quot;&lt;size:12&gt;High-level requirement&lt;/size&gt;\n**System powinien**\n**umożliwiać**\n**Nauczycielom**\n**usuwanie z**\n**systemu swoich**\n**terminów**\n**konsultacji.**\n&lt;size:10&gt;HLR_114&lt;/size&gt;&quot; as HLR_114 [[../analiza_i_projektowanie.html#HLR_114]] #BFD8D2
+}
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**wyświetlania**\n**planu zajęć**\n&lt;size:10&gt;LLR_100&lt;/size&gt;&quot; as LLR_100 [[../analiza_i_projektowanie.html#LLR_100]] #FEDCD2{
+'child needs:
+}
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**zarządzania**\n**Terminami**\n**Konsultacji**\n&lt;size:10&gt;LLR_210&lt;/size&gt;&quot; as LLR_210 [[../analiza_i_projektowanie.html#LLR_210]] #FEDCD2{
+'child needs:
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące**\n**formularza**\n**Terminu**\n**Konsultacji**\n&lt;size:10&gt;LLR_211&lt;/size&gt;&quot; as LLR_211 [[../analiza_i_projektowanie.html#LLR_211]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**przeglądania**\n**Terminów**\n**Konsultacji**\n&lt;size:10&gt;LLR_212&lt;/size&gt;&quot; as LLR_212 [[../analiza_i_projektowanie.html#LLR_212]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące opcji**\n**dodawania**\n**Terminu**\n**Konsultacji**\n&lt;size:10&gt;LLR_213&lt;/size&gt;&quot; as LLR_213 [[../analiza_i_projektowanie.html#LLR_213]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie opcji**\n**edytowania**\n**Terminu**\n**Konsultacji**\n&lt;size:10&gt;LLR_215&lt;/size&gt;&quot; as LLR_215 [[../analiza_i_projektowanie.html#LLR_215]] #FEDCD2
+node &quot;&lt;size:12&gt;Low-level requirement&lt;/size&gt;\n**Wymaganie**\n**dotyczące opcji**\n**usuwania**\n**Terminu**\n**Konsultacji**\n&lt;size:10&gt;LLR_214&lt;/size&gt;&quot; as LLR_214 [[../analiza_i_projektowanie.html#LLR_214]] #FEDCD2
+}
+
+' Connection definition 
+
+LLR_100 --&gt; HLR_030: specifies
+LLR_210 --&gt; HLR_110: specifies
+LLR_211 --&gt; LLR_213: specifies
+LLR_211 --&gt; LLR_215: specifies
+LLR_212 --&gt; HLR_112: specifies
+LLR_213 --&gt; HLR_111: specifies
+LLR_215 --&gt; HLR_113: specifies
+LLR_214 --&gt; HLR_114: specifies
+
+&#64;enduml" style="width: 1107.0px; height: 1014.0px"/></a>
+</p>
+</figure>
+</section>
 </section>
 <section id="nonfunctional-requirements">
 <h2>Nonfunctional requirements<a class="headerlink" href="#nonfunctional-requirements" title="Link to this heading">¶</a></h2>
@@ -2393,92 +2643,6 @@ LLR_325 --&gt; HLR_224: specifies
 <li><p>The system should be scalable according to the number of classes and class groups.</p></li>
 <li><p>The system should be accessible to the visually impaired.</p></li>
 </ol>
-</section>
-<section id="biznesowe-przypadki-uzycia">
-<h2>Biznesowe przypadki użycia<a class="headerlink" href="#biznesowe-przypadki-uzycia" title="Link to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>The Viewer selects the top-level organization unit.</p></li>
-<li><p>The Viewer selects subsequent subordinate organization units to the selected one.</p></li>
-</ol>
-<ol class="arabic simple">
-<li><p>The Viewer selects the organization unit whose schedule he wants to view.</p></li>
-<li><p>The Viewer views the schedule of the selected organization unit.</p></li>
-</ol>
-<section id="pb2-dodanie-jednostki-organizacyjnej">
-<h3>PB2. Dodanie Jednostki Organizacyjnej<a class="headerlink" href="#pb2-dodanie-jednostki-organizacyjnej" title="Link to this heading">¶</a></h3>
-<p><strong>Aktorzy</strong>: Administrator</p>
-<p><strong>Scenariusz główny</strong>:</p>
-<ol class="arabic simple">
-<li><p>System sprawdza tożsamość administratora.</p></li>
-<li><p>Administrator wybiera opcję dodania Jednostki Organizacyjnej.</p></li>
-<li><p>Administrator wybiera nazwę Jednostki Organizacyjnej i jej Jednostkę nadrzędną.</p></li>
-<li><p>System zapisuje nową Jednostkę Organizacyjną.</p></li>
-</ol>
-</section>
-<section id="pb3-dodanie-nauczyciela-akademickiego">
-<h3>PB3. Dodanie Nauczyciela akademickiego<a class="headerlink" href="#pb3-dodanie-nauczyciela-akademickiego" title="Link to this heading">¶</a></h3>
-<p><strong>Aktorzy</strong>: Administrator</p>
-<p><strong>Scenariusz główny</strong>:</p>
-<ol class="arabic simple">
-<li><p>System sprawdza tożsamość administratora.</p></li>
-<li><p>Administrator wybiera opcję dodania Nauczyciela akademickiego.</p></li>
-<li><p>Administrator uzupełnia pola z jego danymi.</p></li>
-<li><p>System potwierdza utworzenie nowego Nauczyciela</p></li>
-<li><p>System wysyła email nowo utworzonemu Nauczycielowi z jego danymi logowania.</p></li>
-</ol>
-</section>
-<section id="pb4-dodanie-przedmiotu">
-<h3>PB4. Dodanie Przedmiotu<a class="headerlink" href="#pb4-dodanie-przedmiotu" title="Link to this heading">¶</a></h3>
-<p><strong>Aktorzy</strong>: Administrator</p>
-<p><strong>Scenariusz główny</strong>:</p>
-<ol class="arabic simple">
-<li><p>System sprawdza tożsamość administratora.</p></li>
-<li><p>Administrator wybiera opcję dodania Przedmiotu.</p></li>
-<li><p>Administrator wpisuje nazwę nowego Przedmiotu.</p></li>
-<li><p>System potwierdza utworzenie nowego Przedmiotu.</p></li>
-</ol>
-</section>
-<section id="pb5-dodanie-terminu-zajec-do-planu">
-<h3>PB5. Dodanie terminu zajęć do planu<a class="headerlink" href="#pb5-dodanie-terminu-zajec-do-planu" title="Link to this heading">¶</a></h3>
-<p><strong>Aktorzy</strong>: Administrator</p>
-<p><strong>Scenariusz główny</strong>:</p>
-<ol class="arabic simple">
-<li><p>System sprawdza tożsamość administratora.</p></li>
-<li><p>Administrator wybiera opcję dodania terminu zajęć.</p></li>
-<li><p>Administrator wybiera Jednostkę Organizacyjną, Nauczyciela i Przedmiot zajęć.</p></li>
-<li><p>Administrator uzupełnia termin, lokalizację i typ zajęć.</p></li>
-<li><p>System potwierdza zapisanie nowego terminu do planu zajęć.</p></li>
-</ol>
-</section>
-</section>
-<section id="systemowe-przypadki-uzycia">
-<h2>Systemowe przypadki użycia<a class="headerlink" href="#systemowe-przypadki-uzycia" title="Link to this heading">¶</a></h2>
-<section id="fu1-przegladanie-katalogu-jednostek-organizacyjnych">
-<h3>FU1. Przeglądanie katalogu Jednostek Organizacyjnych<a class="headerlink" href="#fu1-przegladanie-katalogu-jednostek-organizacyjnych" title="Link to this heading">¶</a></h3>
-<p><strong>Aktorzy</strong>: Przeglądający</p>
-<p><strong>Scenariusz główny</strong>:</p>
-<ol class="arabic simple">
-<li><p>System prezentuje Jednostki Organizacyjne w strukturze drzewiastej</p></li>
-<li><p>Przeglądający kolejno wybiera interesujące go Jednostki Organizacyjne</p></li>
-</ol>
-</section>
-<section id="fu2-logowanie-do-systemu">
-<h3>FU2. Logowanie do systemu<a class="headerlink" href="#fu2-logowanie-do-systemu" title="Link to this heading">¶</a></h3>
-<p><strong>Aktorzy</strong>: Administratorzy, Nauczyciele</p>
-<p><strong>Scenariusz główny</strong>:</p>
-<ol class="arabic simple">
-<li><p>Użytkownik systemu wybiera opcję logowania do systemu.</p></li>
-<li><p>System wyświetla pola logowania – nazwa użytkownika i hasło.</p></li>
-<li><p>Użytkownik systemu wpisuje swoje dane logowania.</p></li>
-<li><p>System przekierowuje użytkownika systemu do jego panelu zarządzania.</p></li>
-</ol>
-<p><strong>Scenariusz alternatywny 1 - użytkownik podał nieprawidłowe dane logowania</strong>:</p>
-<ol class="arabic simple">
-<li><p>Kroki 1-3 scenariusza głównego.</p></li>
-<li><p>System wyświetla informację o nieprawidłowych danych logowania i prosi użytkownika o ponowne podanie danych.</p></li>
-<li><p>Powrót do kroku 3 scenariusza głównego.</p></li>
-</ol>
-</section>
 </section>
 </section>
 
@@ -2502,13 +2666,25 @@ LLR_325 --&gt; HLR_224: specifies
 <p class="caption" role="heading"><span class="caption-text">Zawartość:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Requirements analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#project-goal">Project goal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#actors-of-the-system">Actors of the system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#high-level-requirements">High-level requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#low-level-requirements">Low-level requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#flows">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flows">Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#login-flow">Login flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#administrator-panel-flow">Administrator panel flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teacher-panel-flow">Teacher panel flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organization-units-flow">Organization units flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#groups-flow">Groups flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#courses-flow">Courses flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes-viewing-flow">Classes viewing flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes-management-flow">Classes management flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teachers-flow">Teachers flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule-flow">Schedule flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consultations-flow">Consultations flow</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#nonfunctional-requirements">Nonfunctional requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#biznesowe-przypadki-uzycia">Biznesowe przypadki użycia</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#systemowe-przypadki-uzycia">Systemowe przypadki użycia</a></li>
 </ul>
 </li>
 </ul>

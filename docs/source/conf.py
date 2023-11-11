@@ -56,3 +56,5 @@ language = 'pl'
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
+needs_build_json = True
