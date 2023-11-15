@@ -25,6 +25,7 @@ plantuml = 'java -jar /home/user/jars/plantuml-1.2023.12.jar'
 
 needs_types = [dict(directive="hlreq", title="High-level requirement", prefix="HLR_", color="#BFD8D2", style="node"),
                dict(directive="llreq", title="Low-level requirement", prefix="LLR_", color="#FEDCD2", style="node"),
+               dict(directive="usecase", title="Use case", prefix="UC_", color="#FEDCD2", style="node"),
                dict(directive="impl", title="Implementation", prefix="IMPL_", color="#DF744A", style="node"),
                dict(directive="test", title="Test", prefix="TEST_", color="#DCB239", style="node"),
                # Kept for backwards compatibility

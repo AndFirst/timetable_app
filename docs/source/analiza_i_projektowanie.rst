@@ -20,6 +20,8 @@ High-level requirements
     :tags: organization_units
     :id: HLR_010
 
+    W tym Jednostek Organizacyjnych Grup Zajęciowych i oddzielnie Nauczycieli.
+
 .. hlreq:: System powinien umożliwiać Przeglądającym przeglądanie Grup Zajęciowych.
     :tags: groups
     :id: HLR_015
@@ -120,6 +122,8 @@ High-level requirements
         :tags: organization_units; admin_panel
         :id: HLR_230
 
+        W tym Jednostkami Organizacyjnymi Grup Zajęciowych i oddzielnie Nauczycieli.
+
         .. hlreq:: System powinien umożliwiać Administratorom dodawanie nowych Jednostek Organizacyjnych do systemu.
             :tags: organization_units
             :id: HLR_231
@@ -179,8 +183,6 @@ High-level requirements
     :tags: login; admin_panel; teacher_panel
     :id: HLR_300
 
-.. hlreq:: arg1
-
 
 Low-level requirements
 ======================
@@ -192,7 +194,10 @@ Low-level requirements
 
     - Wszystkie tekstowe pola formularza powinny mieć ograniczenie na liczbę znaków.
     - Formularz nie powinien umożliwiać wpisania w polach więcej znaków niż System przyjmie. Przy normalnym używaniu Systemu niemożliwe powinno być uzyskanie komunikatu o zbyt wielkiej liczbie wprowadzonych znaków.
-    - Po otrzymaniu błędnych danych System powinien zwrócić stosowny komunikat o błędzie. Tak aby użytkownik wiedział co należy poprawić.
+    - Wszystkie formularze powinny zawierać odpowiednie etykiety i podpowiedzi, aby ułatwić użytkownikowi zrozumienie przeznaczenia każdego pola.
+    - Formularze powinny być responsywne i dostosowywać się do różnych rozmiarów ekranów, zapewniając jednolite doświadczenie użytkownika niezależnie od urządzenia.
+    - System powinien automatycznie sprawdzać poprawność formatu danych, takich jak adresy e-mail czy numery telefonów, i informować użytkownika o ewentualnych błędach.
+
 
 .. llreq:: Wymaganie dotyczące wyświetlania planu zajęć
     :tags: schedule; consultations; classes_viewing

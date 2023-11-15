@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Dokumentacja projektu Timetable &#8212; Timetable 1.0 - dokumentacja</title>
+    <title>Use cases diagram &#8212; Timetable 1.0 - dokumentacja</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
     <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css?v=f6ef2277" />
@@ -27,7 +27,7 @@
     <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=f783d6a5"></script>
     <link rel="index" title="Indeks" href="genindex.html" />
     <link rel="search" title="Szukaj" href="search.html" />
-    <link rel="next" title="Requirements analysis" href="analiza_i_projektowanie.html" />
+    <link rel="prev" title="Use cases" href="przypadki_uzycia.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -44,26 +44,75 @@
 
           <div class="body" role="main">
             
-  <section id="dokumentacja-projektu-timetable">
-<h1>Dokumentacja projektu Timetable<a class="headerlink" href="#dokumentacja-projektu-timetable" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Zawartość:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="analiza_i_projektowanie.html">Requirements analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#project-goal">Project goal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#actors-of-the-system">Actors of the system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#high-level-requirements">High-level requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#low-level-requirements">Low-level requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#flows">Flows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#nonfunctional-requirements">Nonfunctional requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analiza_i_projektowanie.html#diagramy-aktywnosci">Diagramy aktywności</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="przypadki_uzycia.html">Use cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diagramy.html">Use cases diagram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diagramy.html#class-diagram">Class diagram</a></li>
-</ul>
-</div>
+  <section id="use-cases-diagram">
+<h1>Use cases diagram<a class="headerlink" href="#use-cases-diagram" title="Link to this heading">¶</a></h1>
+<p class="plantuml" id="needuml-diagramy-0">
+<a href="_images/plantuml-9aa418c98cd974f5f06e11ec1c7d89ea255d7d66.png"><img src="_images/plantuml-9aa418c98cd974f5f06e11ec1c7d89ea255d7d66.png" alt="&#64;startuml
+
+left to right direction
+
+&quot;Wyświetlający&quot; as wyswietlajacy
+&quot;Nauczyciel&quot; as nauczyciel
+&quot;Administrator&quot; as administrator
+
+package &quot;Panel Administratora&quot; {
+    &quot;Zarządzanie Terminami Zajęć&quot; as (zarzadzanie_zajecia)
+    &quot;Zarządzanie Jednostkami Organizacyjnymi&quot; as (zarzadzanie_jo)
+    &quot;Zarządzanie Grupami Zajęciowymi&quot; as (zarzadzanie_gz)
+    &quot;Zarządzanie Kontami Nauczycieli&quot; as (zarzadzanie_nauczyciele)
+}
+package &quot;Panel Nauczyciela&quot; {
+    &quot;Zarządzanie Terminami Konsultacji&quot; as (zarzadzanie_konsultacje)
+}
+package &quot;Przeglądanie Planów Zajęć&quot; {
+    &quot;Wyświetlanie Terminów Zajęć&quot; as (wyswietlanie_zajecia)
+    &quot;Wyświetlanie Terminów Konsultacji&quot; as (wyswietlanie_konsultacje)
+}
+package &quot;Przeglądanie Jednostek Organizacyjnych&quot; {
+    &quot;Przeglądanie Jednostek Organizacyjnych&quot; as (przegladanie_jo)
+    &quot;Przeglądanie Nauczycieli&quot; as (przegladanie_nauczycieli)
+    &quot;Przeglądanie Grup Zajęciowych&quot; as (przegladanie_gz)
+}
+package &quot;Logowanie&quot; {
+    &quot;Logowanie&quot; as (login)
+}
+
+wyswietlajacy --&gt; wyswietlanie_zajecia
+
+nauczyciel --&gt; zarzadzanie_konsultacje
+
+administrator --&gt; zarzadzanie_zajecia
+administrator --&gt; zarzadzanie_jo
+administrator --&gt; zarzadzanie_gz
+administrator --&gt; zarzadzanie_nauczyciele
+
+zarzadzanie_zajecia ..&gt; login : &lt;&lt;Include&gt;&gt;
+zarzadzanie_jo ..&gt; login : &lt;&lt;Include&gt;&gt;
+zarzadzanie_gz ..&gt; login : &lt;&lt;Include&gt;&gt;
+zarzadzanie_nauczyciele ..&gt; login : &lt;&lt;Include&gt;&gt;
+
+zarzadzanie_zajecia ..&gt; wyswietlanie_zajecia : &lt;&lt;Include&gt;&gt;
+zarzadzanie_konsultacje ..&gt; wyswietlanie_konsultacje : &lt;&lt;Include&gt;&gt;
+
+wyswietlanie_zajecia ..&gt; przegladanie_gz : &lt;&lt;Include&gt;&gt;
+wyswietlanie_konsultacje ..&gt; przegladanie_nauczycieli : &lt;&lt;Include&gt;&gt;
+
+przegladanie_jo &lt;.. przegladanie_nauczycieli : &lt;&lt;Include&gt;&gt;
+przegladanie_jo &lt;.. przegladanie_gz : &lt;&lt;Include&gt;&gt;
+&#64;enduml
+" style="width: 1304.0px; height: 636.0px"/></a>
+</p>
+</section>
+<section id="class-diagram">
+<h1>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h1>
+<p class="plantuml" id="needuml-diagramy-1">
+<a href="_images/plantuml-5837a28bb1e14117df1fc947b81d8f6cc22830fe.png"><img src="_images/plantuml-5837a28bb1e14117df1fc947b81d8f6cc22830fe.png" alt="&#64;startuml
+
+class A
+class B
+&#64;enduml
+" style="width: 131.0px; height: 61.0px"/></a>
+</p>
 </section>
 
 
@@ -73,7 +122,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">Timetable</a></h1>
+<h1 class="logo"><a href="index.html">Timetable</a></h1>
 
 
 
@@ -84,18 +133,18 @@
 
 <h3>Nawigacja</h3>
 <p class="caption" role="heading"><span class="caption-text">Zawartość:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="analiza_i_projektowanie.html">Requirements analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="przypadki_uzycia.html">Use cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diagramy.html">Use cases diagram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diagramy.html#class-diagram">Class diagram</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use cases diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#class-diagram">Class diagram</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="analiza_i_projektowanie.html" title="następny rozdział">Requirements analysis</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="przypadki_uzycia.html" title="poprzedni rozdział">Use cases</a></li>
   </ul></li>
 </ul>
 </div>
@@ -129,7 +178,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/diagramy.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

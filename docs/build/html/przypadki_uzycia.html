@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="pl" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Use cases &#8212; Timetable 1.0 - dokumentacja</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css?v=bd9ab754" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css?v=ffa536d2" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css?v=448c382f" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=331e28ce"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=a186e9ce"></script>
+    <script src="_static/assets/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="_static/assets/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=f783d6a5"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+    <link rel="next" title="Use cases diagram" href="diagramy.html" />
+    <link rel="prev" title="Requirements analysis" href="analiza_i_projektowanie.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="use-cases">
+<h1>Use cases<a class="headerlink" href="#use-cases" title="Link to this heading">¶</a></h1>
+<div class="need_container docutils container" id="SNCB-6dea5138">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_usecase docutils align-default" id="UC_975">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Use case</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Logowanie administratora do panelu administracyjnego</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#UC_975" title="UC_975">UC_975</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><section id="aktorzy">
+<h2>Aktorzy<a class="headerlink" href="#aktorzy" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Administrator</p></li>
+</ul>
+</section>
+<section id="cel">
+<h2>Cel<a class="headerlink" href="#cel" title="Link to this heading">¶</a></h2>
+<p>Zalogowanie się do panelu administracyjnego w celu zarządzania systemem.</p>
+</section>
+<section id="warunki-wstepne">
+<h2>Warunki wstępne<a class="headerlink" href="#warunki-wstepne" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Administrator ma dostęp do przeglądarki internetowej.</p></li>
+<li><p>Panel administracyjny jest dostępny pod określonym adresem URL.</p></li>
+<li><p>Administrator dysponuje poprawnymi danymi uwierzytelniającymi (login i hasło).</p></li>
+</ol>
+</section>
+<section id="kroki-przypadku-uzycia">
+<h2>Kroki przypadku użycia<a class="headerlink" href="#kroki-przypadku-uzycia" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Otwarcie przeglądarki</dt><dd><ul class="simple">
+<li><p>Administrator uruchamia przeglądarkę internetową na swoim urządzeniu.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wpisanie adresu URL panelu administracyjnego</dt><dd><ul class="simple">
+<li><p>Administrator wpisuje adres URL panelu administracyjnego w pasek adresu przeglądarki.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Przejście do strony logowania</dt><dd><ul class="simple">
+<li><p>System wyświetla stronę logowania, na której Administrator wprowadza swoje dane uwierzytelniające.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wpisanie danych uwierzytelniających</dt><dd><ul class="simple">
+<li><p>Administrator wpisuje swój login i hasło do odpowiednich pól na formularzu logowania.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Weryfikacja danych</dt><dd><ul class="simple">
+<li><p>System sprawdza wprowadzone dane uwierzytelniające w bazie danych, aby potwierdzić tożsamość Administratora.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Logowanie</dt><dd><ul class="simple">
+<li><p>Jeśli dane są poprawne, system autoryzuje Administratora i przekierowuje go do panelu administracyjnego.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Eksploracja panelu administracyjnego</dt><dd><ul class="simple">
+<li><p>Administrator ma teraz dostęp do funkcji panelu administracyjnego.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wylogowanie</dt><dd><ul class="simple">
+<li><p>Po zakończeniu pracy Administrator ma możliwość wylogowania się z panelu administracyjnego.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="warunki-koncowe">
+<h2>Warunki końcowe<a class="headerlink" href="#warunki-koncowe" title="Link to this heading">¶</a></h2>
+<p>Administrator jest zalogowany do panelu administracyjnego i może efektywnie zarządzać systemem.</p>
+</section>
+<section id="wyjatki">
+<h2>Wyjątki<a class="headerlink" href="#wyjatki" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Jeśli podane dane uwierzytelniające są niepoprawne, system informuje Administratora o błędzie i prosi o ponowne wprowadzenie danych.</p></li>
+</ul>
+</section>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-1d1cc2a2">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_usecase docutils align-default" id="UC_B10">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Use case</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Wybór Jednostki Organizacyjnej i Grupy Zajęciowej</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#UC_B10" title="UC_B10">UC_B10</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><section id="id1">
+<h2>Aktorzy<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Administrator, Nauczyciel, Przeglądający</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>Cel<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Wybór Jednostki Organizacyjnej i Grupy Zajęciowej np. w celu wyświetlenia jej planu zajęć.</p>
+</section>
+<section id="id3">
+<h2>Warunki wstępne<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Użytkownik ma dostęp do przeglądarki internetowej.</p></li>
+<li><p>Serwis jest dostępny pod określonym adresem URL.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2>Kroki przypadku użycia<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Otwarcie przeglądarki</dt><dd><ul class="simple">
+<li><p>Użytkownik uruchamia przeglądarkę internetową na swoim urządzeniu.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wpisanie adresu URL serwisu</dt><dd><ul class="simple">
+<li><p>Użytkownik wpisuje adres URL serwisu w pasek adresu przeglądarki.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wybranie Jednostki Organizacyjnej</dt><dd><ul class="simple">
+<li><p>System wyświetla główne Jednostki Organizacyjne. Użytkownik wybiera główną Jednostkę Organizacyjną. System rozwija listę podrzędnych Jednostek Organizacyjnych do wybranej. System rozwija listę podrzędnych Jednostek Organizacyjnych do wybranej. Cały proces powtarza się aż do wyczerpania możliwości rozwinięcia. Wtedy System prezentuje Grupy Zajęciowe wybranej Jednostki Organizacyjnej.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Wybranie Grupy Zajęciowej</dt><dd><ul class="simple">
+<li><p>Użytkownik wybiera Grupę Zajęciową z listy wyświetlonej w punkcie 3.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="id5">
+<h2>Warunki końcowe<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>Użytkownik wybrał Grupę Zajęciowej i wyświetlany jest mu widok z tym związany. Dostępne są wtedy również odnośniki umożliwiające zarządzanie.</p>
+</section>
+<section id="id6">
+<h2>Wyjątki<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+</section>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="need_container docutils container" id="SNCB-5dbb48bc">
+<table class="need needs_grid_simple needs_layout_clean rtd-exclude-wy-table no-sphinx-material-strip needs_style_none needs_type_usecase docutils align-default" id="UC_8F1">
+<tbody>
+<tr class="need head row-odd"><td class="need head"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Use case</span></span>: </span><strong><span><span class="needs_title"><span class="needs_data">Dodawanie terminu zajęć do systemu</span></span></span></strong><span> <span class="needs-id"><a class="reference internal" href="#UC_8F1" title="UC_8F1">UC_8F1</a></span>  <span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><span><img alt="_images/arrow-down-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-down-circle.svg" width="17px" /></span></span><span class="needs visible"><span><img alt="_images/arrow-right-circle.svg" class="sn_collapse_img no-scaled-link" src="_images/arrow-right-circle.svg" width="17px" /></span></span></span> </span></div>
+</div>
+</td>
+</tr>
+<tr class="need meta row-even"><td class="need meta"><div class="needs_meta line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+</tr>
+<tr class="need content row-odd"><td class="need content" colspan="1"><section id="id7">
+<h2>Aktorzy<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Administrator</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>Cel<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>Dodanie nowego terminu zajęć do systemu.</p>
+</section>
+<section id="id9">
+<h2>Warunki wstępne<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Administrator jest zalogowany do systemu.</p></li>
+<li><p>Administrator wybrał Grupę Zajęciową.</p></li>
+</ol>
+</section>
+<section id="id10">
+<h2>Kroki przypadku użycia<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Wciśnięcie przycisku przekierowującego do formularza dodawania terminu zajęć.</p></li>
+<li><p>Wypełnienie formularza</p></li>
+<li><p>Zatwierdzenie formularza przyciskiem „Dodaj”</p></li>
+<li><dl class="simple">
+<dt>Utworzenie terminu zajęć w bazie danych</dt><dd><ul class="simple">
+<li><p>System tworzy nowy termin zajęć w bazie danych na podstawie otrzymanych danych.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="id11">
+<h2>Warunki końcowe<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>Nowy termin zajęć zostaje dodany do systemu.</p>
+</section>
+<section id="id12">
+<h2>Wyjątki<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Jeśli dane w formularzu są nieprawidłowe, system informuje użytkownika o błędach i prosi o ponowne wprowadzenie danych.</p></li>
+</ul>
+</section>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Timetable</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+<p class="caption" role="heading"><span class="caption-text">Zawartość:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analiza_i_projektowanie.html">Requirements analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagramy.html">Use cases diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagramy.html#class-diagram">Class diagram</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="analiza_i_projektowanie.html" title="poprzedni rozdział">Requirements analysis</a></li>
+      <li>Next: <a href="diagramy.html" title="następny rozdział">Use cases diagram</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Szukaj" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Bartłomiej Ściseł.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/przypadki_uzycia.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -2,8 +2,9 @@ Dokumentacja projektu Timetable
 ===============================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Zawartość:
 
    analiza_i_projektowanie
-
+   przypadki_uzycia
+   diagramy
