@@ -47,7 +47,7 @@
   <section id="use-cases-diagram">
 <h1>Use cases diagram<a class="headerlink" href="#use-cases-diagram" title="Link to this heading">¶</a></h1>
 <p class="plantuml" id="needuml-diagramy-0">
-<a href="_images/plantuml-9aa418c98cd974f5f06e11ec1c7d89ea255d7d66.png"><img src="_images/plantuml-9aa418c98cd974f5f06e11ec1c7d89ea255d7d66.png" alt="&#64;startuml
+<a href="_images/plantuml-b2207d8b735497cc3c34b13cda7e30ceb3da33b3.png"><img src="_images/plantuml-b2207d8b735497cc3c34b13cda7e30ceb3da33b3.png" alt="&#64;startuml
 
 left to right direction
 
@@ -78,6 +78,7 @@ package &quot;Logowanie&quot; {
 }
 
 wyswietlajacy --&gt; wyswietlanie_zajecia
+wyswietlajacy --&gt; wyswietlanie_konsultacje
 
 nauczyciel --&gt; zarzadzanie_konsultacje
 
@@ -100,18 +101,123 @@ wyswietlanie_konsultacje ..&gt; przegladanie_nauczycieli : &lt;&lt;Include&gt;&g
 przegladanie_jo &lt;.. przegladanie_nauczycieli : &lt;&lt;Include&gt;&gt;
 przegladanie_jo &lt;.. przegladanie_gz : &lt;&lt;Include&gt;&gt;
 &#64;enduml
-" style="width: 1304.0px; height: 636.0px"/></a>
+" style="width: 1304.0px; height: 644.0px"/></a>
 </p>
 </section>
 <section id="class-diagram">
 <h1>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h1>
 <p class="plantuml" id="needuml-diagramy-1">
-<a href="_images/plantuml-5837a28bb1e14117df1fc947b81d8f6cc22830fe.png"><img src="_images/plantuml-5837a28bb1e14117df1fc947b81d8f6cc22830fe.png" alt="&#64;startuml
+<a href="_images/plantuml-02b762cc9c0c3438794cd61a8573aabdda113071.png"><img src="_images/plantuml-02b762cc9c0c3438794cd61a8573aabdda113071.png" alt="&#64;startuml
 
-class A
-class B
+abstract class User {
+    emailAddress: String
+    name: String
+    surname: String
+}
+
+class Teacher {
+    degree: String
+    phoneNumber: String
+    biography: String
+}
+
+class Administrator {
+
+}
+
+class OrganizationUnit {
+    name: String
+    description: String
+}
+
+class TeacherOrganizationUnit {
+    name: String
+    description: String
+}
+
+class ClassGroup {
+    name: String
+    description: String
+}
+
+class Course {
+    code: String
+    name: String
+    description: String
+}
+
+abstract class Event {
+    startTime: LocalTime
+    endTime: LocalTime
+    dayOfWeek: DayOfWeek
+    location: String
+    description: String
+}
+
+class Class {
+    type: String
+}
+
+class Consultation {
+
+}
+
+Event &lt;|.. Class
+Event &lt;|.. Consultation
+
+User &lt;|.. Teacher
+User &lt;|.. Administrator
+
+TeacherOrganizationUnit &quot;1&quot; *-- &quot;*&quot; TeacherOrganizationUnit
+TeacherOrganizationUnit &quot;1&quot; *-- &quot;*&quot; Teacher
+
+OrganizationUnit &quot;1&quot; *-- &quot;*&quot; OrganizationUnit
+OrganizationUnit &quot;1&quot; *-- &quot;*&quot; ClassGroup
+
+Class &quot;0..*&quot; o-- &quot;1&quot; Course
+Class &quot;0..*&quot; o-- &quot;1..*&quot; Teacher
+
+Teacher &quot;1&quot; *-- &quot;*&quot; Consultation
+
+ClassGroup &quot;1&quot; *-- &quot;*&quot; Class
 &#64;enduml
-" style="width: 131.0px; height: 61.0px"/></a>
+" style="width: 711.0px; height: 714.0px"/></a>
+</p>
+</section>
+<section id="architecture-diagram">
+<h1>Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Link to this heading">¶</a></h1>
+<p class="plantuml" id="needuml-diagramy-2">
+<a href="_images/plantuml-295289a7806c9d11c05ec181a917fdf78feb9a5a.png"><img src="_images/plantuml-295289a7806c9d11c05ec181a917fdf78feb9a5a.png" alt="&#64;startuml
+
+node &quot;Client - Web browser&quot; {
+    node &quot;User interface&quot; {
+        [Panel przeglądania\nPlanów Zajęć]
+        [Panel zarządzania\nAdministratora]
+        [Panel zarządzania\nNauczyciela]
+    }
+}
+
+
+node &quot;Server&quot; {
+    node &quot;Web Application Server&quot; {
+        [Obsługa Nauczycieli]
+        [Obsługa Jednostek\nOrganizacyjnych]
+        [Obsługa Grup\nZajęciowych]
+        [Obsługa Terminów Zajęć\ni Konsultacji]
+        [Obsługa Przedmiotów]
+        [Obsługa logowania]
+    }
+
+    database &quot;Database&quot; {
+
+    }
+}
+
+
+&quot;Client - Web browser&quot; &quot;*&quot; -- &quot;1&quot; &quot;Server&quot;
+&quot;Web Application Server&quot; -- Database
+&#64;enduml
+" style="width: 1426.0px; height: 579.0px"/></a>
 </p>
 </section>
 
@@ -138,6 +244,7 @@ class B
 <li class="toctree-l1"><a class="reference internal" href="przypadki_uzycia.html">Use cases</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Use cases diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#class-diagram">Class diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#architecture-diagram">Architecture Diagram</a></li>
 </ul>
 
 <div class="relations">

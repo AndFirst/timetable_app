@@ -710,14 +710,6 @@ Nonfunctional requirements
 3. The system should be scalable according to the number of classes and class groups.
 4. The system should be accessible to the visually impaired.
 
-
-Diagramy aktywności
-===================
-
-
-
-
-
 ..
     Biznesowe przypadki użycia
     ==========================

@@ -32,6 +32,7 @@ Use cases diagram
     }
 
     wyswietlajacy --> wyswietlanie_zajecia
+    wyswietlajacy --> wyswietlanie_konsultacje
 
     nauczyciel --> zarzadzanie_konsultacje
     
@@ -60,5 +61,107 @@ Class diagram
 
 .. needuml::
 
-    class A
-    class B
+    abstract class User {
+        emailAddress: String
+        name: String
+        surname: String
+    }
+
+    class Teacher {
+        degree: String
+        phoneNumber: String
+        biography: String
+    }
+
+    class Administrator {
+
+    }
+    
+    class OrganizationUnit {
+        name: String
+        description: String
+    }
+
+    class TeacherOrganizationUnit {
+        name: String
+        description: String
+    }
+
+    class ClassGroup {
+        name: String
+        description: String
+    }
+
+    class Course {
+        code: String
+        name: String
+        description: String
+    }
+    
+    abstract class Event {
+        startTime: LocalTime
+        endTime: LocalTime
+        dayOfWeek: DayOfWeek
+        location: String
+        description: String
+    }
+
+    class Class {
+        type: String
+    }
+
+    class Consultation {
+
+    }
+
+    Event <|.. Class
+    Event <|.. Consultation
+
+    User <|.. Teacher
+    User <|.. Administrator
+    
+    TeacherOrganizationUnit "1" *-- "*" TeacherOrganizationUnit
+    TeacherOrganizationUnit "1" *-- "*" Teacher
+
+    OrganizationUnit "1" *-- "*" OrganizationUnit
+    OrganizationUnit "1" *-- "*" ClassGroup
+
+    Class "0..*" o-- "1" Course
+    Class "0..*" o-- "1..*" Teacher
+
+    Teacher "1" *-- "*" Consultation
+
+    ClassGroup "1" *-- "*" Class
+
+Architecture Diagram
+********************
+
+.. needuml::
+
+    node "Client - Web browser" {
+        node "User interface" {
+            [Panel przeglądania\nPlanów Zajęć]
+            [Panel zarządzania\nAdministratora]
+            [Panel zarządzania\nNauczyciela]
+        }
+    }
+
+
+    node "Server" {
+        node "Web Application Server" {
+            [Obsługa Nauczycieli]
+            [Obsługa Jednostek\nOrganizacyjnych]
+            [Obsługa Grup\nZajęciowych]
+            [Obsługa Terminów Zajęć\ni Konsultacji]
+            [Obsługa Przedmiotów]
+            [Obsługa logowania]
+        }
+
+        database "Database" {
+
+        }
+    }
+
+
+    "Client - Web browser" "*" -- "1" "Server"
+    "Web Application Server" -- Database
