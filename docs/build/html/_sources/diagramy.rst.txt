@@ -97,7 +97,13 @@ Class diagram
         name: String
         description: String
     }
-    
+
+    enum ClassFrequency {
+        ODD_WEEKS
+        EVEN_WEEKS
+        ALL_WEEKS
+    }
+
     abstract class Event {
         startTime: LocalTime
         endTime: LocalTime
@@ -108,6 +114,7 @@ Class diagram
 
     class Class {
         type: String
+        frequency: ClassFrequency
     }
 
     class Consultation {

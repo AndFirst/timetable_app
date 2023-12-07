@@ -405,10 +405,10 @@ Low-level requirements
             :specifies: LLR_323; LLR_324
 
             - Formularz powinien składać się z następujących pól:
-                - tytuł naukowy (maks 20 znaków),
                 - imię (maks 50 znaków),
                 - nazwisko (maks 50 znaków),
                 - unikalny adres email (maks 100 znaków),
+                - opcjonalny tytuł naukowy (maks 20 znaków),
                 - opcjonalny numer telefonu (maks 15 znaków),
                 - opcjonalna biografia (maks 1000 znaków).
             - Formularz powinien nie przyjąć błędnych danych takich jak:
@@ -559,11 +559,12 @@ Low-level requirements
             - Formularz powinien składać się z następujących pól:
                 - przedmiotu (wybór z listy),
                 - prowadzący zajęcia (wybór z listy),
-                - miejsce odbywania zajęć (maks 50 znaków)
                 - dzień tygodnia (wybór z listy)
                 - godzina rozpoczęcia (wybór godziny poprzez mechanizm uniemożlwiający błędny wybór)
                 - godzina zakończenia (wybór godziny poprzez mechanizm uniemożlwiający błędny wybór)
                 - typ zajęć (maks 20 znaków)
+                - opcjonalne miejsce odbywania zajęć (maks 50 znaków)
+                - opcjonalny opis (maks 500 znaków) 
 
         .. llreq:: Wymaganie dotyczące opcji dodawania Terminu Zajęć
             :tags: classes_management

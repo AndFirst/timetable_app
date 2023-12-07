@@ -107,7 +107,7 @@ przegladanie_jo &lt;.. przegladanie_gz : &lt;&lt;Include&gt;&gt;
 <section id="class-diagram">
 <h1>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h1>
 <p class="plantuml" id="needuml-diagramy-1">
-<a href="_images/plantuml-02b762cc9c0c3438794cd61a8573aabdda113071.png"><img src="_images/plantuml-02b762cc9c0c3438794cd61a8573aabdda113071.png" alt="&#64;startuml
+<a href="_images/plantuml-37696ecde8b910f1b46e021de906b08b67bb0ed4.png"><img src="_images/plantuml-37696ecde8b910f1b46e021de906b08b67bb0ed4.png" alt="&#64;startuml
 
 abstract class User {
     emailAddress: String
@@ -146,6 +146,12 @@ class Course {
     description: String
 }
 
+enum ClassFrequency {
+    ODD_WEEKS
+    EVEN_WEEKS
+    ALL_WEEKS
+}
+
 abstract class Event {
     startTime: LocalTime
     endTime: LocalTime
@@ -156,6 +162,7 @@ abstract class Event {
 
 class Class {
     type: String
+    frequency: ClassFrequency
 }
 
 class Consultation {
@@ -181,7 +188,7 @@ Teacher &quot;1&quot; *-- &quot;*&quot; Consultation
 
 ClassGroup &quot;1&quot; *-- &quot;*&quot; Class
 &#64;enduml
-" style="width: 711.0px; height: 714.0px"/></a>
+" style="width: 801.0px; height: 724.0px"/></a>
 </p>
 </section>
 <section id="architecture-diagram">
