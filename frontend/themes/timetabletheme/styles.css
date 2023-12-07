@@ -1,0 +1,31 @@
+.org-unit-div {
+    width: 100%;
+}
+
+.class-group-button {
+    padding-left: 13px;
+}
+
+vaadin-button.org-unit-button {
+    height: auto;
+    width: 100%;
+}
+
+vaadin-button.org-unit-button::part(label) {
+    white-space: normal;
+    padding: 0;
+    align-self: flex-start;
+    margin-top: 2px ;
+}
+
+vaadin-button.org-unit-button::part(prefix) {
+    align-self: flex-start;
+}
+
+vaadin-app-layout::part(drawer) {
+    width: 300px;
+}
+
+vaadin-tabsheet.nav-tab-sheet::part(content) {
+    padding: 0;
+}
