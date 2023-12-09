@@ -1,5 +1,7 @@
 package pl.bscisel.timetable.data.entity;
 
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -15,18 +17,25 @@ import java.time.LocalTime;
 public abstract class Event extends AbstractEntity {
 
     @NotNull
+    @Column(name = "start_date", nullable = false)
     private LocalTime startDate;
 
     @NotNull
+    @Column(name = "end_date", nullable = false)
     private LocalTime endDate;
 
     @NotNull
+    @Column(name = "day_of_week", nullable = false)
     private DayOfWeek dayOfWeek;
 
+    @Nullable
     @Size(max = 50, message = "Location cannot exceed {max} characters")
+    @Column(name = "location", length = 50)
     private String location;
 
+    @Nullable
     @Size(max = 500, message = "Description cannot exceed {max} characters")
+    @Column(name = "description", length = 500)
     private String description;
 
 }
