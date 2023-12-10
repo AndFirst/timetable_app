@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.components.unitsnav;
+package pl.bscisel.timetable.views.sidebar.components;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -18,13 +18,13 @@ public class OrgUnitButton extends Button {
         super(text);
         addClassName("org-unit-button");
         addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        setIcon(VaadinIcon.ANGLE_DOWN.create());
         addClickListener(event -> switchPressed());
     }
 
     public OrgUnitButton(String text, boolean enabled) {
         this(text);
         setEnabled(enabled);
-        setIcon(VaadinIcon.ANGLE_DOWN.create());
     }
 
     private void switchPressed() {

@@ -1,5 +1,7 @@
 package pl.bscisel.timetable.data.service;
 
+import org.apache.logging.log4j.spi.LoggerContext;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
@@ -7,35 +9,28 @@ import pl.bscisel.timetable.data.repository.ClassGroupRepository;
 import pl.bscisel.timetable.data.repository.OrganizationalUnitRepository;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class OrganizationalUnitService {
-    private final OrganizationalUnitRepository unitRepository;
-    private final ClassGroupRepository classGroupRepository;
+    private final OrganizationalUnitRepository orgUnitRepo;
+    private final ClassGroupRepository classGroupRepo;
 
-
-    public OrganizationalUnitService(OrganizationalUnitRepository unitRepository, ClassGroupRepository classGroupRepository) {
-        this.unitRepository = unitRepository;
-        this.classGroupRepository = classGroupRepository;
+    public OrganizationalUnitService(OrganizationalUnitRepository organizationalUnitRepository, ClassGroupRepository classGroupRepository) {
+        this.orgUnitRepo = organizationalUnitRepository;
+        this.classGroupRepo = classGroupRepository;
     }
 
     public List<OrganizationalUnit> getTopLevelUnits() {
-        return unitRepository.findByParentUnitIsNull();
+        return orgUnitRepo.findTopLevelOrganizationalUnits();
     }
 
     public List<OrganizationalUnit> findOrganizationalUnitsByParentUnitId(Long id) {
-        return unitRepository.findOrganizationalUnitsByParentUnitId(id);
-    }
-
-    public boolean hasChildUnitsByOrganizationalUnitId(Long id) {
-        return unitRepository.hasChildUnitsByOrganizationalUnitId(id);
+        return orgUnitRepo.findByParentUnitId(id);
     }
 
     public List<ClassGroup> findClassGroupsByOrganizationalUnitId(Long id) {
-        return classGroupRepository.findClassGroupsByOrganizationalUnitId(id);
+        return classGroupRepo.findByOrganizationalUnitId(id);
     }
 
-    public boolean hasClassGroupsByOrganizationalUnitId(Long id) {
-        return classGroupRepository.hasClassGroupsByOrganizationalUnitId(id);
-    }
 }

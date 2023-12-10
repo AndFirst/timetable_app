@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.components.unitsnav;
+package pl.bscisel.timetable.views.sidebar;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -9,6 +9,10 @@ import com.vaadin.flow.theme.lumo.LumoIcon;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 import pl.bscisel.timetable.data.service.OrganizationalUnitService;
+import pl.bscisel.timetable.views.TimetableView;
+import pl.bscisel.timetable.views.sidebar.components.ClassGroupButton;
+import pl.bscisel.timetable.views.sidebar.components.OrgUnitButton;
+import pl.bscisel.timetable.views.sidebar.components.OrgUnitDiv;
 
 import java.util.List;
 
@@ -33,7 +37,7 @@ public class OrganizationalUnitsNav extends VerticalLayout {
     }
 
     private OrgUnitDiv makeDivForUnit(OrganizationalUnit orgUnit) {
-        OrgUnitButton parentUnitBtn = new OrgUnitButton(orgUnit.getName(), orgUnitService.hasChildUnitsByOrganizationalUnitId(orgUnit.getId()) || orgUnitService.hasClassGroupsByOrganizationalUnitId(orgUnit.getId()));
+        OrgUnitButton parentUnitBtn = new OrgUnitButton(orgUnit.getName());
         OrgUnitDiv unitDiv = new OrgUnitDiv(parentUnitBtn);
 
         var layout = new FlexLayout(parentUnitBtn);
@@ -71,6 +75,8 @@ public class OrganizationalUnitsNav extends VerticalLayout {
         } else if ((classGroups = orgUnitService.findClassGroupsByOrganizationalUnitId(orgUnit.getId())) != null && !classGroups.isEmpty()) {
             Div childrenDiv = new Div(makeButtonsForClassGroups(classGroups));
             unitDiv.setChildren(childrenDiv);
+        } else {
+            unitDiv.setChildren(new Div());
         }
     }
 
@@ -79,6 +85,8 @@ public class OrganizationalUnitsNav extends VerticalLayout {
     }
 
     private ClassGroupButton makeButtonForClassGroup(ClassGroup classGroup) {
-        return new ClassGroupButton(classGroup.getName());
+        ClassGroupButton button = new ClassGroupButton(classGroup.getName());
+        button.addClickListener(event -> getUI().ifPresent(x -> x.navigate(TimetableView.class)));
+        return button;
     }
 }

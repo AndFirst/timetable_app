@@ -32,7 +32,7 @@ public class OrganizationalUnit extends AbstractEntity {
     private String description;
 
     @Nullable
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_unit_id")
     private OrganizationalUnit parentUnit;
 

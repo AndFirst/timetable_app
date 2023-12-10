@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.components.unitsnav;
+package pl.bscisel.timetable.views.sidebar.components;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;

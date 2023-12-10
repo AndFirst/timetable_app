@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.components.unitsnav;
+package pl.bscisel.timetable.views.sidebar.components;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
@@ -10,14 +10,14 @@ public class OrgUnitDiv extends Div {
 
     private Div children = null;
 
-    OrgUnitDiv(Component... components) {
+    public OrgUnitDiv(Component... components) {
         super(components);
         setClassName("org-unit-div");
     }
 
     public void setChildren(Div children) {
         this.children = children;
-        children.getStyle().set("margin-left", "10px");
+        children.getStyle().set("margin-left", "23px");
         add(children);
         childrenSet = true;
     }
