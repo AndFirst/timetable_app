@@ -1,7 +1,5 @@
 package pl.bscisel.timetable.data.service;
 
-import org.apache.logging.log4j.spi.LoggerContext;
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
@@ -9,7 +7,6 @@ import pl.bscisel.timetable.data.repository.ClassGroupRepository;
 import pl.bscisel.timetable.data.repository.OrganizationalUnitRepository;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Service
 public class OrganizationalUnitService {

@@ -22,11 +22,6 @@ public class OrgUnitButton extends Button {
         addClickListener(event -> switchPressed());
     }
 
-    public OrgUnitButton(String text, boolean enabled) {
-        this(text);
-        setEnabled(enabled);
-    }
-
     private void switchPressed() {
         pressed = !pressed;
         if (pressed) {

@@ -15,10 +15,7 @@ import pl.bscisel.timetable.views.sidebar.OrganizationalUnitsNav;
 
 public class MainLayout extends AppLayout {
 
-    private SecurityService securityService;
-
     public MainLayout(@Autowired SecurityService securityService, @Autowired OrganizationalUnitService organizationalUnitService) {
-        this.securityService = securityService;
         DrawerToggle toggle = new DrawerToggle();
 
         H1 title = new H1("Timetable");
@@ -33,7 +30,7 @@ public class MainLayout extends AppLayout {
         addToDrawer(tabSheet);
         addToNavbar(toggle, title);
 
-        if (this.securityService.getAuthenticatedSpringUser() != null) {
+        if (securityService.getAuthenticatedSpringUser() != null) {
             Button logout = new Button("Logout", click -> securityService.logout());
             addToNavbar(logout);
         }
