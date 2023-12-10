@@ -29,3 +29,7 @@ vaadin-app-layout::part(drawer) {
 vaadin-tabsheet.nav-tab-sheet::part(content) {
     padding: 0;
 }
+
+vaadin-tabsheet.nav-tab-sheet::part(tabs-container) {
+    height: 49px;
+}

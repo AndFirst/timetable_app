@@ -15,18 +15,33 @@ public class SecurityService {
         if (principal instanceof UserDetailsExt) {
             return (UserDetailsExt) principal;
         }
-        // Anonymous or no authentication.
         return null;
     }
 
     public User getAuthenticatedTimetableUser() {
+        UserDetailsExt authenticatedUser = getAuthenticatedSpringUser();
+        if (authenticatedUser == null) return null;
+
         return getAuthenticatedSpringUser().getTimetableUser();
+    }
+
+    public boolean hasUserRole(String roleName) {
+        UserDetailsExt authenticatedUser = getAuthenticatedSpringUser();
+        if (authenticatedUser == null) return false;
+
+        return authenticatedUser.getAuthorities().stream().anyMatch(authority -> authority.getAuthority().equals(roleName));
+    }
+
+    public boolean isUserAdmin() {
+        return hasUserRole("ADMIN");
+    }
+
+    public boolean isUserLoggedIn() {
+        return getAuthenticatedSpringUser() != null;
     }
 
     public void logout() {
         SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
-        logoutHandler.logout(
-                VaadinServletRequest.getCurrent().getHttpServletRequest(), null,
-                null);
+        logoutHandler.logout(VaadinServletRequest.getCurrent().getHttpServletRequest(), null, null);
     }
 }

@@ -18,10 +18,12 @@ import java.util.List;
 
 
 public class OrganizationalUnitsNav extends VerticalLayout {
-    OrganizationalUnitService orgUnitService;
+    private final OrganizationalUnitService orgUnitService;
+    private final boolean adminView;
 
-    public OrganizationalUnitsNav(OrganizationalUnitService organizationalUnitService) {
-        this.orgUnitService = organizationalUnitService;
+    public OrganizationalUnitsNav(OrganizationalUnitService orgUnitService, boolean adminView) {
+        this.orgUnitService = orgUnitService;
+        this.adminView = adminView;
 
         setupTopLevelUnits();
         setSpacing(false);
@@ -42,7 +44,7 @@ public class OrganizationalUnitsNav extends VerticalLayout {
 
         var layout = new FlexLayout(parentUnitBtn);
 
-        if (false) { // todo admin
+        if (adminView) {
             Button button = new Button(LumoIcon.EDIT.create());
             button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
             parentUnitBtn.getStyle().set("flex", "1");
