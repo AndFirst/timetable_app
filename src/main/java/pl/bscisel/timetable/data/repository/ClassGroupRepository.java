@@ -6,7 +6,6 @@ import org.hibernate.jpa.HibernateHints;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.QueryHints;
 import pl.bscisel.timetable.data.entity.ClassGroup;
-import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 
 import java.util.List;
 

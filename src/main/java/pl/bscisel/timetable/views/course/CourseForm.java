@@ -66,13 +66,9 @@ public class CourseForm extends FormLayout {
         if (enterShortcut == null)
             enterShortcut = save.addClickShortcut(Key.ENTER);
 
-        description.addBlurListener(e -> {
-            enterShortcut = save.addClickShortcut(Key.ENTER);
-        });
+        description.addBlurListener(e -> enterShortcut = save.addClickShortcut(Key.ENTER));
 
-        description.addFocusListener(e -> {
-            enterShortcut.remove();
-        });
+        description.addFocusListener(e -> enterShortcut.remove());
     }
 
     @Getter
