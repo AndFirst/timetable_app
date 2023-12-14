@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name = "consultations")
 public class Consultation extends Event {
 
-    @NotNull
+    @NotNull(message = "Teacher cannot be empty")
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
     private TeacherInfo teacher;

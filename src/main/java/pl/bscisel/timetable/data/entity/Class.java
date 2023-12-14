@@ -7,11 +7,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.hibernate.annotations.Struct;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"teachers"})
 @Data
 @Entity
 @Table(name = "classes")
@@ -20,7 +19,7 @@ public class Class extends Event {
     public static final ClassFrequency DEFAULT_FREQUENCY = ClassFrequency.ALL_WEEKS;
 
     @NotBlank(message = "Type cannot be empty")
-    @Size(max = 50, message = "Type cannot exceed {max} characters")
+    @Size(min = 2, max = 50, message = "Type must be between {min} and {max} characters long")
     @Column(name = "type", length = 50, nullable = false)
     private String type;
 
@@ -34,10 +33,18 @@ public class Class extends Event {
     @JoinColumn(name = "class_group_id", nullable = false)
     private ClassGroup classGroup;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany
     @JoinTable(name = "class_teacher", joinColumns = {@JoinColumn(name = "class_id")}, inverseJoinColumns = {@JoinColumn(name = "teacher_id")})
     private Set<TeacherInfo> teachers;
 
+    /**
+     * Frequency of the class. Can be one of the following:
+     * <ul>
+     *     <li>O - odd weeks</li>
+     *     <li>E - even weeks</li>
+     *     <li>A - all weeks</li>
+     * </ul>
+     */
     private char frequency;
 
     public Class() {

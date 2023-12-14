@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false, exclude = {"user", "classes", "consultations"})
 @Data
 @Entity
 @Table(name = "teacher_info")
@@ -37,20 +37,19 @@ public class TeacherInfo extends AbstractEntity {
     private String biography;
 
     @Nullable
-    @OneToOne
+    @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @ManyToMany(mappedBy = "teachers")
     private Set<Class> classes;
 
-    @NotNull
+    @NotNull(message = "Teacher organizational unit cannot be empty")
     @ManyToOne
     @JoinColumn(name = "teacher_organizational_unit_id", nullable = false)
     private TeacherOrganizationalUnit teacherOrganizationalUnit;
 
-    @Nullable
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Consultation> consultations;
 }
 

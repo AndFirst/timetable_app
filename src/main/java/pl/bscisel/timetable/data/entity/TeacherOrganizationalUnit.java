@@ -10,7 +10,7 @@ import org.hibernate.annotations.Check;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false, exclude = {"childUnits", "teachers"})
 @Data
 @Entity
 @Table(name = "teacher_organizational_units",
@@ -21,7 +21,7 @@ import java.util.Set;
 public class TeacherOrganizationalUnit extends AbstractEntity {
 
     @NotBlank(message = "Name cannot be empty")
-    @Size(max = 100, message = "Name cannot exceed {max} characters")
+    @Size(min = 2, max = 100, message = "Name must be between {min} and {max} characters long")
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
@@ -45,11 +45,19 @@ public class TeacherOrganizationalUnit extends AbstractEntity {
     @Check(constraints = "(is_top_level IS NOT NULL AND is_top_level = 1 AND parent_unit_id IS NULL) or (is_top_level IS NULL AND parent_unit_id IS NOT NULL)")
     private Byte isTopLevel;
 
-    @Nullable
-    @OneToMany(mappedBy = "parentUnit")
+    @OneToMany(mappedBy = "parentUnit", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<TeacherOrganizationalUnit> childUnits;
 
-    @Nullable
-    @OneToMany(mappedBy = "teacherOrganizationalUnit")
+    @OneToMany(mappedBy = "teacherOrganizationalUnit", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<TeacherInfo> teachers;
+
+    @PrePersist
+    @PreUpdate
+    private void prePersist() {
+        if (parentUnit == null) {
+            isTopLevel = 1;
+        } else {
+            isTopLevel = null;
+        }
+    }
 }

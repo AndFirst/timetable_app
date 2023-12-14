@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false, exclude = {"roles"})
 @Data
 @Entity
 @Table(name = "users")
@@ -29,6 +29,7 @@ public class User extends AbstractEntity {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;
 
 }

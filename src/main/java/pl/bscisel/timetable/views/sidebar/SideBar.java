@@ -7,16 +7,18 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.TabSheet;
+import pl.bscisel.timetable.data.service.ClassGroupService;
 import pl.bscisel.timetable.data.service.OrganizationalUnitService;
 
 public class SideBar extends Div {
 
-    public SideBar(OrganizationalUnitService orgUnitService, boolean adminView) {
+    public SideBar(OrganizationalUnitService orgUnitService,
+                   ClassGroupService classGroupService) {
         TabSheet tabSheet = new TabSheet();
         tabSheet.addClassName("nav-tab-sheet");
 
         Tab groupsTab = new Tab(VaadinIcon.GROUP.create(), new Span("Groups"));
-        Component groupsComponent = new OrganizationalUnitsNav(orgUnitService, adminView);
+        Component groupsComponent = new OrganizationalUnitsNav(orgUnitService, classGroupService);
 
         Tab teachersTab = new Tab(VaadinIcon.USER.create(), new Span("Teachers"));
         Component teachersComponent = new Div((new Text("This is where teachers will one day be")));

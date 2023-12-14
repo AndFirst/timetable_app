@@ -9,14 +9,14 @@ import lombok.EqualsAndHashCode;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false, exclude = {"classes"})
 @Data
 @Entity
 @Table(name = "courses")
 public class Course extends AbstractEntity {
 
     @NotBlank(message = "Code cannot be empty")
-    @Size(max = 50, message = "Code cannot exceed {max} characters")
+    @Size(min = 2, max = 50, message = "Code must be between {min} and {max} characters long")
     @Column(name = "code", length = 50, unique = true, nullable = false)
     private String code;
 
@@ -30,7 +30,6 @@ public class Course extends AbstractEntity {
     @Column(name = "description", length = 500)
     private String description;
 
-    @Nullable
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Class> classes;
 }

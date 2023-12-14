@@ -11,20 +11,20 @@ import lombok.EqualsAndHashCode;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 @MappedSuperclass
 public abstract class Event extends AbstractEntity {
 
-    @NotNull
+    @NotNull(message = "Start date cannot be empty")
     @Column(name = "start_date", nullable = false)
     private LocalTime startDate;
 
-    @NotNull
+    @NotNull(message = "End date cannot be empty")
     @Column(name = "end_date", nullable = false)
     private LocalTime endDate;
 
-    @NotNull
+    @NotNull(message = "Day of week cannot be empty")
     @Column(name = "day_of_week", nullable = false)
     private DayOfWeek dayOfWeek;
 

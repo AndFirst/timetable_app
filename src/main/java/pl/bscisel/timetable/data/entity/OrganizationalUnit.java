@@ -5,11 +5,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Check;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@EqualsAndHashCode(callSuper = false, exclude = {"childUnits", "classGroups"})
 @Data
 @Entity
 @AllArgsConstructor
@@ -19,10 +22,10 @@ import java.util.Set;
                 @UniqueConstraint(columnNames = {"parent_unit_id", "name"}),
                 @UniqueConstraint(columnNames = {"is_top_level", "name"})
         })
-public class OrganizationalUnit extends AbstractEntity {
+public class OrganizationalUnit extends AbstractEntity implements Cloneable {
 
     @NotBlank(message = "Name cannot be empty")
-    @Size(max = 100, message = "Name cannot exceed {max} characters")
+    @Size(min = 2, max = 100, message = "Name must be between {min} and {max} characters long")
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
@@ -32,7 +35,7 @@ public class OrganizationalUnit extends AbstractEntity {
     private String description;
 
     @Nullable
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "parent_unit_id")
     private OrganizationalUnit parentUnit;
 
@@ -46,11 +49,32 @@ public class OrganizationalUnit extends AbstractEntity {
     @Check(constraints = "(is_top_level IS NOT NULL AND is_top_level = 1 AND parent_unit_id IS NULL) or (is_top_level IS NULL AND parent_unit_id IS NOT NULL)")
     private Byte isTopLevel;
 
-    @Nullable
-    @OneToMany(mappedBy = "parentUnit")
+    @OneToMany(mappedBy = "parentUnit", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<OrganizationalUnit> childUnits;
 
-    @Nullable
-    @OneToMany(mappedBy = "organizationalUnit")
+    @OneToMany(mappedBy = "organizationalUnit", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<ClassGroup> classGroups;
+
+    @PrePersist
+    @PreUpdate
+    private void prePersist() {
+        if (parentUnit == null) {
+            isTopLevel = 1;
+        } else {
+            isTopLevel = null;
+        }
+    }
+
+    @Override
+    public OrganizationalUnit clone() {
+        try {
+            return (OrganizationalUnit) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+    public void setName(String name) {
+        this.name = name.strip();
+    }
 }

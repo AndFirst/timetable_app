@@ -1,13 +1,10 @@
 package pl.bscisel.timetable.views.sidebar;
 
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
+import pl.bscisel.timetable.data.service.ClassGroupService;
 import pl.bscisel.timetable.data.service.OrganizationalUnitService;
 import pl.bscisel.timetable.views.TimetableView;
 import pl.bscisel.timetable.views.sidebar.components.ClassGroupButton;
@@ -19,18 +16,19 @@ import java.util.List;
 
 public class OrganizationalUnitsNav extends VerticalLayout {
     private final OrganizationalUnitService orgUnitService;
-    private final boolean adminView;
+    private final ClassGroupService classGroupService;
 
-    public OrganizationalUnitsNav(OrganizationalUnitService orgUnitService, boolean adminView) {
+    public OrganizationalUnitsNav(OrganizationalUnitService orgUnitService,
+                                  ClassGroupService classGroupService) {
         this.orgUnitService = orgUnitService;
-        this.adminView = adminView;
+        this.classGroupService = classGroupService;
 
         setupTopLevelUnits();
         setSpacing(false);
     }
 
     private void setupTopLevelUnits() {
-        List<OrganizationalUnit> organizationalUnits = orgUnitService.getTopLevelUnits();
+        List<OrganizationalUnit> organizationalUnits = orgUnitService.findTopLevelUnits();
         add(makeDivsForUnits(organizationalUnits));
     }
 
@@ -42,18 +40,7 @@ public class OrganizationalUnitsNav extends VerticalLayout {
         OrgUnitButton parentUnitBtn = new OrgUnitButton(orgUnit.getName());
         OrgUnitDiv unitDiv = new OrgUnitDiv(parentUnitBtn);
 
-        var layout = new FlexLayout(parentUnitBtn);
-
-        if (adminView) {
-            Button button = new Button(LumoIcon.EDIT.create());
-            button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-            parentUnitBtn.getStyle().set("flex", "1");
-            button.getStyle().set("flex-shrink", "0");
-            button.setHeightFull();
-            layout.add(button);
-        }
-
-        unitDiv.add(layout);
+        unitDiv.add(parentUnitBtn);
         parentUnitBtn.addClickListener(event -> {
             if (parentUnitBtn.isPressed()) {
                 if (unitDiv.isChildrenSet()) {
@@ -69,12 +56,12 @@ public class OrganizationalUnitsNav extends VerticalLayout {
     }
 
     private void findAndSetChildren(OrganizationalUnit orgUnit, OrgUnitDiv unitDiv) {
-        List<OrganizationalUnit> childUnits = orgUnitService.findOrganizationalUnitsByParentUnitId(orgUnit.getId());
+        List<OrganizationalUnit> childUnits = orgUnitService.findChildrenByUnitId(orgUnit.getId());
         List<ClassGroup> classGroups;
         if (childUnits != null && !childUnits.isEmpty()) {
             Div childrenDiv = new Div(makeDivsForUnits(childUnits));
             unitDiv.setChildren(childrenDiv);
-        } else if ((classGroups = orgUnitService.findClassGroupsByOrganizationalUnitId(orgUnit.getId())) != null && !classGroups.isEmpty()) {
+        } else if ((classGroups = classGroupService.findClassGroupsByOrganizationalUnitId(orgUnit.getId())) != null && !classGroups.isEmpty()) {
             Div childrenDiv = new Div(makeButtonsForClassGroups(classGroups));
             unitDiv.setChildren(childrenDiv);
         } else {

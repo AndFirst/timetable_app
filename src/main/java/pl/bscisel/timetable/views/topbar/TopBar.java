@@ -13,7 +13,10 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import pl.bscisel.timetable.security.SecurityService;
+import pl.bscisel.timetable.views.course.CourseView;
 import pl.bscisel.timetable.views.LoginView;
+import pl.bscisel.timetable.views.MainView;
+import pl.bscisel.timetable.views.organizationalunits.OrganizationalUnitView;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -42,7 +45,9 @@ public class TopBar extends HorizontalLayout {
 
         if (securityService.isUserAdmin()) {
             Map<Tab, Runnable> tabsActions = new LinkedHashMap<>() {{
-                put(new Tab("Courses"), () -> Notification.show("Courses"));
+                put(new Tab("Home"), () -> getUI().ifPresent(ui -> ui.navigate(MainView.class)));
+                put(new Tab("Organizational units"), () -> getUI().ifPresent(ui -> ui.navigate(OrganizationalUnitView.class)));
+                put(new Tab("Courses"), () -> getUI().ifPresent(ui -> ui.navigate(CourseView.class)));
                 put(new Tab("Users"), () -> Notification.show("Users"));
                 put(new Tab("Consultations"), () -> Notification.show("Consultations"));
             }};
