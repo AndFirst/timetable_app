@@ -16,13 +16,13 @@ import java.time.LocalTime;
 @MappedSuperclass
 public abstract class Event extends AbstractEntity {
 
-    @NotNull(message = "Start date cannot be empty")
-    @Column(name = "start_date", nullable = false)
-    private LocalTime startDate;
+    @NotNull(message = "Start time cannot be empty")
+    @Column(name = "start_time", nullable = false)
+    private LocalTime startTime;
 
-    @NotNull(message = "End date cannot be empty")
-    @Column(name = "end_date", nullable = false)
-    private LocalTime endDate;
+    @NotNull(message = "End time cannot be empty")
+    @Column(name = "end_time", nullable = false)
+    private LocalTime endTime;
 
     @NotNull(message = "Day of week cannot be empty")
     @Column(name = "day_of_week", nullable = false)

@@ -6,10 +6,10 @@ import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 import pl.bscisel.timetable.data.service.ClassGroupService;
 import pl.bscisel.timetable.data.service.OrganizationalUnitService;
-import pl.bscisel.timetable.views.TimetableView;
 import pl.bscisel.timetable.views.sidebar.components.ClassGroupButton;
 import pl.bscisel.timetable.views.sidebar.components.OrgUnitButton;
 import pl.bscisel.timetable.views.sidebar.components.OrgUnitDiv;
+import pl.bscisel.timetable.views.timetable.TimetableView;
 
 import java.util.List;
 
@@ -41,12 +41,13 @@ public class OrganizationalUnitsNav extends VerticalLayout {
         OrgUnitDiv unitDiv = new OrgUnitDiv(parentUnitBtn);
 
         unitDiv.add(parentUnitBtn);
+        Long orgUnitId = orgUnit.getId();
         parentUnitBtn.addClickListener(event -> {
             if (parentUnitBtn.isPressed()) {
                 if (unitDiv.isChildrenSet()) {
                     unitDiv.showChildren();
                 } else {
-                    findAndSetChildren(orgUnit, unitDiv);
+                    findAndSetChildren(orgUnitId, unitDiv);
                 }
             } else {
                 unitDiv.hideChildren();
@@ -55,18 +56,17 @@ public class OrganizationalUnitsNav extends VerticalLayout {
         return unitDiv;
     }
 
-    private void findAndSetChildren(OrganizationalUnit orgUnit, OrgUnitDiv unitDiv) {
-        List<OrganizationalUnit> childUnits = orgUnitService.findChildrenByUnitId(orgUnit.getId());
-        List<ClassGroup> classGroups;
-        if (childUnits != null && !childUnits.isEmpty()) {
-            Div childrenDiv = new Div(makeDivsForUnits(childUnits));
-            unitDiv.setChildren(childrenDiv);
-        } else if ((classGroups = classGroupService.findClassGroupsByOrganizationalUnitId(orgUnit.getId())) != null && !classGroups.isEmpty()) {
-            Div childrenDiv = new Div(makeButtonsForClassGroups(classGroups));
-            unitDiv.setChildren(childrenDiv);
-        } else {
-            unitDiv.setChildren(new Div());
+    private void findAndSetChildren(Long orgUnitId, OrgUnitDiv unitDiv) {
+        List<OrganizationalUnit> childUnits = orgUnitService.findChildrenByUnitId(orgUnitId);
+        List<ClassGroup> classGroups = classGroupService.findClassGroupsByOrganizationalUnitId(orgUnitId);
+        Div childrenDiv = new Div();
+        if (!childUnits.isEmpty()) {
+            childrenDiv.add(makeDivsForUnits(childUnits));
         }
+        if (!classGroups.isEmpty()) {
+            childrenDiv.add(makeButtonsForClassGroups(classGroups));
+        }
+        unitDiv.setChildren(childrenDiv);
     }
 
     private ClassGroupButton[] makeButtonsForClassGroups(List<ClassGroup> classGroups) {
