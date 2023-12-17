@@ -45,5 +45,10 @@ public class TeacherInfo extends AbstractEntity {
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Consultation> consultations;
+
+    @Transient
+    public String getFullName() {
+        return degree + " " + name + " " + surname;
+    }
 }
 

@@ -14,6 +14,7 @@ public class CourseService {
 
     /**
      * Constructor.
+     *
      * @param courseRepository course repository
      */
     public CourseService(CourseRepository courseRepository) {
@@ -22,6 +23,7 @@ public class CourseService {
 
     /**
      * Save course.
+     *
      * @param course course to save
      */
     public void save(Course course) {
@@ -30,6 +32,7 @@ public class CourseService {
 
     /**
      * Delete course.
+     *
      * @param course course to delete
      */
     public void delete(Course course) {
@@ -38,6 +41,7 @@ public class CourseService {
 
     /**
      * Find courses for given filter. It searches by code and name.
+     *
      * @param filter filter to search
      * @return list of courses that match the filter
      */

@@ -9,7 +9,7 @@ import pl.bscisel.timetable.data.service.OrganizationalUnitService;
 import pl.bscisel.timetable.views.sidebar.components.ClassGroupButton;
 import pl.bscisel.timetable.views.sidebar.components.OrgUnitButton;
 import pl.bscisel.timetable.views.sidebar.components.OrgUnitDiv;
-import pl.bscisel.timetable.views.timetable.TimetableView;
+import pl.bscisel.timetable.views.timetable.ClassGroupView;
 
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class OrganizationalUnitsNav extends VerticalLayout {
 
     private ClassGroupButton makeButtonForClassGroup(ClassGroup classGroup) {
         ClassGroupButton button = new ClassGroupButton(classGroup.getName());
-        button.addClickListener(event -> getUI().ifPresent(x -> x.navigate(TimetableView.class)));
+        button.addClickListener(event -> getUI().ifPresent(x -> x.navigate(ClassGroupView.class, classGroup.getId())));
         return button;
     }
 }

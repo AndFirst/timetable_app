@@ -3,14 +3,24 @@ package pl.bscisel.timetable.views.timetable;
 import elemental.json.Json;
 import elemental.json.JsonObject;
 import elemental.json.JsonValue;
+import lombok.Getter;
 import org.vaadin.stefan.fullcalendar.Entry;
+import pl.bscisel.timetable.data.entity.Event;
 
 
 public class CalendarEntry extends Entry {
+    @Getter
+    private final Event event;
+
     private final JsonObject properties = Json.createObject();
 
-    public CalendarEntry(Long databaseId) {
-        super(String.valueOf(databaseId));
+    public CalendarEntry(Event event) {
+        this.event = event;
+        setLocation(event.getLocation());
+        setDescription(event.getDescription());
+        setRecurringStartTime(event.getStartTime());
+        setRecurringEndTime(event.getEndTime());
+        setRecurringDaysOfWeek(event.getDayOfWeek());
     }
 
     public void setLocation(String location) {
