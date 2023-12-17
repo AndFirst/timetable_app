@@ -3,7 +3,6 @@ package pl.bscisel.timetable.data.entity;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -43,11 +42,6 @@ public class TeacherInfo extends AbstractEntity {
 
     @ManyToMany(mappedBy = "teachers")
     private Set<Class> classes;
-
-    @NotNull(message = "Teacher organizational unit cannot be empty")
-    @ManyToOne
-    @JoinColumn(name = "teacher_organizational_unit_id", nullable = false)
-    private TeacherOrganizationalUnit teacherOrganizationalUnit;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Consultation> consultations;

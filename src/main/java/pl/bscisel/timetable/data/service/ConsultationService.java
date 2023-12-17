@@ -15,11 +15,4 @@ public class ConsultationService {
         this.consultationRepository = consultationRepository;
     }
 
-    public Optional<Consultation> findById(Long id) {
-        return consultationRepository.findById(id);
-    }
-
-    public List<Consultation> findAllByTeacherId(Long teacherId) {
-        return consultationRepository.findAllByTeacherId(teacherId);
-    }
 }
