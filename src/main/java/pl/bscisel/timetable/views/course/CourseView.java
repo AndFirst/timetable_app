@@ -22,11 +22,13 @@ public class CourseView extends VerticalLayout {
     TextField textFilter = new TextField();
     Button addCourseBtn = new Button("Add course", event -> addCourse());
     Grid<Course> grid = new Grid<>(Course.class);
-    CourseForm form = new CourseForm();
+    CourseForm form;
     CourseService courseService;
 
-    public CourseView(CourseService courseService) {
+    public CourseView(CourseService courseService,
+                      CourseForm form) {
         this.courseService = courseService;
+        this.form = form;
         setSizeFull();
 
         configureToolbar();
@@ -38,18 +40,18 @@ public class CourseView extends VerticalLayout {
     }
 
 
-    private void closeForm(CourseForm.CloseEvent closeEvent) {
+    private void closeForm() {
         closeEditor();
     }
 
-    private void saveCourse(CourseForm.SaveEvent saveEvent) {
-        courseService.save(saveEvent.getCourse());
+    private void saveCourse(Course course) {
+        courseService.save(course);
         updateItems();
         closeEditor();
     }
 
-    private void deleteCourse(CourseForm.DeleteEvent deleteEvent) {
-        courseService.delete(deleteEvent.getCourse());
+    private void deleteCourse(Course course) {
+        courseService.delete(course);
         updateItems();
         closeEditor();
     }
@@ -57,9 +59,9 @@ public class CourseView extends VerticalLayout {
     private void configureForm() {
         form.setVisible(false);
 
-        form.addSaveListener(this::saveCourse);
-        form.addDeleteListener(this::deleteCourse);
-        form.addCloseListener(this::closeForm);
+        form.addSaveAction(this::saveCourse);
+        form.addDeleteAction(this::deleteCourse);
+        form.addCancelAction(ignore -> closeForm());
     }
 
     void configureGrid() {
@@ -94,7 +96,7 @@ public class CourseView extends VerticalLayout {
     }
 
     private void closeEditor() {
-        form.setCourse(null);
+        form.setFormBean(null);
         form.setVisible(false);
     }
 
@@ -102,7 +104,7 @@ public class CourseView extends VerticalLayout {
         if (course == null) {
             closeEditor();
         } else {
-            form.setCourse(course);
+            form.setFormBean(course);
             form.setVisible(true);
         }
     }

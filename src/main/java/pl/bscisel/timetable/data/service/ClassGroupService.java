@@ -28,7 +28,7 @@ public class ClassGroupService {
         classGroupRepo.delete(classGroup);
     }
 
-    public boolean classGroupExistsByNameAndOrganizationalUnitId(String name, @NotNull Long organizationalUnitId, @Nullable Long excludeId) {
+    public boolean classGroupExistsByNameAndOrganizationalUnitId(@NotNull String name, @NotNull Long organizationalUnitId, @Nullable Long excludeId) {
         if (excludeId == null) {
             return findClassGroupsByOrganizationalUnitId(organizationalUnitId).stream().anyMatch(group -> group.getName().equalsIgnoreCase(name.strip()));
         } else {

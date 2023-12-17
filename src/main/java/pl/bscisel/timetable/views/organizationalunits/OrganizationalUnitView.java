@@ -16,6 +16,9 @@ import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 import pl.bscisel.timetable.data.service.ClassGroupService;
 import pl.bscisel.timetable.data.service.OrganizationalUnitService;
 import pl.bscisel.timetable.views.MainLayout;
+import pl.bscisel.timetable.views.organizationalunits.dataproviders.OrganizationalUnitDataProvider;
+import pl.bscisel.timetable.views.organizationalunits.forms.ClassGroupForm;
+import pl.bscisel.timetable.views.organizationalunits.forms.OrganizationalUnitForm;
 
 import java.util.LinkedList;
 
@@ -75,13 +78,13 @@ public class OrganizationalUnitView extends VerticalLayout {
             closeUnitEditor();
         } else {
             closeGroupEditor();
-            unitForm.setOrganizationalUnit(organizationalUnit.clone());
+            unitForm.setFormBean(organizationalUnit.clone());
             unitForm.setVisible(true);
         }
     }
 
     private void closeUnitEditor() {
-        unitForm.setOrganizationalUnit(null);
+        unitForm.setFormBean(null);
         unitForm.setVisible(false);
     }
 
@@ -97,13 +100,13 @@ public class OrganizationalUnitView extends VerticalLayout {
             closeGroupEditor();
         } else {
             closeUnitEditor();
-            groupForm.setClassGroup(classGroup);
+            groupForm.setFormBean(classGroup);
             groupForm.setVisible(true);
         }
     }
 
     private void closeGroupEditor() {
-        groupForm.setClassGroup(null);
+        groupForm.setFormBean(null);
         groupForm.setVisible(false);
     }
 
@@ -123,9 +126,9 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private void configureUnitForm() {
         unitForm.setVisible(false);
-        unitForm.addSaveListener(event -> saveUnit(event.getOrganizationalUnit()));
-        unitForm.addDeleteListener(event -> deleteUnit(event.getOrganizationalUnit()));
-        unitForm.addCloseListener(event -> closeUnitEditor());
+        unitForm.addSaveAction(this::saveUnit);
+        unitForm.addDeleteAction(this::deleteUnit);
+        unitForm.addCancelAction(ignore -> closeUnitEditor());
     }
 
     private void saveUnit(@Nullable OrganizationalUnit unit) {
@@ -154,9 +157,9 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private void configureGroupForm() {
         groupForm.setVisible(false);
-        groupForm.addSaveListener(event -> saveGroup(event.getClassGroup()));
-        groupForm.addDeleteListener(event -> deleteGroup(event.getClassGroup()));
-        groupForm.addCloseListener(event -> closeGroupEditor());
+        groupForm.addSaveAction(this::saveGroup);
+        groupForm.addDeleteAction(this::deleteGroup);
+        groupForm.addCancelAction(ignore -> closeGroupEditor());
     }
 
     private void saveGroup(@Nullable ClassGroup classGroup) {

@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.organizationalunits;
+package pl.bscisel.timetable.views.organizationalunits.dataproviders;
 
 import com.vaadin.flow.data.provider.hierarchy.AbstractBackEndHierarchicalDataProvider;
 import com.vaadin.flow.data.provider.hierarchy.HierarchicalQuery;
