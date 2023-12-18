@@ -1,7 +1,6 @@
 package pl.bscisel.timetable.data.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -18,8 +17,7 @@ public class Class extends Event {
 
     public static final ClassFrequency DEFAULT_FREQUENCY = ClassFrequency.ALL_WEEKS;
 
-    @NotBlank(message = "Type cannot be empty")
-    @Size(min = 2, max = 50, message = "Type must be between {min} and {max} characters long")
+    @Size(max = 50, message = "Type cannot exceed {max} characters")
     @Column(name = "type", length = 50, nullable = false)
     private String type;
 
@@ -52,7 +50,7 @@ public class Class extends Event {
     }
 
     public ClassFrequency getFrequency() {
-        return ClassFrequency.valueOf(String.valueOf(frequency));
+        return ClassFrequency.fromSymbol(frequency);
     }
 
     public void setFrequency(ClassFrequency frequency) {
@@ -63,10 +61,25 @@ public class Class extends Event {
     public enum ClassFrequency {
         ODD_WEEKS('O'), EVEN_WEEKS('E'), ALL_WEEKS('A');
 
+        public static final ClassFrequency DEFAULT_FREQUENCY = ALL_WEEKS;
+
         private final char symbol;
 
         ClassFrequency(char symbol) {
             this.symbol = symbol;
+        }
+
+        public static ClassFrequency fromSymbol(char symbol) {
+            for (ClassFrequency frequency : ClassFrequency.values()) {
+                if (frequency.symbol == symbol) {
+                    return frequency;
+                }
+            }
+            return null;
+        }
+
+        public String getLabel() {
+            return this.name().charAt(0) + this.name().substring(1).toLowerCase().replace("_", " ");
         }
 
     }

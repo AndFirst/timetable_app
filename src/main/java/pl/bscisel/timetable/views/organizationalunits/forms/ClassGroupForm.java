@@ -29,15 +29,15 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
         this.orgUnitService = orgUnitService;
         this.classGroupService = classGroupService;
 
-        setRequiredFields();
+        setFieldsRequired();
         populateFields();
         setBindings();
-        configureEnterShortcut();
+        configureEnterShortcut(description);
 
         add(name, organizationalUnit, description, getButtons());
     }
 
-    private void setRequiredFields() {
+    private void setFieldsRequired() {
         name.setRequired(true);
         organizationalUnit.setRequired(true);
     }

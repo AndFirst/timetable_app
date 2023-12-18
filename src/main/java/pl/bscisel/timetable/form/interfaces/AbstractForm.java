@@ -13,13 +13,11 @@ import pl.bscisel.timetable.form.components.DeleteButton;
 import pl.bscisel.timetable.form.components.SaveButton;
 
 public abstract class AbstractForm<T> extends FormLayout {
+    protected final Binder<T> binder;
     private final Button save = new SaveButton();
     private final Button delete = new DeleteButton();
     private final Button cancel = new CancelButton();
-
     private ShortcutRegistration enterShortcut;
-
-    protected final Binder<T> binder;
 
     public AbstractForm(Binder<T> binder) {
         this.binder = binder;
@@ -50,7 +48,7 @@ public abstract class AbstractForm<T> extends FormLayout {
         }
     }
 
-    protected Component getButtons() {
+    public Component getButtons() {
         return new HorizontalLayout(save, delete, cancel);
     }
 

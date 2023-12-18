@@ -7,6 +7,7 @@ import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.repository.ClassGroupRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClassGroupService {
@@ -34,5 +35,13 @@ public class ClassGroupService {
         } else {
             return findClassGroupsByOrganizationalUnitId(organizationalUnitId).stream().anyMatch(group -> group.getName().equalsIgnoreCase(name.strip()) && !group.getId().equals(excludeId));
         }
+    }
+
+    public List<ClassGroup> findAll() {
+        return classGroupRepo.findAll();
+    }
+
+    public Optional<ClassGroup> findById(Long classGroupId) {
+        return classGroupRepo.findById(classGroupId);
     }
 }

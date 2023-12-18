@@ -58,4 +58,8 @@ public class CourseService {
         else
             return courseRepository.existsByCodeIgnoreCaseAndIdNot(code, excludeId);
     }
+
+    public List<Course> findAll() {
+        return courseRepository.findAll();
+    }
 }

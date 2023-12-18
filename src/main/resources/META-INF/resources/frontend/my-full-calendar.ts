@@ -1,34 +1,43 @@
-import {html} from '@polymer/polymer/polymer-element.js';
 import {FullCalendar} from './vaadin-full-calendar/full-calendar.ts';
 
 export class MyFullCalendar extends FullCalendar {
     createInitOptions() {
         var options = super.createInitOptions();
         options.eventContent = function(arg) {
-            console.log(arg.event);
+            console.log(arg);
 
             let containerEl = document.createElement('div');
 
             // Time
             let timeEl = document.createElement('div');
             timeEl.classList.add('fc-event-time');
-            timeEl.textContent = arg.event.start.toLocaleTimeString(['pl-PL'], {timeStyle: 'short'}) + ' - ' + arg.event.end.toLocaleTimeString(['pl-PL'], {timeStyle: 'short'});
+            timeEl.innerText = arg.timeText;
             containerEl.appendChild(timeEl);
 
             // Title
-            let titleEl = document.createElement('p');
-            titleEl.textContent = arg.event.title;
+            let titleEl = document.createElement('div');
+            titleEl.innerText = arg.event.title;
+
+            // Type
+            let typeString = arg.event.extendedProps.customProperties.type;
+            if (typeString) {
+                titleEl.innerText += ` - ${typeString}`;
+            }
             containerEl.appendChild(titleEl);
 
             // Description
-            let descriptionEl = document.createElement('p');
-            descriptionEl.textContent = arg.event.extendedProps.customProperties.description;
+            let descriptionEl = document.createElement('div');
+            descriptionEl.innerText = arg.event.extendedProps.customProperties.description;
             containerEl.appendChild(descriptionEl);
 
             // Location and teacher
-            let locationEl = document.createElement('p');
-            locationEl.innerHTML = 'Location: <span>' + arg.event.extendedProps.customProperties.location + '</span><br>Teacher: <span>' + arg.event.extendedProps.customProperties.teacher + '</span>';
+            let locationEl = document.createElement('div');
+            locationEl.innerText = arg.event.extendedProps.customProperties.location;
             containerEl.appendChild(locationEl);
+
+            let teacherEl = document.createElement('div');
+            teacherEl.innerText = arg.event.extendedProps.customProperties.teacher;
+            containerEl.appendChild(teacherEl);
 
             let arrayOfDomNodes = [containerEl];
             return { domNodes: arrayOfDomNodes };

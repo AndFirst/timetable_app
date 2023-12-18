@@ -84,8 +84,9 @@ public class EventsService {
     public CalendarEntry makeEntry(Class event, boolean editable) {
         CalendarEntry entry = new CalendarEntry(event);
         entry.setTitle(event.getCourse().getName());
+        entry.setType(event.getType());
         entry.setTeacher(getTeachersStr(event.getTeachers()));
-        entry.setColor("#0000FF");
+        entry.setColor("#005FDB");
         entry.setEditable(editable);
         entry.setDurationEditable(editable);
         return entry;
@@ -95,7 +96,7 @@ public class EventsService {
         CalendarEntry entry = new CalendarEntry(consultation);
         entry.setTitle("Consultation");
         entry.setTeacher(consultation.getTeacher().getFullName());
-        entry.setColor("#00FF00");
+        entry.setColor("#8B008B");
         entry.setEditable(editable);
         entry.setDurationEditable(editable);
         return entry;
@@ -118,5 +119,13 @@ public class EventsService {
         } else if (event instanceof Consultation consultationEvent) {
             consultationRepository.save(consultationEvent);
         }
+    }
+
+    public void saveEvent(Class newClass) {
+        classRepository.save(newClass);
+    }
+
+    public void deleteEvent(Class aClass) {
+        classRepository.delete(aClass);
     }
 }

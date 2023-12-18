@@ -8,7 +8,10 @@ import elemental.json.JsonObject;
 import org.vaadin.stefan.fullcalendar.CalendarViewImpl;
 import org.vaadin.stefan.fullcalendar.Entry;
 import org.vaadin.stefan.fullcalendar.FullCalendar;
+import org.vaadin.stefan.fullcalendar.Timezone;
 import pl.bscisel.timetable.data.service.EventsService;
+
+import java.time.ZoneId;
 
 public abstract class AbstractCalendarView extends VerticalLayout {
     protected final EventsService eventsService;
@@ -16,7 +19,6 @@ public abstract class AbstractCalendarView extends VerticalLayout {
 
     private Registration entryResizedListener;
     private Registration entryDroppedListener;
-    private Registration entryClickedListener;
 
     public AbstractCalendarView(EventsService eventsService) {
         this.eventsService = eventsService;
@@ -25,18 +27,18 @@ public abstract class AbstractCalendarView extends VerticalLayout {
         configureLayout();
     }
 
-    protected void setListenersForEditing(boolean editableView) {
+    protected void setListenersForMovingAndResizing(boolean editableView) {
         if (editableView) {
-            addListenersForEditing();
+            addListenersForMovingAndResizing();
             calendar.setTimeslotsSelectable(true);
         } else {
-            removeListenersForEditing();
+            removeListenersForMovingAndResizing();
             calendar.setTimeslotsSelectable(false);
         }
     }
 
-    private void addListenersForEditing() {
-        if (entryResizedListener != null || entryDroppedListener != null || entryClickedListener != null) {
+    private void addListenersForMovingAndResizing() {
+        if (entryResizedListener != null || entryDroppedListener != null) {
             return;
         }
         entryResizedListener = calendar.addEntryResizedListener((event) -> {
@@ -52,29 +54,19 @@ public abstract class AbstractCalendarView extends VerticalLayout {
             eventsService.updateEventByDelta(((CalendarEntry) event.getEntry()).getEvent(), event.getDelta(), false);
             Notification.show("Event moved!");
         });
-
-        entryClickedListener = calendar.addEntryClickedListener(event -> {
-            if (isEntryNotEditable(event.getEntry())) return;
-
-            Notification.show("Event clicked!");
-        });
     }
 
     private boolean isEntryNotEditable(Entry event) {
         return !(event instanceof CalendarEntry entry) || !entry.isEditable();
     }
 
-    private void removeListenersForEditing() {
+    private void removeListenersForMovingAndResizing() {
         if (entryResizedListener != null) {
             entryResizedListener.remove();
         }
 
         if (entryDroppedListener != null) {
             entryDroppedListener.remove();
-        }
-
-        if (entryClickedListener != null) {
-            entryClickedListener.remove();
         }
     }
 
@@ -85,6 +77,7 @@ public abstract class AbstractCalendarView extends VerticalLayout {
             calendar.setOption(key, settings.get(key));
         }
 
+        calendar.setTimezone(new Timezone(ZoneId.of("Europe/Warsaw")));
         calendar.changeView(CalendarViewImpl.TIME_GRID_WEEK);
     }
 
@@ -117,7 +110,6 @@ public abstract class AbstractCalendarView extends VerticalLayout {
         settings.put("weekends", false);
         settings.put("initialView", "timeGridWeek");
         settings.put("locale", "en");
-        settings.put("timeZone", "Poland");
         return settings;
     }
 }

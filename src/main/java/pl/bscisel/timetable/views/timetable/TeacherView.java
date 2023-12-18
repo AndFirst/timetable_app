@@ -46,7 +46,7 @@ public class TeacherView extends AbstractCalendarView implements HasUrlParameter
     public void setParameter(BeforeEvent beforeEvent, Long teacherId) {
         this.teacherId = teacherId;
         boolean loggedUserViewingOwnTimetable = isLoggedTeacherViewingOwnTimetable();
-        setListenersForEditing(isUserAdmin || loggedUserViewingOwnTimetable);
+        setListenersForMovingAndResizing(isUserAdmin || loggedUserViewingOwnTimetable);
         setEntryProvider(loggedUserViewingOwnTimetable);
         setToolbar(loggedUserViewingOwnTimetable);
     }

@@ -23,6 +23,10 @@ public class CalendarEntry extends Entry {
         setRecurringDaysOfWeek(event.getDayOfWeek());
     }
 
+    public void setType(String type) {
+        setCustomProperty("type", type);
+    }
+
     public void setLocation(String location) {
         setCustomProperty("location", location);
     }
