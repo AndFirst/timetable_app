@@ -9,10 +9,14 @@ import org.vaadin.stefan.fullcalendar.CalendarViewImpl;
 import org.vaadin.stefan.fullcalendar.Entry;
 import org.vaadin.stefan.fullcalendar.FullCalendar;
 import org.vaadin.stefan.fullcalendar.Timezone;
+import pl.bscisel.timetable.data.entity.Event;
 import pl.bscisel.timetable.data.service.EventsService;
+import pl.bscisel.timetable.views.timetable.components.CalendarEntry;
+import pl.bscisel.timetable.views.timetable.components.MyFullCalendar;
 
 import java.time.ZoneId;
 
+// LLR_100
 public abstract class AbstractCalendarView extends VerticalLayout {
     protected final EventsService eventsService;
     protected final FullCalendar calendar;
@@ -44,14 +48,22 @@ public abstract class AbstractCalendarView extends VerticalLayout {
         entryResizedListener = calendar.addEntryResizedListener((event) -> {
             if (isEntryNotEditable(event.getEntry())) return;
 
-            eventsService.updateEventByDelta(((CalendarEntry) event.getEntry()).getEvent(), event.getDelta(), true);
+            CalendarEntry calendarEntry = (CalendarEntry) event.getEntry();
+            Event dbEvent = calendarEntry.getEvent();
+            calendarEntry.setRecurringEndTime(dbEvent.getEndTime().plusHours(event.getDelta().getHours()).plusMinutes(event.getDelta().getMinutes()));
+            eventsService.updateEventByDelta(dbEvent, event.getDelta(), true);
             Notification.show("Event resized!");
         });
 
         entryDroppedListener = calendar.addEntryDroppedListener(event -> {
             if (isEntryNotEditable(event.getEntry())) return;
 
-            eventsService.updateEventByDelta(((CalendarEntry) event.getEntry()).getEvent(), event.getDelta(), false);
+            CalendarEntry calendarEntry = (CalendarEntry) event.getEntry();
+            Event dbEvent = calendarEntry.getEvent();
+            calendarEntry.setRecurringStartTime(dbEvent.getStartTime().plusHours(event.getDelta().getHours()).plusMinutes(event.getDelta().getMinutes()));
+            calendarEntry.setRecurringEndTime(dbEvent.getEndTime().plusHours(event.getDelta().getHours()).plusMinutes(event.getDelta().getMinutes()));
+            calendarEntry.setRecurringDaysOfWeek(dbEvent.getDayOfWeek().plus(event.getDelta().getDays()));
+            eventsService.updateEventByDelta(dbEvent, event.getDelta(), false);
             Notification.show("Event moved!");
         });
     }
@@ -100,7 +112,12 @@ public abstract class AbstractCalendarView extends VerticalLayout {
         slotLabelFormat.put("minute", "numeric");
         slotLabelFormat.put("hour12", false);
 
-        settings.put("slotDuration", "00:15:00");
+        JsonObject eventTimeFormat = Json.createObject();
+        eventTimeFormat.put("hour", "2-digit");
+        eventTimeFormat.put("minute", "2-digit");
+        eventTimeFormat.put("hour12", false);
+
+        settings.put("slotDuration", "00:30:00");
         settings.put("slotLabelInterval", "01:00");
         settings.put("slotLabelFormat", slotLabelFormat);
         settings.put("slotMinTime", "07:00:00");
@@ -110,6 +127,7 @@ public abstract class AbstractCalendarView extends VerticalLayout {
         settings.put("weekends", false);
         settings.put("initialView", "timeGridWeek");
         settings.put("locale", "en");
+        settings.put("eventTimeFormat", eventTimeFormat);
         return settings;
     }
 }

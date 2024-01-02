@@ -17,6 +17,7 @@ import pl.bscisel.timetable.views.course.CourseView;
 import pl.bscisel.timetable.views.LoginView;
 import pl.bscisel.timetable.views.MainView;
 import pl.bscisel.timetable.views.organizationalunits.OrganizationalUnitView;
+import pl.bscisel.timetable.views.users.UsersView;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -48,7 +49,7 @@ public class TopBar extends HorizontalLayout {
                 put(new Tab("Home"), () -> getUI().ifPresent(ui -> ui.navigate(MainView.class)));
                 put(new Tab("Organizational units"), () -> getUI().ifPresent(ui -> ui.navigate(OrganizationalUnitView.class)));
                 put(new Tab("Courses"), () -> getUI().ifPresent(ui -> ui.navigate(CourseView.class)));
-                put(new Tab("Users"), () -> Notification.show("Users"));
+                put(new Tab("Users"), () -> getUI().ifPresent(ui -> ui.navigate(UsersView.class)));
                 put(new Tab("Consultations"), () -> Notification.show("Consultations"));
             }};
 
@@ -72,7 +73,7 @@ public class TopBar extends HorizontalLayout {
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
         if (securityService.isUserLoggedIn()) {
-            H5 loggedAsText = new H5("Logged in as " + securityService.getAuthenticatedTimetableUser().getUsername());
+            H5 loggedAsText = new H5("Logged in as " + securityService.getAuthenticatedTimetableUser().getEmailAddress());
             loggedAsText.setWhiteSpace(HasText.WhiteSpace.NOWRAP);
             Button logoutBtn = new Button("Logout", click -> securityService.logout());
             layout.add(loggedAsText, logoutBtn);

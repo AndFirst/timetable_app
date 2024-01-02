@@ -12,6 +12,6 @@ import java.util.List;
 public interface ClassGroupRepository extends JpaRepository<ClassGroup, Long> {
 
     @QueryHints(value = {@QueryHint(name = HibernateHints.HINT_CACHEABLE, value = "true")})
-    List<ClassGroup> findByOrganizationalUnitId(Long organizationalUnitId);
+    List<ClassGroup> findByOrganizationalUnitIdOrderByName(Long organizationalUnitId);
 
 }

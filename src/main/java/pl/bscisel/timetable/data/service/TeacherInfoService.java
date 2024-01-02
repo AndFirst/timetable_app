@@ -22,4 +22,8 @@ public class TeacherInfoService {
     public Optional<TeacherInfo> findTeacherByUserId(Long userId) {
         return teacherRepository.findByUserId(userId);
     }
+
+    public Optional<TeacherInfo> findTeacherById(Long teacherId) {
+        return teacherRepository.findById(teacherId);
+    }
 }

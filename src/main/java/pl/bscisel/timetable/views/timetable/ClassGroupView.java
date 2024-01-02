@@ -1,13 +1,15 @@
 package pl.bscisel.timetable.views.timetable;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.flow.shared.Registration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.vaadin.stefan.fullcalendar.dataprovider.InMemoryEntryProvider;
 import pl.bscisel.timetable.data.entity.Class;
 import pl.bscisel.timetable.data.service.ClassGroupService;
@@ -16,16 +18,17 @@ import pl.bscisel.timetable.data.service.EventsService;
 import pl.bscisel.timetable.data.service.TeacherInfoService;
 import pl.bscisel.timetable.security.SecurityService;
 import pl.bscisel.timetable.views.MainLayout;
+import pl.bscisel.timetable.views.timetable.components.CalendarEntry;
+import pl.bscisel.timetable.views.timetable.components.FormDialog;
 import pl.bscisel.timetable.views.timetable.forms.ClassForm;
-
-import java.time.DayOfWeek;
-import java.time.LocalTime;
 
 
 @PageTitle("Class group")
 @Route(value = "classgroup", layout = MainLayout.class)
 @AnonymousAllowed
-public class ClassGroupView extends AbstractCalendarView implements HasUrlParameter<Long> {
+public class ClassGroupView extends AbstractClassCalendarView implements HasUrlParameter<Long> {
+    private static final Logger logger = LoggerFactory.getLogger(ClassGroupView.class);
+
     private final CourseService courseService;
     private final ClassGroupService classGroupService;
     private final TeacherInfoService teacherInfoService;
@@ -33,15 +36,9 @@ public class ClassGroupView extends AbstractCalendarView implements HasUrlParame
 
     private Long classGroupId;
     private Button addClassBtn;
-    private Dialog addClassDialog;
-    private ClassForm classForm;
+
     private InMemoryEntryProvider<CalendarEntry> entryProvider;
-
-    private LocalTime startSelected;
-    private LocalTime endSelected;
-    private DayOfWeek dayOfWeekSelected;
-    private CalendarEntry editedEntry;
-
+    private Registration entryClickedRegistration;
 
     public ClassGroupView(EventsService eventsService,
                           SecurityService securityService,
@@ -58,7 +55,7 @@ public class ClassGroupView extends AbstractCalendarView implements HasUrlParame
             configureToolbar();
             configureCalendarListeners();
             configureForm();
-            configureDialog();
+            configureFormDialogs();
         }
     }
 
@@ -69,18 +66,19 @@ public class ClassGroupView extends AbstractCalendarView implements HasUrlParame
     }
 
     private void configureCalendarListeners() {
-        calendar.addTimeslotsSelectedListener(event -> {
-            startSelected = event.getStartWithOffset().toLocalTime();
-            endSelected = event.getEndWithOffset().toLocalTime();
-            dayOfWeekSelected = event.getStartWithOffset().getDayOfWeek();
-        });
+        configureTimeslotsListeners();
+        configureEntryClickedListener();
+        setListenersForMovingAndResizing(true);
+    }
 
-        calendar.addEntryClickedListener(event -> {
+    private void configureEntryClickedListener() {
+        if (entryClickedRegistration != null) {
+            return;
+        }
+        entryClickedRegistration = calendar.addEntryClickedListener(event -> {
             editedEntry = (CalendarEntry) event.getEntry();
             editClass((Class) ((CalendarEntry) event.getEntry()).getEvent());
         });
-
-        setListenersForMovingAndResizing(true);
     }
 
     private void configureForm() {
@@ -90,75 +88,32 @@ public class ClassGroupView extends AbstractCalendarView implements HasUrlParame
 
     private void createForm() {
         classForm = new ClassForm(courseService, classGroupService, teacherInfoService);
+        classFormButtons = classForm.getButtons();
     }
 
     private void configureFormListeners() {
-        classForm.addSaveAction(aClass -> {
-            eventsService.saveEvent(aClass);
-            removeEditedEntry();
-            entryProvider.addEntry(eventsService.makeEntry(aClass, true));
-            entryProvider.refreshAll();
-            addClassDialog.close();
-        });
-
-        classForm.addDeleteAction(aClass -> {
-            eventsService.deleteEvent(aClass);
-            removeEditedEntry();
-            entryProvider.refreshAll();
-            addClassDialog.close();
-        });
-
-        classForm.addCancelAction(ignored -> addClassDialog.close());
+        classForm.addSaveAction(this::saveClassAction);
+        classForm.addDeleteAction(this::deleteClassAction);
+        classForm.addCancelAction(ignored -> cleanAndCloseDialog(addClassDialog));
     }
 
-    private void removeEditedEntry() {
-        if (editedEntry != null) {
-            entryProvider.removeEntry(editedEntry);
-        }
+    private void configureFormDialogs() {
+        createFormDialogs();
+        configureDialogsListeners();
     }
 
-    private void configureDialog() {
-        createDialog();
-        configureDialogLayout();
-        configureDialogListeners();
+    private void createFormDialogs() {
+        addClassDialog = new FormDialog(classForm, classForm.getButtons(), "Add class to schedule");
     }
 
-    private void configureDialogLayout() {
-        addClassDialog.add(classForm);
-        addClassDialog.getFooter().add(classForm.getButtons());
-        addClassDialog.setHeaderTitle("Add class to schedule");
-        addClassDialog.setResizable(true);
-        addClassDialog.setDraggable(true);
-        addClassDialog.setCloseOnEsc(false); // form has it
-        addClassDialog.setCloseOnOutsideClick(true);
-        addClassDialog.setWidth("500px");
+    private void configureDialogsListeners() {
+        addClassDialog.addDialogCloseActionListener(ignored -> cleanAndCloseDialog(addClassDialog));
     }
 
-    private void createDialog() {
-        addClassDialog = new Dialog();
-    }
-
-    private void configureDialogListeners() {
-        addClassDialog.addDialogCloseActionListener(ignored -> {
-            classForm.setFormBean(null);
-            editedEntry = null;
-            addClassDialog.close();
-        });
-    }
-
-    private void addNewClass() {
-        Class newClassEntity = new Class();
+    @Override
+    protected void presetClass(Class newClassEntity) {
+        super.presetClass(newClassEntity);
         classGroupService.findById(classGroupId).ifPresent(newClassEntity::setClassGroup);
-        newClassEntity.setStartTime(startSelected);
-        newClassEntity.setEndTime(endSelected);
-        newClassEntity.setDayOfWeek(dayOfWeekSelected);
-
-        editClass(newClassEntity);
-    }
-
-    private void editClass(Class entry) {
-        classForm.setFormBean(entry);
-        addClassDialog.open();
     }
 
     @Override

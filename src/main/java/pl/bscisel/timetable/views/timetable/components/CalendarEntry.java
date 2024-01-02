@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.timetable;
+package pl.bscisel.timetable.views.timetable.components;
 
 import elemental.json.Json;
 import elemental.json.JsonObject;

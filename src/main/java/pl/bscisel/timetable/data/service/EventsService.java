@@ -10,7 +10,7 @@ import pl.bscisel.timetable.data.entity.Event;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
 import pl.bscisel.timetable.data.repository.ClassRepository;
 import pl.bscisel.timetable.data.repository.ConsultationRepository;
-import pl.bscisel.timetable.views.timetable.CalendarEntry;
+import pl.bscisel.timetable.views.timetable.components.CalendarEntry;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -127,5 +127,13 @@ public class EventsService {
 
     public void deleteEvent(Class aClass) {
         classRepository.delete(aClass);
+    }
+
+    public void saveConsultation(Consultation consultation) {
+        consultationRepository.save(consultation);
+    }
+
+    public void deleteConsultation(Consultation consultation) {
+        consultationRepository.delete(consultation);
     }
 }

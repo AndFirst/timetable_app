@@ -13,7 +13,7 @@ import pl.bscisel.timetable.views.timetable.ClassGroupView;
 
 import java.util.List;
 
-
+// LLR_332
 public class OrganizationalUnitsNav extends VerticalLayout {
     private final OrganizationalUnitService orgUnitService;
     private final ClassGroupService classGroupService;

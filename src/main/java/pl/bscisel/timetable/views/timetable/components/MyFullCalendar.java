@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.timetable;
+package pl.bscisel.timetable.views.timetable.components;
 
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;

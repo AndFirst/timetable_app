@@ -18,7 +18,7 @@ public class ClassGroupService {
     }
 
     public List<ClassGroup> findClassGroupsByOrganizationalUnitId(Long organizationalUnitId) {
-        return classGroupRepo.findByOrganizationalUnitId(organizationalUnitId);
+        return classGroupRepo.findByOrganizationalUnitIdOrderByName(organizationalUnitId);
     }
 
     public void saveClassGroup(ClassGroup classGroup) {
