@@ -7,9 +7,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.commons.lang3.StringUtils;
 import pl.bscisel.timetable.security.SecurityConfiguration;
 
 import java.util.Set;
+import java.util.StringJoiner;
 
 @EqualsAndHashCode(callSuper = false, exclude = {"roles"})
 @Data
@@ -31,19 +33,21 @@ public class User extends AbstractEntity {
     @JoinTable(name = "users_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;
 
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress.strip().toLowerCase();
+    }
+
     public void setPassword(String password) {
-        if (password != null && !password.isEmpty())
+        if (StringUtils.isNotBlank(password))
             this.password = SecurityConfiguration.passwordEncoder().encode(password);
     }
 
     @Transient
     public String formatRoles() {
-        StringBuilder sb = new StringBuilder();
-        for (Role role : roles) {
-            sb.append(role.getName()).append(", ");
-        }
-        if (!sb.isEmpty())
-            sb.delete(sb.length() - 2, sb.length());
-        return sb.toString();
+        if (roles == null)
+            return "";
+        StringJoiner sj = new StringJoiner(", ");
+        roles.forEach(role -> sj.add(role.getName()));
+        return sj.toString();
     }
 }

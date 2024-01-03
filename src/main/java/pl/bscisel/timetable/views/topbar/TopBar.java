@@ -6,18 +6,18 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import pl.bscisel.timetable.security.SecurityService;
-import pl.bscisel.timetable.views.course.CourseView;
 import pl.bscisel.timetable.views.LoginView;
 import pl.bscisel.timetable.views.MainView;
+import pl.bscisel.timetable.views.course.CourseView;
 import pl.bscisel.timetable.views.organizationalunits.OrganizationalUnitView;
-import pl.bscisel.timetable.views.users.UsersView;
+import pl.bscisel.timetable.views.teachers.TeacherInfoView;
+import pl.bscisel.timetable.views.users.UserView;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -49,8 +49,8 @@ public class TopBar extends HorizontalLayout {
                 put(new Tab("Home"), () -> getUI().ifPresent(ui -> ui.navigate(MainView.class)));
                 put(new Tab("Organizational units"), () -> getUI().ifPresent(ui -> ui.navigate(OrganizationalUnitView.class)));
                 put(new Tab("Courses"), () -> getUI().ifPresent(ui -> ui.navigate(CourseView.class)));
-                put(new Tab("Users"), () -> getUI().ifPresent(ui -> ui.navigate(UsersView.class)));
-                put(new Tab("Consultations"), () -> Notification.show("Consultations"));
+                put(new Tab("Users"), () -> getUI().ifPresent(ui -> ui.navigate(UserView.class)));
+                put(new Tab("Teachers"), () -> getUI().ifPresent(ui -> ui.navigate(TeacherInfoView.class)));
             }};
 
             Tabs tabs = new Tabs(tabsActions.keySet().toArray(Tab[]::new));

@@ -46,6 +46,22 @@ public class TeacherInfo extends AbstractEntity {
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Consultation> consultations;
 
+    public void setName(String name) {
+        this.name = name.strip();
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname.strip();
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree.strip();
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber.strip();
+    }
+
     @Transient
     public String getFullName() {
         return degree + " " + name + " " + surname;

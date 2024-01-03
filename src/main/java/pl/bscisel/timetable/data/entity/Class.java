@@ -18,7 +18,7 @@ public class Class extends Event {
     public static final ClassFrequency DEFAULT_FREQUENCY = ClassFrequency.ALL_WEEKS;
 
     @Size(max = 50, message = "Type cannot exceed {max} characters")
-    @Column(name = "type", length = 50, nullable = false)
+    @Column(name = "type", length = 50)
     private String type;
 
     @NotNull(message = "You must select a course")
@@ -43,10 +43,14 @@ public class Class extends Event {
      *     <li>A - all weeks</li>
      * </ul>
      */
-    private char frequency;
+    char frequency;
 
     public Class() {
         setFrequency(DEFAULT_FREQUENCY);
+    }
+
+    public void setType(String type) {
+        this.type = type.strip();
     }
 
     public ClassFrequency getFrequency() {

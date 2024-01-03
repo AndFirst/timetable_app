@@ -34,6 +34,7 @@ public class UserForm extends AbstractForm<User> {
         setRequiredFields();
         populateFields();
         setBindings();
+        configureEnterShortcut();
 
         add(emailAddress, password, roles, getButtons());
     }

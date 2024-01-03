@@ -3,6 +3,8 @@ package pl.bscisel.timetable.data.entity;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -38,4 +40,15 @@ public abstract class Event extends AbstractEntity {
     @Column(name = "description", length = 500)
     private String description;
 
+    @PrePersist
+    @PreUpdate
+    void validateTime() {
+        if (startTime.isAfter(endTime)) {
+            throw new IllegalArgumentException("Start time cannot be after end time");
+        }
+    }
+
+    public void setLocation(String location) {
+        this.location = location.strip();
+    }
 }

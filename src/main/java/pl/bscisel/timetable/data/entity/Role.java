@@ -1,8 +1,6 @@
 package pl.bscisel.timetable.data.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -19,4 +17,15 @@ public class Role extends AbstractEntity {
     @Column(name = "name", unique = true, length = 20)
     private String name;
 
+    @PreUpdate
+    @PrePersist
+    void checkIfStartsWithRole() {
+        if (!name.startsWith("ROLE_")) {
+            throw new IllegalArgumentException("Role name must start with ROLE_");
+        }
+    }
+
+    public void setName(String name) {
+        this.name = name.strip();
+    }
 }

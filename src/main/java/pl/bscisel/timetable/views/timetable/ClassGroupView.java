@@ -37,7 +37,6 @@ public class ClassGroupView extends AbstractClassCalendarView implements HasUrlP
     private Long classGroupId;
     private Button addClassBtn;
 
-    private InMemoryEntryProvider<CalendarEntry> entryProvider;
     private Registration entryClickedRegistration;
 
     public ClassGroupView(EventsService eventsService,

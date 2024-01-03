@@ -26,4 +26,26 @@ public class TeacherInfoService {
     public Optional<TeacherInfo> findTeacherById(Long teacherId) {
         return teacherRepository.findById(teacherId);
     }
+
+    public void save(TeacherInfo teacher) {
+        teacherRepository.save(teacher);
+    }
+
+    public void delete(TeacherInfo teacher) {
+        teacherRepository.delete(teacher);
+    }
+
+    public List<TeacherInfo> search(String filter) {
+        if (filter == null || filter.isEmpty()) {
+            return teacherRepository.findAll();
+        }
+        return teacherRepository.findByDegreeAndNameAndSurnameConcatenatedContaining(filter);
+    }
+
+    public boolean teacherInfoExistsByUserId(Long id, Long excludeTeacherId) {
+        if (excludeTeacherId == null)
+            return teacherRepository.existsByUserId(id);
+        else
+            return teacherRepository.existsByUserIdAndIdNot(id, excludeTeacherId);
+    }
 }

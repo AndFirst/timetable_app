@@ -44,6 +44,7 @@ public class OrganizationalUnit extends AbstractEntity implements Cloneable {
      * <p>
      * Needed to create a unique key on the names of the top level organizational units.
      */
+    @Setter(AccessLevel.NONE)
     @Nullable
     @Column(name = "is_top_level", nullable = true)
     @Check(constraints = "(is_top_level IS NOT NULL AND is_top_level = 1 AND parent_unit_id IS NULL) or (is_top_level IS NULL AND parent_unit_id IS NOT NULL)")
@@ -57,7 +58,7 @@ public class OrganizationalUnit extends AbstractEntity implements Cloneable {
 
     @PrePersist
     @PreUpdate
-    private void prePersist() {
+    private void updateIsTopLevelByte() {
         if (parentUnit == null) {
             isTopLevel = 1;
         } else {

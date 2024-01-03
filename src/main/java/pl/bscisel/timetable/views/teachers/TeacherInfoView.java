@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.views.users;
+package pl.bscisel.timetable.views.teachers;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
@@ -10,24 +10,24 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.RolesAllowed;
-import pl.bscisel.timetable.data.entity.User;
-import pl.bscisel.timetable.data.service.UserService;
+import pl.bscisel.timetable.data.entity.TeacherInfo;
+import pl.bscisel.timetable.data.service.TeacherInfoService;
 import pl.bscisel.timetable.views.MainLayout;
 
 
-@Route(value = "users", layout = MainLayout.class)
+@Route(value = "teachers", layout = MainLayout.class)
 @RolesAllowed("ADMIN")
-@PageTitle("Timetable - Users")
-public class UsersView extends VerticalLayout {
+@PageTitle("Timetable - Teachers")
+public class TeacherInfoView extends VerticalLayout {
     TextField textFilter = new TextField();
-    Grid<User> grid = new Grid<>(User.class);
-    UserForm form;
-    Button addUserBtn = new Button("Add user", event -> addUser());
-    UserService userService;
+    Grid<TeacherInfo> grid = new Grid<>(TeacherInfo.class);
+    TeacherInfoForm form;
+    Button addTeacherBtn = new Button("Add teacher", event -> addTeacher());
+    TeacherInfoService teacherInfoService;
 
-    public UsersView(UserService userService,
-                     UserForm form) {
-        this.userService = userService;
+    public TeacherInfoView(TeacherInfoService teacherInfoService,
+                           TeacherInfoForm form) {
+        this.teacherInfoService = teacherInfoService;
         this.form = form;
         setSizeFull();
 
@@ -44,14 +44,14 @@ public class UsersView extends VerticalLayout {
         closeEditor();
     }
 
-    private void saveUser(User user) {
-        userService.save(user);
+    private void saveTeacher(TeacherInfo teacher) {
+        teacherInfoService.save(teacher);
         updateItems();
         closeEditor();
     }
 
-    private void deleteUser(User user) {
-        userService.delete(user);
+    private void deleteTeacher(TeacherInfo teacher) {
+        teacherInfoService.delete(teacher);
         updateItems();
         closeEditor();
     }
@@ -59,31 +59,30 @@ public class UsersView extends VerticalLayout {
     private void configureForm() {
         form.setVisible(false);
 
-        form.addSaveAction(this::saveUser);
-        form.addDeleteAction(this::deleteUser);
+        form.addSaveAction(this::saveTeacher);
+        form.addDeleteAction(this::deleteTeacher);
         form.addCancelAction(ignore -> closeForm());
     }
 
     void configureGrid() {
         grid.setSizeFull();
-        grid.setColumns("emailAddress");
-        grid.addColumn(User::formatRoles).setHeader("Roles");
+        grid.setColumns("id", "degree", "name", "surname", "phoneNumber");
         grid.getColumns().forEach(column -> column.setAutoWidth(true));
 
-        grid.asSingleSelect().addValueChangeListener(event -> editUser(event.getValue(), false));
+        grid.asSingleSelect().addValueChangeListener(event -> editTeacher(event.getValue()));
     }
 
     void configureToolbar() {
         textFilter.addValueChangeListener(event -> updateItems());
         textFilter.setValueChangeMode(ValueChangeMode.LAZY);
         textFilter.setClearButtonVisible(true);
-        textFilter.setPlaceholder("Filter by email address...");
+        textFilter.setPlaceholder("Filter...");
     }
 
     Component getToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
 
-        layout.add(textFilter, addUserBtn);
+        layout.add(textFilter, addTeacherBtn);
         return layout;
     }
 
@@ -101,25 +100,21 @@ public class UsersView extends VerticalLayout {
         form.setVisible(false);
     }
 
-    private void editUser(User user, boolean newUser) {
-        if (user == null) {
+    private void editTeacher(TeacherInfo teacher) {
+        if (teacher == null) {
             closeEditor();
         } else {
-            if (newUser)
-                form.setMode(UserForm.Mode.ADD);
-            else
-                form.setMode(UserForm.Mode.EDIT);
-            form.setFormBean(user);
+            form.setFormBean(teacher);
             form.setVisible(true);
         }
     }
 
-    private void addUser() {
+    private void addTeacher() {
         grid.asSingleSelect().clear();
-        editUser(new User(), true);
+        editTeacher(new TeacherInfo());
     }
 
     void updateItems() {
-        grid.setItems(userService.search(textFilter.getValue()));
+        grid.setItems(teacherInfoService.search(textFilter.getValue()));
     }
 }
