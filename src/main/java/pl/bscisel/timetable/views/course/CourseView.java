@@ -6,15 +6,18 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.Course;
 import pl.bscisel.timetable.data.service.CourseService;
 import pl.bscisel.timetable.views.MainLayout;
+import pl.bscisel.timetable.views.course.forms.CourseForm;
 
-
+@org.springframework.stereotype.Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Route(value = "courses", layout = MainLayout.class)
 @RolesAllowed("ADMIN")
 @PageTitle("Timetable - Courses")
@@ -35,22 +38,22 @@ public class CourseView extends VerticalLayout {
         configureGrid();
         configureForm();
 
-        add(getToolbar(), getContent());
+        add(createToolbar(), createContent());
         updateItems();
     }
 
 
-    private void closeForm() {
+    void closeForm() {
         closeEditor();
     }
 
-    private void saveCourse(Course course) {
+    void saveCourse(Course course) {
         courseService.save(course);
         updateItems();
         closeEditor();
     }
 
-    private void deleteCourse(Course course) {
+    void deleteCourse(Course course) {
         courseService.delete(course);
         updateItems();
         closeEditor();
@@ -74,19 +77,19 @@ public class CourseView extends VerticalLayout {
 
     void configureToolbar() {
         textFilter.addValueChangeListener(event -> updateItems());
-        textFilter.setValueChangeMode(ValueChangeMode.LAZY);
+//        textFilter.setValueChangeMode(ValueChangeMode.LAZY);
         textFilter.setClearButtonVisible(true);
         textFilter.setPlaceholder("Filter by code or name...");
     }
 
-    Component getToolbar() {
+    Component createToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
 
         layout.add(textFilter, addCourseBtn);
         return layout;
     }
 
-    Component getContent() {
+    Component createContent() {
         HorizontalLayout layout = new HorizontalLayout();
         layout.setSizeFull();
         layout.setFlexGrow(2, grid);
@@ -95,12 +98,12 @@ public class CourseView extends VerticalLayout {
         return layout;
     }
 
-    private void closeEditor() {
+    void closeEditor() {
         form.setFormBean(null);
         form.setVisible(false);
     }
 
-    private void editCourse(Course course) {
+    void editCourse(Course course) {
         if (course == null) {
             closeEditor();
         } else {
@@ -109,7 +112,7 @@ public class CourseView extends VerticalLayout {
         }
     }
 
-    private void addCourse() {
+    void addCourse() {
         grid.asSingleSelect().clear();
         editCourse(new Course());
     }

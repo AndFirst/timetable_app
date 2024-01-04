@@ -8,6 +8,7 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -161,5 +162,9 @@ public class ClassForm extends AbstractForm<Class> {
         classGroup.setRequired(true);
         startTime.setRequired(true);
         endTime.setRequired(true);
+    }
+
+    Binder<Class> getBinder() {
+        return binder;
     }
 }

@@ -83,7 +83,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         }
     }
 
-    private void closeUnitEditor() {
+    void closeUnitEditor() {
         unitForm.setFormBean(null);
         unitForm.setVisible(false);
     }
@@ -105,7 +105,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         }
     }
 
-    private void closeGroupEditor() {
+    void closeGroupEditor() {
         groupForm.setFormBean(null);
         groupForm.setVisible(false);
     }
@@ -131,7 +131,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         unitForm.addCancelAction(ignore -> closeUnitEditor());
     }
 
-    private void saveUnit(@Nullable OrganizationalUnit unit) {
+    void saveUnit(@Nullable OrganizationalUnit unit) {
         if (unit != null) {
             unitService.save(unit);
         }
@@ -139,7 +139,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         selectUnitInGrid(unit);
     }
 
-    private void deleteUnit(@Nullable OrganizationalUnit unit) {
+    void deleteUnit(@Nullable OrganizationalUnit unit) {
         if (unit != null) {
             unitService.delete(unit);
         }
@@ -147,7 +147,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         finishUnitEditing(unit);
     }
 
-    private void finishUnitEditing(@Nullable OrganizationalUnit organizationalUnit) {
+    void finishUnitEditing(@Nullable OrganizationalUnit organizationalUnit) {
         dataProvider.refreshAll();
         if (organizationalUnit != null) {
             expandParents(organizationalUnit.getParentUnit());
@@ -162,21 +162,21 @@ public class OrganizationalUnitView extends VerticalLayout {
         groupForm.addCancelAction(ignore -> closeGroupEditor());
     }
 
-    private void saveGroup(@Nullable ClassGroup classGroup) {
+    void saveGroup(@Nullable ClassGroup classGroup) {
         if (classGroup != null) {
             groupsService.save(classGroup);
         }
         finishGroupEditing(classGroup);
     }
 
-    private void deleteGroup(@Nullable ClassGroup classGroup) {
+    void deleteGroup(@Nullable ClassGroup classGroup) {
         if (classGroup != null) {
             groupsService.delete(classGroup);
         }
         finishGroupEditing(classGroup);
     }
 
-    private void finishGroupEditing(@Nullable ClassGroup classGroup) {
+    void finishGroupEditing(@Nullable ClassGroup classGroup) {
         closeGroupEditor();
         if (classGroup != null) {
             expandParents(classGroup.getOrganizationalUnit());
@@ -185,13 +185,13 @@ public class OrganizationalUnitView extends VerticalLayout {
         }
     }
 
-    private void selectUnitInGrid(@Nullable OrganizationalUnit organizationalUnit) {
+    void selectUnitInGrid(@Nullable OrganizationalUnit organizationalUnit) {
         if (organizationalUnit != null) {
             unitsGrid.select(organizationalUnit);
         }
     }
 
-    private void expandParents(@Nullable OrganizationalUnit parent) {
+    void expandParents(@Nullable OrganizationalUnit parent) {
         while (parent != null) {
             unitsGrid.expand(parent);
             parent = parent.getParentUnit();
@@ -240,7 +240,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         });
     }
 
-    private void updateGroupGrid(@Nullable OrganizationalUnit organizationUnit) {
+    void updateGroupGrid(@Nullable OrganizationalUnit organizationUnit) {
         if (organizationUnit == null || organizationUnit.getId() == null) {
             groupsGrid.setItems(new LinkedList<>());
         } else {

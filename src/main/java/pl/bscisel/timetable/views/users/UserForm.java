@@ -5,6 +5,7 @@ import com.vaadin.flow.component.textfield.Autocomplete;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.binder.Validator;
 import com.vaadin.flow.data.validator.BeanValidator;
@@ -50,7 +51,7 @@ public class UserForm extends AbstractForm<User> {
         this.mode = mode;
     }
 
-    private void populateFields() {
+    void populateFields() {
         roles.setItems(userService.findAllRoles());
         roles.setItemLabelGenerator(Role::getName);
     }
@@ -89,7 +90,10 @@ public class UserForm extends AbstractForm<User> {
         binder.forField(roles)
                 .withValidator(new BeanValidator(User.class, "roles"))
                 .bind("roles");
+    }
 
+    Binder<User> getBinder() {
+        return binder;
     }
 
     public enum Mode {

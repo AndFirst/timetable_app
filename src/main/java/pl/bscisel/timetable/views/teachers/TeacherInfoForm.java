@@ -32,12 +32,18 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
         this.userService = userService;
         this.teacherInfoService = teacherInfoService;
 
+        setRequiredFields();
         configureForm();
         configureEnterShortcut(biography);
         setBindings();
         populateFields();
 
         add(name, surname, degree, phoneNumber, biography, user, getButtons());
+    }
+
+    private void setRequiredFields() {
+        name.setRequired(true);
+        surname.setRequired(true);
     }
 
     private void configureForm() {

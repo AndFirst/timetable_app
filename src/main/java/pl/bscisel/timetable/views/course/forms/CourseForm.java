@@ -1,8 +1,9 @@
-package pl.bscisel.timetable.views.course;
+package pl.bscisel.timetable.views.course.forms;
 
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -52,4 +53,7 @@ public class CourseForm extends AbstractForm<Course> {
                 .bind(Course::getDescription, Course::setDescription);
     }
 
+    Binder<Course> getBinder() {
+        return binder;
+    }
 }

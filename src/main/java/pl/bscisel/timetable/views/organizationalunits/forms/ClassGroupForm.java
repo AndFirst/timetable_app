@@ -4,6 +4,7 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -64,5 +65,9 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
         binder.forField(description)
                 .withValidator(new BeanValidator(ClassGroup.class, "description"))
                 .bind(ClassGroup::getDescription, ClassGroup::setDescription);
+    }
+
+    Binder<ClassGroup> getBinder() {
+        return binder;
     }
 }
