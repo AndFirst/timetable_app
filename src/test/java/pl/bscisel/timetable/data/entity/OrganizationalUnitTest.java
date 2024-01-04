@@ -4,13 +4,14 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.annotation.DirtiesContext;
 import pl.bscisel.timetable.data.entity.utils.EntityTestUtils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @DataJpaTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class OrganizationalUnitTest {
 
     @PersistenceContext
@@ -36,7 +37,6 @@ class OrganizationalUnitTest {
     }
 
     @Test
-    @Transactional
     public void testUpdateIsTopLevelByte() {
         OrganizationalUnit organizationalUnit = new OrganizationalUnit();
         organizationalUnit.setName("Organizational Unit 1");
