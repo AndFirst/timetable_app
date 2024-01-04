@@ -53,7 +53,7 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
                 .withValidator(name -> {
                     if (binder.getBean() == null || binder.getBean().getOrganizationalUnit() == null)
                         return true;
-                    return !classGroupService.classGroupExistsByNameAndOrganizationalUnitId(name,
+                    return !classGroupService.existsByNameAndOrganizationalUnitId(name,
                             binder.getBean().getOrganizationalUnit().getId(),
                             binder.getBean().getId());
                 }, "Class group with this name already exists in this organizational unit")

@@ -123,7 +123,7 @@ public class ClassGroupView extends AbstractClassCalendarView implements HasUrlP
 
     private void setEntryProvider() {
         // implementation of AbstractEntryProvider was leading to a multiple db calls, probably a bug in the library
-        entryProvider = new InMemoryEntryProvider<>(eventsService.makeClassGroupEntriesStream(classGroupId, isUserAdmin));
+        entryProvider = new InMemoryEntryProvider<>(eventsService.makeClassGroupEntries(classGroupId, isUserAdmin));
         calendar.setEntryProvider(entryProvider);
         calendar.getEntryProvider().refreshAll();
     }

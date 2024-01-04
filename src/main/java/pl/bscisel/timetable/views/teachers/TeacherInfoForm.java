@@ -77,7 +77,7 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
                 .withValidator(user -> {
                     if (binder.getBean() == null || binder.getBean().getUser() == null)
                         return true;
-                    return !teacherInfoService.teacherInfoExistsByUserId(user.getId(), binder.getBean().getId());
+                    return !teacherInfoService.existsByUserId(user.getId(), binder.getBean().getId());
                 }, "Selected account is already assigned to another teacher")
                 .bind(TeacherInfo::getUser, TeacherInfo::setUser);
     }

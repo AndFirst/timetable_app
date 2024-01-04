@@ -144,7 +144,7 @@ public class ClassForm extends AbstractForm<Class> {
         endTime.setMin(LocalTime.of(7, 0));
         endTime.setMax(LocalTime.of(22, 22));
 
-        teachers.setItems(teacherInfoService.findAllTeachers());
+        teachers.setItems(teacherInfoService.findAll());
         teachers.setItemLabelGenerator(teacherInfo -> teacherInfo.getFullName() + " (#" + teacherInfo.getId() + ")");
     }
 

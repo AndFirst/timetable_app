@@ -1,6 +1,7 @@
 package pl.bscisel.timetable.data.service;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.vaadin.stefan.fullcalendar.Delta;
@@ -29,14 +30,14 @@ public class EventsService {
         this.consultationRepository = consultationRepository;
     }
 
-    private static LocalTime addDeltaToLocalTime(LocalTime time, Delta delta) {
+    private static LocalTime addDeltaToLocalTime(@NotNull LocalTime time, @NotNull Delta delta) {
         return time
                 .plusHours(delta.getHours())
                 .plusMinutes(delta.getMinutes());
     }
 
-    public String getTeachersStr(Set<TeacherInfo> teachers) {
-        if (teachers.isEmpty()) {
+    public String getTeachersStr(@Nullable Set<TeacherInfo> teachers) {
+        if (teachers == null || teachers.isEmpty()) {
             return "";
         }
         StringBuilder sb = new StringBuilder();
@@ -47,24 +48,24 @@ public class EventsService {
     }
 
     @Transactional
-    public List<CalendarEntry> makeClassGroupEntriesStream(Long classGroupId, boolean editable) {
+    public List<CalendarEntry> makeClassGroupEntries(@NotNull Long classGroupId, boolean editable) {
         List<Class> classes = classRepository.findAllByClassGroupId(classGroupId); // unfortunately can't use stream here
         return makeCalendarEntriesForClasses(classes, editable);
     }
 
     @Transactional
-    public List<CalendarEntry> makeTeacherClassesEntriesStream(Long teacherId, boolean editable) {
+    public List<CalendarEntry> makeTeacherClassesEntries(@NotNull Long teacherId, boolean editable) {
         List<Class> classes = classRepository.findAllByTeacherId(teacherId);
         return makeCalendarEntriesForClasses(classes, editable);
     }
 
     @Transactional
-    public List<CalendarEntry> makeTeacherConsultationsEntriesStream(Long teacherId, boolean editable) {
+    public List<CalendarEntry> makeTeacherConsultationsEntries(@NotNull Long teacherId, boolean editable) {
         List<Consultation> consultations = consultationRepository.findAllByTeacherId(teacherId);
         return makeCalendarEntriesForConsultations(consultations, editable);
     }
 
-    private List<CalendarEntry> makeCalendarEntriesForConsultations(List<Consultation> consultations, boolean editable) {
+    private List<CalendarEntry> makeCalendarEntriesForConsultations(@NotNull List<Consultation> consultations, boolean editable) {
         List<CalendarEntry> calendarEntries = new ArrayList<>();
         for (Consultation consultation : consultations) {
             calendarEntries.add(makeEntry(consultation, editable));
@@ -73,7 +74,7 @@ public class EventsService {
     }
 
     @NotNull
-    private List<CalendarEntry> makeCalendarEntriesForClasses(List<Class> classes, boolean editable) {
+    private List<CalendarEntry> makeCalendarEntriesForClasses(@NotNull List<Class> classes, boolean editable) {
         List<CalendarEntry> calendarEntries = new ArrayList<>();
         for (Class aClass : classes) {
             calendarEntries.add(makeEntry(aClass, editable));
@@ -81,7 +82,7 @@ public class EventsService {
         return calendarEntries;
     }
 
-    public CalendarEntry makeEntry(Class event, boolean editable) {
+    public CalendarEntry makeEntry(@NotNull Class event, boolean editable) {
         CalendarEntry entry = new CalendarEntry(event);
         entry.setTitle(event.getCourse().getName());
         entry.setType(event.getType());
@@ -92,7 +93,7 @@ public class EventsService {
         return entry;
     }
 
-    public CalendarEntry makeEntry(Consultation consultation, boolean editable) {
+    public CalendarEntry makeEntry(@NotNull Consultation consultation, boolean editable) {
         CalendarEntry entry = new CalendarEntry(consultation);
         entry.setTitle("Consultation");
         entry.setTeacher(consultation.getTeacher().getFullName());
@@ -102,7 +103,7 @@ public class EventsService {
         return entry;
     }
 
-    public void updateEventByDelta(Event event, Delta delta, boolean onlyEndTime) {
+    public void updateEventByDelta(@NotNull Event event, @NotNull Delta delta, boolean onlyEndTime) {
         if (!onlyEndTime) {
             LocalTime newStartTime = addDeltaToLocalTime(event.getStartTime(), delta);
             event.setStartTime(newStartTime);
@@ -121,19 +122,19 @@ public class EventsService {
         }
     }
 
-    public void saveEvent(Class newClass) {
+    public void save(@NotNull Class newClass) {
         classRepository.save(newClass);
     }
 
-    public void deleteEvent(Class aClass) {
+    public void delete(@NotNull Class aClass) {
         classRepository.delete(aClass);
     }
 
-    public void saveConsultation(Consultation consultation) {
+    public void save(@NotNull Consultation consultation) {
         consultationRepository.save(consultation);
     }
 
-    public void deleteConsultation(Consultation consultation) {
+    public void delete(@NotNull Consultation consultation) {
         consultationRepository.delete(consultation);
     }
 }

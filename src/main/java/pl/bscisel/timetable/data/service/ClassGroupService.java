@@ -17,23 +17,23 @@ public class ClassGroupService {
         this.classGroupRepo = classGroupRepository;
     }
 
-    public List<ClassGroup> findClassGroupsByOrganizationalUnitId(Long organizationalUnitId) {
+    public List<ClassGroup> findByOrganizationalUnitId(@NotNull Long organizationalUnitId) {
         return classGroupRepo.findByOrganizationalUnitIdOrderByName(organizationalUnitId);
     }
 
-    public void saveClassGroup(ClassGroup classGroup) {
+    public void save(@NotNull ClassGroup classGroup) {
         classGroupRepo.save(classGroup);
     }
 
-    public void deleteClassGroup(ClassGroup classGroup) {
+    public void delete(@NotNull ClassGroup classGroup) {
         classGroupRepo.delete(classGroup);
     }
 
-    public boolean classGroupExistsByNameAndOrganizationalUnitId(@NotNull String name, @NotNull Long organizationalUnitId, @Nullable Long excludeId) {
+    public boolean existsByNameAndOrganizationalUnitId(@NotNull String name, @NotNull Long organizationalUnitId, @Nullable Long excludeId) {
         if (excludeId == null) {
-            return findClassGroupsByOrganizationalUnitId(organizationalUnitId).stream().anyMatch(group -> group.getName().equalsIgnoreCase(name.strip()));
+            return findByOrganizationalUnitId(organizationalUnitId).stream().anyMatch(group -> group.getName().equalsIgnoreCase(name.strip()));
         } else {
-            return findClassGroupsByOrganizationalUnitId(organizationalUnitId).stream().anyMatch(group -> group.getName().equalsIgnoreCase(name.strip()) && !group.getId().equals(excludeId));
+            return findByOrganizationalUnitId(organizationalUnitId).stream().anyMatch(group -> group.getName().equalsIgnoreCase(name.strip()) && !group.getId().equals(excludeId));
         }
     }
 
@@ -41,7 +41,7 @@ public class ClassGroupService {
         return classGroupRepo.findAll();
     }
 
-    public Optional<ClassGroup> findById(Long classGroupId) {
+    public Optional<ClassGroup> findById(@NotNull Long classGroupId) {
         return classGroupRepo.findById(classGroupId);
     }
 }

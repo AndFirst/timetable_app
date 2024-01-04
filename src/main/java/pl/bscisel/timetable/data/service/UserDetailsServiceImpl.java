@@ -1,5 +1,6 @@
 package pl.bscisel.timetable.data.service;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,8 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByEmailAddress(username)
+    public UserDetails loadUserByUsername(@NotNull String username) throws UsernameNotFoundException {
+        User user = userRepository.findByEmailAddressIgnoreCase(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         Set<GrantedAuthority> authorities = user.getRoles().stream()

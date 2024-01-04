@@ -133,7 +133,7 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private void saveUnit(@Nullable OrganizationalUnit unit) {
         if (unit != null) {
-            unitService.saveOrganizationalUnit(unit);
+            unitService.save(unit);
         }
         finishUnitEditing(unit);
         selectUnitInGrid(unit);
@@ -141,7 +141,7 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private void deleteUnit(@Nullable OrganizationalUnit unit) {
         if (unit != null) {
-            unitService.deleteOrganizationalUnit(unit);
+            unitService.delete(unit);
         }
         updateGroupGrid(null);
         finishUnitEditing(unit);
@@ -164,14 +164,14 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private void saveGroup(@Nullable ClassGroup classGroup) {
         if (classGroup != null) {
-            groupsService.saveClassGroup(classGroup);
+            groupsService.save(classGroup);
         }
         finishGroupEditing(classGroup);
     }
 
     private void deleteGroup(@Nullable ClassGroup classGroup) {
         if (classGroup != null) {
-            groupsService.deleteClassGroup(classGroup);
+            groupsService.delete(classGroup);
         }
         finishGroupEditing(classGroup);
     }
@@ -244,7 +244,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         if (organizationUnit == null || organizationUnit.getId() == null) {
             groupsGrid.setItems(new LinkedList<>());
         } else {
-            groupsGrid.setItems(groupsService.findClassGroupsByOrganizationalUnitId(organizationUnit.getId()));
+            groupsGrid.setItems(groupsService.findByOrganizationalUnitId(organizationUnit.getId()));
         }
     }
 

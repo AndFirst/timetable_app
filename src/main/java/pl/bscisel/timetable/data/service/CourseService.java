@@ -1,5 +1,6 @@
 package pl.bscisel.timetable.data.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class CourseService {
      *
      * @param course course to save
      */
-    public void save(Course course) {
+    public void save(@NotNull Course course) {
         courseRepository.save(course);
     }
 
@@ -35,7 +36,7 @@ public class CourseService {
      *
      * @param course course to delete
      */
-    public void delete(Course course) {
+    public void delete(@NotNull Course course) {
         courseRepository.delete(course);
     }
 
@@ -45,18 +46,24 @@ public class CourseService {
      * @param filter filter to search
      * @return list of courses that match the filter
      */
-    public List<Course> search(String filter) {
-        if (filter == null || filter.isEmpty()) {
+    public List<Course> search(@Nullable String filter) {
+        filter = StringUtils.stripToNull(filter);
+        if (filter == null) {
             return courseRepository.findAll();
         }
         return courseRepository.findByCodeContainsIgnoreCaseOrNameContainsIgnoreCase(filter, filter);
     }
 
-    public boolean courseExistsByCode(@NotNull String code, @Nullable Long excludeId) {
-        if (excludeId == null)
+    public boolean existsByCode(@Nullable String code, @Nullable Long excludeId) {
+        code = StringUtils.stripToNull(code);
+        if (code == null) {
+            return false;
+        }
+        if (excludeId == null) {
             return courseRepository.existsByCodeIgnoreCase(code);
-        else
+        } else {
             return courseRepository.existsByCodeIgnoreCaseAndIdNot(code, excludeId);
+        }
     }
 
     public List<Course> findAll() {

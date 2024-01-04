@@ -120,7 +120,7 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
 
     private void deleteConsultationAction(Consultation consultation) {
         logger.debug("deleteConsultationAction");
-        eventsService.deleteConsultation(consultation);
+        eventsService.delete(consultation);
         removeEditedEntry();
         entryProvider.refreshAll();
         cleanAndCloseDialog(addConsultationDialog);
@@ -128,7 +128,7 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
 
     private void saveConsultationAction(Consultation consultation) {
         logger.debug("saveConsultationAction");
-        eventsService.saveConsultation(consultation);
+        eventsService.save(consultation);
         removeEditedEntry();
         entryProvider.addEntry(eventsService.makeEntry(consultation, true));
         entryProvider.refreshAll();
@@ -146,7 +146,7 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
         if (loggedUser == null) {
             return Optional.empty();
         }
-        return teacherInfoService.findTeacherByUserId(loggedUser.getId())
+        return teacherInfoService.findByUserId(loggedUser.getId())
                 .map(AbstractEntity::getId);
     }
 
@@ -247,7 +247,7 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
     private void addNewConsultation() {
         logger.debug("Adding new consultation");
         Consultation consultation = new Consultation();
-        teacherInfoService.findTeacherById(viewTeacherId).ifPresent(consultation::setTeacher);
+        teacherInfoService.findById(viewTeacherId).ifPresent(consultation::setTeacher);
         setSelectedTimeslotsData(consultation);
         editConsultation(consultation);
     }
@@ -255,8 +255,8 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
     private void setEntryProvider() {
         // implementation of AbstractEntryProvider was leading to a multiple db calls, probably a bug in the library
         entryProvider = new InMemoryEntryProvider<>();
-        entryProvider.addEntries(eventsService.makeTeacherClassesEntriesStream(viewTeacherId, isUserAdmin));
-        entryProvider.addEntries(eventsService.makeTeacherConsultationsEntriesStream(viewTeacherId, isUserAdmin || isLoggedUserViewingOwnTimetable));
+        entryProvider.addEntries(eventsService.makeTeacherClassesEntries(viewTeacherId, isUserAdmin));
+        entryProvider.addEntries(eventsService.makeTeacherConsultationsEntries(viewTeacherId, isUserAdmin || isLoggedUserViewingOwnTimetable));
         calendar.setEntryProvider(entryProvider);
         calendar.getEntryProvider().refreshAll();
     }

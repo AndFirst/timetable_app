@@ -41,7 +41,7 @@ public class CourseForm extends AbstractForm<Course> {
                 .withValidator(code -> {
                     if (binder.getBean() == null)
                         return true;
-                    return !courseService.courseExistsByCode(code, binder.getBean().getId());
+                    return !courseService.existsByCode(code, binder.getBean().getId());
                 }, "Course with this code already exists")
                 .bind(Course::getCode, Course::setCode);
         binder.forField(name)

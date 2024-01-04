@@ -74,7 +74,7 @@ public abstract class AbstractClassCalendarView extends AbstractCalendarView {
 
     protected void saveClassAction(Class aClass) {
         logger.debug("saveClassAction");
-        eventsService.saveEvent(aClass);
+        eventsService.save(aClass);
         removeEditedEntry();
         entryProvider.addEntry(eventsService.makeEntry(aClass, true));
         entryProvider.refreshAll();
@@ -83,7 +83,7 @@ public abstract class AbstractClassCalendarView extends AbstractCalendarView {
 
     protected void deleteClassAction(Class aClass) {
         logger.debug("deleteClassAction");
-        eventsService.deleteEvent(aClass);
+        eventsService.delete(aClass);
         removeEditedEntry();
         entryProvider.refreshAll();
         cleanAndCloseDialog(addClassDialog);

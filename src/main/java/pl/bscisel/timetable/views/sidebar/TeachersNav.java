@@ -20,7 +20,7 @@ public class TeachersNav extends VerticalLayout {
     }
 
     private void setupTeachers() {
-        List<TeacherInfo> teachers = teacherInfoService.findAllTeachers();
+        List<TeacherInfo> teachers = teacherInfoService.findAll();
         add(makeButtonsForTeachers(teachers));
     }
 

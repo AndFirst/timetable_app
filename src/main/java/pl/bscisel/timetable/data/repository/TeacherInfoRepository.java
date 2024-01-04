@@ -13,7 +13,7 @@ public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> 
 
     Optional<TeacherInfo> findByUserId(Long userId);
 
-    @Query("SELECT t FROM TeacherInfo t WHERE CONCAT(t.degree, ' ', t.name, ' ', t.surname) LIKE %:filter%")
+    @Query("SELECT t FROM TeacherInfo t WHERE LOWER(CONCAT(t.degree, ' ', t.name, ' ', t.surname)) LIKE CONCAT('%', LOWER(:filter), '%')")
     List<TeacherInfo> findByDegreeAndNameAndSurnameConcatenatedContaining(@Param("filter") String filter);
 
     boolean existsByUserId(Long id);

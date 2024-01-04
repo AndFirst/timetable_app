@@ -1,5 +1,6 @@
 package pl.bscisel.timetable.data.service;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
@@ -23,15 +24,15 @@ public class OrganizationalUnitService {
         return findTopLevelUnits().size();
     }
 
-    public List<OrganizationalUnit> findChildrenByUnitId(Long id) {
+    public List<OrganizationalUnit> findChildrenByUnitId(@NotNull Long id) {
         return orgUnitRepo.findByParentUnitId(id);
     }
 
-    public int countChildrenByUnitId(Long id) {
+    public int countChildrenByUnitId(@NotNull Long id) {
         return findChildrenByUnitId(id).size();
     }
 
-    public boolean hasChildrenByUnitId(Long id) {
+    public boolean hasChildrenByUnitId(@NotNull Long id) {
         return !findChildrenByUnitId(id).isEmpty();
     }
 
@@ -39,19 +40,19 @@ public class OrganizationalUnitService {
         return orgUnitRepo.findAll();
     }
 
-    public void saveOrganizationalUnit(OrganizationalUnit organizationalUnit) {
+    public void save(OrganizationalUnit organizationalUnit) {
         orgUnitRepo.save(organizationalUnit);
     }
 
-    public void deleteOrganizationalUnit(OrganizationalUnit organizationalUnit) {
+    public void delete(OrganizationalUnit organizationalUnit) {
         orgUnitRepo.delete(organizationalUnit);
     }
 
-    public String getNameWithId(OrganizationalUnit organizationalUnit) {
+    public String getNameWithId(@NotNull OrganizationalUnit organizationalUnit) {
         return organizationalUnit.getId() + ". " + organizationalUnit.getName();
     }
 
-    public boolean organizationalUnitExistsByNameAndParentUnitId(String name, @Nullable Long parentUnitId, @Nullable Long excludeId) {
+    public boolean organizationalUnitExistsByNameAndParentUnitId(@NotNull String name, @Nullable Long parentUnitId, @Nullable Long excludeId) {
         if (parentUnitId == null && excludeId == null) {
             return orgUnitRepo.findByParentUnitNull().stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()));
         } else if (parentUnitId == null) {

@@ -58,7 +58,7 @@ public class OrganizationalUnitsNav extends VerticalLayout {
 
     private void findAndSetChildren(Long orgUnitId, OrgUnitDiv unitDiv) {
         List<OrganizationalUnit> childUnits = orgUnitService.findChildrenByUnitId(orgUnitId);
-        List<ClassGroup> classGroups = classGroupService.findClassGroupsByOrganizationalUnitId(orgUnitId);
+        List<ClassGroup> classGroups = classGroupService.findByOrganizationalUnitId(orgUnitId);
         Div childrenDiv = new Div();
         if (!childUnits.isEmpty()) {
             childrenDiv.add(makeDivsForUnits(childUnits));

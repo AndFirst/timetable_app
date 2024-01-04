@@ -94,7 +94,7 @@ public class ConsultationForm extends AbstractForm<Consultation> {
         dayOfWeek.setItemLabelGenerator(item -> item.toString().charAt(0) + item.toString().substring(1).toLowerCase());
         dayOfWeek.setRequiredIndicatorVisible(true);
 
-        teacher.setItems(teacherInfoService.findAllTeachers());
+        teacher.setItems(teacherInfoService.findAll());
         teacher.setItemLabelGenerator(teacher -> teacher.getFullName() + " (#" + teacher.getId() + ")");
 
         startTime.setMin(LocalTime.of(7, 0));
