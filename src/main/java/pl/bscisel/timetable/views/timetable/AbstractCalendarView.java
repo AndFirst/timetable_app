@@ -75,10 +75,12 @@ public abstract class AbstractCalendarView extends VerticalLayout {
     private void removeListenersForMovingAndResizing() {
         if (entryResizedListener != null) {
             entryResizedListener.remove();
+            entryResizedListener = null;
         }
 
         if (entryDroppedListener != null) {
             entryDroppedListener.remove();
+            entryDroppedListener = null;
         }
     }
 

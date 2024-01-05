@@ -8,3 +8,14 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
+
+  timetable:
+    image: timetable:latest
+    environment:
+        DATABASE_URL: jdbc:postgresql://postgres:5432/db
+        DATABASE_USER: user
+        DATABASE_PASSWORD: password
+    ports:
+      - "8080:8080"
+    depends_on:
+        - postgres
