@@ -27,9 +27,12 @@ class OrganizationalUnitViewTest {
     public void setUp() {
         service = mock(OrganizationalUnitService.class);
         dataProvider = spy(new OrganizationalUnitDataProvider(service));
-        form = spy(new OrganizationalUnitForm(service));
+        form = spy(OrganizationalUnitForm.class);
+        form.setOrganizationalUnitService(service);
         classGroupService = mock(ClassGroupService.class);
-        classGroupForm = spy(new ClassGroupForm(service, classGroupService));
+        classGroupForm = spy(ClassGroupForm.class);
+        classGroupForm.setOrganizationalUnitService(service);
+        classGroupForm.setClassGroupService(classGroupService);
 
         view = spy(new OrganizationalUnitView(service, dataProvider, form, classGroupService, classGroupForm));
     }

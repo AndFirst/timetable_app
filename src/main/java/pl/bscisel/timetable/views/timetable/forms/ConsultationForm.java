@@ -9,6 +9,9 @@ import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
+import jakarta.annotation.PostConstruct;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.Consultation;
@@ -21,60 +24,64 @@ import java.time.LocalTime;
 
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ConsultationForm extends AbstractForm<Consultation> {
+public class ConsultationForm extends AbstractEventForm<Consultation> {
 
     ComboBox<TeacherInfo> teacher = new ComboBox<>("Teacher");
-    Select<DayOfWeek> dayOfWeek = new Select<>();
-    TimePicker startTime = new TimePicker("Start time");
-    TimePicker endTime = new TimePicker("End time");
     TextField location = new TextField("Location");
     TextArea description = new TextArea("Description");
     TeacherInfoService teacherInfoService;
 
-
-    public ConsultationForm(TeacherInfoService teacherInfoService) {
+    public ConsultationForm() {
         super(new BeanValidationBinder<>(Consultation.class));
+    }
+
+    @Autowired
+    public void setTeacherInfoService(TeacherInfoService teacherInfoService) {
         this.teacherInfoService = teacherInfoService;
+    }
 
-        setResponsiveSteps(new ResponsiveStep("0", 1));
+    @Override
+    @PostConstruct
+    public void init() {
+        super.init();
 
+        configureEnterShortcut(description);
+        add(dayOfWeek, createDurationFields(), teacher, location, description);
+    }
+
+    @NotNull
+    private HorizontalLayout createDurationFields() {
         HorizontalLayout duration = new HorizontalLayout(startTime, endTime);
         duration.setFlexGrow(1, startTime, endTime);
         duration.setWidthFull();
-
-        setFieldsRequired();
-        populateFields();
-        setBindings();
-        configureEnterShortcut(description);
-
-        add(dayOfWeek, duration, teacher, location, description);
+        return duration;
     }
 
-    private void setBindings() {
-        binder.forField(dayOfWeek)
-                .withValidator(new BeanValidator(Consultation.class, "dayOfWeek"))
-                .bind(Consultation::getDayOfWeek, Consultation::setDayOfWeek);
-        binder.forField(startTime)
-                .withValidator(new BeanValidator(Consultation.class, "startTime"))
-                .withValidator(startTime -> {
-                    if (binder.getBean() == null || binder.getBean().getEndTime() == null)
-                        return true;
-                    return startTime.isBefore(binder.getBean().getEndTime());
-                }, "Start time must be before end time")
-                .bind(Consultation::getStartTime, Consultation::setStartTime);
-        binder.forField(endTime)
-                .withValidator(new BeanValidator(Consultation.class, "endTime"))
-                .withValidator(endTime -> {
-                    if (binder.getBean() == null || binder.getBean().getStartTime() == null)
-                        return true;
-                    return endTime.isAfter(binder.getBean().getStartTime());
-                }, "End time must be after start time")
-                .withValidator(endTime -> {
-                    if (binder.getBean() == null || binder.getBean().getStartTime() == null)
-                        return true;
-                    return endTime.minusMinutes(14).isAfter(binder.getBean().getStartTime());
-                }, "Class must be at least 15 minutes long")
-                .bind(Consultation::getEndTime, Consultation::setEndTime);
+    @Override
+    void populateFields() {
+        super.populateFields();
+
+        teacher.setItems(teacherInfoService.findAll());
+        teacher.setItemLabelGenerator(teacher -> teacher.getFullName() + " (#" + teacher.getId() + ")");
+    }
+
+    @Override
+    public void setFormBean(Consultation bean) {
+        super.setFormBean(bean);
+        if (bean != null && bean.getTeacher() != null) {
+            teacher.setEnabled(false);
+        }
+    }
+
+    @Override
+    void setFieldsRequired() {
+        super.setFieldsRequired();
+        teacher.setRequired(true);
+    }
+
+    @Override
+    void setBindings() {
+        super.setBindings();
 
         binder.forField(teacher)
                 .withValidator(new BeanValidator(Consultation.class, "teacher"))
@@ -87,36 +94,6 @@ public class ConsultationForm extends AbstractForm<Consultation> {
         binder.forField(description)
                 .withValidator(new BeanValidator(Consultation.class, "description"))
                 .bind(Consultation::getDescription, Consultation::setDescription);
-    }
-
-    private void populateFields() {
-        dayOfWeek.setLabel("Day of week");
-        dayOfWeek.setItems(DayOfWeek.values());
-        dayOfWeek.setItemLabelGenerator(item -> item.toString().charAt(0) + item.toString().substring(1).toLowerCase());
-        dayOfWeek.setRequiredIndicatorVisible(true);
-
-        teacher.setItems(teacherInfoService.findAll());
-        teacher.setItemLabelGenerator(teacher -> teacher.getFullName() + " (#" + teacher.getId() + ")");
-
-        startTime.setMin(LocalTime.of(7, 0));
-        startTime.setMax(LocalTime.of(22, 22));
-
-        endTime.setMin(LocalTime.of(7, 0));
-        endTime.setMax(LocalTime.of(22, 22));
-    }
-
-    @Override
-    public void setFormBean(Consultation bean) {
-        super.setFormBean(bean);
-        if (bean != null && bean.getTeacher() != null) {
-            teacher.setEnabled(false);
-        }
-    }
-
-    private void setFieldsRequired() {
-        teacher.setRequired(true);
-        startTime.setRequired(true);
-        endTime.setRequired(true);
     }
 
     Binder<Consultation> getBinder() {

@@ -10,6 +10,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.shared.Registration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.vaadin.stefan.fullcalendar.dataprovider.InMemoryEntryProvider;
 import pl.bscisel.timetable.data.entity.Class;
 import pl.bscisel.timetable.data.service.ClassGroupService;
@@ -32,6 +33,7 @@ public class ClassGroupView extends AbstractClassCalendarView implements HasUrlP
     private final CourseService courseService;
     private final ClassGroupService classGroupService;
     private final TeacherInfoService teacherInfoService;
+    private final ApplicationContext applicationContext;
     private final boolean isUserAdmin;
 
     private Long classGroupId;
@@ -43,11 +45,13 @@ public class ClassGroupView extends AbstractClassCalendarView implements HasUrlP
                           SecurityService securityService,
                           CourseService courseService,
                           ClassGroupService classGroupService,
-                          TeacherInfoService teacherInfoService) {
+                          TeacherInfoService teacherInfoService,
+                          ApplicationContext applicationContext) {
         super(eventsService);
         this.courseService = courseService;
         this.classGroupService = classGroupService;
         this.teacherInfoService = teacherInfoService;
+        this.applicationContext = applicationContext;
         this.isUserAdmin = securityService.isUserAdmin();
 
         if (isUserAdmin) {
@@ -86,8 +90,8 @@ public class ClassGroupView extends AbstractClassCalendarView implements HasUrlP
     }
 
     private void createForm() {
-        classForm = new ClassForm(courseService, classGroupService, teacherInfoService);
-        classFormButtons = classForm.getButtons();
+        classForm = applicationContext.getBean(ClassForm.class);
+        classFormButtons = classForm.createButtons();
     }
 
     private void configureFormListeners() {
@@ -102,7 +106,7 @@ public class ClassGroupView extends AbstractClassCalendarView implements HasUrlP
     }
 
     private void createFormDialogs() {
-        addClassDialog = new FormDialog(classForm, classForm.getButtons(), "Add class to schedule");
+        addClassDialog = new FormDialog(classForm, classForm.createButtons(), "Add class to schedule");
     }
 
     private void configureDialogsListeners() {

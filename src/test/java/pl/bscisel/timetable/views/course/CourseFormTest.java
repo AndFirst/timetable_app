@@ -1,13 +1,13 @@
-package pl.bscisel.timetable.views.course.forms;
+package pl.bscisel.timetable.views.course;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.bscisel.timetable.data.entity.Course;
 import pl.bscisel.timetable.data.service.CourseService;
+import pl.bscisel.timetable.views.course.CourseForm;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.*;
 
 class CourseFormTest {
 
@@ -17,17 +17,30 @@ class CourseFormTest {
     @BeforeEach
     public void setUp() {
         courseService = mock(CourseService.class);
-        form = spy(new CourseForm(courseService));
+        form = spy(CourseForm.class);
+        form.setCourseService(courseService);
     }
 
     @Test
-    public void testRequiredFieldsAreRequired() {
+    public void testInit() {
+        form.init();
+        verify(form).setRequiredFields();
+        verify(form).setBindings();
+        verify(form).configureEnterShortcut(form.description);
+
+        assertEquals(4, form.getChildren().count()); // 3 fields + buttons
+    }
+
+    @Test
+    public void testSetRequiredFields() {
+        form.setRequiredFields();
         assertTrue(form.code.isRequired());
         assertTrue(form.name.isRequired());
     }
 
     @Test
-    public void testBindingsAreSet() {
+    public void testSetBindings() {
+        form.setBindings();
         assertNotNull(form.getBinder().getBinding("code"));
         assertNotNull(form.getBinder().getBinding("name"));
         assertNotNull(form.getBinder().getBinding("description"));
@@ -35,6 +48,7 @@ class CourseFormTest {
 
     @Test
     public void testCodeBinding() {
+        form.setBindings();
         Course bean = new Course();
         form.setFormBean(bean);
         form.code.setValue("TEST");
@@ -43,6 +57,7 @@ class CourseFormTest {
 
     @Test
     public void testNameBinding() {
+        form.setBindings();
         Course bean = new Course();
         form.setFormBean(bean);
         form.name.setValue("Test course");
@@ -51,6 +66,7 @@ class CourseFormTest {
 
     @Test
     public void testDescriptionBinding() {
+        form.setBindings();
         Course bean = new Course();
         form.setFormBean(bean);
         form.description.setValue("Test description");

@@ -1,37 +1,37 @@
 package pl.bscisel.timetable.views.course;
 
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.provider.Query;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 import pl.bscisel.timetable.data.entity.Course;
 import pl.bscisel.timetable.data.service.CourseService;
-import pl.bscisel.timetable.views.course.forms.CourseForm;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@ExtendWith(MockitoExtension.class)
+
 class CourseViewTest {
 
     private final String emptyFilter = "";
-    private final String filter = "TEST";
+    private final String filter = "TEST2";
 
     CourseService courseService;
     CourseForm courseForm;
-    CourseView courseView;
+    CourseView view;
 
     @BeforeEach
     public void setUp() {
         courseService = mock(CourseService.class);
-        mockCourseSearch();
-        courseForm = spy(new CourseForm(courseService));
-        courseView = spy(new CourseView(courseService, courseForm));
+        courseForm = spy(CourseForm.class);
+        courseForm.setCourseService(courseService);
+
+        view = spy(CourseView.class);
+        view.setCourseService(courseService);
+        view.setForm(courseForm);
     }
 
     private void mockCourseSearch() {
@@ -47,111 +47,162 @@ class CourseViewTest {
         course1.setName("Test course 2");
         course1.setCode("TEST2");
 
-        lenient().when(courseService.search(emptyFilter)).thenReturn(List.of(course, course1));
+        lenient().when(courseService.search(emptyFilter)).thenReturn(List.of(course, course1, course2));
         lenient().when(courseService.search(filter)).thenReturn(List.of(course2));
     }
 
     @Test
-    public void testFormNotVisibleOnStart() {
-        assertFalse(courseForm.isVisible());
-    }
-
-    @Test
-    public void testGridIsVisibleOnStart() {
-        assertTrue(courseView.grid.isVisible());
-    }
-
-    @Test
-    public void testToolbarIsVisibleOnStart() {
-        assertTrue(courseView.textFilter.isVisible());
-        assertTrue(courseView.addCourseBtn.isVisible());
-    }
-
-    @Test
-    public void testGridPopulatedOnStart() {
-        assertEquals(2, courseView.grid.getDataProvider().size(new Query<>()));
-    }
-
-    @Test
-    public void testShowFormOnAddCourseClick() {
-        courseView.addCourseBtn.click();
-        assertTrue(courseForm.isVisible());
+    public void testInit() {
+        view.init();
+        verify(view, times(1)).setSizeFull();
+        verify(view, times(1)).configureToolbar();
+        verify(view, times(1)).configureGrid();
+        verify(view, times(1)).configureForm();
+        assertEquals(2, view.getComponentCount());
+        verify(view, times(1)).updateItems();
     }
 
     @Test
     public void testCloseForm() {
-        courseView.addCourseBtn.click();
-        assertTrue(courseForm.isVisible());
-        courseView.closeForm();
-        assertFalse(courseForm.isVisible());
-        verify(courseForm, times(1)).setFormBean(null);
-    }
-
-    @Test
-    public void testBeanIsCleanedOnCloseForm() {
-        courseView.addCourseBtn.click();
-        verify(courseForm, times(1)).setFormBean(any());
-        courseView.closeForm();
-        verify(courseForm, times(1)).setFormBean(null);
-    }
-
-    @Test
-    public void testFormActionsAdded() {
-        verify(courseForm, times(1)).addCancelAction(any());
-        verify(courseForm, times(1)).addDeleteAction(any());
-        verify(courseForm, times(1)).addSaveAction(any());
-    }
-
-    @Test
-    public void testEditCourse() {
-        assertFalse(courseView.form.isVisible());
-        Course course = new Course();
-        courseView.editCourse(course);
-        assertTrue(courseView.form.isVisible());
-        verify(courseForm, times(1)).setFormBean(course);
-
-        courseView.editCourse(null);
-        assertFalse(courseView.form.isVisible());
-        verify(courseForm, times(1)).setFormBean(null);
+        view.closeForm();
+        verify(view, times(1)).closeEditor();
     }
 
     @Test
     public void testSaveCourse() {
         Course course = new Course();
-        courseView.saveCourse(course);
+        view.saveCourse(course);
         verify(courseService, times(1)).save(course);
-        verify(courseView, times(1)).updateItems();
-        verify(courseView, times(1)).closeEditor();
+        verify(view, times(1)).updateItems();
+        verify(view, times(1)).closeEditor();
     }
 
     @Test
     public void testDeleteCourse() {
         Course course = new Course();
-        courseView.deleteCourse(course);
+        view.deleteCourse(course);
         verify(courseService, times(1)).delete(course);
-        verify(courseView, times(1)).updateItems();
-        verify(courseView, times(1)).closeEditor();
+        verify(view, times(1)).updateItems();
+        verify(view, times(1)).closeEditor();
+    }
+
+    @Test
+    public void testConfigureForm() {
+        view.configureForm();
+        assertFalse(view.form.isVisible());
+        verify(courseForm, times(1)).addSaveAction(any());
+        verify(courseForm, times(1)).addDeleteAction(any());
+        verify(courseForm, times(1)).addCancelAction(any());
+    }
+
+    @Test
+    public void testConfigureGrid() {
+        view.configureGrid();
+        assertEquals("100%", view.grid.getWidth());
+        assertEquals("100%", view.grid.getHeight());
+        assertEquals(3, view.grid.getColumns().size());
+        assertTrue(view.grid.getColumns().stream().allMatch(Grid.Column::isAutoWidth));
+
+        Course course = new Course();
+        view.grid.select(course);
+        verify(view, times(1)).editCourse(course);
+    }
+
+    @Test
+    public void testConfigureToolbar() {
+        view.configureToolbar();
+        String value = "test";
+        view.textFilter.setValue(value);
+        verify(view, times(1)).updateItems();
+        assertEquals(ValueChangeMode.LAZY, view.textFilter.getValueChangeMode());
+        assertTrue(view.textFilter.isClearButtonVisible());
+        assertEquals("Filter by code or name...", view.textFilter.getPlaceholder());
+    }
+
+    @Test
+    public void testCreateToolbar() {
+        var toolbar = view.createToolbar();
+        assertEquals(2, toolbar.getChildren().count());
+    }
+
+    @Test
+    public void testCreateContent() {
+        var content = view.createContent();
+        assertEquals("100%", content.getElement().getStyle().get("width"));
+        assertEquals("100%", content.getElement().getStyle().get("height"));
+        assertEquals(2, content.getChildren().count());
+    }
+
+    @Test
+    public void testCloseEditor() {
+        view.closeEditor();
+        verify(courseForm, times(1)).setFormBean(null);
+        verify(courseForm, times(1)).setVisible(false);
+    }
+
+    @Test
+    public void testEditCourse() {
+        Course course = new Course();
+        view.editCourse(course);
+        verify(courseForm, times(1)).setFormBean(course);
+        verify(courseForm, times(1)).setVisible(true);
+
+        view.editCourse(null);
+        verify(view, times(1)).closeEditor();
     }
 
     @Test
     public void testAddCourse() {
-        courseView.addCourse();
-        verify(courseForm, times(1)).setFormBean(any());
-        verify(courseForm, times(1)).setVisible(true);
-        assertTrue(courseView.grid.asSingleSelect().isEmpty());
+        Course course = new Course();
+        view.grid.select(course);
+        view.addCourse();
+        assertTrue(view.grid.asSingleSelect().isEmpty());
+        verify(view, times(1)).editCourse(course);
     }
 
     @Test
     public void testUpdateItems() {
-        courseView.updateItems();
-        verify(courseService, times(2)).search(emptyFilter); // 1 from setUp, 1 from updateItems
-        assertEquals(2, courseView.grid.getDataProvider().size(new Query<>()));
+        mockCourseSearch();
+        view.updateItems();
+        verify(courseService, times(1)).search(emptyFilter);
+        assertEquals(3, view.grid.getDataProvider().size(new Query<>()));
+
+        view.textFilter.setValue(filter);
+        view.updateItems();
+        verify(courseService, times(1)).search(filter);
+        assertEquals(1, view.grid.getDataProvider().size(new Query<>()));
     }
 
     @Test
-    public void testFiltering() {
-        courseView.textFilter.setValue(filter);
-        verify(courseService, times(1)).search(filter);
-        assertEquals(1, courseView.grid.getDataProvider().size(new Query<>()));
+    public void testFormNotVisibleOnStart() {
+        view.init();
+        assertFalse(view.form.isVisible());
+    }
+
+    @Test
+    public void testGridIsVisibleOnStart() {
+        view.init();
+        assertTrue(view.grid.isVisible());
+    }
+
+
+    @Test
+    public void testToolbarIsVisibleOnStart() {
+        view.init();
+        assertTrue(view.textFilter.isVisible());
+        assertTrue(view.addCourseBtn.isVisible());
+    }
+
+    @Test
+    public void testGridPopulatedOnStart() {
+        mockCourseSearch();
+        view.init();
+        assertEquals(3, view.grid.getDataProvider().size(new Query<>()));
+    }
+
+    @Test
+    public void testAddCourseButtonClicked() {
+        view.addCourseBtn.click();
+        verify(view, times(1)).addCourse();
     }
 }

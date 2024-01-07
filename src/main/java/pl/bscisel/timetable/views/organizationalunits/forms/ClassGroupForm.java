@@ -6,6 +6,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.ClassGroup;
@@ -24,31 +26,41 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
     OrganizationalUnitService orgUnitService;
     ClassGroupService classGroupService;
 
-    public ClassGroupForm(OrganizationalUnitService orgUnitService,
-                          ClassGroupService classGroupService) {
+    public ClassGroupForm() {
         super(new BeanValidationBinder<>(ClassGroup.class));
-        this.orgUnitService = orgUnitService;
-        this.classGroupService = classGroupService;
+    }
 
+    @Autowired
+    public void setOrganizationalUnitService(OrganizationalUnitService orgUnitService) {
+        this.orgUnitService = orgUnitService;
+    }
+
+    @Autowired
+    public void setClassGroupService(ClassGroupService classGroupService) {
+        this.classGroupService = classGroupService;
+    }
+
+    @PostConstruct
+    public void init() {
         setFieldsRequired();
         populateFields();
         setBindings();
         configureEnterShortcut(description);
 
-        add(name, organizationalUnit, description, getButtons());
+        add(name, organizationalUnit, description, createButtons());
     }
 
-    private void setFieldsRequired() {
+    void setFieldsRequired() {
         name.setRequired(true);
         organizationalUnit.setRequired(true);
     }
 
-    private void populateFields() {
+    void populateFields() {
         organizationalUnit.setItemLabelGenerator(orgUnitService::getNameWithId);
         organizationalUnit.setItems(orgUnitService.findAll());
     }
 
-    private void setBindings() {
+    void setBindings() {
         binder.forField(name)
                 .withValidator(new BeanValidator(ClassGroup.class, "name"))
                 .withValidator(name -> {

@@ -4,7 +4,10 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
@@ -26,38 +29,48 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
     UserService userService;
     TeacherInfoService teacherInfoService;
 
-    public TeacherInfoForm(UserService userService,
-                           TeacherInfoService teacherInfoService) {
+    public TeacherInfoForm() {
         super(new BeanValidationBinder<>(TeacherInfo.class));
-        this.userService = userService;
-        this.teacherInfoService = teacherInfoService;
-
-        setRequiredFields();
-        configureForm();
-        configureEnterShortcut(biography);
-        setBindings();
-        populateFields();
-
-        add(name, surname, degree, phoneNumber, biography, user, getButtons());
     }
 
-    private void setRequiredFields() {
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @Autowired
+    public void setTeacherInfoService(TeacherInfoService teacherInfoService) {
+        this.teacherInfoService = teacherInfoService;
+    }
+
+    @PostConstruct
+    public void init() {
+        setRequiredFields();
+        configureForm();
+        setBindings();
+        populateFields();
+        configureEnterShortcut(biography);
+
+        add(name, surname, degree, phoneNumber, biography, user, createButtons());
+    }
+
+    void setRequiredFields() {
         name.setRequired(true);
         surname.setRequired(true);
     }
 
-    private void configureForm() {
+    void configureForm() {
         setResponsiveSteps(new ResponsiveStep("0", 1));
         setMaxWidth("33.33%");
     }
 
-    private void populateFields() {
+    void populateFields() {
         user.setItems(userService.findAllUsers());
         user.setItemLabelGenerator(user -> "#" + user.getId() + " " + user.getEmailAddress());
     }
 
 
-    private void setBindings() {
+    void setBindings() {
         binder.forField(name)
                 .withValidator(new BeanValidator(TeacherInfo.class, "name"))
                 .bind(TeacherInfo::getName, TeacherInfo::setName);
@@ -86,5 +99,9 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
                     return !teacherInfoService.existsByUserId(user.getId(), binder.getBean().getId());
                 }, "Selected account is already assigned to another teacher")
                 .bind(TeacherInfo::getUser, TeacherInfo::setUser);
+    }
+
+    Binder<TeacherInfo> getBinder() {
+        return binder;
     }
 }

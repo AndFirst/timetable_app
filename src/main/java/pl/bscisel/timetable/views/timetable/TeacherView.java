@@ -11,6 +11,9 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.shared.Registration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.vaadin.stefan.fullcalendar.dataprovider.InMemoryEntryProvider;
 import pl.bscisel.timetable.data.entity.AbstractEntity;
 import pl.bscisel.timetable.data.entity.Class;
@@ -55,17 +58,21 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
 
     private Registration entryClickedRegistration;
 
+    private ApplicationContext applicationContext;
+
     public TeacherView(EventsService eventsService,
                        TeacherInfoService teacherInfoService,
                        SecurityService securityService,
                        CourseService courseService,
-                       ClassGroupService classGroupService) {
+                       ClassGroupService classGroupService,
+                       ApplicationContext applicationContext) {
         super(eventsService);
         logger.debug("TeacherView constructor");
         this.teacherInfoService = teacherInfoService;
         this.securityService = securityService;
         this.courseService = courseService;
         this.classGroupService = classGroupService;
+        this.applicationContext = applicationContext;
         this.isUserAdmin = securityService.isUserAdmin();
         this.loggedTeacherId = loggedTeacherId();
 
@@ -79,6 +86,7 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
             configureFormDialogs();
         }
     }
+
 
     private void configureFormDialogs() {
         createFormDialogs();
@@ -102,10 +110,10 @@ public class TeacherView extends AbstractClassCalendarView implements HasUrlPara
 
     private void createForms() {
         logger.debug("createForms");
-        classForm = new ClassForm(courseService, classGroupService, teacherInfoService);
-        classFormButtons = classForm.getButtons();
-        consultationForm = new ConsultationForm(teacherInfoService);
-        consultationFormButtons = consultationForm.getButtons();
+        classForm = applicationContext.getBean(ClassForm.class);
+        classFormButtons = classForm.createButtons();
+        consultationForm = applicationContext.getBean(ConsultationForm.class);
+        consultationFormButtons = consultationForm.createButtons();
     }
 
     private void configureFormListeners() {

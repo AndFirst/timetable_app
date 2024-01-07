@@ -1,10 +1,12 @@
-package pl.bscisel.timetable.views.course.forms;
+package pl.bscisel.timetable.views.course;
 
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.Course;
@@ -20,23 +22,30 @@ public class CourseForm extends AbstractForm<Course> {
 
     CourseService courseService;
 
-    public CourseForm(CourseService courseService) {
+    public CourseForm() {
         super(new BeanValidationBinder<>(Course.class));
-        this.courseService = courseService;
+    }
 
+    @Autowired
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    @PostConstruct
+    void init() {
         setRequiredFields();
         setBindings();
         configureEnterShortcut(description);
 
-        add(code, name, description, getButtons());
+        add(code, name, description, createButtons());
     }
 
-    private void setRequiredFields() {
+    void setRequiredFields() {
         code.setRequired(true);
         name.setRequired(true);
     }
 
-    private void setBindings() {
+    void setBindings() {
         binder.forField(code)
                 .withValidator(new BeanValidator(Course.class, "code"))
                 .withValidator(code -> {

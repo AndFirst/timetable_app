@@ -9,7 +9,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
 import pl.bscisel.timetable.data.service.TeacherInfoService;
 import pl.bscisel.timetable.views.MainLayout;
@@ -25,38 +27,48 @@ public class TeacherInfoView extends VerticalLayout {
     Button addTeacherBtn = new Button("Add teacher", event -> addTeacher());
     TeacherInfoService teacherInfoService;
 
-    public TeacherInfoView(TeacherInfoService teacherInfoService,
-                           TeacherInfoForm form) {
+    public TeacherInfoView() {}
+
+    @Autowired
+    public void setTeacherInfoService(TeacherInfoService teacherInfoService) {
         this.teacherInfoService = teacherInfoService;
+    }
+
+    @Autowired
+    public void setForm(TeacherInfoForm form) {
         this.form = form;
+    }
+
+    @PostConstruct
+    void init() {
         setSizeFull();
 
         configureToolbar();
         configureGrid();
         configureForm();
 
-        add(getToolbar(), getContent());
+        add(createToolbar(), createContent());
         updateItems();
     }
 
 
-    private void closeForm() {
+    void closeForm() {
         closeEditor();
     }
 
-    private void saveTeacher(TeacherInfo teacher) {
+    void saveTeacher(TeacherInfo teacher) {
         teacherInfoService.save(teacher);
         updateItems();
         closeEditor();
     }
 
-    private void deleteTeacher(TeacherInfo teacher) {
+    void deleteTeacher(TeacherInfo teacher) {
         teacherInfoService.delete(teacher);
         updateItems();
         closeEditor();
     }
 
-    private void configureForm() {
+    void configureForm() {
         form.setVisible(false);
 
         form.addSaveAction(this::saveTeacher);
@@ -79,14 +91,14 @@ public class TeacherInfoView extends VerticalLayout {
         textFilter.setPlaceholder("Filter...");
     }
 
-    Component getToolbar() {
+    Component createToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
 
         layout.add(textFilter, addTeacherBtn);
         return layout;
     }
 
-    Component getContent() {
+    Component createContent() {
         HorizontalLayout layout = new HorizontalLayout();
         layout.setSizeFull();
         layout.setFlexGrow(2, grid);
@@ -95,12 +107,12 @@ public class TeacherInfoView extends VerticalLayout {
         return layout;
     }
 
-    private void closeEditor() {
+    void closeEditor() {
         form.setFormBean(null);
         form.setVisible(false);
     }
 
-    private void editTeacher(TeacherInfo teacher) {
+    void editTeacher(TeacherInfo teacher) {
         if (teacher == null) {
             closeEditor();
         } else {
@@ -109,7 +121,7 @@ public class TeacherInfoView extends VerticalLayout {
         }
     }
 
-    private void addTeacher() {
+    void addTeacher() {
         grid.asSingleSelect().clear();
         editTeacher(new TeacherInfo());
     }

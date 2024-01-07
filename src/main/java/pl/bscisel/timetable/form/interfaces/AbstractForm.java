@@ -38,7 +38,7 @@ public abstract class AbstractForm<T> extends FormLayout {
      * This is a workaround to fix the following issue:
      * When text area field is focused, hitting enter was triggering the save instead of adding a new line.
      */
-    protected void configureEnterShortcut(TextArea... textAreas) {
+    public void configureEnterShortcut(TextArea... textAreas) {
         if (enterShortcut == null)
             enterShortcut = save.addClickShortcut(Key.ENTER);
 
@@ -48,7 +48,7 @@ public abstract class AbstractForm<T> extends FormLayout {
         }
     }
 
-    public Component getButtons() {
+    public Component createButtons() {
         return new HorizontalLayout(save, delete, cancel);
     }
 
@@ -70,5 +70,9 @@ public abstract class AbstractForm<T> extends FormLayout {
 
     public void setFormBean(T bean) {
         binder.setBean(bean);
+    }
+
+    public T getFormBean() {
+        return binder.getBean();
     }
 }

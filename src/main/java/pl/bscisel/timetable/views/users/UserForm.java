@@ -9,6 +9,8 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.binder.Validator;
 import com.vaadin.flow.data.validator.BeanValidator;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.Role;
@@ -27,20 +29,34 @@ public class UserForm extends AbstractForm<User> {
 
     UserService userService;
 
-    public UserForm(UserService userService) {
+    public UserForm() {
         super(new BeanValidationBinder<>(User.class));
-        this.userService = userService;
+    }
 
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PostConstruct
+    public void init() {
         setMode(Mode.ADD);
-        setRequiredFields();
+        configureFields();
         populateFields();
         setBindings();
         configureEnterShortcut();
 
-        add(emailAddress, password, roles, getButtons());
+        add(emailAddress, password, roles, createButtons());
     }
 
-    public void setMode(Mode mode) {
+    void configureFields() {
+        setRequiredFields();
+
+        emailAddress.setAutocomplete(Autocomplete.OFF);
+        password.setAutocomplete(Autocomplete.OFF);
+    }
+
+    void setMode(Mode mode) {
         if (mode == Mode.ADD) {
             password.setLabel("Password");
             password.setRequired(true);
@@ -56,14 +72,11 @@ public class UserForm extends AbstractForm<User> {
         roles.setItemLabelGenerator(Role::getName);
     }
 
-    private void setRequiredFields() {
-        emailAddress.setAutocomplete(Autocomplete.OFF);
-        password.setAutocomplete(Autocomplete.OFF);
-
+    void setRequiredFields() {
         emailAddress.setRequired(true);
     }
 
-    private void setBindings() {
+    void setBindings() {
         Validator<String> passwordValidator = (value, context) -> {
             if (mode == Mode.ADD && (value == null || value.isEmpty()))
                 return ValidationResult.error("You need to provide a password");

@@ -9,13 +9,14 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.Course;
 import pl.bscisel.timetable.data.service.CourseService;
 import pl.bscisel.timetable.views.MainLayout;
-import pl.bscisel.timetable.views.course.forms.CourseForm;
 
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -29,10 +30,20 @@ public class CourseView extends VerticalLayout {
     CourseForm form;
     CourseService courseService;
 
-    public CourseView(CourseService courseService,
-                      CourseForm form) {
-        this.courseService = courseService;
+    public CourseView() {}
+
+    @Autowired
+    public void setForm(CourseForm form) {
         this.form = form;
+    }
+
+    @Autowired
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    @PostConstruct
+    void init() {
         setSizeFull();
 
         configureToolbar();
@@ -42,7 +53,6 @@ public class CourseView extends VerticalLayout {
         add(createToolbar(), createContent());
         updateItems();
     }
-
 
     void closeForm() {
         closeEditor();
@@ -60,7 +70,7 @@ public class CourseView extends VerticalLayout {
         closeEditor();
     }
 
-    private void configureForm() {
+    void configureForm() {
         form.setVisible(false);
 
         form.addSaveAction(this::saveCourse);

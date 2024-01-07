@@ -20,7 +20,8 @@ class UserFormTest {
     @BeforeEach
     public void setUp() {
         userService = mock(UserService.class);
-        form = spy(new UserForm(userService));
+        form = spy(UserForm.class);
+        form.setUserService(userService);
     }
 
     @Test

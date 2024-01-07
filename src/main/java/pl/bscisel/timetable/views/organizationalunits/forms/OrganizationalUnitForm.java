@@ -6,6 +6,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
@@ -21,29 +23,36 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
 
     OrganizationalUnitService orgUnitService;
 
-    public OrganizationalUnitForm(OrganizationalUnitService orgUnitService) {
+    public OrganizationalUnitForm() {
         super(new BeanValidationBinder<>(OrganizationalUnit.class));
-        this.orgUnitService = orgUnitService;
+    }
 
+    @Autowired
+    public void setOrganizationalUnitService(OrganizationalUnitService orgUnitService) {
+        this.orgUnitService = orgUnitService;
+    }
+
+    @PostConstruct
+    public void init() {
         configureFields();
         populateFields();
         setBindings();
         configureEnterShortcut(description);
 
-        add(name, parentUnit, description, getButtons());
+        add(name, parentUnit, description, createButtons());
     }
 
-    private void configureFields() {
+    void configureFields() {
         name.setRequired(true);
         parentUnit.setHelperText("If not selected, organizational unit will be top level. Organizational unit cannot be its own parent.");
     }
 
-    private void populateFields() {
+    void populateFields() {
         parentUnit.setItemLabelGenerator(orgUnitService::getNameWithId);
         parentUnit.setItems(orgUnitService.findAll());
     }
 
-    private void setBindings() {
+    void setBindings() {
         binder.forField(name)
                 .withValidator(new BeanValidator(OrganizationalUnit.class, "name"))
                 .withValidator(name -> {
