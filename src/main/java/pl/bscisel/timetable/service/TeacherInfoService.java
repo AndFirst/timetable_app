@@ -22,8 +22,8 @@ public class TeacherInfoService {
         return teacherRepository.findAll();
     }
 
-    public Optional<TeacherInfo> findByUserId(@NotNull Long userId) {
-        return teacherRepository.findByUserId(userId);
+    public Optional<TeacherInfo> findByAccountId(@NotNull Long accountId) {
+        return teacherRepository.findByAccountId(accountId);
     }
 
     public Optional<TeacherInfo> findById(@NotNull Long teacherId) {
@@ -46,10 +46,10 @@ public class TeacherInfoService {
         return teacherRepository.findByDegreeAndNameAndSurnameConcatenatedContaining(filter);
     }
 
-    public boolean existsByUserId(@NotNull Long id, @Nullable Long excludeTeacherId) {
+    public boolean existsByAccountId(@NotNull Long id, @Nullable Long excludeTeacherId) {
         if (excludeTeacherId == null)
-            return teacherRepository.existsByUserId(id);
+            return teacherRepository.existsByAccountId(id);
         else
-            return teacherRepository.existsByUserIdAndIdNot(id, excludeTeacherId);
+            return teacherRepository.existsByAccountIdAndIdNot(id, excludeTeacherId);
     }
 }

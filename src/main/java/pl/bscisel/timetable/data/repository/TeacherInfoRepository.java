@@ -11,12 +11,12 @@ import java.util.Optional;
 
 public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> {
 
-    Optional<TeacherInfo> findByUserId(Long userId);
+    Optional<TeacherInfo> findByAccountId(Long accountId);
 
     @Query("SELECT t FROM TeacherInfo t WHERE LOWER(CONCAT(t.degree, ' ', t.name, ' ', t.surname)) LIKE CONCAT('%', LOWER(:filter), '%')")
     List<TeacherInfo> findByDegreeAndNameAndSurnameConcatenatedContaining(@Param("filter") String filter);
 
-    boolean existsByUserId(Long id);
+    boolean existsByAccountId(Long id);
 
-    boolean existsByUserIdAndIdNot(Long id, Long excludeTeacherId);
+    boolean existsByAccountIdAndIdNot(Long id, Long excludeTeacherId);
 }

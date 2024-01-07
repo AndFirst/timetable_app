@@ -6,7 +6,6 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
 import pl.bscisel.timetable.data.repository.TeacherInfoRepository;
-import pl.bscisel.timetable.service.TeacherInfoService;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,16 +35,16 @@ class TeacherInfoServiceTest {
     }
 
     @Test
-    public void testFindByUserId() {
+    public void testFindByAccountId() {
         TeacherInfo teacher = new TeacherInfo();
 
-        when(teacherInfoRepository.findByUserId(1L)).thenReturn(Optional.of(teacher));
+        when(teacherInfoRepository.findByAccountId(1L)).thenReturn(Optional.of(teacher));
 
-        Optional<TeacherInfo> result = teacherInfoService.findByUserId(1L);
+        Optional<TeacherInfo> result = teacherInfoService.findByAccountId(1L);
 
         assertEquals(Optional.of(teacher), result);
 
-        verify(teacherInfoRepository, times(1)).findByUserId(1L);
+        verify(teacherInfoRepository, times(1)).findByAccountId(1L);
     }
 
     @Test
@@ -105,17 +104,17 @@ class TeacherInfoServiceTest {
     }
 
     @Test
-    public void testExistsByUserId() {
-        when(teacherInfoRepository.existsByUserId(1L)).thenReturn(true);
-        when(teacherInfoRepository.existsByUserIdAndIdNot(1L, 1L)).thenReturn(false);
+    public void testExistsByAccountId() {
+        when(teacherInfoRepository.existsByAccountId(1L)).thenReturn(true);
+        when(teacherInfoRepository.existsByAccountIdAndIdNot(1L, 1L)).thenReturn(false);
 
-        boolean result = teacherInfoService.existsByUserId(1L, null);
+        boolean result = teacherInfoService.existsByAccountId(1L, null);
         assertTrue(result);
-        result = teacherInfoService.existsByUserId(1L, 1L);
+        result = teacherInfoService.existsByAccountId(1L, 1L);
         assertFalse(result);
 
-        verify(teacherInfoRepository, times(1)).existsByUserId(1L);
-        verify(teacherInfoRepository, times(1)).existsByUserIdAndIdNot(1L, 1L);
+        verify(teacherInfoRepository, times(1)).existsByAccountId(1L);
+        verify(teacherInfoRepository, times(1)).existsByAccountIdAndIdNot(1L, 1L);
     }
 
 }

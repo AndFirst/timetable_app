@@ -96,20 +96,20 @@ public class UniqueConstraintsTest {
     }
 
     @Test
-    public void testUserEmailAddressUniqueConstraint() {
-        User user = new User();
-        user.setEmailAddress("email@email.com");
-        user.setPassword("password");
-        entityManager.persist(user);
+    public void testAccountEmailAddressUniqueConstraint() {
+        Account account = new Account();
+        account.setEmailAddress("email@email.com");
+        account.setPassword("password");
+        entityManager.persist(account);
 
-        User user2 = new User();
-        user2.setEmailAddress("email2@email.com");
-        user2.setPassword("password");
-        entityManager.persist(user2);
+        Account account2 = new Account();
+        account2.setEmailAddress("email2@email.com");
+        account2.setPassword("password");
+        entityManager.persist(account2);
 
-        User user3 = new User();
-        user3.setEmailAddress("email@email.com");
-        user3.setPassword("password");
-        assertThrows(ConstraintViolationException.class, () -> entityManager.persist(user3));
+        Account account3 = new Account();
+        account3.setEmailAddress("email@email.com");
+        account3.setPassword("password");
+        assertThrows(ConstraintViolationException.class, () -> entityManager.persist(account3));
     }
 }

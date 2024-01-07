@@ -14,19 +14,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.vaadin.stefan.fullcalendar.dataprovider.InMemoryEntryProvider;
 import pl.bscisel.timetable.data.entity.AbstractEntity;
+import pl.bscisel.timetable.data.entity.Account;
 import pl.bscisel.timetable.data.entity.Class;
 import pl.bscisel.timetable.data.entity.Consultation;
-import pl.bscisel.timetable.data.entity.User;
+import pl.bscisel.timetable.form.ClassForm;
+import pl.bscisel.timetable.form.ConsultationForm;
+import pl.bscisel.timetable.security.SecurityService;
 import pl.bscisel.timetable.service.ClassGroupService;
 import pl.bscisel.timetable.service.CourseService;
 import pl.bscisel.timetable.service.EventsService;
 import pl.bscisel.timetable.service.TeacherInfoService;
-import pl.bscisel.timetable.security.SecurityService;
 import pl.bscisel.timetable.view.layout.MainLayout;
-import pl.bscisel.timetable.view.timetables.components.TimetableEntry;
 import pl.bscisel.timetable.view.timetables.components.FormDialog;
-import pl.bscisel.timetable.form.ClassForm;
-import pl.bscisel.timetable.form.ConsultationForm;
+import pl.bscisel.timetable.view.timetables.components.TimetableEntry;
 
 import java.util.Optional;
 
@@ -148,11 +148,11 @@ public class TeacherTimetableView extends AbstractClassTimetableView implements 
     }
 
     private Optional<Long> loggedTeacherId() {
-        User loggedUser = securityService.getTimetableUserOfAuthenticatedTeacher();
-        if (loggedUser == null) {
+        Account authenticatedAccount = securityService.getTimetableAccountOfAuthenticatedTeacher();
+        if (authenticatedAccount == null) {
             return Optional.empty();
         }
-        return teacherInfoService.findByUserId(loggedUser.getId())
+        return teacherInfoService.findByAccountId(authenticatedAccount.getId())
                 .map(AbstractEntity::getId);
     }
 

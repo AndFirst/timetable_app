@@ -5,10 +5,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.bscisel.timetable.data.entity.Account;
 import pl.bscisel.timetable.data.entity.Role;
-import pl.bscisel.timetable.data.entity.User;
-import pl.bscisel.timetable.data.repository.UserRepository;
-import pl.bscisel.timetable.service.UserDetailsServiceImpl;
+import pl.bscisel.timetable.data.repository.AccountRepository;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -22,7 +21,7 @@ import static org.mockito.Mockito.when;
 class UserDetailsServiceImplTest {
 
     @Mock
-    private UserRepository userRepository;
+    private AccountRepository accountRepository;
 
     @InjectMocks
     private UserDetailsServiceImpl userDetailsService;
@@ -30,18 +29,18 @@ class UserDetailsServiceImplTest {
     @Test
     public void testLoadUserByUsername() {
         String email = "email@email.com";
-        User user = new User();
-        user.setEmailAddress(email);
-        user.setPassword("password");
+        Account account = new Account();
+        account.setEmailAddress(email);
+        account.setPassword("password");
 
         Role role = new Role();
         role.setName("ROLE_USER");
         Role role2 = new Role();
         role2.setName("ROLE_ADMIN");
 
-        user.setRoles(Set.of(role, role2));
+        account.setRoles(Set.of(role, role2));
 
-        when(userRepository.findByEmailAddressIgnoreCase(email)).thenReturn(Optional.of(user));
+        when(accountRepository.findByEmailAddressIgnoreCase(email)).thenReturn(Optional.of(account));
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 

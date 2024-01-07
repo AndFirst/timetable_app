@@ -1,3 +1,16 @@
+create table public.accounts
+(
+    id            bigserial
+        primary key,
+    email_address varchar(255) not null
+        constraint uk_iifbg4pgeau1kopq0mk2s0j37
+            unique,
+    password      varchar(128) not null
+);
+
+alter table public.accounts
+    owner to "user";
+
 create table public.courses
 (
     id          bigserial
@@ -86,27 +99,18 @@ create table public.roles
 alter table public.roles
     owner to "user";
 
-create table public.tests
+create table public.accounts_roles
 (
-    id   bigserial
-        primary key,
-    name varchar(100) not null
+    account_id bigint not null
+        constraint fkt44duw96d6v8xrapfo4ff2up6
+            references public.accounts,
+    role_id    bigint not null
+        constraint fkpwest19ib22ux5gk54esw9qve
+            references public.roles,
+    primary key (account_id, role_id)
 );
 
-alter table public.tests
-    owner to "user";
-
-create table public.users
-(
-    id            bigserial
-        primary key,
-    email_address varchar(255) not null
-        constraint uk_1ar956vx8jufbghpyi09yr16l
-            unique,
-    password      varchar(128) not null
-);
-
-alter table public.users
+alter table public.accounts_roles
     owner to "user";
 
 create table public.teacher_info
@@ -118,11 +122,11 @@ create table public.teacher_info
     name         varchar(50),
     phone_number varchar(15),
     surname      varchar(50),
-    user_id      bigint
-        constraint uk_i292wwbo89d4lb0w9q5cnmgm9
+    account_id   bigint
+        constraint uk_tkr50aatqx4hfgbpw35mydtpg
             unique
-        constraint fk9h463l6cankpruiqrn2bbwngs
-            references public.users
+        constraint fkhf70c79mrmq0usp6vs5o053x2
+            references public.accounts
 );
 
 alter table public.teacher_info
@@ -159,19 +163,5 @@ create table public.consultations
 );
 
 alter table public.consultations
-    owner to "user";
-
-create table public.users_roles
-(
-    user_id bigint not null
-        constraint fk2o0jvgh89lemvvo17cbqvdxaa
-            references public.users,
-    role_id bigint not null
-        constraint fkj6m8fwv7oqv74fcehir1a9ffy
-            references public.roles,
-    primary key (user_id, role_id)
-);
-
-alter table public.users_roles
     owner to "user";
 

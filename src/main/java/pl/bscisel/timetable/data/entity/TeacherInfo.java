@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = false, exclude = {"user", "classes", "consultations"})
+@EqualsAndHashCode(callSuper = false, exclude = {"account", "classes", "consultations"})
 @Data
 @Entity
 @Table(name = "teacher_info")
@@ -37,8 +37,8 @@ public class TeacherInfo extends AbstractEntity {
 
     @Nullable
     @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private Account account;
 
     @ManyToMany(mappedBy = "teachers")
     private Set<Class> classes;

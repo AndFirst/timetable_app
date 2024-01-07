@@ -9,10 +9,10 @@ import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import pl.bscisel.timetable.data.entity.Account;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
-import pl.bscisel.timetable.data.entity.User;
+import pl.bscisel.timetable.service.AccountService;
 import pl.bscisel.timetable.service.TeacherInfoService;
-import pl.bscisel.timetable.service.UserService;
 
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -22,9 +22,9 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
     TextField degree = new TextField("Degree");
     TextField phoneNumber = new TextField("Phone number");
     TextArea biography = new TextArea("Biography");
-    ComboBox<User> user = new ComboBox<>("Account");
+    ComboBox<Account> account = new ComboBox<>("Account");
 
-    UserService userService;
+    AccountService accountService;
     TeacherInfoService teacherInfoService;
 
     public TeacherInfoForm() {
@@ -32,8 +32,8 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @Autowired
@@ -60,8 +60,8 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
 
     @Override
     void populateFields() {
-        user.setItems(userService.findAllUsers());
-        user.setItemLabelGenerator(user -> "#" + user.getId() + " " + user.getEmailAddress());
+        account.setItems(accountService.findAllAccounts());
+        account.setItemLabelGenerator(account -> "#" + account.getId() + " " + account.getEmailAddress());
     }
 
     @Override
@@ -86,14 +86,14 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
                 .withValidator(new BeanValidator(TeacherInfo.class, "biography"))
                 .bind(TeacherInfo::getBiography, TeacherInfo::setBiography);
 
-        binder.forField(user)
-                .withValidator(new BeanValidator(TeacherInfo.class, "user"))
-                .withValidator(user -> {
-                    if (binder.getBean() == null || binder.getBean().getUser() == null)
+        binder.forField(account)
+                .withValidator(new BeanValidator(TeacherInfo.class, "account"))
+                .withValidator(account -> {
+                    if (binder.getBean() == null || binder.getBean().getAccount() == null)
                         return true;
-                    return !teacherInfoService.existsByUserId(user.getId(), binder.getBean().getId());
+                    return !teacherInfoService.existsByAccountId(account.getId(), binder.getBean().getId());
                 }, "Selected account is already assigned to another teacher")
-                .bind(TeacherInfo::getUser, TeacherInfo::setUser);
+                .bind(TeacherInfo::getAccount, TeacherInfo::setAccount);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
 
     @Override
     void addComponentsToForm() {
-        add(name, surname, degree, phoneNumber, biography, user, createButtons());
+        add(name, surname, degree, phoneNumber, biography, account, createButtons());
     }
 
     Binder<TeacherInfo> getBinder() {

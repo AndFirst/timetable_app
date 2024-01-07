@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Service;
-import pl.bscisel.timetable.data.entity.User;
+import pl.bscisel.timetable.data.entity.Account;
 
 /**
  * Security service.
@@ -18,11 +18,6 @@ public class SecurityService {
     private static final String ROLE_ADMIN = "ROLE_ADMIN";
     private static final String ROLE_TEACHER = "ROLE_TEACHER";
 
-    /**
-     * Get authenticated spring user.
-     *
-     * @return authenticated user
-     */
     @Nullable
     public UserDetailsExt getAuthenticatedSpringUser() {
         SecurityContext context = SecurityContextHolder.getContext();
@@ -37,37 +32,32 @@ public class SecurityService {
         return null;
     }
 
-    /**
-     * Get authenticated timetable user.
-     *
-     * @return authenticated user
-     */
     @Nullable
-    public User getAuthenticatedTimetableUser() {
+    public Account getAuthenticatedTimetableAccount() {
         UserDetailsExt authenticatedUser = getAuthenticatedSpringUser();
         if (authenticatedUser == null) return null;
 
-        return authenticatedUser.getTimetableUser();
+        return authenticatedUser.getTimetableAccount();
     }
 
     @Nullable
-    public User getTimetableUserOfAuthenticatedTeacher() {
-        return getTimetableUserOfRole(ROLE_TEACHER);
+    public Account getTimetableAccountOfAuthenticatedTeacher() {
+        return getTimetableAccountOfRole(ROLE_TEACHER);
     }
 
     @Nullable
-    public User getTimetableUserOfAuthenticatedAdmin() {
-        return getTimetableUserOfRole(ROLE_ADMIN);
+    public Account getTimetableAccountOfAuthenticatedAdmin() {
+        return getTimetableAccountOfRole(ROLE_ADMIN);
     }
 
     @Nullable
-    private User getTimetableUserOfRole(@NotNull String roleAdmin) {
+    private Account getTimetableAccountOfRole(@NotNull String roleAdmin) {
         UserDetailsExt authenticatedUser = getAuthenticatedSpringUser();
         if (!hasUserRole(authenticatedUser, roleAdmin))
             return null;
 
         assert authenticatedUser != null;
-        return authenticatedUser.getTimetableUser();
+        return authenticatedUser.getTimetableAccount();
     }
 
     public boolean hasUserRole(@Nullable UserDetailsExt authenticatedUser, @NotNull String roleName) {

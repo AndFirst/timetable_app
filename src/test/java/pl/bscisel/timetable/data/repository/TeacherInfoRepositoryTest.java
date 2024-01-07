@@ -31,8 +31,8 @@ class TeacherInfoRepositoryTest {
 
     @Test
     @Sql(value = "teacher_infos_data.sql")
-    public void testFindByUserId() {
-        Optional<TeacherInfo> teacherInfos = teacherInfoRepository.findByUserId(1L);
+    public void testFindByAccountId() {
+        Optional<TeacherInfo> teacherInfos = teacherInfoRepository.findByAccountId(1L);
         assertTrue(teacherInfos.isPresent());
         assertEquals("Adam", teacherInfos.get().getName());
         assertEquals("Nowak", teacherInfos.get().getSurname());
@@ -59,21 +59,21 @@ class TeacherInfoRepositoryTest {
 
     @Test
     @Sql(value = "teacher_infos_data.sql")
-    public void testExistsByUserId() {
-        boolean exists = teacherInfoRepository.existsByUserId(1L);
+    public void testExistsByAccountId() {
+        boolean exists = teacherInfoRepository.existsByAccountId(1L);
         assertTrue(exists);
-        exists = teacherInfoRepository.existsByUserId(2L);
+        exists = teacherInfoRepository.existsByAccountId(2L);
         assertTrue(exists);
-        exists = teacherInfoRepository.existsByUserId(3L);
+        exists = teacherInfoRepository.existsByAccountId(3L);
         assertFalse(exists);
     }
 
     @Test
     @Sql(value = "teacher_infos_data.sql")
-    public void testExistsByUserIdAndIdNot() {
-        boolean exists = teacherInfoRepository.existsByUserIdAndIdNot(1L, 2L);
+    public void testExistsByAccountIdAndIdNot() {
+        boolean exists = teacherInfoRepository.existsByAccountIdAndIdNot(1L, 2L);
         assertFalse(exists);
-        exists = teacherInfoRepository.existsByUserIdAndIdNot(1L, 1L);
+        exists = teacherInfoRepository.existsByAccountIdAndIdNot(1L, 1L);
         assertTrue(exists);
     }
 }

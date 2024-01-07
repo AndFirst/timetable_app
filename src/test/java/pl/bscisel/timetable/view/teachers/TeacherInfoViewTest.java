@@ -6,9 +6,9 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
-import pl.bscisel.timetable.service.TeacherInfoService;
-import pl.bscisel.timetable.service.UserService;
 import pl.bscisel.timetable.form.TeacherInfoForm;
+import pl.bscisel.timetable.service.AccountService;
+import pl.bscisel.timetable.service.TeacherInfoService;
 
 import java.util.List;
 
@@ -19,16 +19,16 @@ class TeacherInfoViewTest {
 
     TeacherInfoView view;
     TeacherInfoService service;
-    UserService userService;
+    AccountService accountService;
     TeacherInfoForm form;
 
     @BeforeEach
     public void setUp() {
         service = mock(TeacherInfoService.class);
-        userService = mock(UserService.class);
+        accountService = mock(AccountService.class);
         form = spy(TeacherInfoForm.class);
         form.setTeacherInfoService(service);
-        form.setUserService(userService);
+        form.setAccountService(accountService);
         view = spy(TeacherInfoView.class);
         view.setTeacherInfoService(service);
         view.setForm(form);
@@ -107,9 +107,9 @@ class TeacherInfoViewTest {
         view.configureToolbar();
         view.textFilter.setValue("test");
         verify(view, times(1)).updateItems();
-        assertEquals(ValueChangeMode.LAZY , view.textFilter.getValueChangeMode());
+        assertEquals(ValueChangeMode.LAZY, view.textFilter.getValueChangeMode());
         assertTrue(view.textFilter.isClearButtonVisible());
-        assertEquals("Filter..." , view.textFilter.getPlaceholder());
+        assertEquals("Filter...", view.textFilter.getPlaceholder());
     }
 
     @Test

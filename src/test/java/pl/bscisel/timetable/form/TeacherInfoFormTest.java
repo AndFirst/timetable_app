@@ -3,10 +3,10 @@ package pl.bscisel.timetable.form;
 import com.vaadin.flow.data.provider.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.bscisel.timetable.data.entity.Account;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
-import pl.bscisel.timetable.data.entity.User;
+import pl.bscisel.timetable.service.AccountService;
 import pl.bscisel.timetable.service.TeacherInfoService;
-import pl.bscisel.timetable.service.UserService;
 
 import java.util.List;
 
@@ -16,15 +16,15 @@ import static org.mockito.Mockito.*;
 class TeacherInfoFormTest {
 
     TeacherInfoForm form;
-    UserService userService;
+    AccountService accountService;
     TeacherInfoService teacherInfoService;
 
     @BeforeEach
     public void setUp() {
-        userService = mock(UserService.class);
+        accountService = mock(AccountService.class);
         teacherInfoService = mock(TeacherInfoService.class);
         form = spy(TeacherInfoForm.class);
-        form.setUserService(userService);
+        form.setAccountService(accountService);
         form.setTeacherInfoService(teacherInfoService);
     }
 
@@ -49,21 +49,21 @@ class TeacherInfoFormTest {
 
     @Test
     public void testPopulateFields() {
-        mockUserService();
+        mockAccountService();
         form.populateFields();
-        verify(userService, times(1)).findAllUsers();
-        assertEquals(2, form.user.getDataProvider().size(new Query<>()));
+        verify(accountService, times(1)).findAllAccounts();
+        assertEquals(2, form.account.getDataProvider().size(new Query<>()));
     }
 
-    private void mockUserService() {
-        User user = new User();
-        user.setId(1L);
-        user.setEmailAddress("email@email.com");
+    private void mockAccountService() {
+        Account account = new Account();
+        account.setId(1L);
+        account.setEmailAddress("email@email.com");
 
-        User user2 = new User();
-        user2.setId(2L);
-        user2.setEmailAddress("email2@email.com");
-        when(userService.findAllUsers()).thenReturn(List.of(user, user2));
+        Account account2 = new Account();
+        account2.setId(2L);
+        account2.setEmailAddress("email2@email.com");
+        when(accountService.findAllAccounts()).thenReturn(List.of(account, account2));
     }
 
     @Test
@@ -74,7 +74,7 @@ class TeacherInfoFormTest {
         assertTrue(form.getBinder().getFields().anyMatch(field -> field.equals(form.degree)));
         assertTrue(form.getBinder().getFields().anyMatch(field -> field.equals(form.phoneNumber)));
         assertTrue(form.getBinder().getFields().anyMatch(field -> field.equals(form.biography)));
-        assertTrue(form.getBinder().getFields().anyMatch(field -> field.equals(form.user)));
+        assertTrue(form.getBinder().getFields().anyMatch(field -> field.equals(form.account)));
     }
 
     @Test
@@ -123,21 +123,21 @@ class TeacherInfoFormTest {
     }
 
     @Test
-    public void testUserBinding() {
+    public void testAccountBinding() {
         form.setBindings();
         TeacherInfo teacher = new TeacherInfo();
         form.setFormBean(teacher);
-        User user = new User();
-        user.setId(1L);
-        user.setEmailAddress("email@email.com");
+        Account account = new Account();
+        account.setId(1L);
+        account.setEmailAddress("email@email.com");
 
-        User user2 = new User();
-        user2.setId(2L);
-        user2.setEmailAddress("email2@email.com");
-        form.user.setItems(List.of(user, user2));
-        form.user.setValue(user2);
-        assertNotNull(teacher.getUser());
-        assertEquals("email2@email.com", teacher.getUser().getEmailAddress());
+        Account account2 = new Account();
+        account2.setId(2L);
+        account2.setEmailAddress("email2@email.com");
+        form.account.setItems(List.of(account, account2));
+        form.account.setValue(account2);
+        assertNotNull(teacher.getAccount());
+        assertEquals("email2@email.com", teacher.getAccount().getEmailAddress());
     }
 
     @Test

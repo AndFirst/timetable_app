@@ -1,4 +1,4 @@
-package pl.bscisel.timetable.view.users;
+package pl.bscisel.timetable.view.accounts;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
@@ -10,25 +10,25 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.RolesAllowed;
-import pl.bscisel.timetable.data.entity.User;
-import pl.bscisel.timetable.service.UserService;
-import pl.bscisel.timetable.form.UserForm;
+import pl.bscisel.timetable.data.entity.Account;
+import pl.bscisel.timetable.form.AccountForm;
+import pl.bscisel.timetable.service.AccountService;
 import pl.bscisel.timetable.view.layout.MainLayout;
 
 
-@Route(value = "users", layout = MainLayout.class)
+@Route(value = "accounts", layout = MainLayout.class)
 @RolesAllowed("ADMIN")
-@PageTitle("Timetable - Users")
-public class UserView extends VerticalLayout {
+@PageTitle("Timetable - Accounts")
+public class AccountView extends VerticalLayout {
     TextField textFilter = new TextField();
-    Grid<User> grid = new Grid<>(User.class);
-    UserForm form;
-    Button addUserBtn = new Button("Add user", event -> addUser());
-    UserService userService;
+    Grid<Account> grid = new Grid<>(Account.class);
+    AccountForm form;
+    Button addAccountBtn = new Button("Add account", event -> addAccount());
+    AccountService accountService;
 
-    public UserView(UserService userService,
-                    UserForm form) {
-        this.userService = userService;
+    public AccountView(AccountService accountService,
+                       AccountForm form) {
+        this.accountService = accountService;
         this.form = form;
         setSizeFull();
 
@@ -45,14 +45,14 @@ public class UserView extends VerticalLayout {
         closeEditor();
     }
 
-    private void saveUser(User user) {
-        userService.save(user);
+    private void saveAccount(Account account) {
+        accountService.save(account);
         updateItems();
         closeEditor();
     }
 
-    private void deleteUser(User user) {
-        userService.delete(user);
+    private void deleteAccount(Account account) {
+        accountService.delete(account);
         updateItems();
         closeEditor();
     }
@@ -60,18 +60,18 @@ public class UserView extends VerticalLayout {
     private void configureForm() {
         form.setVisible(false);
 
-        form.addSaveAction(this::saveUser);
-        form.addDeleteAction(this::deleteUser);
+        form.addSaveAction(this::saveAccount);
+        form.addDeleteAction(this::deleteAccount);
         form.addCancelAction(ignore -> closeForm());
     }
 
     void configureGrid() {
         grid.setSizeFull();
         grid.setColumns("emailAddress");
-        grid.addColumn(User::formatRoles).setHeader("Roles");
+        grid.addColumn(Account::formatRoles).setHeader("Roles");
         grid.getColumns().forEach(column -> column.setAutoWidth(true));
 
-        grid.asSingleSelect().addValueChangeListener(event -> editUser(event.getValue(), false));
+        grid.asSingleSelect().addValueChangeListener(event -> editAccount(event.getValue(), false));
     }
 
     void configureToolbar() {
@@ -84,7 +84,7 @@ public class UserView extends VerticalLayout {
     Component getToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
 
-        layout.add(textFilter, addUserBtn);
+        layout.add(textFilter, addAccountBtn);
         return layout;
     }
 
@@ -102,25 +102,25 @@ public class UserView extends VerticalLayout {
         form.setVisible(false);
     }
 
-    private void editUser(User user, boolean newUser) {
-        if (user == null) {
+    private void editAccount(Account account, boolean isNew) {
+        if (account == null) {
             closeEditor();
         } else {
-            if (newUser)
-                form.setMode(UserForm.Mode.ADD);
+            if (isNew)
+                form.setMode(AccountForm.Mode.ADD);
             else
-                form.setMode(UserForm.Mode.EDIT);
-            form.setFormBean(user);
+                form.setMode(AccountForm.Mode.EDIT);
+            form.setFormBean(account);
             form.setVisible(true);
         }
     }
 
-    private void addUser() {
+    private void addAccount() {
         grid.asSingleSelect().clear();
-        editUser(new User(), true);
+        editAccount(new Account(), true);
     }
 
     void updateItems() {
-        grid.setItems(userService.search(textFilter.getValue()));
+        grid.setItems(accountService.search(textFilter.getValue()));
     }
 }

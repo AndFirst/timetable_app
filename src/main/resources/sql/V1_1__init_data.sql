@@ -33,11 +33,11 @@ INSERT INTO class_groups (name, organizational_unit_id) VALUES ('5 sem', 22);
 INSERT INTO class_groups (name, organizational_unit_id) VALUES ('6 sem', 22);
 INSERT INTO class_groups (name, organizational_unit_id) VALUES ('7 sem', 22);
 
-INSERT INTO users (email_address, password) VALUES ('admin@email.com', '$2y$10$eW2d3wfFMny6O2n72uCTiO9g8wke4jRqi87HcKej8Nm9JVkuh4c7q');
-INSERT INTO users (email_address, password) VALUES ('teacher@email.com', '$2a$10$rGOBbjlOen0tyy7yj0CgQ.h4Dibotla39jyTthP3H5nVPW6ope8fC');
+INSERT INTO accounts (email_address, password) VALUES ('admin@email.com', '$2y$10$eW2d3wfFMny6O2n72uCTiO9g8wke4jRqi87HcKej8Nm9JVkuh4c7q');
+INSERT INTO accounts (email_address, password) VALUES ('teacher@email.com', '$2a$10$rGOBbjlOen0tyy7yj0CgQ.h4Dibotla39jyTthP3H5nVPW6ope8fC');
 
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
 INSERT INTO roles (name) VALUES ('ROLE_TEACHER');
 
-INSERT INTO users_roles (user_id, role_id) VALUES (1, 1);
-INSERT INTO users_roles (user_id, role_id) VALUES (2, 2);
+INSERT INTO accounts_roles (account_id, role_id) VALUES (1, 1);
+INSERT INTO accounts_roles (account_id, role_id) VALUES (2, 2);

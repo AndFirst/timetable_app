@@ -13,28 +13,28 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import pl.bscisel.timetable.data.entity.Account;
 import pl.bscisel.timetable.data.entity.Role;
-import pl.bscisel.timetable.data.entity.User;
-import pl.bscisel.timetable.service.UserService;
+import pl.bscisel.timetable.service.AccountService;
 
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class UserForm extends AbstractForm<User> {
+public class AccountForm extends AbstractForm<Account> {
     Mode mode = Mode.ADD;
 
     TextField emailAddress = new TextField("Email address");
     PasswordField password = new PasswordField();
     MultiSelectComboBox<Role> roles = new MultiSelectComboBox<>("Roles");
 
-    UserService userService;
+    AccountService accountService;
 
-    public UserForm() {
-        super(new BeanValidationBinder<>(User.class));
+    public AccountForm() {
+        super(new BeanValidationBinder<>(Account.class));
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class UserForm extends AbstractForm<User> {
 
     @Override
     void populateFields() {
-        roles.setItems(userService.findAllRoles());
+        roles.setItems(accountService.findAllRoles());
         roles.setItemLabelGenerator(Role::getName);
     }
 
@@ -92,19 +92,19 @@ public class UserForm extends AbstractForm<User> {
         };
 
         binder.forField(emailAddress)
-                .withValidator(new BeanValidator(User.class, "emailAddress"))
+                .withValidator(new BeanValidator(Account.class, "emailAddress"))
                 .withValidator(email -> {
                     if (binder.getBean() == null)
                         return true;
-                    return !userService.userExistsByEmailAddress(email, binder.getBean().getId());
-                }, "User with this email address already exists")
-                .bind(User::getEmailAddress, User::setEmailAddress);
+                    return !accountService.existsByEmailAddress(email, binder.getBean().getId());
+                }, "Account with this email address already exists")
+                .bind(Account::getEmailAddress, Account::setEmailAddress);
         binder.forField(password)
                 .withValidator(passwordValidator)
-                .bind(ignored -> "", User::setPassword);
+                .bind(ignored -> "", Account::setPassword);
         binder.forField(roles)
-                .withValidator(new BeanValidator(User.class, "roles"))
-                .bind(User::getRoles, User::setRoles);
+                .withValidator(new BeanValidator(Account.class, "roles"))
+                .bind(Account::getRoles, Account::setRoles);
     }
 
     @Override
@@ -117,7 +117,7 @@ public class UserForm extends AbstractForm<User> {
         add(emailAddress, password, roles, createButtons());
     }
 
-    Binder<User> getBinder() {
+    Binder<Account> getBinder() {
         return binder;
     }
 

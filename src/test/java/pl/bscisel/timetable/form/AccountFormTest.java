@@ -5,31 +5,29 @@ import com.vaadin.flow.data.provider.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.bscisel.timetable.data.entity.Role;
-import pl.bscisel.timetable.data.entity.User;
-import pl.bscisel.timetable.service.UserService;
+import pl.bscisel.timetable.service.AccountService;
 
-import java.util.LinkedHashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class UserFormTest {
+class AccountFormTest {
 
-    UserForm form;
-    UserService userService;
+    AccountForm form;
+    AccountService accountService;
 
     @BeforeEach
     public void setUp() {
-        userService = mock(UserService.class);
-        form = spy(UserForm.class);
-        form.setUserService(userService);
+        accountService = mock(AccountService.class);
+        form = spy(AccountForm.class);
+        form.setAccountService(accountService);
     }
 
     @Test
     public void testInit() {
         form.init();
-        verify(form, times(1)).setMode(UserForm.Mode.ADD);
+        verify(form, times(1)).setMode(AccountForm.Mode.ADD);
     }
 
 
@@ -42,15 +40,15 @@ class UserFormTest {
 
     @Test
     public void testSetMode() {
-        form.setMode(UserForm.Mode.ADD);
+        form.setMode(AccountForm.Mode.ADD);
         assertEquals("Password", form.password.getLabel());
         assertTrue(form.password.isRequired());
-        assertEquals(UserForm.Mode.ADD, form.mode);
+        assertEquals(AccountForm.Mode.ADD, form.mode);
 
-        form.setMode(UserForm.Mode.EDIT);
+        form.setMode(AccountForm.Mode.EDIT);
         assertEquals("Set new password", form.password.getLabel());
         assertFalse(form.password.isRequired());
-        assertEquals(UserForm.Mode.EDIT, form.mode);
+        assertEquals(AccountForm.Mode.EDIT, form.mode);
     }
 
     @Test
@@ -61,13 +59,13 @@ class UserFormTest {
 
     @Test
     public void testPopulateFields() {
-        mockUserService();
+        mockAccountService();
         form.populateFields();
         assertEquals(2, form.roles.getDataProvider().size(new Query<>()));
-        verify(userService, times(1)).findAllRoles();
+        verify(accountService, times(1)).findAllRoles();
     }
 
-    private void mockUserService() {
+    private void mockAccountService() {
         Role admin = new Role();
         admin.setName("ROLE_ADMIN");
 
@@ -75,7 +73,7 @@ class UserFormTest {
         user.setName("ROLE_USER");
         List<Role> roles = List.of(admin, user);
 
-        when(userService.findAllRoles()).thenReturn(roles);
+        when(accountService.findAllRoles()).thenReturn(roles);
     }
 
     @Test

@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.bscisel.timetable.data.entity.User;
-import pl.bscisel.timetable.data.repository.UserRepository;
+import pl.bscisel.timetable.data.entity.Account;
+import pl.bscisel.timetable.data.repository.AccountRepository;
 import pl.bscisel.timetable.security.UserExt;
 
 import java.util.Set;
@@ -17,21 +17,21 @@ import java.util.stream.Collectors;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
 
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserDetailsServiceImpl(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(@NotNull String username) throws UsernameNotFoundException {
-        User user = userRepository.findByEmailAddressIgnoreCase(username)
+        Account account = accountRepository.findByEmailAddressIgnoreCase(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        Set<GrantedAuthority> authorities = user.getRoles().stream()
+        Set<GrantedAuthority> authorities = account.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toSet());
 
-        return new UserExt(username, user.getPassword(), authorities, user);
+        return new UserExt(username, account.getPassword(), authorities, account);
     }
 }
