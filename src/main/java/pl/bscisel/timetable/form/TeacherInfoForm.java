@@ -4,7 +4,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -36,6 +35,7 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
 
     /**
      * Sets the account service. Should be automatically autowired by Spring.
+     *
      * @param accountService the account service
      */
     @Autowired
@@ -45,6 +45,7 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
 
     /**
      * Sets the teacher info service. Should be automatically autowired by Spring.
+     *
      * @param teacherInfoService the teacher info service
      */
     @Autowired

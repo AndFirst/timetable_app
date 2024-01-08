@@ -4,7 +4,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -31,6 +30,7 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
 
     /**
      * Sets the teacherInfoService to be used by this form. Should be automatically autowired by Spring.
+     *
      * @param teacherInfoService the teacherInfoService to be set
      */
     @Autowired
@@ -81,6 +81,7 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
 
     /**
      * Sets the bean to be edited in this form. Additionally, sets the teacher field to be disabled if the bean has teacher set.
+     *
      * @param bean the bean to be set
      */
     @Override

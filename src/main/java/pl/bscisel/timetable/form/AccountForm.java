@@ -5,7 +5,6 @@ import com.vaadin.flow.component.textfield.Autocomplete;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.binder.Validator;
 import com.vaadin.flow.data.validator.BeanValidator;
@@ -37,6 +36,7 @@ public class AccountForm extends AbstractForm<Account> {
 
     /**
      * Sets the account service. Should be automatically autowired by Spring.
+     *
      * @param accountService the account service
      */
     @Autowired
@@ -56,6 +56,7 @@ public class AccountForm extends AbstractForm<Account> {
 
     /**
      * Sets the mode of the form. It sets fields to be required or not and changes the password field label depending on the mode.
+     *
      * @param mode the mode to set
      */
     public void setMode(Mode mode) {
