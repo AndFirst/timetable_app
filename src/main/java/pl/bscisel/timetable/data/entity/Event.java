@@ -40,6 +40,9 @@ public abstract class Event extends AbstractEntity {
     @Column(name = "description", length = 500)
     private String description;
 
+    /**
+     * Validates that the start time is before the end time.
+     */
     @PrePersist
     @PreUpdate
     void validateTime() {
@@ -48,6 +51,10 @@ public abstract class Event extends AbstractEntity {
         }
     }
 
+    /**
+     * Sets the location of the event.
+     * @param location the location of the event
+     */
     public void setLocation(String location) {
         this.location = location.strip();
     }

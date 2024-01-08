@@ -8,6 +8,11 @@ import java.util.List;
 
 public interface ConsultationRepository extends JpaRepository<Consultation, Long> {
 
+    /**
+     * Find all consultations by teacher id.
+     * @param teacherId teacher id
+     * @return list of consultations
+     */
     List<Consultation> findAllByTeacherId(Long teacherId);
 
 }

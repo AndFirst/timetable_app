@@ -11,6 +11,11 @@ import java.util.List;
 
 public interface ClassGroupRepository extends JpaRepository<ClassGroup, Long> {
 
+    /**
+     * Find class group by organizational unit id. Order by name.
+     * @param organizationalUnitId organizational unit id
+     * @return list of class groups
+     */
     @QueryHints(value = {@QueryHint(name = HibernateHints.HINT_CACHEABLE, value = "true")})
     List<ClassGroup> findByOrganizationalUnitIdOrderByName(Long organizationalUnitId);
 

@@ -66,6 +66,10 @@ public class OrganizationalUnit extends AbstractEntity implements Cloneable {
         }
     }
 
+    /**
+     * Clones the organizational unit.
+     * @return the cloned organizational unit
+     */
     @Override
     public OrganizationalUnit clone() {
         try {
@@ -75,6 +79,10 @@ public class OrganizationalUnit extends AbstractEntity implements Cloneable {
         }
     }
 
+    /**
+     * Sets the name of the organizational unit. Strips the name of whitespaces.
+     * @param name the name of the organizational unit
+     */
     public void setName(String name) {
         this.name = name.strip();
     }

@@ -3,7 +3,6 @@ package pl.bscisel.timetable.form;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -20,10 +19,17 @@ public class CourseForm extends AbstractForm<Course> {
 
     CourseService courseService;
 
+    /**
+     * Creates new course form.
+     */
     public CourseForm() {
         super(new BeanValidationBinder<>(Course.class));
     }
 
+    /**
+     * Sets course service. Should be automatically autowired by Spring.
+     * @param courseService course service
+     */
     @Autowired
     public void setCourseService(CourseService courseService) {
         this.courseService = courseService;
@@ -78,7 +84,4 @@ public class CourseForm extends AbstractForm<Course> {
         add(code, name, description, createButtons());
     }
 
-    Binder<Course> getBinder() {
-        return binder;
-    }
 }

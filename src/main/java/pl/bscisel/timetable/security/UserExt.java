@@ -14,6 +14,10 @@ public class UserExt extends org.springframework.security.core.userdetails.User 
         this.account = account;
     }
 
+    /**
+     * Get Account entity of authenticated user.
+     * @return account
+     */
     @Override
     public Account getTimetableAccount() {
         return account;

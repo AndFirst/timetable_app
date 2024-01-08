@@ -4,7 +4,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -21,10 +20,17 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
 
     OrganizationalUnitService orgUnitService;
 
+    /**
+     * Creates a new organizational unit form.
+     */
     public OrganizationalUnitForm() {
         super(new BeanValidationBinder<>(OrganizationalUnit.class));
     }
 
+    /**
+     * Sets the organizational unit service. Should be automatically autowired by Spring.
+     * @param orgUnitService the organizational unit service
+     */
     @Autowired
     public void setOrganizationalUnitService(OrganizationalUnitService orgUnitService) {
         this.orgUnitService = orgUnitService;
@@ -64,9 +70,6 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
                             binder.getBean().getId());
                 }, "Organizational unit with this name already exists on this level")
                 .bind(OrganizationalUnit::getName, OrganizationalUnit::setName);
-        binder.forField(description)
-                .withValidator(new BeanValidator(OrganizationalUnit.class, "description"))
-                .bind(OrganizationalUnit::getDescription, OrganizationalUnit::setDescription);
         binder.forField(parentUnit)
                 .withValidator(new BeanValidator(OrganizationalUnit.class, "parentUnit"))
                 .withValidator(parentUnit -> {
@@ -76,6 +79,9 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
                     return !parentUnit.getId().equals(binder.getBean().getId());
                 }, "Organizational unit cannot be its own parent")
                 .bind(OrganizationalUnit::getParentUnit, OrganizationalUnit::setParentUnit);
+        binder.forField(description)
+                .withValidator(new BeanValidator(OrganizationalUnit.class, "description"))
+                .bind(OrganizationalUnit::getDescription, OrganizationalUnit::setDescription);
     }
 
     @Override
@@ -86,10 +92,6 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
     @Override
     void addComponentsToForm() {
         add(name, parentUnit, description, createButtons());
-    }
-
-    Binder<OrganizationalUnit> getBinder() {
-        return binder;
     }
 
 }

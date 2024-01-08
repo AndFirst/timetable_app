@@ -28,15 +28,25 @@ public class AccountForm extends AbstractForm<Account> {
 
     AccountService accountService;
 
+    /**
+     * Creates a new account form.
+     */
     public AccountForm() {
         super(new BeanValidationBinder<>(Account.class));
     }
 
+    /**
+     * Sets the account service. Should be automatically autowired by Spring.
+     * @param accountService the account service
+     */
     @Autowired
     public void setAccountService(AccountService accountService) {
         this.accountService = accountService;
     }
 
+    /**
+     * Overrides the init method to set default mode to ADD.
+     */
     @Override
     @PostConstruct
     void init() {
@@ -44,6 +54,10 @@ public class AccountForm extends AbstractForm<Account> {
         setMode(Mode.ADD);
     }
 
+    /**
+     * Sets the mode of the form. It sets fields to be required or not and changes the password field label depending on the mode.
+     * @param mode the mode to set
+     */
     public void setMode(Mode mode) {
         if (mode == Mode.ADD) {
             password.setLabel("Password");
@@ -115,10 +129,6 @@ public class AccountForm extends AbstractForm<Account> {
     @Override
     void addComponentsToForm() {
         add(emailAddress, password, roles, createButtons());
-    }
-
-    Binder<Account> getBinder() {
-        return binder;
     }
 
     public enum Mode {

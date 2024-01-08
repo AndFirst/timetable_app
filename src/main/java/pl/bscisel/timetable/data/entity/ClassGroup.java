@@ -37,6 +37,10 @@ public class ClassGroup extends AbstractEntity {
     @OneToMany(mappedBy = "classGroup", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Class> classes;
 
+    /**
+     * Sets name of the class group. Trims whitespaces.
+     * @param name name of the class group
+     */
     public void setName(String name) {
         this.name = name.strip();
     }

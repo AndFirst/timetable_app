@@ -22,10 +22,17 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
     TextArea description = new TextArea("Description");
     TeacherInfoService teacherInfoService;
 
+    /**
+     * Creates a new consultation form.
+     */
     public ConsultationForm() {
         super(new BeanValidationBinder<>(Consultation.class));
     }
 
+    /**
+     * Sets the teacherInfoService to be used by this form. Should be automatically autowired by Spring.
+     * @param teacherInfoService the teacherInfoService to be set
+     */
     @Autowired
     public void setTeacherInfoService(TeacherInfoService teacherInfoService) {
         this.teacherInfoService = teacherInfoService;
@@ -72,13 +79,14 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
         add(dayOfWeek, createDurationFields(), teacher, location, description);
     }
 
+    /**
+     * Sets the bean to be edited in this form. Additionally, sets the teacher field to be disabled if the bean has teacher set.
+     * @param bean the bean to be set
+     */
     @Override
     public void setFormBean(Consultation bean) {
         super.setFormBean(bean);
         teacher.setEnabled(bean == null || bean.getTeacher() == null);
     }
 
-    Binder<Consultation> getBinder() {
-        return binder;
-    }
 }

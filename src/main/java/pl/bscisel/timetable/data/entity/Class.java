@@ -15,8 +15,6 @@ import java.util.Set;
 @Table(name = "classes")
 public class Class extends Event {
 
-    public static final ClassFrequency DEFAULT_FREQUENCY = ClassFrequency.ALL_WEEKS;
-
     @Size(max = 50, message = "Type cannot exceed {max} characters")
     @Column(name = "type", length = 50)
     private String type;
@@ -45,34 +43,64 @@ public class Class extends Event {
      */
     char frequency;
 
+    /**
+     * Creates a new class with default frequency
+     */
     public Class() {
-        setFrequency(DEFAULT_FREQUENCY);
+        setFrequency(ClassFrequency.DEFAULT_FREQUENCY);
     }
 
+    /**
+     * Sets the type of the class, stripping it of whitespaces
+     * @param type the type to set
+     */
     public void setType(String type) {
         this.type = type.strip();
     }
 
+    /**
+     * Gets the frequency of the class
+     * @return the frequency
+     */
     public ClassFrequency getFrequency() {
         return ClassFrequency.fromSymbol(frequency);
     }
 
+    /**
+     * Sets the frequency of the class
+     * @param frequency the frequency to set
+     */
     public void setFrequency(ClassFrequency frequency) {
         this.frequency = frequency.getSymbol();
     }
 
+    /**
+     * Needed for saving the frequency in the database with only one character
+     */
     @Getter
     public enum ClassFrequency {
         ODD_WEEKS('O'), EVEN_WEEKS('E'), ALL_WEEKS('A');
 
+        /**
+         * The default frequency
+         */
         public static final ClassFrequency DEFAULT_FREQUENCY = ALL_WEEKS;
 
         private final char symbol;
 
+        /**
+         * Creates a new frequency with the given symbol
+         * @param symbol the symbol
+         */
         ClassFrequency(char symbol) {
             this.symbol = symbol;
         }
 
+        /**
+         * Gets the frequency from the symbol
+         * @param symbol the symbol
+         * @return the frequency
+         */
         public static ClassFrequency fromSymbol(char symbol) {
             for (ClassFrequency frequency : ClassFrequency.values()) {
                 if (frequency.symbol == symbol) {
@@ -82,6 +110,10 @@ public class Class extends Event {
             return null;
         }
 
+        /**
+         * Gets the label of the frequency
+         * @return the label
+         */
         public String getLabel() {
             return this.name().charAt(0) + this.name().substring(1).toLowerCase().replace("_", " ");
         }

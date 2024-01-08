@@ -14,15 +14,28 @@ import pl.bscisel.timetable.security.UserExt;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Service class for managing user details.
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final AccountRepository accountRepository;
 
+    /**
+     * Constructs an instance of UserDetailsServiceImpl.
+     */
     public UserDetailsServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
+    /**
+     * Loads a user by username.
+     *
+     * @param username The username of the user to load.
+     * @return The user details.
+     * @throws UsernameNotFoundException If the user could not be found.
+     */
     @Override
     public UserDetails loadUserByUsername(@NotNull String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByEmailAddressIgnoreCase(username)

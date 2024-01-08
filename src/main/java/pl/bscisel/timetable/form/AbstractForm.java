@@ -25,6 +25,9 @@ public abstract class AbstractForm<T> extends FormLayout {
         this.binder = binder;
     }
 
+    /**
+     * Function which initializes the form.
+     */
     @PostConstruct
     void init() {
         binder.addStatusChangeListener(e -> save.setEnabled(binder.isValid()));
@@ -39,21 +42,60 @@ public abstract class AbstractForm<T> extends FormLayout {
         configureEnterShortcut();
     }
 
+    /**
+     * Function which configures the form. It should be used to apply form specific settings.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void configureForm();
 
+    /**
+     * Function which configures the fields. It should be used to apply field specific settings.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void configureFields();
 
+    /**
+     * Function which sets the fields as required.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void setFieldsRequired();
 
+    /**
+     * Function which populates the fields with data.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void populateFields();
 
+    /**
+     * Function which binds the fields to the bean.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void setBindings();
 
+    /**
+     * Function which configures the enter shortcut for the form. It should call the configureEnterShortcutWithFix() with all the text area fields.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void configureEnterShortcut();
 
+
+    /**
+     * Function which adds the components to the form.
+     * <p>
+     * It is called in the init() method.
+     */
     abstract void addComponentsToForm();
 
 
+    /**
+     * Function which configures the shortcuts for the form.
+     */
     void configureShortcuts() {
         cancel.addClickShortcut(Key.ESCAPE);
     }
@@ -77,14 +119,29 @@ public abstract class AbstractForm<T> extends FormLayout {
         }
     }
 
+    /**
+     * Function which creates layout for the buttons.
+     *
+     * @return the layout with buttons
+     */
     public Component createButtons() {
         return new HorizontalLayout(save, delete, cancel);
     }
 
+    /**
+     * Function which adds the action to the delete button.
+     *
+     * @param action the action to be added
+     */
     public void addDeleteAction(FormEventAction<T> action) {
         delete.addClickListener(e -> action.run(binder.getBean()));
     }
 
+    /**
+     * Function which adds the action to the save button.
+     *
+     * @param action the action to be added
+     */
     public void addSaveAction(FormEventAction<T> action) {
         save.addClickListener(e -> {
             if (binder.isValid()) {
@@ -93,15 +150,34 @@ public abstract class AbstractForm<T> extends FormLayout {
         });
     }
 
+    /**
+     * Function which adds the action to the cancel button.
+     *
+     * @param action the action to be added
+     */
     public void addCancelAction(FormEventAction<T> action) {
         cancel.addClickListener(e -> action.run(binder.getBean()));
     }
 
+    /**
+     * Function which returns the form bean.
+     *
+     * @return the form bean
+     */
     public T getFormBean() {
         return binder.getBean();
     }
 
+    /**
+     * Function which sets the form bean.
+     *
+     * @param bean the bean to be set
+     */
     public void setFormBean(T bean) {
         binder.setBean(bean);
+    }
+
+    Binder<T> getBinder() {
+        return binder;
     }
 }

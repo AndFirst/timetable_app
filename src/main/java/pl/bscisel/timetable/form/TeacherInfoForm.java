@@ -27,15 +27,26 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
     AccountService accountService;
     TeacherInfoService teacherInfoService;
 
+    /**
+     * Creates a new teacher info form.
+     */
     public TeacherInfoForm() {
         super(new BeanValidationBinder<>(TeacherInfo.class));
     }
 
+    /**
+     * Sets the account service. Should be automatically autowired by Spring.
+     * @param accountService the account service
+     */
     @Autowired
     public void setAccountService(AccountService accountService) {
         this.accountService = accountService;
     }
 
+    /**
+     * Sets the teacher info service. Should be automatically autowired by Spring.
+     * @param teacherInfoService the teacher info service
+     */
     @Autowired
     public void setTeacherInfoService(TeacherInfoService teacherInfoService) {
         this.teacherInfoService = teacherInfoService;
@@ -106,7 +117,4 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
         add(name, surname, degree, phoneNumber, biography, account, createButtons());
     }
 
-    Binder<TeacherInfo> getBinder() {
-        return binder;
-    }
 }

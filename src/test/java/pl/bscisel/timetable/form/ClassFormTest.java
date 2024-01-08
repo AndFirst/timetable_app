@@ -125,7 +125,7 @@ class ClassFormTest {
         form.setBindings();
         Class bean = new Class();
         form.setFormBean(bean);
-        assertNotEquals(Class.DEFAULT_FREQUENCY, Class.ClassFrequency.ODD_WEEKS);
+        assertNotEquals(Class.ClassFrequency.DEFAULT_FREQUENCY, Class.ClassFrequency.ODD_WEEKS);
         form.frequency.setValue(Class.ClassFrequency.ODD_WEEKS);
         assertEquals(Class.ClassFrequency.ODD_WEEKS, bean.getFrequency());
     }

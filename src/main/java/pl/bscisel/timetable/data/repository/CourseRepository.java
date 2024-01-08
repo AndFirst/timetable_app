@@ -16,7 +16,18 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
      */
     List<Course> findByCodeContainsIgnoreCaseOrNameContainsIgnoreCase(String code, String name);
 
+    /**
+     * Check if course with given code exists excluding course with given id. Ignore case.
+     * @param code course code
+     * @param excludeId id of course to exclude
+     * @return true if exists, false otherwise
+     */
     boolean existsByCodeIgnoreCaseAndIdNot(String code, Long excludeId);
 
+    /**
+     * Check if course with given code exists. Ignore case.
+     * @param code course code
+     * @return true if exists, false otherwise
+     */
     boolean existsByCodeIgnoreCase(String code);
 }

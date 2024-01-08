@@ -7,7 +7,6 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,21 +36,38 @@ public class ClassForm extends AbstractEventForm<Class> {
     ClassGroupService classGroupService;
     TeacherInfoService teacherInfoService;
 
-
+    /**
+     * Creates a new class form.
+     */
     public ClassForm() {
         super(new BeanValidationBinder<>(Class.class));
     }
 
+    /**
+     * Sets the course service. Should be automatically autowired by Spring.
+     *
+     * @param courseService the course service
+     */
     @Autowired
     public void setCourseService(CourseService courseService) {
         this.courseService = courseService;
     }
 
+    /**
+     * Sets the class group service. Should be automatically autowired by Spring.
+     *
+     * @param classGroupService the class group service
+     */
     @Autowired
     public void setClassGroupService(ClassGroupService classGroupService) {
         this.classGroupService = classGroupService;
     }
 
+    /**
+     * Sets the teacher info service. Should be automatically autowired by Spring.
+     *
+     * @param teacherInfoService the teacher info service
+     */
     @Autowired
     public void setTeacherInfoService(TeacherInfoService teacherInfoService) {
         this.teacherInfoService = teacherInfoService;
@@ -131,6 +147,11 @@ public class ClassForm extends AbstractEventForm<Class> {
         add(course, classGroup, createFrequencyAndDayFields(), createDurationFields(), teachers, type, location, description);
     }
 
+    /**
+     * Creates a horizontal layout with frequency and day fields.
+     *
+     * @return a horizontal layout
+     */
     @NotNull HorizontalLayout createFrequencyAndDayFields() {
         HorizontalLayout frequencyAndDay = new HorizontalLayout(dayOfWeek, frequency);
         frequencyAndDay.setFlexGrow(1, dayOfWeek, frequency);
@@ -138,13 +159,15 @@ public class ClassForm extends AbstractEventForm<Class> {
         return frequencyAndDay;
     }
 
+    /**
+     * Sets the bean to be edited in this form. Additionally, sets the class group field to be disabled if the bean has class group set.
+     *
+     * @param bean the bean to be set
+     */
     @Override
     public void setFormBean(Class bean) {
         super.setFormBean(bean);
         classGroup.setEnabled(bean == null || bean.getClassGroup() == null);
     }
 
-    Binder<Class> getBinder() {
-        return binder;
-    }
 }

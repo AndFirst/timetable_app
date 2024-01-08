@@ -4,7 +4,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -24,15 +23,26 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
     OrganizationalUnitService orgUnitService;
     ClassGroupService classGroupService;
 
+    /**
+     * Creates a new class group form.
+     */
     public ClassGroupForm() {
         super(new BeanValidationBinder<>(ClassGroup.class));
     }
 
+    /**
+     * Sets the organizational unit service. Should be automatically autowired by Spring.
+     * @param orgUnitService the organizational unit service
+     */
     @Autowired
     public void setOrganizationalUnitService(OrganizationalUnitService orgUnitService) {
         this.orgUnitService = orgUnitService;
     }
 
+    /**
+     * Sets the class group service. Should be automatically autowired by Spring.
+     * @param classGroupService the class group service
+     */
     @Autowired
     public void setClassGroupService(ClassGroupService classGroupService) {
         this.classGroupService = classGroupService;
@@ -90,7 +100,4 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
         add(name, organizationalUnit, description, createButtons());
     }
 
-    Binder<ClassGroup> getBinder() {
-        return binder;
-    }
 }

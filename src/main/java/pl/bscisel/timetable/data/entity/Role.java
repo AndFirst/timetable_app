@@ -25,6 +25,10 @@ public class Role extends AbstractEntity {
         }
     }
 
+    /**
+     * Sets the name of the role. The name is stripped of whitespaces.
+     * @param name the name of the role
+     */
     public void setName(String name) {
         this.name = name.strip();
     }

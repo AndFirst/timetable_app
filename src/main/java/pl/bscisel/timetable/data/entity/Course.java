@@ -33,10 +33,18 @@ public class Course extends AbstractEntity {
     @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Class> classes;
 
+    /**
+     * Sets the code of the course. Trims whitespaces.
+     * @param code code of the course
+     */
     public void setCode(String code) {
         this.code = code.strip();
     }
 
+    /**
+     * Sets the name of the course. Trims whitespaces.
+     * @param name name of the course
+     */
     public void setName(String name) {
         this.name = name.strip();
     }

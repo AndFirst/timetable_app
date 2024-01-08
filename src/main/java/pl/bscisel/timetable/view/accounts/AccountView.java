@@ -20,11 +20,12 @@ import pl.bscisel.timetable.view.layout.MainLayout;
 @RolesAllowed("ADMIN")
 @PageTitle("Timetable - Accounts")
 public class AccountView extends VerticalLayout {
-    TextField textFilter = new TextField();
-    Grid<Account> grid = new Grid<>(Account.class);
-    AccountForm form;
-    Button addAccountBtn = new Button("Add account", event -> addAccount());
-    AccountService accountService;
+    private final TextField textFilter = new TextField();
+    private final Button addAccountBtn = new Button("Add account", event -> addAccount());
+    private final Grid<Account> grid = new Grid<>(Account.class);
+
+    private final AccountService accountService;
+    private final AccountForm form;
 
     public AccountView(AccountService accountService,
                        AccountForm form) {
@@ -39,7 +40,6 @@ public class AccountView extends VerticalLayout {
         add(getToolbar(), getContent());
         updateItems();
     }
-
 
     private void closeForm() {
         closeEditor();
@@ -65,7 +65,7 @@ public class AccountView extends VerticalLayout {
         form.addCancelAction(ignore -> closeForm());
     }
 
-    void configureGrid() {
+    private void configureGrid() {
         grid.setSizeFull();
         grid.setColumns("emailAddress");
         grid.addColumn(Account::formatRoles).setHeader("Roles");
@@ -74,21 +74,21 @@ public class AccountView extends VerticalLayout {
         grid.asSingleSelect().addValueChangeListener(event -> editAccount(event.getValue(), false));
     }
 
-    void configureToolbar() {
+    private void configureToolbar() {
         textFilter.addValueChangeListener(event -> updateItems());
         textFilter.setValueChangeMode(ValueChangeMode.LAZY);
         textFilter.setClearButtonVisible(true);
         textFilter.setPlaceholder("Filter by email address...");
     }
 
-    Component getToolbar() {
+    private Component getToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
 
         layout.add(textFilter, addAccountBtn);
         return layout;
     }
 
-    Component getContent() {
+    private Component getContent() {
         HorizontalLayout layout = new HorizontalLayout();
         layout.setSizeFull();
         layout.setFlexGrow(2, grid);
@@ -120,7 +120,7 @@ public class AccountView extends VerticalLayout {
         editAccount(new Account(), true);
     }
 
-    void updateItems() {
+    private void updateItems() {
         grid.setItems(accountService.search(textFilter.getValue()));
     }
 }

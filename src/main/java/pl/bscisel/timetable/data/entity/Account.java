@@ -33,15 +33,30 @@ public class Account extends AbstractEntity {
     @JoinTable(name = "accounts_roles", joinColumns = {@JoinColumn(name = "account_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;
 
+    /**
+     * Sets the email address to lowercase and strips it of whitespaces
+     *
+     * @param emailAddress the email address to set
+     */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress.strip().toLowerCase();
     }
 
+    /**
+     * Sets the password to a hashed version of the provided password
+     *
+     * @param password the password to set
+     */
     public void setPassword(String password) {
         if (StringUtils.isNotBlank(password))
             this.password = SecurityConfiguration.passwordEncoder().encode(password);
     }
 
+    /**
+     * Formats the roles into a comma-separated string
+     *
+     * @return the formatted roles
+     */
     @Transient
     public String formatRoles() {
         if (roles == null)
