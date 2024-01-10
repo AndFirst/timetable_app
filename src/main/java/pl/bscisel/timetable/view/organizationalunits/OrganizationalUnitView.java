@@ -54,6 +54,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         this.unitForm = organizationalUnitForm;
         this.groupForm = classGroupForm;
         setSizeFull();
+        addClassName("managing-view");
 
         configureButtons();
         configureUnitsGrid();
@@ -80,12 +81,14 @@ public class OrganizationalUnitView extends VerticalLayout {
             closeGroupEditor();
             unitForm.setFormBean(organizationalUnit.clone());
             unitForm.setVisible(true);
+            addClassName("editing");
         }
     }
 
     void closeUnitEditor() {
         unitForm.setFormBean(null);
         unitForm.setVisible(false);
+        removeClassName("editing");
     }
 
     private void addGroup() {
@@ -102,12 +105,14 @@ public class OrganizationalUnitView extends VerticalLayout {
             closeUnitEditor();
             groupForm.setFormBean(classGroup);
             groupForm.setVisible(true);
+            addClassName("editing");
         }
     }
 
     void closeGroupEditor() {
         groupForm.setFormBean(null);
         groupForm.setVisible(false);
+        removeClassName("editing");
     }
 
     private void configureButtons() {
@@ -125,6 +130,7 @@ public class OrganizationalUnitView extends VerticalLayout {
     }
 
     private void configureUnitForm() {
+        unitForm.addClassName("form");
         unitForm.setVisible(false);
         unitForm.addSaveAction(this::saveUnit);
         unitForm.addDeleteAction(this::deleteUnit);
@@ -156,6 +162,7 @@ public class OrganizationalUnitView extends VerticalLayout {
     }
 
     private void configureGroupForm() {
+        groupForm.addClassName("form");
         groupForm.setVisible(false);
         groupForm.addSaveAction(this::saveGroup);
         groupForm.addDeleteAction(this::deleteGroup);
@@ -206,6 +213,7 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private Component getGrids() {
         VerticalLayout layout = new VerticalLayout(unitsGrid, groupsGrid);
+        layout.addClassName("grid");
         layout.setPadding(false);
         layout.setSizeFull();
         layout.setFlexShrink(1, unitsGrid);

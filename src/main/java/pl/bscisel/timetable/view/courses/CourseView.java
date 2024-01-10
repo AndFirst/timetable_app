@@ -46,6 +46,7 @@ public class CourseView extends VerticalLayout {
     @PostConstruct
     void init() {
         setSizeFull();
+        addClassName("managing-view");
 
         configureToolbar();
         configureGrid();
@@ -80,6 +81,7 @@ public class CourseView extends VerticalLayout {
     }
 
     void configureGrid() {
+        grid.addClassName("grid");
         grid.setSizeFull();
         grid.setColumns("code", "name", "description");
         grid.getColumns().forEach(column -> column.setAutoWidth(true));
@@ -96,6 +98,7 @@ public class CourseView extends VerticalLayout {
 
     Component createToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
+        layout.addClassName("toolbar");
 
         layout.add(textFilter, addCourseBtn);
         return layout;
@@ -113,6 +116,7 @@ public class CourseView extends VerticalLayout {
     void closeEditor() {
         form.setFormBean(null);
         form.setVisible(false);
+        removeClassName("editing");
     }
 
     void editCourse(Course course) {
@@ -121,6 +125,7 @@ public class CourseView extends VerticalLayout {
         } else {
             form.setFormBean(course);
             form.setVisible(true);
+            addClassName("editing");
         }
     }
 

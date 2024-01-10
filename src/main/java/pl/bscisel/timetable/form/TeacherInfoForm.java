@@ -55,8 +55,7 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
 
     @Override
     void configureForm() {
-        setResponsiveSteps(new ResponsiveStep("0", 1));
-        setMaxWidth("33.33%");
+
     }
 
     @Override

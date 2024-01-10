@@ -1,3 +1,10 @@
+@media all and (max-width: 1100px) {
+    .managing-view.editing .toolbar,
+    .managing-view.editing .grid {
+        display: none;
+    }
+}
+
 .org-unit-div {
     width: 100%;
 }

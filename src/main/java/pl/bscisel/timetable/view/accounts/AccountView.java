@@ -32,6 +32,7 @@ public class AccountView extends VerticalLayout {
         this.accountService = accountService;
         this.form = form;
         setSizeFull();
+        addClassName("managing-view");
 
         configureToolbar();
         configureGrid();
@@ -66,6 +67,7 @@ public class AccountView extends VerticalLayout {
     }
 
     private void configureGrid() {
+        grid.addClassName("grid");
         grid.setSizeFull();
         grid.setColumns("emailAddress");
         grid.addColumn(Account::formatRoles).setHeader("Roles");
@@ -83,7 +85,7 @@ public class AccountView extends VerticalLayout {
 
     private Component getToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
-
+        layout.addClassName("toolbar");
         layout.add(textFilter, addAccountBtn);
         return layout;
     }
@@ -100,6 +102,7 @@ public class AccountView extends VerticalLayout {
     private void closeEditor() {
         form.setFormBean(null);
         form.setVisible(false);
+        removeClassName("editing");
     }
 
     private void editAccount(Account account, boolean isNew) {
@@ -112,6 +115,7 @@ public class AccountView extends VerticalLayout {
                 form.setMode(AccountForm.Mode.EDIT);
             form.setFormBean(account);
             form.setVisible(true);
+            addClassName("editing");
         }
     }
 

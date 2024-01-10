@@ -43,6 +43,7 @@ public class TeacherInfoView extends VerticalLayout {
     @PostConstruct
     void init() {
         setSizeFull();
+        addClassName("managing-view");
 
         configureToolbar();
         configureGrid();
@@ -78,6 +79,7 @@ public class TeacherInfoView extends VerticalLayout {
     }
 
     void configureGrid() {
+        grid.addClassName("grid");
         grid.setSizeFull();
         grid.setColumns("id", "degree", "name", "surname", "phoneNumber");
         grid.getColumns().forEach(column -> column.setAutoWidth(true));
@@ -94,7 +96,7 @@ public class TeacherInfoView extends VerticalLayout {
 
     Component createToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
-
+        layout.addClassName("toolbar");
         layout.add(textFilter, addTeacherBtn);
         return layout;
     }
@@ -111,6 +113,7 @@ public class TeacherInfoView extends VerticalLayout {
     void closeEditor() {
         form.setFormBean(null);
         form.setVisible(false);
+        removeClassName("editing");
     }
 
     void editTeacher(TeacherInfo teacher) {
@@ -119,6 +122,7 @@ public class TeacherInfoView extends VerticalLayout {
         } else {
             form.setFormBean(teacher);
             form.setVisible(true);
+            addClassName("editing");
         }
     }
 

@@ -12,12 +12,12 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import pl.bscisel.timetable.security.SecurityService;
-import pl.bscisel.timetable.view.login.LoginView;
 import pl.bscisel.timetable.view.MainView;
+import pl.bscisel.timetable.view.accounts.AccountView;
 import pl.bscisel.timetable.view.courses.CourseView;
+import pl.bscisel.timetable.view.login.LoginView;
 import pl.bscisel.timetable.view.organizationalunits.OrganizationalUnitView;
 import pl.bscisel.timetable.view.teachers.TeacherInfoView;
-import pl.bscisel.timetable.view.accounts.AccountView;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
