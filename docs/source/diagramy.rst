@@ -61,28 +61,20 @@ Class diagram
 
 .. needuml::
 
-    abstract class User {
+    abstract class Account {
         emailAddress: String
-        name: String
-        surname: String
+        password: String
     }
 
-    class Teacher {
+    class TeacherInfo {
+        name: String
+        surname: String
         degree: String
         phoneNumber: String
         biography: String
     }
-
-    class Administrator {
-
-    }
     
-    class OrganizationUnit {
-        name: String
-        description: String
-    }
-
-    class TeacherOrganizationUnit {
+    class OrganizationalUnit {
         name: String
         description: String
     }
@@ -121,24 +113,25 @@ Class diagram
 
     }
 
+    class Role {
+        name: String
+    }
+
     Event <|.. Class
     Event <|.. Consultation
 
-    User <|.. Teacher
-    User <|.. Administrator
-    
-    TeacherOrganizationUnit "1" *-- "*" TeacherOrganizationUnit
-    TeacherOrganizationUnit "1" *-- "*" Teacher
+    TeacherInfo o-- Account
+    Account o- Role
 
-    OrganizationUnit "1" *-- "*" OrganizationUnit
-    OrganizationUnit "1" *-- "*" ClassGroup
+    OrganizationalUnit *-- OrganizationalUnit
+    OrganizationalUnit *-- ClassGroup
 
-    Class "0..*" o-- "1" Course
-    Class "0..*" o-- "1..*" Teacher
+    Class o-- Course 
+    Class o- TeacherInfo
 
-    Teacher "1" *-- "*" Consultation
+    TeacherInfo *-- Consultation
 
-    ClassGroup "1" *-- "*" Class
+    ClassGroup *-- Class
 
 Architecture Diagram
 ********************

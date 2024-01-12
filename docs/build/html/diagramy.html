@@ -107,30 +107,22 @@ przegladanie_jo &lt;.. przegladanie_gz : &lt;&lt;Include&gt;&gt;
 <section id="class-diagram">
 <h1>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h1>
 <p class="plantuml" id="needuml-diagramy-1">
-<a href="_images/plantuml-37696ecde8b910f1b46e021de906b08b67bb0ed4.png"><img src="_images/plantuml-37696ecde8b910f1b46e021de906b08b67bb0ed4.png" alt="&#64;startuml
+<a href="_images/plantuml-47de46c86706579211da26f2409da62f15063a06.png"><img src="_images/plantuml-47de46c86706579211da26f2409da62f15063a06.png" alt="&#64;startuml
 
-abstract class User {
+abstract class Account {
     emailAddress: String
-    name: String
-    surname: String
+    password: String
 }
 
-class Teacher {
+class TeacherInfo {
+    name: String
+    surname: String
     degree: String
     phoneNumber: String
     biography: String
 }
 
-class Administrator {
-
-}
-
-class OrganizationUnit {
-    name: String
-    description: String
-}
-
-class TeacherOrganizationUnit {
+class OrganizationalUnit {
     name: String
     description: String
 }
@@ -169,26 +161,27 @@ class Consultation {
 
 }
 
+class Role {
+    name: String
+}
+
 Event &lt;|.. Class
 Event &lt;|.. Consultation
 
-User &lt;|.. Teacher
-User &lt;|.. Administrator
+TeacherInfo o-- Account
+Account o- Role
 
-TeacherOrganizationUnit &quot;1&quot; *-- &quot;*&quot; TeacherOrganizationUnit
-TeacherOrganizationUnit &quot;1&quot; *-- &quot;*&quot; Teacher
+OrganizationalUnit *-- OrganizationalUnit
+OrganizationalUnit *-- ClassGroup
 
-OrganizationUnit &quot;1&quot; *-- &quot;*&quot; OrganizationUnit
-OrganizationUnit &quot;1&quot; *-- &quot;*&quot; ClassGroup
+Class o-- Course
+Class o- TeacherInfo
 
-Class &quot;0..*&quot; o-- &quot;1&quot; Course
-Class &quot;0..*&quot; o-- &quot;1..*&quot; Teacher
+TeacherInfo *-- Consultation
 
-Teacher &quot;1&quot; *-- &quot;*&quot; Consultation
-
-ClassGroup &quot;1&quot; *-- &quot;*&quot; Class
+ClassGroup *-- Class
 &#64;enduml
-" style="width: 801.0px; height: 724.0px"/></a>
+" style="width: 629.0px; height: 644.0px"/></a>
 </p>
 </section>
 <section id="architecture-diagram">
