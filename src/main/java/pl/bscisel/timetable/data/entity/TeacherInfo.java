@@ -12,7 +12,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = false, exclude = {"account", "classes", "consultations"})
 @Data
 @Entity
-@Table(name = "teacher_info")
+@Table(name = "teachers_info")
 public class TeacherInfo extends AbstractEntity {
 
     @NotBlank(message = "Name cannot be empty")

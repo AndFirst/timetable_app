@@ -113,7 +113,7 @@ create table public.accounts_roles
 alter table public.accounts_roles
     owner to "user";
 
-create table public.teacher_info
+create table public.teachers_info
 (
     id           bigserial
         primary key,
@@ -123,27 +123,27 @@ create table public.teacher_info
     phone_number varchar(15),
     surname      varchar(50),
     account_id   bigint
-        constraint uk_tkr50aatqx4hfgbpw35mydtpg
+        constraint uk_neqxbrsjh50aj5aeu611reu1q
             unique
-        constraint fkhf70c79mrmq0usp6vs5o053x2
+        constraint fk2rf499qyvxbm14dn4xc75rq6n
             references public.accounts
 );
 
-alter table public.teacher_info
+alter table public.teachers_info
     owner to "user";
 
-create table public.class_teacher
+create table public.classes_teachers
 (
     class_id   bigint not null
-        constraint fkfh695osd6ugijlg3hb6nd50
+        constraint fkcbynd6e5ge3atjmvwt2ei04yb
             references public.classes,
     teacher_id bigint not null
-        constraint fk7lu4ju9y3ee9qvnfy3y50pn9y
-            references public.teacher_info,
+        constraint fk1avmi3ntgmatve6wqf2wy93ox
+            references public.teachers_info,
     primary key (class_id, teacher_id)
 );
 
-alter table public.class_teacher
+alter table public.classes_teachers
     owner to "user";
 
 create table public.consultations
@@ -158,8 +158,8 @@ create table public.consultations
     location    varchar(50),
     start_time  time(6)  not null,
     teacher_id  bigint   not null
-        constraint fklgw42msgqq218ngp0y9hfumqk
-            references public.teacher_info
+        constraint fk2xqckthl7249gjfp9pvpktlo7
+            references public.teachers_info
 );
 
 alter table public.consultations

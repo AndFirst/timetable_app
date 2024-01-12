@@ -30,7 +30,7 @@ public class Class extends Event {
     private ClassGroup classGroup;
 
     @ManyToMany
-    @JoinTable(name = "class_teacher", joinColumns = {@JoinColumn(name = "class_id")}, inverseJoinColumns = {@JoinColumn(name = "teacher_id")})
+    @JoinTable(name = "classes_teachers", joinColumns = {@JoinColumn(name = "class_id")}, inverseJoinColumns = {@JoinColumn(name = "teacher_id")})
     private Set<TeacherInfo> teachers;
 
     /**
