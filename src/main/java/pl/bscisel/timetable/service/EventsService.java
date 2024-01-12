@@ -63,7 +63,7 @@ public class EventsService {
      * Creates calendar entries for classes associated with the specified class group.
      *
      * @param classGroupId The id of the class group.
-     * @param editable Whether the entries should be editable.
+     * @param editable     Whether the entries should be editable.
      * @return A list of calendar entries for the classes.
      */
     @Transactional
@@ -76,7 +76,7 @@ public class EventsService {
      * Creates calendar entries for classes associated with the specified teacher.
      *
      * @param teacherId The id of the teacher.
-     * @param editable Whether the entries should be editable.
+     * @param editable  Whether the entries should be editable.
      * @return A list of calendar entries for the classes.
      */
     @Transactional
@@ -87,8 +87,9 @@ public class EventsService {
 
     /**
      * Creates calendar entries for consultations associated with the specified teacher.
+     *
      * @param teacherId The id of the teacher.
-     * @param editable Whether the entries should be editable.
+     * @param editable  Whether the entries should be editable.
      * @return A list of calendar entries for the consultations.
      */
     @Transactional
@@ -117,7 +118,7 @@ public class EventsService {
     /**
      * Creates a calendar entry for the specified class.
      *
-     * @param event The class for which to create the entry.
+     * @param event    The class for which to create the entry.
      * @param editable Whether the entry should be editable.
      * @return A calendar entry for the class.
      */
@@ -136,7 +137,7 @@ public class EventsService {
      * Creates a calendar entry for the specified consultation.
      *
      * @param consultation The consultation for which to create the entry.
-     * @param editable Whether the entry should be editable.
+     * @param editable     Whether the entry should be editable.
      * @return A calendar entry for the consultation.
      */
     public TimetableEntry makeEntry(@NotNull Consultation consultation, boolean editable) {
@@ -152,8 +153,8 @@ public class EventsService {
     /**
      * Updates the start and end times of an event based on the provided delta.
      *
-     * @param event The event to be updated.
-     * @param delta The time difference to be applied.
+     * @param event       The event to be updated.
+     * @param delta       The time difference to be applied.
      * @param onlyEndTime Whether to update only the end time.
      */
     public void updateEventByDelta(@NotNull Event event, @NotNull Delta delta, boolean onlyEndTime) {
@@ -177,6 +178,7 @@ public class EventsService {
 
     /**
      * Saves the provided class.
+     *
      * @param newClass The class to be saved.
      */
     public void save(@NotNull Class newClass) {
@@ -185,6 +187,7 @@ public class EventsService {
 
     /**
      * Deletes the provided class.
+     *
      * @param aClass The class to be deleted.
      */
     public void delete(@NotNull Class aClass) {
@@ -193,6 +196,7 @@ public class EventsService {
 
     /**
      * Saves the provided consultation.
+     *
      * @param consultation The consultation to be saved.
      */
     public void save(@NotNull Consultation consultation) {
@@ -201,6 +205,7 @@ public class EventsService {
 
     /**
      * Deletes the provided consultation.
+     *
      * @param consultation The consultation to be deleted.
      */
     public void delete(@NotNull Consultation consultation) {

@@ -25,6 +25,7 @@ public class ClassGroupService {
 
     /**
      * Retrieves a list of class groups based on the organizational unit id, ordered by name.
+     *
      * @param organizationalUnitId The id of the organizational unit.
      * @return A list of class groups for the specified organizational unit, ordered by name.
      */
@@ -34,6 +35,7 @@ public class ClassGroupService {
 
     /**
      * Saves the provided class group.
+     *
      * @param classGroup The class group to be saved.
      */
     public void save(@NotNull ClassGroup classGroup) {
@@ -42,6 +44,7 @@ public class ClassGroupService {
 
     /**
      * Deletes the provided class group.
+     *
      * @param classGroup The class group to be deleted.
      */
     public void delete(@NotNull ClassGroup classGroup) {
@@ -51,9 +54,9 @@ public class ClassGroupService {
     /**
      * Checks if a class group with the given name and organizational unit id exists, excluding the specified class group id if provided.
      *
-     * @param name The name of the class group to check for existence.
+     * @param name                 The name of the class group to check for existence.
      * @param organizationalUnitId The id of the organizational unit to which the class group belongs.
-     * @param excludeId The id of the class group to be excluded from the check, or null if not applicable.
+     * @param excludeId            The id of the class group to be excluded from the check, or null if not applicable.
      * @return true if a class group with the given name and organizational unit id exists, false otherwise.
      */
     public boolean existsByNameAndOrganizationalUnitId(@NotNull String name, @NotNull Long organizationalUnitId, @Nullable Long excludeId) {
@@ -66,6 +69,7 @@ public class ClassGroupService {
 
     /**
      * Retrieves a list of all class groups.
+     *
      * @return A list of all class groups.
      */
     public List<ClassGroup> findAll() {

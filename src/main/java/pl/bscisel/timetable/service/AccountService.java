@@ -15,7 +15,7 @@ import java.util.List;
  * Service class for managing user accounts and roles.
  */
 @Service
-public class AccountService {
+public class AccountService implements BasicEntityOperationsService<Account> {
     private final AccountRepository accountRepository;
     private final RoleRepository roleRepository;
 
@@ -29,17 +29,18 @@ public class AccountService {
     }
 
     /**
-     * Checks if an account with the given email address exists, excluding the specified account id if provided.
+     * Searches for accounts based on the provided filter.
      *
-     * @param email The email address to check for existence.
-     * @param excludeId The id of the account to be excluded from the check, or null if not applicable.
-     * @return true if an account with the given email address exists, false otherwise.
+     * @param filter The filter to apply to the search. If null or empty, returns all accounts.
+     * @return A list of accounts that match the search criteria.
      */
-    public boolean existsByEmailAddress(@NotNull String email, @Nullable Long excludeId) {
-        if (excludeId == null)
-            return accountRepository.existsByEmailAddressIgnoreCase(email);
-        else
-            return accountRepository.existsByEmailAddressIgnoreCaseAndIdNot(email, excludeId);
+    @Override
+    public List<Account> search(@Nullable String filter) {
+        filter = StringUtils.trimToNull(filter);
+        if (filter == null) {
+            return accountRepository.findAll();
+        }
+        return accountRepository.findByEmailAddressContainsIgnoreCase(filter);
     }
 
     /**
@@ -47,6 +48,7 @@ public class AccountService {
      *
      * @param account The account to be saved.
      */
+    @Override
     public void save(@NotNull Account account) {
         accountRepository.save(account);
     }
@@ -56,22 +58,33 @@ public class AccountService {
      *
      * @param account The account to be deleted.
      */
+    @Override
     public void delete(@NotNull Account account) {
         accountRepository.delete(account);
     }
 
+    @Override
+    public Account createEmpty() {
+        return new Account();
+    }
+
+    @Override
+    public Class<Account> getEntityClass() {
+        return Account.class;
+    }
+
     /**
-     * Searches for accounts based on the provided filter.
+     * Checks if an account with the given email address exists, excluding the specified account id if provided.
      *
-     * @param filter The filter to apply to the search. If null or empty, returns all accounts.
-     * @return A list of accounts that match the search criteria.
+     * @param email     The email address to check for existence.
+     * @param excludeId The id of the account to be excluded from the check, or null if not applicable.
+     * @return true if an account with the given email address exists, false otherwise.
      */
-    public List<Account> search(@Nullable String filter) {
-        filter = StringUtils.trimToNull(filter);
-        if (filter == null) {
-            return accountRepository.findAll();
-        }
-        return accountRepository.findByEmailAddressContainsIgnoreCase(filter);
+    public boolean existsByEmailAddress(@NotNull String email, @Nullable Long excludeId) {
+        if (excludeId == null)
+            return accountRepository.existsByEmailAddressIgnoreCase(email);
+        else
+            return accountRepository.existsByEmailAddressIgnoreCaseAndIdNot(email, excludeId);
     }
 
     /**

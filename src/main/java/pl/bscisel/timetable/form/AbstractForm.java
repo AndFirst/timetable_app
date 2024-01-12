@@ -47,42 +47,42 @@ public abstract class AbstractForm<T> extends FormLayout {
      * <p>
      * It is called in the init() method.
      */
-    abstract void configureForm();
+    protected abstract void configureForm();
 
     /**
      * Function which configures the fields. It should be used to apply field specific settings.
      * <p>
      * It is called in the init() method.
      */
-    abstract void configureFields();
+    protected abstract void configureFields();
 
     /**
      * Function which sets the fields as required.
      * <p>
      * It is called in the init() method.
      */
-    abstract void setFieldsRequired();
+    protected abstract void setFieldsRequired();
 
     /**
      * Function which populates the fields with data.
      * <p>
      * It is called in the init() method.
      */
-    abstract void populateFields();
+    protected abstract void populateFields();
 
     /**
      * Function which binds the fields to the bean.
      * <p>
      * It is called in the init() method.
      */
-    abstract void setBindings();
+    protected abstract void setBindings();
 
     /**
      * Function which configures the enter shortcut for the form. It should call the configureEnterShortcutWithFix() with all the text area fields.
      * <p>
      * It is called in the init() method.
      */
-    abstract void configureEnterShortcut();
+    protected abstract void configureEnterShortcut();
 
 
     /**
@@ -90,7 +90,7 @@ public abstract class AbstractForm<T> extends FormLayout {
      * <p>
      * It is called in the init() method.
      */
-    abstract void addComponentsToForm();
+    protected abstract void addComponentsToForm();
 
 
     /**

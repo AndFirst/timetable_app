@@ -54,29 +54,29 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
     }
 
     @Override
-    void configureForm() {
+    protected void configureForm() {
 
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
 
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         name.setRequired(true);
         surname.setRequired(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         account.setItems(accountService.findAllAccounts());
         account.setItemLabelGenerator(account -> "#" + account.getId() + " " + account.getEmailAddress());
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         binder.forField(name)
                 .withValidator(new BeanValidator(TeacherInfo.class, "name"))
                 .bind(TeacherInfo::getName, TeacherInfo::setName);
@@ -108,12 +108,12 @@ public class TeacherInfoForm extends AbstractForm<TeacherInfo> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix(biography);
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(name, surname, degree, phoneNumber, biography, account, createButtons());
     }
 

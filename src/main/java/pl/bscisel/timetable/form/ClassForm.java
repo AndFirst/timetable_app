@@ -74,14 +74,14 @@ public class ClassForm extends AbstractEventForm<Class> {
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
         super.configureFields();
         frequency.setLabel("Frequency");
         frequency.setRequiredIndicatorVisible(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         super.populateFields();
 
         frequency.setItems(Class.ClassFrequency.values());
@@ -98,14 +98,14 @@ public class ClassForm extends AbstractEventForm<Class> {
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         super.setFieldsRequired();
         course.setRequired(true);
         classGroup.setRequired(true);
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         super.setBindings();
 
         binder.forField(course)
@@ -138,12 +138,12 @@ public class ClassForm extends AbstractEventForm<Class> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix(description);
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(course, classGroup, createFrequencyAndDayFields(), createDurationFields(), teachers, type, location, description);
     }
 

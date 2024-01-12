@@ -11,8 +11,8 @@ public class FormDialog extends Dialog {
         configure(title);
     }
 
-    private void configure(String title) {
-        setHeaderTitle(title);
+    private void configure(String dialogTitle) {
+        setHeaderTitle(dialogTitle);
         setResizable(true);
         setDraggable(true);
         setCloseOnEsc(false); // form has it

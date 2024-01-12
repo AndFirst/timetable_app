@@ -8,18 +8,21 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import jakarta.annotation.PostConstruct;
 
 @Route("login")
-@PageTitle("Login")
+@PageTitle("Timetable - Login")
 @AnonymousAllowed
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-    private final LoginForm login = new LoginForm();
+    LoginForm login = new LoginForm();
 
     public LoginView() {
-        addClassName("login-view");
-        setSizeFull();
+    }
 
+    @PostConstruct
+    void init() {
+        setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
         setAlignItems(Alignment.CENTER);
 
@@ -30,10 +33,10 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
     @Override
     public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-        if(beforeEnterEvent.getLocation()
-            .getQueryParameters()
-            .getParameters()
-            .containsKey("error")) {
+        if (beforeEnterEvent.getLocation()
+                .getQueryParameters()
+                .getParameters()
+                .containsKey("error")) {
             login.setError(true);
         }
     }

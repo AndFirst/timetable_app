@@ -39,7 +39,7 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         super.populateFields();
 
         teacher.setItems(teacherInfoService.findAll());
@@ -47,13 +47,13 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         super.setFieldsRequired();
         teacher.setRequired(true);
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         super.setBindings();
 
         binder.forField(teacher)
@@ -70,12 +70,12 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix(description);
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(dayOfWeek, createDurationFields(), teacher, location, description);
     }
 

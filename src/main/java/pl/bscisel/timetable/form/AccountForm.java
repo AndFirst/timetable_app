@@ -71,29 +71,29 @@ public class AccountForm extends AbstractForm<Account> {
     }
 
     @Override
-    void configureForm() {
+    protected void configureForm() {
 
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
         emailAddress.setAutocomplete(Autocomplete.OFF);
         password.setAutocomplete(Autocomplete.OFF);
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         emailAddress.setRequired(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         roles.setItems(accountService.findAllRoles());
         roles.setItemLabelGenerator(Role::getName);
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         Validator<String> passwordValidator = (value, context) -> {
             if (mode == Mode.ADD && (value == null || value.isEmpty()))
                 return ValidationResult.error("You need to provide a password");
@@ -123,12 +123,12 @@ public class AccountForm extends AbstractForm<Account> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix();
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(emailAddress, password, roles, createButtons());
     }
 

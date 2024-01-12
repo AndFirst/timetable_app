@@ -28,7 +28,7 @@ INSERT INTO public.roles (id, name) VALUES (2, 'ROLE_TEACHER');
 INSERT INTO public.accounts_roles (account_id, role_id) VALUES (1, 1);
 INSERT INTO public.accounts_roles (account_id, role_id) VALUES (2, 2);
 
-INSERT INTO public.teachers_info (id, biography, degree, name, phone_number, surname, account_id) VALUES (1, '', 'prof.', 'Michał', '', 'Nowakowski', 1);
+INSERT INTO public.teachers_info (id, biography, degree, name, phone_number, surname, account_id) VALUES (1, '', 'prof.', 'Michał', '', 'Nowakowski', 2);
 INSERT INTO public.teachers_info (id, biography, degree, name, phone_number, surname, account_id) VALUES (3, '', 'dr', 'Paweł', '', 'Kozłowski', null);
 INSERT INTO public.teachers_info (id, biography, degree, name, phone_number, surname, account_id) VALUES (2, '', 'dr', 'Janusz', '', 'Nowicki', null);
 

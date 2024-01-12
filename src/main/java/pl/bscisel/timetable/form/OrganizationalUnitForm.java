@@ -29,6 +29,7 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
 
     /**
      * Sets the organizational unit service. Should be automatically autowired by Spring.
+     *
      * @param orgUnitService the organizational unit service
      */
     @Autowired
@@ -37,28 +38,28 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
     }
 
     @Override
-    void configureForm() {
+    protected void configureForm() {
 
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
         parentUnit.setHelperText("If not selected, organizational unit will be top level. Organizational unit cannot be its own parent.");
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         name.setRequired(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         parentUnit.setItemLabelGenerator(orgUnitService::getNameWithId);
         parentUnit.setItems(orgUnitService.findAll());
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         binder.forField(name)
                 .withValidator(new BeanValidator(OrganizationalUnit.class, "name"))
                 .withValidator(name -> {
@@ -85,12 +86,12 @@ public class OrganizationalUnitForm extends AbstractForm<OrganizationalUnit> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix(description);
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(name, parentUnit, description, createButtons());
     }
 

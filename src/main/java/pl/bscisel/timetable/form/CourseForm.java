@@ -28,6 +28,7 @@ public class CourseForm extends AbstractForm<Course> {
 
     /**
      * Sets course service. Should be automatically autowired by Spring.
+     *
      * @param courseService course service
      */
     @Autowired
@@ -36,28 +37,28 @@ public class CourseForm extends AbstractForm<Course> {
     }
 
     @Override
-    void configureForm() {
+    protected void configureForm() {
 
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
 
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         code.setRequired(true);
         name.setRequired(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
 
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         binder.forField(code)
                 .withValidator(new BeanValidator(Course.class, "code"))
                 .withValidator(code -> {
@@ -75,12 +76,12 @@ public class CourseForm extends AbstractForm<Course> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix(description);
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(code, name, description, createButtons());
     }
 

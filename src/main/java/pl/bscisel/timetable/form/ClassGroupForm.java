@@ -32,6 +32,7 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
 
     /**
      * Sets the organizational unit service. Should be automatically autowired by Spring.
+     *
      * @param orgUnitService the organizational unit service
      */
     @Autowired
@@ -41,6 +42,7 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
 
     /**
      * Sets the class group service. Should be automatically autowired by Spring.
+     *
      * @param classGroupService the class group service
      */
     @Autowired
@@ -49,29 +51,29 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
     }
 
     @Override
-    void configureForm() {
+    protected void configureForm() {
 
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
 
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         name.setRequired(true);
         organizationalUnit.setRequired(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         organizationalUnit.setItemLabelGenerator(orgUnitService::getNameWithId);
         organizationalUnit.setItems(orgUnitService.findAll());
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         binder.forField(name)
                 .withValidator(new BeanValidator(ClassGroup.class, "name"))
                 .withValidator(name -> {
@@ -91,12 +93,12 @@ public class ClassGroupForm extends AbstractForm<ClassGroup> {
     }
 
     @Override
-    void configureEnterShortcut() {
+    protected void configureEnterShortcut() {
         configureEnterShortcutWithFix(description);
     }
 
     @Override
-    void addComponentsToForm() {
+    protected void addComponentsToForm() {
         add(name, organizationalUnit, description, createButtons());
     }
 

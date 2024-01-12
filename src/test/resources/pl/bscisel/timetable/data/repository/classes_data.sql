@@ -1,5 +1,5 @@
-INSERT INTO teacher_info (name, surname) VALUES ('Jan', 'Kowalski');
-INSERT INTO teacher_info (name, surname) VALUES ('Adam', 'Nowak');
+INSERT INTO teachers_info (name, surname) VALUES ('Jan', 'Kowalski');
+INSERT INTO teachers_info (name, surname) VALUES ('Adam', 'Nowak');
 
 INSERT INTO organizational_units (is_top_level, name) VALUES (1, 'Wydział Informatyki');
 
@@ -12,6 +12,6 @@ INSERT INTO classes (day_of_week, start_time, end_time, frequency, class_group_i
 INSERT INTO classes (day_of_week, start_time, end_time, frequency, class_group_id, course_id) VALUES (0, '10:00', '12:00', 'A', 2, 1);
 INSERT INTO classes (day_of_week, start_time, end_time, frequency, class_group_id, course_id) VALUES (0, '12:00', '14:00', 'A', 2, 1);
 
-INSERT INTO class_teacher (class_id, teacher_id) VALUES (1, 1);
-INSERT INTO class_teacher (class_id, teacher_id) VALUES (2, 2);
-INSERT INTO class_teacher (class_id, teacher_id) VALUES (3, 2);
+INSERT INTO classes_teachers (class_id, teacher_id) VALUES (1, 1);
+INSERT INTO classes_teachers (class_id, teacher_id) VALUES (2, 2);
+INSERT INTO classes_teachers (class_id, teacher_id) VALUES (3, 2);

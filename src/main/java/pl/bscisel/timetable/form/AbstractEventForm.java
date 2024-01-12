@@ -22,12 +22,12 @@ public abstract class AbstractEventForm<T extends Event> extends AbstractForm<T>
     }
 
     @Override
-    void configureForm() {
+    protected void configureForm() {
         setResponsiveSteps(new ResponsiveStep("0", 1));
     }
 
     @Override
-    void configureFields() {
+    protected void configureFields() {
         startTime.setMin(LocalTime.of(7, 0));
         startTime.setMax(LocalTime.of(21, 45));
 
@@ -39,19 +39,19 @@ public abstract class AbstractEventForm<T extends Event> extends AbstractForm<T>
     }
 
     @Override
-    void setFieldsRequired() {
+    protected void setFieldsRequired() {
         startTime.setRequired(true);
         endTime.setRequired(true);
     }
 
     @Override
-    void populateFields() {
+    protected void populateFields() {
         dayOfWeek.setItems(DayOfWeek.values());
         dayOfWeek.setItemLabelGenerator(item -> item.toString().charAt(0) + item.toString().substring(1).toLowerCase());
     }
 
     @Override
-    void setBindings() {
+    protected void setBindings() {
         binder.forField(startTime)
                 .withValidator(new BeanValidator(Class.class, "startTime"))
                 .withValidator(startTime -> {

@@ -4,11 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
+import pl.bscisel.timetable.form.ClassGroupForm;
+import pl.bscisel.timetable.form.OrganizationalUnitForm;
 import pl.bscisel.timetable.service.ClassGroupService;
 import pl.bscisel.timetable.service.OrganizationalUnitService;
 import pl.bscisel.timetable.view.organizationalunits.dataproviders.OrganizationalUnitDataProvider;
-import pl.bscisel.timetable.form.ClassGroupForm;
-import pl.bscisel.timetable.form.OrganizationalUnitForm;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,12 +16,12 @@ import static org.mockito.Mockito.*;
 
 class OrganizationalUnitViewTest {
 
-    OrganizationalUnitView view;
-    OrganizationalUnitService service;
-    OrganizationalUnitDataProvider dataProvider;
-    OrganizationalUnitForm form;
-    ClassGroupService classGroupService;
-    ClassGroupForm classGroupForm;
+    private OrganizationalUnitView view;
+    private OrganizationalUnitService service;
+    private OrganizationalUnitDataProvider dataProvider;
+    private OrganizationalUnitForm form;
+    private ClassGroupService classGroupService;
+    private ClassGroupForm classGroupForm;
 
     @BeforeEach
     public void setUp() {

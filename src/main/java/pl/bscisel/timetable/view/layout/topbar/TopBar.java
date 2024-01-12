@@ -12,12 +12,12 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import pl.bscisel.timetable.security.SecurityService;
+import pl.bscisel.timetable.view.AccountManagingView;
+import pl.bscisel.timetable.view.CourseManagingView;
 import pl.bscisel.timetable.view.MainView;
-import pl.bscisel.timetable.view.accounts.AccountView;
-import pl.bscisel.timetable.view.courses.CourseView;
+import pl.bscisel.timetable.view.TeacherInfoManagingView;
 import pl.bscisel.timetable.view.login.LoginView;
 import pl.bscisel.timetable.view.organizationalunits.OrganizationalUnitView;
-import pl.bscisel.timetable.view.teachers.TeacherInfoView;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -48,9 +48,9 @@ public class TopBar extends HorizontalLayout {
             Map<Tab, Runnable> tabsActions = new LinkedHashMap<>() {{
                 put(new Tab("Home"), () -> getUI().ifPresent(ui -> ui.navigate(MainView.class)));
                 put(new Tab("Organizational units"), () -> getUI().ifPresent(ui -> ui.navigate(OrganizationalUnitView.class)));
-                put(new Tab("Courses"), () -> getUI().ifPresent(ui -> ui.navigate(CourseView.class)));
-                put(new Tab("Accounts"), () -> getUI().ifPresent(ui -> ui.navigate(AccountView.class)));
-                put(new Tab("Teachers"), () -> getUI().ifPresent(ui -> ui.navigate(TeacherInfoView.class)));
+                put(new Tab("Courses"), () -> getUI().ifPresent(ui -> ui.navigate(CourseManagingView.class)));
+                put(new Tab("Accounts"), () -> getUI().ifPresent(ui -> ui.navigate(AccountManagingView.class)));
+                put(new Tab("Teachers"), () -> getUI().ifPresent(ui -> ui.navigate(TeacherInfoManagingView.class)));
             }};
 
             Tabs tabs = new Tabs(tabsActions.keySet().toArray(Tab[]::new));

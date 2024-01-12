@@ -24,6 +24,7 @@ public class OrganizationalUnitService {
 
     /**
      * Retrieves a list of top-level organizational units.
+     *
      * @return A list of top-level organizational units.
      */
     public List<OrganizationalUnit> findTopLevelUnits() {
@@ -71,6 +72,7 @@ public class OrganizationalUnitService {
 
     /**
      * Retrieves all organizational units.
+     *
      * @return A list of all organizational units.
      */
     public List<OrganizationalUnit> findAll() {
@@ -79,6 +81,7 @@ public class OrganizationalUnitService {
 
     /**
      * Saves the provided organizational unit.
+     *
      * @param organizationalUnit The organizational unit to be saved.
      */
     public void save(OrganizationalUnit organizationalUnit) {
@@ -87,6 +90,7 @@ public class OrganizationalUnitService {
 
     /**
      * Deletes the provided organizational unit.
+     *
      * @param organizationalUnit The organizational unit to be deleted.
      */
     public void delete(OrganizationalUnit organizationalUnit) {
@@ -106,9 +110,9 @@ public class OrganizationalUnitService {
     /**
      * Checks if an organizational unit with the given name and optional parent id exists, excluding the specified id.
      *
-     * @param name The name of the organizational unit.
+     * @param name         The name of the organizational unit.
      * @param parentUnitId The id of the parent organizational unit.
-     * @param excludeId The id to be excluded from the check.
+     * @param excludeId    The id to be excluded from the check.
      * @return True if an organizational unit with the given name exists, false otherwise.
      */
     public boolean organizationalUnitExistsByNameAndParentUnitId(@NotNull String name, @Nullable Long parentUnitId, @Nullable Long excludeId) {
