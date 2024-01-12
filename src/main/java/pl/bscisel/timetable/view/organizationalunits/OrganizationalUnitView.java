@@ -207,6 +207,7 @@ public class OrganizationalUnitView extends VerticalLayout {
 
     private Component getToolbar() {
         HorizontalLayout layout = new HorizontalLayout();
+        layout.addClassName("toolbar");
         layout.add(addUnitBtn, editUnitBtn, addGroupBtn, editGroupBtn);
         return layout;
     }
