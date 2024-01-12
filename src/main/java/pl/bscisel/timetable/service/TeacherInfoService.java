@@ -34,7 +34,7 @@ public class TeacherInfoService implements BasicEntityOperationsService<TeacherI
     public List<TeacherInfo> search(@Nullable String filter) {
         filter = StringUtils.stripToNull(filter);
         if (filter == null) {
-            return teacherRepository.findAll();
+            return teacherRepository.findAllByOrderBySurname();
         }
         return teacherRepository.findByDegreeAndNameAndSurnameConcatenatedContaining(filter);
     }
@@ -70,12 +70,12 @@ public class TeacherInfoService implements BasicEntityOperationsService<TeacherI
     }
 
     /**
-     * Retrieves a list of all teachers.
+     * Finds all teachers ordered by surname.
      *
-     * @return A list of all teachers.
+     * @return A list of all teachers ordered by surname.
      */
-    public List<TeacherInfo> findAll() {
-        return teacherRepository.findAll();
+    public List<TeacherInfo> findAllOrderBySurname() {
+        return teacherRepository.findAllByOrderBySurname();
     }
 
     /**

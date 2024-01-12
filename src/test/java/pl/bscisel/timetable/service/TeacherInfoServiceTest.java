@@ -23,15 +23,15 @@ class TeacherInfoServiceTest {
     private TeacherInfoService teacherInfoService;
 
     @Test
-    public void testFindAll() {
+    public void findAllOrderBySurname() {
         List<TeacherInfo> expectedTeacherInfos = List.of(new TeacherInfo(), new TeacherInfo());
-        when(teacherInfoRepository.findAll()).thenReturn(expectedTeacherInfos);
+        when(teacherInfoRepository.findAllByOrderBySurname()).thenReturn(expectedTeacherInfos);
 
-        List<TeacherInfo> result = teacherInfoService.findAll();
+        List<TeacherInfo> result = teacherInfoService.findAllOrderBySurname();
 
         assertEquals(expectedTeacherInfos, result);
 
-        verify(teacherInfoRepository, times(1)).findAll();
+        verify(teacherInfoRepository, times(1)).findAllByOrderBySurname();
     }
 
     @Test
@@ -86,7 +86,7 @@ class TeacherInfoServiceTest {
         List<TeacherInfo> expectedTeacherInfosFilter = List.of(new TeacherInfo());
         List<TeacherInfo> expectedTeacherInfosFindAll = List.of(new TeacherInfo(), new TeacherInfo());
         when(teacherInfoRepository.findByDegreeAndNameAndSurnameConcatenatedContaining(filter)).thenReturn(expectedTeacherInfosFilter);
-        when(teacherInfoRepository.findAll()).thenReturn(expectedTeacherInfosFindAll);
+        when(teacherInfoRepository.findAllByOrderBySurname()).thenReturn(expectedTeacherInfosFindAll);
 
         List<TeacherInfo> result = teacherInfoService.search(filter);
         assertEquals(expectedTeacherInfosFilter, result);
@@ -100,7 +100,7 @@ class TeacherInfoServiceTest {
 
         result = teacherInfoService.search(" ");
         assertEquals(expectedTeacherInfosFindAll, result);
-        verify(teacherInfoRepository, times(3)).findAll();
+        verify(teacherInfoRepository, times(3)).findAllByOrderBySurname();
     }
 
     @Test

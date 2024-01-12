@@ -1,22 +1,21 @@
 package pl.bscisel.timetable.view.layout;
 
 import com.vaadin.flow.component.applayout.AppLayout;
-import pl.bscisel.timetable.service.ClassGroupService;
-import pl.bscisel.timetable.service.OrganizationalUnitService;
-import pl.bscisel.timetable.service.TeacherInfoService;
-import pl.bscisel.timetable.security.SecurityService;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import pl.bscisel.timetable.view.layout.sidebar.SideBar;
 import pl.bscisel.timetable.view.layout.topbar.TopBar;
 
+@Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MainLayout extends AppLayout {
 
-    public MainLayout(SecurityService securityService,
-                      OrganizationalUnitService orgUnitService,
-                      ClassGroupService classGroupService,
-                      TeacherInfoService teacherInfoService) {
+    public MainLayout(ApplicationContext applicationContext) {
         setPrimarySection(Section.DRAWER);
 
-        addToDrawer(new SideBar(orgUnitService, classGroupService, teacherInfoService));
-        addToNavbar(new TopBar(securityService));
+        addToDrawer(applicationContext.getBean(SideBar.class));
+        addToNavbar(applicationContext.getBean(TopBar.class));
     }
 }

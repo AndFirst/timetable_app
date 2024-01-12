@@ -10,7 +10,7 @@ import pl.bscisel.timetable.service.TeacherInfoService;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class TeacherInfoViewTest {
+class TeacherInfoManagingViewTest {
 
     TeacherInfoManagingView view;
     TeacherInfoService service;

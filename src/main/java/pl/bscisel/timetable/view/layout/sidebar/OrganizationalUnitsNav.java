@@ -2,6 +2,9 @@ package pl.bscisel.timetable.view.layout.sidebar;
 
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 import pl.bscisel.timetable.service.ClassGroupService;
@@ -14,6 +17,8 @@ import pl.bscisel.timetable.view.timetables.ClassGroupTimetableView;
 import java.util.List;
 
 // LLR_332
+@Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class OrganizationalUnitsNav extends VerticalLayout {
     private final OrganizationalUnitService orgUnitService;
     private final ClassGroupService classGroupService;
@@ -22,9 +27,9 @@ public class OrganizationalUnitsNav extends VerticalLayout {
                                   ClassGroupService classGroupService) {
         this.orgUnitService = orgUnitService;
         this.classGroupService = classGroupService;
+        setSpacing(false);
 
         setupTopLevelUnits();
-        setSpacing(false);
     }
 
     private void setupTopLevelUnits() {

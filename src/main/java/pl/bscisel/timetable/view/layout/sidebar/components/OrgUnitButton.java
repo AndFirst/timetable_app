@@ -8,15 +8,15 @@ import lombok.Getter;
 
 public class OrgUnitButton extends Button {
 
-    @Getter
-    private boolean pressed = false;
-
     private final Icon down = VaadinIcon.ANGLE_DOWN.create();
     private final Icon right = VaadinIcon.ANGLE_RIGHT.create();
 
+    @Getter
+    private boolean pressed = false;
+
     public OrgUnitButton(String text) {
         super(text);
-        addClassName("org-unit-button");
+        addClassName("nav-button");
         addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         setIcon(VaadinIcon.ANGLE_DOWN.create());
         addClickListener(event -> switchPressed());

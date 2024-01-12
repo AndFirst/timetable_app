@@ -9,23 +9,23 @@
     width: 100%;
 }
 
-.class-group-button {
+.nav-gototimetable-button {
     padding-left: 13px;
 }
 
-vaadin-button.org-unit-button {
+vaadin-button.nav-button {
     height: auto;
     width: 100%;
 }
 
-vaadin-button.org-unit-button::part(label) {
+vaadin-button.nav-button::part(label) {
     white-space: normal;
     padding: 0;
     align-self: flex-start;
-    margin-top: 2px ;
+    margin-top: 2px;
 }
 
-vaadin-button.org-unit-button::part(prefix) {
+vaadin-button.nav-button::part(prefix) {
     align-self: flex-start;
 }
 

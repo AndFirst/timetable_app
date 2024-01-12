@@ -6,7 +6,6 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 import pl.bscisel.timetable.data.repository.OrganizationalUnitRepository;
-import pl.bscisel.timetable.service.OrganizationalUnitService;
 
 import java.util.List;
 
@@ -25,25 +24,25 @@ class OrganizationalUnitServiceTest {
     @Test
     public void testFindTopLevelUnits() {
         List<OrganizationalUnit> expectedUnits = List.of(new OrganizationalUnit(), new OrganizationalUnit());
-        when(organizationalUnitRepository.findByParentUnitNull()).thenReturn(expectedUnits);
+        when(organizationalUnitRepository.findByParentUnitNullOrderByName()).thenReturn(expectedUnits);
 
         List<OrganizationalUnit> result = organizationalUnitService.findTopLevelUnits();
 
         assertEquals(expectedUnits, result);
 
-        verify(organizationalUnitRepository, times(1)).findByParentUnitNull();
+        verify(organizationalUnitRepository, times(1)).findByParentUnitNullOrderByName();
     }
 
     @Test
     public void testCountTopLevelUnits() {
         List<OrganizationalUnit> expectedUnits = List.of(new OrganizationalUnit(), new OrganizationalUnit());
-        when(organizationalUnitRepository.findByParentUnitNull()).thenReturn(expectedUnits);
+        when(organizationalUnitRepository.findByParentUnitNullOrderByName()).thenReturn(expectedUnits);
 
         int result = organizationalUnitService.countTopLevelUnits();
 
         assertEquals(expectedUnits.size(), result);
 
-        verify(organizationalUnitRepository, times(1)).findByParentUnitNull();
+        verify(organizationalUnitRepository, times(1)).findByParentUnitNullOrderByName();
     }
 
     @Test
@@ -51,13 +50,13 @@ class OrganizationalUnitServiceTest {
         Long organizationalUnitId = 1L;
 
         List<OrganizationalUnit> expectedUnits = List.of(new OrganizationalUnit(), new OrganizationalUnit());
-        when(organizationalUnitRepository.findByParentUnitId(organizationalUnitId)).thenReturn(expectedUnits);
+        when(organizationalUnitRepository.findByParentUnitIdOrderByName(organizationalUnitId)).thenReturn(expectedUnits);
 
         List<OrganizationalUnit> result = organizationalUnitService.findChildrenByUnitId(organizationalUnitId);
 
         assertEquals(expectedUnits, result);
 
-        verify(organizationalUnitRepository, times(1)).findByParentUnitId(organizationalUnitId);
+        verify(organizationalUnitRepository, times(1)).findByParentUnitIdOrderByName(organizationalUnitId);
     }
 
     @Test
@@ -65,13 +64,13 @@ class OrganizationalUnitServiceTest {
         Long organizationalUnitId = 1L;
 
         List<OrganizationalUnit> expectedUnits = List.of(new OrganizationalUnit(), new OrganizationalUnit());
-        when(organizationalUnitRepository.findByParentUnitId(organizationalUnitId)).thenReturn(expectedUnits);
+        when(organizationalUnitRepository.findByParentUnitIdOrderByName(organizationalUnitId)).thenReturn(expectedUnits);
 
         int result = organizationalUnitService.countChildrenByUnitId(organizationalUnitId);
 
         assertEquals(expectedUnits.size(), result);
 
-        verify(organizationalUnitRepository, times(1)).findByParentUnitId(organizationalUnitId);
+        verify(organizationalUnitRepository, times(1)).findByParentUnitIdOrderByName(organizationalUnitId);
     }
 
     @Test
@@ -79,13 +78,13 @@ class OrganizationalUnitServiceTest {
         Long organizationalUnitId = 1L;
 
         List<OrganizationalUnit> expectedUnits = List.of(new OrganizationalUnit(), new OrganizationalUnit());
-        when(organizationalUnitRepository.findByParentUnitId(organizationalUnitId)).thenReturn(expectedUnits);
+        when(organizationalUnitRepository.findByParentUnitIdOrderByName(organizationalUnitId)).thenReturn(expectedUnits);
 
         boolean result = organizationalUnitService.hasChildrenByUnitId(organizationalUnitId);
 
         assertTrue(result);
 
-        verify(organizationalUnitRepository, times(1)).findByParentUnitId(organizationalUnitId);
+        verify(organizationalUnitRepository, times(1)).findByParentUnitIdOrderByName(organizationalUnitId);
     }
 
     @Test
@@ -143,7 +142,7 @@ class OrganizationalUnitServiceTest {
         organizationalUnit2.setId(2L);
         organizationalUnit2.setName(name2);
         List<OrganizationalUnit> list = List.of(organizationalUnit1, organizationalUnit2);
-        when(organizationalUnitRepository.findByParentUnitNull()).thenReturn(list);
+        when(organizationalUnitRepository.findByParentUnitNullOrderByName()).thenReturn(list);
 
         boolean result = organizationalUnitService.organizationalUnitExistsByNameAndParentUnitId(name, null, null);
         assertTrue(result);
@@ -156,7 +155,7 @@ class OrganizationalUnitServiceTest {
         result = organizationalUnitService.organizationalUnitExistsByNameAndParentUnitId("  organizational unit 2  ", null, null);
         assertTrue(result);
 
-        verify(organizationalUnitRepository, times(5)).findByParentUnitNull();
+        verify(organizationalUnitRepository, times(5)).findByParentUnitNullOrderByName();
     }
 
     @Test
@@ -173,7 +172,7 @@ class OrganizationalUnitServiceTest {
 
         List<OrganizationalUnit> list = List.of(organizationalUnit1, organizationalUnit2);
         Long parentUnitId = 1L;
-        when(organizationalUnitRepository.findByParentUnitId(parentUnitId)).thenReturn(list);
+        when(organizationalUnitRepository.findByParentUnitIdOrderByName(parentUnitId)).thenReturn(list);
 
         boolean result = organizationalUnitService.organizationalUnitExistsByNameAndParentUnitId(name, parentUnitId, null);
         assertTrue(result);

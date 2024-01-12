@@ -13,6 +13,7 @@ public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> 
 
     /**
      * Find teacher by account id.
+     *
      * @param accountId account id
      * @return teacher info
      */
@@ -20,6 +21,7 @@ public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> 
 
     /**
      * Find teachers by filter. Filter is applied to degree, name and surname concatenated.
+     *
      * @param filter filter
      * @return list of teachers
      */
@@ -28,6 +30,7 @@ public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> 
 
     /**
      * Check if teacher with given account id exists.
+     *
      * @param id account id
      * @return true if exists, false otherwise
      */
@@ -35,9 +38,17 @@ public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> 
 
     /**
      * Check if teacher with given account id exists and is not the one with given id.
-     * @param id account id
+     *
+     * @param id               account id
      * @param excludeTeacherId teacher id to exclude
      * @return true if exists, false otherwise
      */
     boolean existsByAccountIdAndIdNot(Long id, Long excludeTeacherId);
+
+    /**
+     * Find all teachers ordered by surname.
+     *
+     * @return list of teachers
+     */
+    List<TeacherInfo> findAllByOrderBySurname();
 }

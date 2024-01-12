@@ -1,5 +1,5 @@
 
-:host(.org-unit-button) .vaadin-button-container {
+:host(.nav-button) .vaadin-button-container {
     justify-content: left;
     text-align: left;
 }

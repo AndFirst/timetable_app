@@ -76,4 +76,15 @@ class TeacherInfoRepositoryTest {
         exists = teacherInfoRepository.existsByAccountIdAndIdNot(1L, 1L);
         assertTrue(exists);
     }
+
+    @Test
+    @Sql(value = "teacher_infos_data.sql")
+    public void testFindAllByOrderBySurname() {
+        List<TeacherInfo> teacherInfos = teacherInfoRepository.findAllByOrderBySurname();
+        assertEquals(4, teacherInfos.size());
+        assertEquals("Kowalska", teacherInfos.get(0).getSurname());
+        assertEquals("Kowalski", teacherInfos.get(1).getSurname());
+        assertEquals("Nowak", teacherInfos.get(2).getSurname());
+        assertEquals("Nowak", teacherInfos.get(3).getSurname());
+    }
 }

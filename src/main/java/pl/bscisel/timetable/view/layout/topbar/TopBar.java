@@ -11,6 +11,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import pl.bscisel.timetable.security.SecurityService;
 import pl.bscisel.timetable.view.AccountManagingView;
 import pl.bscisel.timetable.view.CourseManagingView;
@@ -22,13 +25,20 @@ import pl.bscisel.timetable.view.organizationalunits.OrganizationalUnitView;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TopBar extends HorizontalLayout {
+
+    SecurityService securityService;
+
     public TopBar(SecurityService securityService) {
+        this.securityService = securityService;
+
         setStyling();
 
         add(getLeftPart());
-        add(getCenterPart(securityService));
-        add(getRightPart(securityService));
+        add(getCenterPart());
+        add(getRightPart());
     }
 
     private HorizontalLayout getLeftPart() {
@@ -41,7 +51,7 @@ public class TopBar extends HorizontalLayout {
     }
 
 
-    private HorizontalLayout getCenterPart(SecurityService securityService) {
+    private HorizontalLayout getCenterPart() {
         HorizontalLayout layout = new HorizontalLayout();
 
         if (securityService.isUserAdmin()) {
@@ -66,7 +76,7 @@ public class TopBar extends HorizontalLayout {
         return layout;
     }
 
-    private HorizontalLayout getRightPart(SecurityService securityService) {
+    private HorizontalLayout getRightPart() {
         HorizontalLayout layout = new HorizontalLayout();
 
         layout.getStyle().set("margin-right", "var(--lumo-space-m)");

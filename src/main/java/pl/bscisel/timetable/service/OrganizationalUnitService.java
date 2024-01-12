@@ -23,12 +23,12 @@ public class OrganizationalUnitService {
     }
 
     /**
-     * Retrieves a list of top-level organizational units.
+     * Retrieves a list of top-level organizational units. The units are sorted by name.
      *
      * @return A list of top-level organizational units.
      */
     public List<OrganizationalUnit> findTopLevelUnits() {
-        return orgUnitRepo.findByParentUnitNull();
+        return orgUnitRepo.findByParentUnitNullOrderByName();
     }
 
     /**
@@ -41,13 +41,13 @@ public class OrganizationalUnitService {
     }
 
     /**
-     * Retrieves the children of an organizational unit based on its id.
+     * Retrieves the children of an organizational unit based on its id. The children are sorted by name.
      *
      * @param id The id of the parent organizational unit.
      * @return A list of children organizational units.
      */
     public List<OrganizationalUnit> findChildrenByUnitId(@NotNull Long id) {
-        return orgUnitRepo.findByParentUnitId(id);
+        return orgUnitRepo.findByParentUnitIdOrderByName(id);
     }
 
     /**
@@ -117,13 +117,13 @@ public class OrganizationalUnitService {
      */
     public boolean organizationalUnitExistsByNameAndParentUnitId(@NotNull String name, @Nullable Long parentUnitId, @Nullable Long excludeId) {
         if (parentUnitId == null && excludeId == null) {
-            return orgUnitRepo.findByParentUnitNull().stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()));
+            return orgUnitRepo.findByParentUnitNullOrderByName().stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()));
         } else if (parentUnitId == null) {
-            return orgUnitRepo.findByParentUnitNull().stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()) && !unit.getId().equals(excludeId));
+            return orgUnitRepo.findByParentUnitNullOrderByName().stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()) && !unit.getId().equals(excludeId));
         } else if (excludeId == null) {
-            return orgUnitRepo.findByParentUnitId(parentUnitId).stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()));
+            return orgUnitRepo.findByParentUnitIdOrderByName(parentUnitId).stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()));
         } else {
-            return orgUnitRepo.findByParentUnitId(parentUnitId).stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()) && !unit.getId().equals(excludeId));
+            return orgUnitRepo.findByParentUnitIdOrderByName(parentUnitId).stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(name.strip()) && !unit.getId().equals(excludeId));
         }
     }
 }

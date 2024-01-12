@@ -93,7 +93,7 @@ public class ClassForm extends AbstractEventForm<Class> {
         classGroup.setItems(classGroupService.findAll());
         classGroup.setItemLabelGenerator(classGroup -> classGroup.getName() + " (#" + classGroup.getId() + ")");
 
-        teachers.setItems(teacherInfoService.findAll());
+        teachers.setItems(teacherInfoService.findAllOrderBySurname());
         teachers.setItemLabelGenerator(teacherInfo -> teacherInfo.getFullName() + " (#" + teacherInfo.getId() + ")");
     }
 

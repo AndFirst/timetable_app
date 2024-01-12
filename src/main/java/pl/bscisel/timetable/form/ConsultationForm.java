@@ -42,7 +42,7 @@ public class ConsultationForm extends AbstractEventForm<Consultation> {
     protected void populateFields() {
         super.populateFields();
 
-        teacher.setItems(teacherInfoService.findAll());
+        teacher.setItems(teacherInfoService.findAllOrderBySurname());
         teacher.setItemLabelGenerator(teacher -> teacher.getFullName() + " (#" + teacher.getId() + ")");
     }
 

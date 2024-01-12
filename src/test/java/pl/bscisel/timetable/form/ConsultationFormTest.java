@@ -1,6 +1,5 @@
 package pl.bscisel.timetable.form;
 
-import com.vaadin.flow.data.provider.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.bscisel.timetable.data.entity.Consultation;
@@ -29,7 +28,7 @@ class ConsultationFormTest {
     @Test
     public void testPopulateFields() {
         form.populateFields();
-        verify(teacherInfoService, times(1)).findAll();
+        verify(teacherInfoService, times(1)).findAllOrderBySurname();
         // todo: test with mocked data
     }
 

@@ -31,18 +31,18 @@ class OrganizationalUnitRepositoryTest {
     @Test
     @Sql(value = "organizational_units_data.sql")
     public void testFindByParentUnitNull() {
-        List<OrganizationalUnit> organizationalUnits = organizationalUnitRepository.findByParentUnitNull();
+        List<OrganizationalUnit> organizationalUnits = organizationalUnitRepository.findByParentUnitNullOrderByName();
         assertEquals(4, organizationalUnits.size());
     }
 
     @Test
     @Sql(value = "organizational_units_data.sql")
     public void testFindByParentUnitId() {
-        List<OrganizationalUnit> organizationalUnits = organizationalUnitRepository.findByParentUnitId(1L);
+        List<OrganizationalUnit> organizationalUnits = organizationalUnitRepository.findByParentUnitIdOrderByName(1L);
         assertEquals(4, organizationalUnits.size());
-        organizationalUnits = organizationalUnitRepository.findByParentUnitId(2L);
+        organizationalUnits = organizationalUnitRepository.findByParentUnitIdOrderByName(2L);
         assertEquals(3, organizationalUnits.size());
-        organizationalUnits = organizationalUnitRepository.findByParentUnitId(3L);
+        organizationalUnits = organizationalUnitRepository.findByParentUnitIdOrderByName(3L);
         assertEquals(0, organizationalUnits.size());
     }
 

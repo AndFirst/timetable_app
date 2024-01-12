@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
-class CourseViewTest {
+class CourseManagingViewTest {
 
     private CourseService courseService;
     private CourseForm courseForm;

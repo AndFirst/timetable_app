@@ -4,13 +4,13 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.bscisel.timetable.data.entity.Class;
 import pl.bscisel.timetable.data.entity.ClassGroup;
 import pl.bscisel.timetable.data.entity.Course;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
 import pl.bscisel.timetable.service.ClassGroupService;
 import pl.bscisel.timetable.service.CourseService;
 import pl.bscisel.timetable.service.TeacherInfoService;
-import pl.bscisel.timetable.data.entity.Class;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -52,7 +52,7 @@ class ClassFormTest {
         assertEquals(Class.ClassFrequency.values().length, form.frequency.getDataProvider().size(new Query<>()));
         verify(courseService, times(1)).findAll();
         verify(classGroupService, times(1)).findAll();
-        verify(teacherInfoService, times(1)).findAll();
+        verify(teacherInfoService, times(1)).findAllOrderBySurname();
         // todo: test with mocked data
     }
 

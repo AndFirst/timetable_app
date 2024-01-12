@@ -9,8 +9,8 @@ public class TeacherButton extends Button {
     public TeacherButton(String text) {
         super(text);
         setIcon(VaadinIcon.USER.create());
-        addClassName("class-group-button");
-        addClassName("org-unit-button");
+        addClassName("nav-gototimetable-button");
+        addClassName("nav-button");
         addThemeVariants(ButtonVariant.LUMO_TERTIARY);
     }
 }
