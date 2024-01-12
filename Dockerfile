@@ -1,4 +1,14 @@
+FROM eclipse-temurin:17-jdk-alpine AS build
+WORKDIR /workspace/app
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+COPY frontend frontend
+
+RUN ./mvnw clean package -Pproduction -DskipTests
+
 FROM eclipse-temurin:17-jre-alpine
-COPY target/*.jar app.jar
+COPY --from=build /workspace/app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app.jar"]

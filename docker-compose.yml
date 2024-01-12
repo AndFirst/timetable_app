@@ -10,7 +10,9 @@ services:
       - "5432:5432"
 
   timetable:
-    image: timetable:latest
+    build:
+        context: .
+        dockerfile: Dockerfile
     environment:
         DATABASE_URL: jdbc:postgresql://postgres:5432/db
         DATABASE_USER: user
