@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Use cases diagram &#8212; Timetable 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css?v=bd9ab754" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css?v=ffa536d2" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css?v=448c382f" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/assets/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="_static/assets/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=f783d6a5"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Requirements analysis" href="requirements_analysis.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="use-cases-diagram">
+<h1>Use cases diagram<a class="headerlink" href="#use-cases-diagram" title="Link to this heading">¶</a></h1>
+<p class="plantuml" id="needuml-diagrams-0">
+<a href="_images/plantuml-cf95255b4a7abd147d5ef61bd908740b72af73af.png"><img src="_images/plantuml-cf95255b4a7abd147d5ef61bd908740b72af73af.png" alt="&#64;startuml
+
+left to right direction
+
+&quot;Viewer&quot; as viewer
+&quot;Teacher&quot; as teacher
+&quot;Administrator&quot; as administrator
+
+package &quot;Administrator Panel&quot; {
+    &quot;Managing Classes&quot; as (manage_classes)
+    &quot;Managing Organizational Units&quot; as (manage_org_units)
+    &quot;Managing Class Groups&quot; as (manage_class_groups)
+    &quot;Managing Accounts&quot; as (manage_accounts)
+    &quot;Managing Courses&quot; as (manage_courses)
+}
+package &quot;Teacher Panel&quot; {
+    &quot;Managing Consultation Dates&quot; as (manage_consultations)
+}
+package &quot;Displaying Timetable&quot; {
+    &quot;Displaying Classes&quot; as (display_classes)
+    &quot;Displaying Consultations Dates&quot; as (display_consultations)
+}
+package &quot;Browsing Available Class schedules&quot; {
+    &quot;Browsing Organizational Units&quot; as (browse_org_units)
+    &quot;Browsing Class Groups&quot; as (browse_class_groups)
+    &quot;Browsing Teacher Schedules&quot; as (browse_teacher_schedules)
+}
+package &quot;Login&quot; {
+    &quot;Login&quot; as (login)
+}
+
+viewer --&gt; display_classes
+viewer --&gt; display_consultations
+
+teacher --&gt; manage_consultations
+
+administrator --&gt; manage_consultations
+administrator --&gt; manage_classes
+administrator --&gt; manage_org_units
+administrator --&gt; manage_class_groups
+administrator --&gt; manage_accounts
+administrator --&gt; manage_courses
+
+
+manage_classes ..&gt; login : &lt;&lt;Include&gt;&gt;
+manage_org_units ..&gt; login : &lt;&lt;Include&gt;&gt;
+manage_class_groups ..&gt; login : &lt;&lt;Include&gt;&gt;
+manage_accounts ..&gt; login : &lt;&lt;Include&gt;&gt;
+manage_courses ..&gt; login : &lt;&lt;Include&gt;&gt;
+
+manage_classes ..&gt; display_classes : &lt;&lt;Include&gt;&gt;
+manage_consultations ..&gt; display_consultations : &lt;&lt;Include&gt;&gt;
+
+display_classes ..&gt; browse_class_groups : &lt;&lt;Include&gt;&gt;
+display_consultations ..&gt; browse_teacher_schedules : &lt;&lt;Include&gt;&gt;
+
+browse_org_units &lt;.. browse_class_groups : &lt;&lt;Include&gt;&gt;
+&#64;enduml
+" style="width: 1480.0px; height: 689.0px"/></a>
+</p>
+</section>
+<section id="class-diagram">
+<h1>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h1>
+<p class="plantuml" id="needuml-diagrams-1">
+<a href="_images/plantuml-47de46c86706579211da26f2409da62f15063a06.png"><img src="_images/plantuml-47de46c86706579211da26f2409da62f15063a06.png" alt="&#64;startuml
+
+abstract class Account {
+    emailAddress: String
+    password: String
+}
+
+class TeacherInfo {
+    name: String
+    surname: String
+    degree: String
+    phoneNumber: String
+    biography: String
+}
+
+class OrganizationalUnit {
+    name: String
+    description: String
+}
+
+class ClassGroup {
+    name: String
+    description: String
+}
+
+class Course {
+    code: String
+    name: String
+    description: String
+}
+
+enum ClassFrequency {
+    ODD_WEEKS
+    EVEN_WEEKS
+    ALL_WEEKS
+}
+
+abstract class Event {
+    startTime: LocalTime
+    endTime: LocalTime
+    dayOfWeek: DayOfWeek
+    location: String
+    description: String
+}
+
+class Class {
+    type: String
+    frequency: ClassFrequency
+}
+
+class Consultation {
+
+}
+
+class Role {
+    name: String
+}
+
+Event &lt;|.. Class
+Event &lt;|.. Consultation
+
+TeacherInfo o-- Account
+Account o- Role
+
+OrganizationalUnit *-- OrganizationalUnit
+OrganizationalUnit *-- ClassGroup
+
+Class o-- Course
+Class o- TeacherInfo
+
+TeacherInfo *-- Consultation
+
+ClassGroup *-- Class
+&#64;enduml
+" style="width: 629.0px; height: 644.0px"/></a>
+</p>
+</section>
+<section id="architecture-diagram">
+<h1>Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Link to this heading">¶</a></h1>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Timetable</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="requirements_analysis.html">Requirements analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use cases diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#class-diagram">Class diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#architecture-diagram">Architecture Diagram</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="requirements_analysis.html" title="previous chapter">Requirements analysis</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Bartłomiej Ściseł.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/diagrams.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

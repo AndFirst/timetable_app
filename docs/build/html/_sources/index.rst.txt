@@ -1,10 +1,9 @@
-Dokumentacja projektu Timetable
+Timetable project documentation
 ===============================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Zawartość:
+   :caption: Contents:
 
-   analiza_i_projektowanie
-   przypadki_uzycia
-   diagramy
+   requirements_analysis
+   diagrams
