@@ -689,14 +689,30 @@ Low-level requirements
 Non-functional requirements
 ===========================
 
-1. The System should be accessible through Google Chrome and Mozilla Firefox web browsers.
-2. The system should store user passwords in encrypted form. Passwords should be encrypted using a modern cryptographic algorithm.
-3. It should not take more than 300 milliseconds to load the requested timetable.
-4. Operation of the system should be intuitive and easy to use. The user should be able to use the system on his own after a short course.
-5. User sessions should be properly managed, and users should be automatically logged out after a certain period of inactivity to prevent unauthorized access to the system.
-6. The user interface should be dynamic, i.e. it should not require refreshing the page after performing an action.
-7. The system should check the correctness of the data entered and inform the user of errors.
-8. The system should give access to secured areas of functionality only to authorized users.
+.. nfreq:: The System should be accessible through Google Chrome and Mozilla Firefox web browsers.
+    :id: NFR_001
+
+.. nfreq:: The system should store user passwords in encrypted form. Passwords should be encrypted using a modern cryptographic algorithm.
+    :id: NFR_002
+
+.. nfreq:: It should not take more than 300 milliseconds to load the requested timetable.
+    :id: NFR_003
+
+.. nfreq:: Operation of the system should be intuitive and easy to use. The user should be able to use the system on his own after a short course.
+    :id: NFR_004
+
+.. nfreq:: User sessions should be properly managed, and users should be automatically logged out after a certain period of inactivity to prevent unauthorized access to the system.
+    :id: NFR_005
+
+.. nfreq:: The user interface should be dynamic, i.e. it should not require refreshing the page after performing an action.
+    :id: NFR_006
+
+.. nfreq:: The system should check the correctness of the data entered and inform the user of errors.
+    :id: NFR_007
+
+.. nfreq:: The system should give access to secured areas of functionality only to authorized users.
+    :id: NFR_008
+
 
 Flows
 =====
