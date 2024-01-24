@@ -672,19 +672,18 @@ Low-level requirements
 
 
 
-.. llreq:: Wymagania dotyczące logowania
+.. llreq:: The requirement for logging in
     :tags: login
     :id: LLR_400
     :specifies: HLR_300
 
-    .. llreq:: Wymagania dotyczące interfejsu logowania
+    .. llreq:: The requirements for the login interface
         :tags: login
         :id: LLR_410
 
-        - System powinien wyświetlać panel logowania.
-        - Panel logowania powinien składać się z pól do wpisania adresu email i hasła.
-        - Panel logowania powinien zawierać przycisk "Zaloguj się", po którego wciśnięciu System zweryfikuje wprowadzone dane i zaloguje do panelu zarządzania.
-
+        - The system should display a login panel.
+        - The login panel should consist of fields for entering email address and password.
+        - The login panel should contain a "Login" button, when pressed, the System will verify the entered data and log in to the management panel.
 
 Non-functional requirements
 ===========================
@@ -787,3 +786,45 @@ Consultations flow
 .. needflow::
     :tags: consultations
     :show_link_names:
+
+
+Manual tests specifications
+===========================
+
+.. mts:: Adding a Teacher Consultation by the Administrator
+
+    Purpose of the test
+    -------------------
+    To test the functionality of adding teacher consultations by the administrator.
+
+    Prerequisites
+    -------------
+    - The tester must have access to the application.
+    - The tester must have access to an account with administrator role.
+
+    Test steps
+    ----------
+    1. Enter the application page.
+        - Expected result: The application home page is accessible and loads correctly.
+
+    2. Clicking the 'Login' button in the upper right corner.
+        - Expected result: Login view appears.
+
+    3. Login with administrator credentials.
+        - Expected result: Successful login to the application. Links to management views appear in the top bar.
+
+    4. Selecting the 'Teachers' tab in the sidebar on the left.
+        - Expected result: Displaying the list of teachers in the system.
+
+    5. Selecting any teacher from the list.
+        - Expected result: Displaying the timetable of the selected teacher.
+
+    6. Selecting any time period in the calendar on any day.
+        - Expected result: Ability to mark a specific time in the calendar. Selected boxes should be highlighted in blue.
+
+    7. Pressing the 'Add teacher consultation' button.
+        - Expected result: The form to add consultation appears.
+
+    8. Press the 'Save' button.
+        - Expected result: Disappearance of the form. The new consultation entry should be visible in the calendar. The new entry should contain the start and end time of the consultation according to the time slot selected in step 6, the title 'Consultation' and the name of the selected teacher.
+
