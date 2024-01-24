@@ -11,6 +11,7 @@ import pl.bscisel.timetable.form.CourseForm;
 import pl.bscisel.timetable.service.CourseService;
 import pl.bscisel.timetable.view.layout.MainLayout;
 
+// LLR_310, LLR_312, LLR_313, LLR_314, LLR_315
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Route(value = "courses", layout = MainLayout.class)

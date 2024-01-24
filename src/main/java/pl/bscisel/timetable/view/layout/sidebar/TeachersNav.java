@@ -11,6 +11,7 @@ import pl.bscisel.timetable.view.timetables.TeacherTimetableView;
 
 import java.util.List;
 
+// LLR_051
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TeachersNav extends VerticalLayout {

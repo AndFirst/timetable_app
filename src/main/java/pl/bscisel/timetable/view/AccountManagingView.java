@@ -11,6 +11,7 @@ import pl.bscisel.timetable.form.AccountForm;
 import pl.bscisel.timetable.service.AccountService;
 import pl.bscisel.timetable.view.layout.MainLayout;
 
+// LLR_320, LLR_322, LLR_323, LLR_325
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Route(value = "accounts", layout = MainLayout.class)
@@ -52,6 +53,7 @@ public class AccountManagingView extends AbstractManagingView<Account, AccountFo
         grid.getColumns().forEach(column -> column.setAutoWidth(true));
     }
 
+    // LLR_324
     @Override
     void edit(Account account, boolean isNew) {
         super.edit(account, isNew);

@@ -23,7 +23,7 @@ import pl.bscisel.timetable.view.timetables.components.TimetableEntry;
 import pl.bscisel.timetable.view.timetables.components.FormDialog;
 import pl.bscisel.timetable.form.ClassForm;
 
-
+// LLR_100, LLR_350
 @PageTitle("Class group")
 @Route(value = "classgroup", layout = MainLayout.class)
 @AnonymousAllowed

@@ -13,6 +13,7 @@ import pl.bscisel.timetable.data.entity.OrganizationalUnit;
 import pl.bscisel.timetable.service.ClassGroupService;
 import pl.bscisel.timetable.service.OrganizationalUnitService;
 
+// LLR_341
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ClassGroupForm extends AbstractForm<ClassGroup> {

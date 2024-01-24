@@ -50,7 +50,7 @@ public class TopBar extends HorizontalLayout {
         return layout;
     }
 
-
+    // LLR_300
     private HorizontalLayout getCenterPart() {
         HorizontalLayout layout = new HorizontalLayout();
 

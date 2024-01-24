@@ -20,6 +20,7 @@ import pl.bscisel.timetable.service.ClassGroupService;
 import pl.bscisel.timetable.service.CourseService;
 import pl.bscisel.timetable.service.TeacherInfoService;
 
+// LLR_351
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ClassForm extends AbstractEventForm<Class> {

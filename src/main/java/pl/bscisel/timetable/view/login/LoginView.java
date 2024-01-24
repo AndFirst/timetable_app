@@ -10,6 +10,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import jakarta.annotation.PostConstruct;
 
+// LLR_400, LLR_410
 @Route("login")
 @PageTitle("Timetable - Login")
 @AnonymousAllowed

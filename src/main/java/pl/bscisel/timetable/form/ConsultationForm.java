@@ -12,6 +12,7 @@ import pl.bscisel.timetable.data.entity.Consultation;
 import pl.bscisel.timetable.data.entity.TeacherInfo;
 import pl.bscisel.timetable.service.TeacherInfoService;
 
+// LLR_211
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ConsultationForm extends AbstractEventForm<Consultation> {

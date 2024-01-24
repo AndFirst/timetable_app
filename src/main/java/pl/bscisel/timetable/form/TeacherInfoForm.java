@@ -13,6 +13,7 @@ import pl.bscisel.timetable.data.entity.TeacherInfo;
 import pl.bscisel.timetable.service.AccountService;
 import pl.bscisel.timetable.service.TeacherInfoService;
 
+// LLR_361
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TeacherInfoForm extends AbstractForm<TeacherInfo> {

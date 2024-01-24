@@ -16,6 +16,7 @@ import pl.bscisel.timetable.data.entity.Account;
 import pl.bscisel.timetable.data.entity.Role;
 import pl.bscisel.timetable.service.AccountService;
 
+// LLR_321
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class AccountForm extends AbstractForm<Account> {

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import pl.bscisel.timetable.data.entity.Course;
 import pl.bscisel.timetable.service.CourseService;
 
+// LLR_311
 @org.springframework.stereotype.Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CourseForm extends AbstractForm<Course> {

@@ -16,6 +16,7 @@ import pl.bscisel.timetable.form.ClassForm;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+// LLR_100, LLR_353
 public abstract class AbstractClassTimetableView extends AbstractTimetableView {
     private static final Logger logger = LoggerFactory.getLogger(AbstractClassTimetableView.class);
 
@@ -36,6 +37,7 @@ public abstract class AbstractClassTimetableView extends AbstractTimetableView {
         super(eventsService);
     }
 
+    // LLR_352
     protected void addNewClass() {
         logger.debug("Adding new class");
         Class newClassEntity = new Class();
@@ -53,6 +55,7 @@ public abstract class AbstractClassTimetableView extends AbstractTimetableView {
         event.setDayOfWeek(dayOfWeekSelected);
     }
 
+    // LLR_354, LLR_355
     protected void editClass(Class entry) {
         classForm.setFormBean(entry);
         addClassDialog.open();

@@ -16,7 +16,7 @@ import pl.bscisel.timetable.view.timetables.ClassGroupTimetableView;
 
 import java.util.List;
 
-// LLR_332
+// LLR_050
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class OrganizationalUnitsNav extends VerticalLayout {

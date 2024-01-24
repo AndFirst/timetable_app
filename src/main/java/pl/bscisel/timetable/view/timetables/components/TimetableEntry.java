@@ -7,7 +7,7 @@ import lombok.Getter;
 import org.vaadin.stefan.fullcalendar.Entry;
 import pl.bscisel.timetable.data.entity.Event;
 
-
+// LLR_110, LLR_120
 public class TimetableEntry extends Entry {
     @Getter
     private final Event event;

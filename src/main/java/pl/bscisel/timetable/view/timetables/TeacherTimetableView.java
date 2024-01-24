@@ -30,6 +30,7 @@ import pl.bscisel.timetable.view.timetables.components.TimetableEntry;
 
 import java.util.Optional;
 
+// LLR_100, LLR_210
 @PageTitle("Teacher")
 @Route(value = "teacher", layout = MainLayout.class)
 @AnonymousAllowed
@@ -207,6 +208,7 @@ public class TeacherTimetableView extends AbstractClassTimetableView implements 
         });
     }
 
+    // LLR_214, LLR_215
     private void editConsultation(Consultation event) {
         consultationForm.setFormBean(event);
         addConsultationDialog.open();
@@ -250,6 +252,7 @@ public class TeacherTimetableView extends AbstractClassTimetableView implements 
         logger.debug("Toolbar populated");
     }
 
+    // LLR_212
     private void addNewConsultation() {
         logger.debug("Adding new consultation");
         Consultation consultation = new Consultation();
@@ -258,6 +261,7 @@ public class TeacherTimetableView extends AbstractClassTimetableView implements 
         editConsultation(consultation);
     }
 
+    // LLR_213
     private void setEntryProvider() {
         // implementation of AbstractEntryProvider was leading to a multiple db calls, probably a bug in the library
         entryProvider = new InMemoryEntryProvider<>();

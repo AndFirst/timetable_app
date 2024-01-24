@@ -22,7 +22,7 @@ import pl.bscisel.timetable.form.OrganizationalUnitForm;
 
 import java.util.LinkedList;
 
-
+// LLR_330, LLR_333, LLR_343
 @Route(value = "organizationalunits", layout = MainLayout.class)
 @RolesAllowed("ADMIN")
 @PageTitle("Timetable - Organizational units")
@@ -65,6 +65,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         add(getToolbar(), getContent());
     }
 
+    // LLR_332
     private void addUnit() {
         OrganizationalUnit newUnit = new OrganizationalUnit();
         // if some organizational unit is selected, then set it as parent unit
@@ -74,6 +75,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         editUnit(newUnit);
     }
 
+    // LLR_334
     private void editUnit(@Nullable OrganizationalUnit organizationalUnit) {
         if (organizationalUnit == null) {
             closeUnitEditor();
@@ -91,6 +93,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         removeClassName("editing");
     }
 
+    // LLR_342
     private void addGroup() {
         groupsGrid.asSingleSelect().clear();
         ClassGroup newClassGroup = new ClassGroup();
@@ -98,6 +101,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         editGroup(newClassGroup);
     }
 
+    // LLR_344
     private void editGroup(@Nullable ClassGroup classGroup) {
         if (classGroup == null) {
             closeGroupEditor();
@@ -145,6 +149,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         selectUnitInGrid(unit);
     }
 
+    // LLR_335
     void deleteUnit(@Nullable OrganizationalUnit unit) {
         if (unit != null) {
             unitService.delete(unit);
@@ -176,6 +181,7 @@ public class OrganizationalUnitView extends VerticalLayout {
         finishGroupEditing(classGroup);
     }
 
+    // LLR_345
     void deleteGroup(@Nullable ClassGroup classGroup) {
         if (classGroup != null) {
             groupsService.delete(classGroup);

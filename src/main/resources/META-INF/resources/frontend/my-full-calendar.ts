@@ -1,5 +1,6 @@
 import {FullCalendar} from './vaadin-full-calendar/full-calendar.ts';
 
+// LLR_110, LLR_120
 export class MyFullCalendar extends FullCalendar {
     createInitOptions() {
         var options = super.createInitOptions();
