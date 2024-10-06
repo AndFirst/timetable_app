@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Wdrożenie na DigitalOcean
 
 on:
   push:
@@ -9,38 +9,67 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Checkout repozytorium
+      uses: actions/checkout@v3
 
-    - name: Log in to DigitalOcean Container Registry
+    - name: Logowanie do DigitalOcean Container Registry
       run: echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
 
-    - name: Build Docker image
+    - name: Budowanie obrazu Docker
       run: |
         docker build -t ${{ secrets.DOCR_REGISTRY }}/timetable-app:latest .
 
-    - name: Push Docker image to DigitalOcean Container Registry
+    - name: Przesyłanie obrazu do DigitalOcean Container Registry
       run: |
         docker push ${{ secrets.DOCR_REGISTRY }}/timetable-app:latest
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.3
+    - name: Konfiguracja SSH
+      uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
 
-    - name: Deploy application on Droplet
+    - name: Kopiowanie docker-compose.yml i wdrażanie aplikacji na Droplet
+      env:
+        DROPLET_IP: 165.227.133.120
       run: |
-        ssh -t -o StrictHostKeyChecking=no root@165.227.133.120 << 'EOF'
-          # Logowanie do rejestru Docker
+        # Kopiowanie docker-compose.yml na serwer
+        scp -o StrictHostKeyChecking=no docker-compose.yml root@$DROPLET_IP:/root/app/docker-compose.yml
+        
+        # Wdrażanie aplikacji
+        ssh -o StrictHostKeyChecking=no root@$DROPLET_IP << 'ENDSSH'
+          set -e
+          
+          echo "Logowanie do rejestru Docker..."
           echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
           
-          # Przechodzenie do katalogu z aplikacją
+          echo "Przechodzenie do katalogu aplikacji..."
           cd /root/app/
           
-          # Operacje na kontenerach Docker
-          docker compose down
+          echo "Zatrzymywanie istniejących kontenerów..."
+          docker compose down || true
+          
+          echo "Pobieranie najnowszych obrazów..."
           docker compose pull
+          
+          echo "Uruchamianie kontenerów..."
           docker compose up -d
-        EOF
+          
+          echo "Wdrożenie zakończone pomyślnie!"
+        ENDSSH
+
+    - name: Weryfikacja wdrożenia
+      env:
+        DROPLET_IP: 165.227.133.120
+      run: |
+        echo "Oczekiwanie na uruchomienie aplikacji..."
+        sleep 30
+        
+        echo "Sprawdzanie statusu aplikacji..."
+        odpowiedz=$(curl -sS -o /dev/null -w "%{http_code}" http://$DROPLET_IP)
+        if [ $odpowiedz = "200" ]; then
+          echo "Aplikacja działa poprawnie!"
+        else
+          echo "Błąd: Aplikacja nie odpowiada prawidłowo. Kod statusu HTTP: $odpowiedz"
+          exit 1
+        fi
