@@ -32,9 +32,14 @@ jobs:
 
     - name: Deploy application on Droplet
       run: |
-        ssh -o StrictHostKeyChecking=no root@165.227.133.120 << 'EOF'
-          docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} -p ${{ secrets.DOCR_PASSWORD }}
+        ssh -t -o StrictHostKeyChecking=no root@165.227.133.120 << 'EOF'
+          # Logowanie do rejestru Docker
+          echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
+          
+          # Przechodzenie do katalogu z aplikacją
           cd /root/app/
+          
+          # Operacje na kontenerach Docker
           docker compose down
           docker compose pull
           docker compose up -d
