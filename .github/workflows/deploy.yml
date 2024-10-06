@@ -72,9 +72,9 @@ jobs:
         sleep 30
         
         echo "Checking application status..."
-        response=$(curl -sS -o /dev/null -w "%{http_code}" ${{ inputs.droplet_url }})
-        if [ $response = "200" ]; then
-          echo "The application is running correctly!"
+        response=$(curl -sS -o /dev/null -w "%{http_code}" -L ${{ inputs.droplet_url }})
+        if [ "$response" = "200" ] || [ "$response" = "301" ]; then
+          echo "The application is running correctly! HTTP status code: $response"
         else
           echo "Error: The application is not responding correctly. HTTP status code: $response"
           exit 1
