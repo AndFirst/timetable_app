@@ -26,6 +26,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Show current directory files
+      run: |
+        pwd
+        ls -la
+
     - name: Configure SSH
       uses: webfactory/ssh-agent@v0.7.0
       with:
