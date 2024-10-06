@@ -67,9 +67,10 @@ jobs:
         ENDSSH
 
     - name: Verify deployment
+      # container needs more time to get up
       run: |
         echo "Waiting for the application to start..."
-        sleep 30
+        sleep 60
         
         echo "Checking application status..."
         response=$(curl -sS -o /dev/null -w "%{http_code}" -L ${{ inputs.droplet_url }})
