@@ -1,0 +1,14 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      droplet_ip: '159.89.17.208'  # Production Droplet IP
+      droplet_url: 'http://timatable.tech'  # Production URL

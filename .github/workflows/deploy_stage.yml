@@ -1,75 +1,14 @@
-name: Wdrożenie na DigitalOcean
+name: Deploy to Staging
 
 on:
   push:
     branches:
-      - main
+      - develop
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repozytorium
-      uses: actions/checkout@v3
-
-    - name: Logowanie do DigitalOcean Container Registry
-      run: echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
-
-    - name: Budowanie obrazu Docker
-      run: |
-        docker build -t ${{ secrets.DOCR_REGISTRY }}/timetable-app:latest .
-
-    - name: Przesyłanie obrazu do DigitalOcean Container Registry
-      run: |
-        docker push ${{ secrets.DOCR_REGISTRY }}/timetable-app:latest
-
-    - name: Konfiguracja SSH
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
-
-    - name: Kopiowanie docker-compose.yml i wdrażanie aplikacji na Droplet
-      env:
-        DROPLET_IP: 165.227.133.120
-      run: |
-        # Kopiowanie docker-compose.yml na serwer
-        scp -o StrictHostKeyChecking=no docker-compose.yml root@$DROPLET_IP:/root/app/docker-compose.yml
-        
-        # Wdrażanie aplikacji
-        ssh -o StrictHostKeyChecking=no root@$DROPLET_IP << 'ENDSSH'
-          set -e
-          
-          echo "Logowanie do rejestru Docker..."
-          echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
-          
-          echo "Przechodzenie do katalogu aplikacji..."
-          cd /root/app/
-          
-          echo "Zatrzymywanie istniejących kontenerów..."
-          docker compose down || true
-          
-          echo "Pobieranie najnowszych obrazów..."
-          docker compose pull
-          
-          echo "Uruchamianie kontenerów..."
-          docker compose up -d
-          
-          echo "Wdrożenie zakończone pomyślnie!"
-        ENDSSH
-
-    - name: Weryfikacja wdrożenia
-      env:
-        DROPLET_IP: 165.227.133.120
-      run: |
-        echo "Oczekiwanie na uruchomienie aplikacji..."
-        sleep 30
-        
-        echo "Sprawdzanie statusu aplikacji..."
-        odpowiedz=$(curl -sS -o /dev/null -w "%{http_code}" http://$DROPLET_IP)
-        if [ $odpowiedz = "200" ]; then
-          echo "Aplikacja działa poprawnie!"
-        else
-          echo "Błąd: Aplikacja nie odpowiada prawidłowo. Kod statusu HTTP: $odpowiedz"
-          exit 1
-        fi
+  deploy-stage:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      droplet_ip: '165.227.133.120'  # Staging Droplet IP
+      droplet_url: 'http://stage.timatable.tech'  # Staging URL
