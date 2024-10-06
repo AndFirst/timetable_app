@@ -1,17 +1,17 @@
-name: Deploy to Staging
+name: Deploy to Production
 
 on:
   push:
     branches:
-      - develop
+      - main
   workflow_dispatch:
 
 jobs:
-  deploy-stage:
+  deploy-production:
     uses: ./.github/workflows/deploy.yml
     with:
-      droplet_ip: '165.227.133.120'  # Staging Droplet IP
-      droplet_url: 'http://stage.timatable.tech'  # Staging URL
+      droplet_ip: '159.89.17.208'  # Production Droplet IP
+      droplet_url: 'http://timatable.tech'  # Production URL
 
     secrets: # Pass necessary secrets to the reusable workflow
       DIGITALOCEAN_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}

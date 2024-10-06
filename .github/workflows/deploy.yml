@@ -1,0 +1,82 @@
+name: Reusable Deployment Workflow
+
+on:
+  workflow_call:
+    inputs:
+      droplet_ip:
+        description: 'The Droplet IP address'
+        required: true
+        type: string
+      droplet_url:
+        description: 'The URL of the deployed app for verification'
+        required: true
+        type: string
+    secrets: # Add this section to allow secret passing from calling workflows
+      DIGITALOCEAN_SSH_KEY:
+        required: true
+      DOCR_PASSWORD:
+        required: true
+      DOCR_REGISTRY:
+        required: true
+      DOCR_USERNAME:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Show current directory files
+      run: |
+        pwd
+        ls -la
+
+    - name: Configure SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+
+    - name: Deploy application on Droplet
+      run: |
+        # Copy docker-compose.yml to the server
+        scp -o StrictHostKeyChecking=no docker-compose.yml root@${{ inputs.droplet_ip }}:/root/app/docker-compose.yml
+        
+        # Deploy the application
+        ssh -o StrictHostKeyChecking=no root@${{ inputs.droplet_ip }} << 'ENDSSH'
+          set -e
+          
+          echo "Logging in to Docker registry..."
+          echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
+          
+          echo "Navigating to the application directory..."
+          cd /root/app/
+          
+          echo "Stopping existing containers..."
+          docker compose down || true
+          
+          echo "Pulling the latest image from registry..."
+          docker compose pull
+          
+          echo "Starting containers..."
+          docker compose up -d
+          
+          echo "Deployment completed successfully!"
+        ENDSSH
+
+    - name: Verify deployment
+      # container needs more time to get up
+      run: |
+        echo "Waiting for the application to start..."
+        sleep 60
+        
+        echo "Checking application status..."
+        response=$(curl -sS -o /dev/null -w "%{http_code}" -L ${{ inputs.droplet_url }})
+        if [ "$response" = "200" ] || [ "$response" = "301" ]; then
+          echo "The application is running correctly! HTTP status code: $response"
+        else
+          echo "Error: The application is not responding correctly. HTTP status code: $response"
+          exit 1
+        fi
