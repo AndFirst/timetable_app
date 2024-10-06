@@ -34,8 +34,8 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no root@165.227.133.120 << 'EOF'
           docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} -p ${{ secrets.DOCR_PASSWORD }}
-          cd /home/root/app/
-          docker-compose down
-          docker-compose pull
-          docker-compose up -d
+          cd /root/app/
+          docker compose down
+          docker compose pull
+          docker compose up -d
         EOF
