@@ -1,0 +1,40 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Log in to DigitalOcean Container Registry
+      run: echo "${{ secrets.DOCR_PASSWORD }}" | docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} --password-stdin
+
+    - name: Build Docker image
+      run: |
+        docker build -t ${{ secrets.DOCR_REGISTRY }}/timetable-app:latest .
+
+    - name: Push Docker image to DigitalOcean Container Registry
+      run: |
+        docker push ${{ secrets.DOCR_REGISTRY }}/timetable-app:latest
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+
+    - name: Deploy application on Droplet
+      run: |
+        ssh -o StrictHostKeyChecking=no root@165.227.133.120 << 'EOF'
+          docker login ${{ secrets.DOCR_REGISTRY }} -u ${{ secrets.DOCR_USERNAME }} -p ${{ secrets.DOCR_PASSWORD }}
+          cd /home/root/app/
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d
+        EOF
