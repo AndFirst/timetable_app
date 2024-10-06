@@ -12,3 +12,9 @@ jobs:
     with:
       droplet_ip: '159.89.17.208'  # Production Droplet IP
       droplet_url: 'http://timatable.tech'  # Production URL
+
+    secrets: # Pass necessary secrets to the reusable workflow
+      DIGITALOCEAN_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+      DOCR_PASSWORD: ${{ secrets.DOCR_PASSWORD }}
+      DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+      DOCR_USERNAME: ${{ secrets.DOCR_USERNAME }}
