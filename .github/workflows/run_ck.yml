@@ -32,6 +32,7 @@ jobs:
     - name: Run CK analysis
       run: |
         cd ck/target
+        ls -a
 #        java -jar ck/target/ck-0.7.0-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true target/ck-results
 
     - name: Upload CK Metrics Results
