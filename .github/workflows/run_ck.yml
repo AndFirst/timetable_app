@@ -34,7 +34,7 @@ jobs:
         ls -la
         pwd
         mkdir ck_metrics
-        java -jar ck/target/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true ck_metrics
+        java -jar ck/target/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true ck_metrics/
         ls -la
         cd ck_metrics
         ls -la      
