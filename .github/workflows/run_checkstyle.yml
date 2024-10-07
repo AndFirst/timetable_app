@@ -1,4 +1,4 @@
-name: Java CI with Checkstyle
+name: Checkstyle Static Analysis
 
 on:
   workflow_dispatch:
