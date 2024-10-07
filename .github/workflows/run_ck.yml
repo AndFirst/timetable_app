@@ -33,10 +33,11 @@ jobs:
       run: |
         ls -la
         pwd
-        java -jar ck/target/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true
+        mkdir ck_metrics
+        java -jar ck/target/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true ck_metrics
 
     - name: Upload CK Metrics Results
       uses: actions/upload-artifact@v4
       with:
         name: ck-metrics-results
-        path: target/ck_metrics/
+        path: ck_metrics/
