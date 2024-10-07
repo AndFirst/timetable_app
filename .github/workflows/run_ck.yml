@@ -26,11 +26,8 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-    - name: Download CK JAR
-      run: curl -L -o ck.jar https://github.com/mauricioaniche/ck/releases/download/0.6.6/ck-0.6.6-jar-with-dependencies.jar
-
     - name: Run CK Metrics
-      run: java -jar ck.jar target/classes true 0 false target/ck_metrics/
+      run: mvn com.github.jazzmuesli:ck-mvn-plugin:metrics
 
     - name: Upload CK Metrics Results
       uses: actions/upload-artifact@v4
