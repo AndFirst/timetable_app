@@ -31,7 +31,8 @@ jobs:
 
     - name: Run CK analysis
       run: |
-        java -jar ck/target/ck-0.7.0-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true target/ck-results
+        cd ck/target
+#        java -jar ck/target/ck-0.7.0-SNAPSHOT-jar-with-dependencies.jar src/main false 0 true target/ck-results
 
     - name: Upload CK Metrics Results
       uses: actions/upload-artifact@v4
