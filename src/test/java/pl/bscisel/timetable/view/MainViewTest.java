@@ -11,9 +11,4 @@ class MainViewTest {
         MainView mainView = new MainView();
         assertEquals(1, mainView.getComponentCount());
     }
-
-    @Test
-    void fakeTest() {
-        assertEquals(3, 1+1);
-    }
 }
