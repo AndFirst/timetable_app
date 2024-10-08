@@ -1,4 +1,4 @@
-name: DesigniteJava
+name: Forbidden apis
 
 on:
   workflow_dispatch:
@@ -16,41 +16,33 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
-#    - name: Cache Maven packages
-#      uses: actions/cache@v4
-#      with:
-#        path: ~/.m2
-#        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-#        restore-keys: ${{ runner.os }}-m2    - name: Cache Maven packages
+    - name: Cache Maven packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
 
-    - name: Build project with Maven
+    - name: Build with Maven
       run: mvn clean package -DskipTests
 
-    - name: Copy dependencies
-      run: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
-
-    - name: Cache DesigniteJava library
+    - name: Cache forbidden-apis library
       uses: actions/cache@v4
-      id: cache-DesigniteJava
+      id: cache-forbidden-apis
       with:
-        path: DesigniteJava
-        key: ${{ runner.os }}-DesigniteJava-${{ hashFiles('DesigniteJava/pom.xml') }}
+        path: forbidden-apis
+        key: ${{ runner.os }}-forbidden-apis-${{ hashFiles('forbiddenapis-3.8.jar') }}
 
-    - name: Build DesigniteJava from source
-      if: steps.cache-DesigniteJava.outputs.cache-hit != 'true'
+    - name: Download forbidden-apis from Maven repo
+      if: steps.cache-forbidden-apis.outputs.cache-hit != 'true'
       run: |
-        git clone https://github.com/tushartushar/DesigniteJava.git
-        cd DesigniteJava
-        mvn clean install
+        wget https://repo1.maven.org/maven2/de/thetaphi/forbiddenapis/3.8/forbiddenapis-3.8.jar     
 
-    - name: Run DesigniteJava analysis
+    - name: Run forbidden-apis analysis
       run: |
-        mkdir DesigniteJava_metrics
-        
-        java -jar DesigniteJava/target/DesigniteJava.jar -i src/main -o DesigniteJava_metrics --ignoresignaturesofmissingclasses --classpath target/classes:target/dependency/*:target/test-classes:~/.m2/repository/**/*.jar
-
-    - name: Upload DesigniteJava Metrics Results
-      uses: actions/upload-artifact@v4
-      with:
-        name: DesigniteJava-metrics-results
-        path: DesigniteJava_metrics/
+        mkdir forbidden-apis_metrics
+        mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
+        CLASSPATH=$(cat classpath.txt)
+        cat classpath.txt
+        java -jar forbiddenapis-3.8.jar --dir target/classes -cp ${CLASSPATH}:target/classes -b jdk-unsafe-17 --ignoresignaturesofmissingclasses 
+        ls -la
