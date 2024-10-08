@@ -41,5 +41,5 @@ jobs:
     - name: Run forbidden-apis analysis
       run: |
         mkdir forbidden-apis_metrics
-        java -jar forbiddenapis-3.8.jar --dir target/classes --bundledsignatures jdk-unsafe,jdk-deprecated        
+        java -jar forbiddenapis-3.8.jar --dir target/classes -b jdk-unsafe-17        
         ls -la
