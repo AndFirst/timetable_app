@@ -41,5 +41,5 @@ jobs:
     - name: Run forbidden-apis analysis
       run: |
         mkdir forbidden-apis_metrics
-        java -jar forbiddenapis-3.8.jar -d src/main
+        java -jar forbiddenapis-3.8.jar -d target/classes
         ls -la
