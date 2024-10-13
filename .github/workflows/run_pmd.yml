@@ -1,0 +1,26 @@
+name: Analysis PMD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: pmd/pmd-github-action@v2
+        id: pmd
+        with:
+          rulesets: 'rulesets/java/quickstart.xml'
+          analyzeModifiedFilesOnly: false
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: pmd-report.sarif
+      - name: Fail build if there are violations
+        if: steps.pmd.outputs.violations != 0
+        run: exit 1
