@@ -1,0 +1,42 @@
+name: OWASP Dependency Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+
+      - name: Run Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'timetable_app'
+          path: '.'
+          format: 'HTML'
+        env:
+          JAVA_HOME: /opt/jdk
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Dependency Check Report
+          path: reports
