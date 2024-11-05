@@ -31,7 +31,7 @@ jobs:
         with:
           project: 'timetable_app'
           path: '.'
-          format: 'csv'
+          format: 'CSV'
         env:
           JAVA_HOME: /opt/jdk
 

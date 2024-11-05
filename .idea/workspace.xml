@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add Qodana workflow">
+    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Update owasp report">
       <change beforePath="$PROJECT_DIR$/.github/workflows/run_owasp_dependency_check.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_owasp_dependency_check.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,14 +162,6 @@
       <workItem from="1730752082350" duration="2000" />
       <workItem from="1730752434762" duration="18000" />
       <workItem from="1730752461379" duration="31000" />
-    </task>
-    <task id="LOCAL-00047" summary="Add forbidden-apis workflow">
-      <option name="closed" value="true" />
-      <created>1728407438759</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1728407438759</updated>
     </task>
     <task id="LOCAL-00048" summary="Add forbidden-apis workflow">
       <option name="closed" value="true" />
@@ -556,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730812698335</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Update owasp report">
+      <option name="closed" value="true" />
+      <created>1730834179329</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1730834179329</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +585,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add checkstyle workflow first version" />
     <MESSAGE value="Turn off deploying on push for test purpose." />
     <MESSAGE value="Rename workflow" />
     <MESSAGE value="Add tests workflow" />
@@ -611,6 +609,7 @@
     <MESSAGE value="Add RefactorFirst workflow" />
     <MESSAGE value="Update docs" />
     <MESSAGE value="Add Qodana workflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Qodana workflow" />
+    <MESSAGE value="Update owasp report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update owasp report" />
   </component>
 </project>
