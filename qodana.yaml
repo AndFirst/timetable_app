@@ -5,3 +5,7 @@ profile:
 
 include:
   - name: All
+exclude:
+    - name: All
+      paths:
+        - docs

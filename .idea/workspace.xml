@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add Qodana workflow" />
+    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Update docs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qodana.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,6 +163,14 @@
       <workItem from="1730752082350" duration="2000" />
       <workItem from="1730752434762" duration="18000" />
       <workItem from="1730752461379" duration="31000" />
+    </task>
+    <task id="LOCAL-00046" summary="Add forbidden-apis workflow">
+      <option name="closed" value="true" />
+      <created>1728406510764</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1728406510764</updated>
     </task>
     <task id="LOCAL-00047" summary="Add forbidden-apis workflow">
       <option name="closed" value="true" />
@@ -545,15 +556,7 @@
       <option name="project" value="LOCAL" />
       <updated>1728910449212</updated>
     </task>
-    <task id="LOCAL-00095" summary="Add Qodana workflow">
-      <option name="closed" value="true" />
-      <created>1730811710153</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1730811710153</updated>
-    </task>
-    <option name="localTasksCounter" value="96" />
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,6 +586,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update deployment workflows" />
     <MESSAGE value="Add checkstyle workflow first version" />
     <MESSAGE value="Turn off deploying on push for test purpose." />
     <MESSAGE value="Rename workflow" />
@@ -607,7 +611,6 @@
     <MESSAGE value="Add PMD workflow" />
     <MESSAGE value="Add RefactorFirst workflow" />
     <MESSAGE value="Update docs" />
-    <MESSAGE value="Add Qodana workflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Qodana workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update docs" />
   </component>
 </project>
