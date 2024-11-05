@@ -23,4 +23,4 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          args: -i,src,--fail-threshold,0
+          args: -i,src,--fail-threshold,0-p,qodana.yaml
