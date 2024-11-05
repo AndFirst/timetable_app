@@ -4,7 +4,7 @@ profile:
   name: qodana.recommended
 #include:
 #  - name: VulnerableLibrariesGlobal
-#exclude:
-#  - name: All
-#    paths:
-#      - docs
+exclude:
+  - name: All
+    paths:
+      - docs
