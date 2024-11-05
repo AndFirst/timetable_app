@@ -23,7 +23,4 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          profile-name: qodana.recommended
-          use-caches: true
-          # Ścieżka do pliku konfiguracyjnego
-          config-path: qodana.yaml
+          args: -i,src,--fail-threshold,0
