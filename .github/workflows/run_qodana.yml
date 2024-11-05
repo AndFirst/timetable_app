@@ -22,3 +22,8 @@ jobs:
         uses: JetBrains/qodana-action@v2024.2
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+        with:
+          profile-name: qodana.recommended
+          use-caches: true
+          # Ścieżka do pliku konfiguracyjnego
+          config-path: qodana.yaml
