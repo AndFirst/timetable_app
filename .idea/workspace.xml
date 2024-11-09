@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Update owasp report">
+    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Update pmd config to use all rules">
       <change beforePath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -172,15 +172,7 @@
       <workItem from="1730752461379" duration="31000" />
       <workItem from="1731086483672" duration="4450000" />
       <workItem from="1731151502788" duration="944000" />
-      <workItem from="1731152457519" duration="3960000" />
-    </task>
-    <task id="LOCAL-00049" summary="Add forbidden-apis workflow">
-      <option name="closed" value="true" />
-      <created>1728408207081</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1728408207081</updated>
+      <workItem from="1731152457519" duration="4985000" />
     </task>
     <task id="LOCAL-00050" summary="Add forbidden-apis workflow">
       <option name="closed" value="true" />
@@ -566,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730834406968</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Update pmd config to use all rules">
+      <option name="closed" value="true" />
+      <created>1731156439068</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1731156439068</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +596,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Turn off deploying on push for test purpose." />
     <MESSAGE value="Rename workflow" />
     <MESSAGE value="Add tests workflow" />
     <MESSAGE value="fix typo" />
@@ -621,6 +620,7 @@
     <MESSAGE value="Update docs" />
     <MESSAGE value="Add Qodana workflow" />
     <MESSAGE value="Update owasp report" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update owasp report" />
+    <MESSAGE value="Update pmd config to use all rules" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update pmd config to use all rules" />
   </component>
 </project>
