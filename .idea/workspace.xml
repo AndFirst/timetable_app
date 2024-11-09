@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Update owasp report">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/run_owasp_dependency_check.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_owasp_dependency_check.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +51,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -80,11 +84,15 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/snap/intellij-idea-ultimate/543/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="QodanaCIConfigService">
+    <option name="ciType" value="GITHUB" />
+    <option name="path" value="$PROJECT_DIR$/.github/workflows/run_qodana.yml" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -128,8 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-QDJVM-242.24353" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-QDJVM-242.24353" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -162,14 +170,9 @@
       <workItem from="1730752082350" duration="2000" />
       <workItem from="1730752434762" duration="18000" />
       <workItem from="1730752461379" duration="31000" />
-    </task>
-    <task id="LOCAL-00048" summary="Add forbidden-apis workflow">
-      <option name="closed" value="true" />
-      <created>1728407455246</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1728407455246</updated>
+      <workItem from="1731086483672" duration="4450000" />
+      <workItem from="1731151502788" duration="944000" />
+      <workItem from="1731152457519" duration="3960000" />
     </task>
     <task id="LOCAL-00049" summary="Add forbidden-apis workflow">
       <option name="closed" value="true" />
@@ -555,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730834179329</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Update owasp report">
+      <option name="closed" value="true" />
+      <created>1730834406968</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1730834406968</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
