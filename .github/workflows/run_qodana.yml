@@ -18,4 +18,4 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          args: --fail-threshold,0,--profile-name,qodana.recommended
+          args: --fail-threshold,0,--profile-name,qodana.recommended,--upload-result
