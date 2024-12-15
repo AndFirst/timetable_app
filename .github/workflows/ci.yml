@@ -28,7 +28,7 @@ jobs:
   analysis:
     name: Code analysis
     needs: build
-    uses: ./.github/workflows/run_checkstyle.yml
+    uses: ./.github/workflows/analysis.yml
 
   tests:
     name: Tests and coverage

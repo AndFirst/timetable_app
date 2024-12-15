@@ -8,7 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add ci test workflow">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/run_tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_tests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/run_checkstyle.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_checkstyle.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,15 +184,7 @@
       <workItem from="1732219801117" duration="1370000" />
       <workItem from="1732292967771" duration="681000" />
       <workItem from="1732366227915" duration="17000" />
-      <workItem from="1734289211347" duration="5504000" />
-    </task>
-    <task id="LOCAL-00063" summary="Add spotbugs workflow">
-      <option name="closed" value="true" />
-      <created>1728817179796</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1728817179796</updated>
+      <workItem from="1734289211347" duration="6023000" />
     </task>
     <task id="LOCAL-00064" summary="Add spotbugs workflow">
       <option name="closed" value="true" />
@@ -577,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734296718982</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734297231482</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1734297231482</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
