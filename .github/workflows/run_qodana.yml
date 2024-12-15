@@ -18,7 +18,7 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          args: --fail-threshold,0,--profile-name,qodana.recommended,--save-report
+          args: --fail-threshold,0,--profile-name,qodana.recommended,--report-dir,qodana_results,--save-report
           results-dir: qodana-results
 
       - name: Upload Qodana Results
