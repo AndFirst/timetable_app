@@ -27,11 +27,18 @@ jobs:
 
   analysis:
     name: Code analysis
+    needs: build
     uses: ./.github/workflows/run_checkstyle.yml
+
+  tests:
+    name: Tests and coverage
+    needs: [build]
+    uses: ./.github/workflows/run_tests.yml
+
   review:
     name: Code review
     runs-on: ubuntu-latest
-    needs: [build, analysis]
+    needs: [build, analysis, tests]
     steps:
       - name: Await manual approval before merging
         run: echo "Manual review required for merging."

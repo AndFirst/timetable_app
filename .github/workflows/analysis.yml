@@ -1,0 +1,9 @@
+name: Code Static Analysis
+
+on:
+    workflow_call: {}
+
+jobs:
+  checkstyle:
+    uses: ./.github/workflows/run_checkstyle.yml
+
