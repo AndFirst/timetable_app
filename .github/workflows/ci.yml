@@ -27,6 +27,7 @@ jobs:
 
   analysis:
     name: Code analysis
+    runs-on: ubuntu-latest
     steps:
       - name: Checkstyle
         uses: ./.github/workflows/run_checkstyle.yml
