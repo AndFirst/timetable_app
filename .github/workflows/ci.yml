@@ -35,13 +35,9 @@ jobs:
 
       - name: Checkstyle
         uses: ./.github/workflows/run_checkstyle.yml
-        with:
-        secrets:
 
       - name: Tests
         uses: ./.github/workflows/run_tests.yml
-        with:
-        secrets:
   review:
     name: Code review
     runs-on: ubuntu-latest
