@@ -183,15 +183,7 @@
       <workItem from="1732219801117" duration="1370000" />
       <workItem from="1732292967771" duration="681000" />
       <workItem from="1732366227915" duration="17000" />
-      <workItem from="1734289211347" duration="7342000" />
-    </task>
-    <task id="LOCAL-00068" summary="Add infer workflow">
-      <option name="closed" value="true" />
-      <created>1728823055965</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1728823055965</updated>
+      <workItem from="1734289211347" duration="8144000" />
     </task>
     <task id="LOCAL-00069" summary="Add infer workflow">
       <option name="closed" value="true" />
@@ -577,7 +569,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734298668986</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734299068605</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1734299068605</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
