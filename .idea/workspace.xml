@@ -7,8 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Update pmd config to use all rules">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" afterDir="false" />
+    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add ci test workflow">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/run_checkstyle.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_checkstyle.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/run_tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_tests.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,33 +63,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AccountTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.timetable [deploy].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/irek/Desktop/timetable_app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/snap/intellij-idea-ultimate/543/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AccountTest.executor": "Run",
+    "Maven.timetable [deploy].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.Application.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/irek/Desktop/timetable_app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/snap/intellij-idea-ultimate/543/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="QodanaCIConfigService">
     <option name="ciType" value="GITHUB" />
     <option name="path" value="$PROJECT_DIR$/.github/workflows/run_qodana.yml" />
@@ -136,8 +138,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
       </set>
     </attachedChunks>
   </component>
@@ -172,31 +174,17 @@
       <workItem from="1730752461379" duration="31000" />
       <workItem from="1731086483672" duration="4450000" />
       <workItem from="1731151502788" duration="944000" />
-      <workItem from="1731152457519" duration="4985000" />
-    </task>
-    <task id="LOCAL-00050" summary="Add forbidden-apis workflow">
-      <option name="closed" value="true" />
-      <created>1728408417471</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1728408417471</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Add forbidden-apis workflow">
-      <option name="closed" value="true" />
-      <created>1728409293267</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1728409293267</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Add forbidden-apis workflow">
-      <option name="closed" value="true" />
-      <created>1728409456070</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1728409456070</updated>
+      <workItem from="1731152457519" duration="15126000" />
+      <workItem from="1731418577062" duration="664000" />
+      <workItem from="1731486302590" duration="35000" />
+      <workItem from="1731501486155" duration="1253000" />
+      <workItem from="1731519936384" duration="8000" />
+      <workItem from="1731520552088" duration="19000" />
+      <workItem from="1732053295083" duration="83000" />
+      <workItem from="1732219801117" duration="1370000" />
+      <workItem from="1732292967771" duration="681000" />
+      <workItem from="1732366227915" duration="17000" />
+      <workItem from="1734289211347" duration="2009000" />
     </task>
     <task id="LOCAL-00053" summary="Add forbidden-apis workflow">
       <option name="closed" value="true" />
@@ -566,7 +554,31 @@
       <option name="project" value="LOCAL" />
       <updated>1731156439068</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Update pmd config to use all rules">
+      <option name="closed" value="true" />
+      <created>1731159006500</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1731159006500</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734293530520</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1734293530521</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734293584945</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1734293584945</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +608,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Rename workflow" />
     <MESSAGE value="Add tests workflow" />
     <MESSAGE value="fix typo" />
     <MESSAGE value="Update pom, add JaCoCo." />
@@ -621,6 +632,7 @@
     <MESSAGE value="Add Qodana workflow" />
     <MESSAGE value="Update owasp report" />
     <MESSAGE value="Update pmd config to use all rules" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update pmd config to use all rules" />
+    <MESSAGE value="Add ci test workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ci test workflow" />
   </component>
 </project>
