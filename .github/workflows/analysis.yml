@@ -5,5 +5,24 @@ on:
 
 jobs:
   checkstyle:
+    name: Checkstyle Static Analysis
     uses: ./.github/workflows/run_checkstyle.yml
+
+  designite:
+    name: Designite Static Analysis
+    uses: ./.github/workflows/run_designite.yml
+
+  pmd:
+    name: PMD Static Analysis
+    uses: ./.github/workflows/run_pmd.yml
+
+  qodana:
+    name: Qodana Static Analysis
+    uses: ./.github/workflows/run_qodana.yml
+
+  spotbugs:
+    name: SpotBugs Static Analysis
+    uses: ./.github/workflows/run_spotbugs.yml
+
+
 
