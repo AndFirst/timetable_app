@@ -12,13 +12,9 @@ jobs:
     name: Designite Static Analysis
     uses: ./.github/workflows/run_designite.yml
 
-#  pmd:
-#    name: PMD Static Analysis
-#    uses: ./.github/workflows/run_pmd.yml
-#
-#  qodana:
-#    name: Qodana Static Analysis
-#    uses: ./.github/workflows/run_qodana.yml
+  pmd:
+    name: PMD Static Analysis
+    uses: ./.github/workflows/run_pmd.yml
 
   spotbugs:
     name: SpotBugs Static Analysis

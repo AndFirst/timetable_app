@@ -11,7 +11,7 @@ on:
         description: 'The URL of the deployed app for verification'
         required: true
         type: string
-    secrets: # Add this section to allow secret passing from calling workflows
+    secrets:
       DIGITALOCEAN_SSH_KEY:
         required: true
       DOCR_PASSWORD:
@@ -67,7 +67,6 @@ jobs:
         ENDSSH
 
     - name: Verify deployment
-      # container needs more time to get up
       run: |
         echo "Waiting for the application to start..."
         sleep 60
