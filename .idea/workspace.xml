@@ -8,9 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add ci test workflow">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_and_push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_and_push.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy_prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy_prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy_stage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy_stage.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cd.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,15 +187,7 @@
       <workItem from="1732366227915" duration="17000" />
       <workItem from="1734289211347" duration="10229000" />
       <workItem from="1735299391785" duration="164000" />
-      <workItem from="1735303330052" duration="3981000" />
-    </task>
-    <task id="LOCAL-00078" summary="Add infer workflow">
-      <option name="closed" value="true" />
-      <created>1728829938247</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1728829938247</updated>
+      <workItem from="1735303330052" duration="5853000" />
     </task>
     <task id="LOCAL-00079" summary="Add infer workflow">
       <option name="closed" value="true" />
@@ -582,7 +573,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735307762782</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1735308074331</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1735308074331</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
