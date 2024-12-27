@@ -1,9 +1,6 @@
 name: Continuous Integration
 
 on:
-#    push:
-#        branches:
-#        - main
     pull_request:
         branches:
         - main
@@ -35,11 +32,3 @@ jobs:
   tests:
     name: Tests and coverage
     uses: ./.github/workflows/run_tests.yml
-
-  review:
-    name: Code review
-    runs-on: ubuntu-latest
-    needs: [build, analysis, tests]
-    steps:
-      - name: Await manual approval before merging
-        run: echo "Manual review required for merging."
