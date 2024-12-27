@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add ci test workflow">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/analysis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/analysis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/run_qodana.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_qodana.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="workflow" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AndFirst&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AndFirst/timetable_app.git&quot;,
+    &quot;accountId&quot;: &quot;b9957cc1-b284-4890-8d70-59a8ec50fa9d&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2n15X9GJXfnNpkYvvoybyTFHucN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AccountTest.executor": "Run",
+    "Maven.timetable [deploy].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
+    "Notification.DoNotAsk-Database detector": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.Application.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/irek/Desktop/timetable_app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/snap/intellij-idea-ultimate/543/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="QodanaCIConfigService">
+    <option name="ciType" value="GITHUB" />
+    <option name="path" value="$PROJECT_DIR$/.github/workflows/run_qodana.yml" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/.github/workflows" />
+      <recent name="$PROJECT_DIR$/.github/workflows/static_analysis" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.AccountTest">
+    <configuration name="AccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="timetable" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.bscisel.timetable.data.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.bscisel.timetable.data.entity" />
+      <option name="MAIN_CLASS_NAME" value="pl.bscisel.timetable.data.entity.AccountTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="timetable" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="pl.bscisel.timetable.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="JUnit.AccountTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="" />
+      <created>1722940874404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722940874404</updated>
+      <workItem from="1722940875270" duration="6355000" />
+      <workItem from="1728127782576" duration="3348000" />
+      <workItem from="1728209316672" duration="12131000" />
+      <workItem from="1728293528799" duration="98000" />
+      <workItem from="1728293634497" duration="23482000" />
+      <workItem from="1728391581946" duration="11601000" />
+      <workItem from="1728505273403" duration="983000" />
+      <workItem from="1728811265230" duration="31339000" />
+      <workItem from="1728896387751" duration="268000" />
+      <workItem from="1728896663680" duration="13613000" />
+      <workItem from="1729157635902" duration="26000" />
+      <workItem from="1729701613986" duration="2590000" />
+      <workItem from="1729945957597" duration="2000" />
+      <workItem from="1730555316896" duration="619000" />
+      <workItem from="1730570622921" duration="5000" />
+      <workItem from="1730572636639" duration="4441000" />
+      <workItem from="1730649114602" duration="3936000" />
+      <workItem from="1730724363093" duration="4679000" />
+      <workItem from="1730752082350" duration="2000" />
+      <workItem from="1730752434762" duration="18000" />
+      <workItem from="1730752461379" duration="31000" />
+      <workItem from="1731086483672" duration="4450000" />
+      <workItem from="1731151502788" duration="944000" />
+      <workItem from="1731152457519" duration="15126000" />
+      <workItem from="1731418577062" duration="664000" />
+      <workItem from="1731486302590" duration="35000" />
+      <workItem from="1731501486155" duration="1253000" />
+      <workItem from="1731519936384" duration="8000" />
+      <workItem from="1731520552088" duration="19000" />
+      <workItem from="1732053295083" duration="83000" />
+      <workItem from="1732219801117" duration="1370000" />
+      <workItem from="1732292967771" duration="681000" />
+      <workItem from="1732366227915" duration="17000" />
+      <workItem from="1734289211347" duration="10229000" />
+      <workItem from="1735299391785" duration="164000" />
+    </task>
+    <task id="LOCAL-00072" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728827149776</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1728827149776</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728827376141</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1728827376141</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728827694504</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1728827694504</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728827897929</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1728827897929</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728828902018</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1728828902018</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728829493210</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1728829493210</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728829938247</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1728829938247</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728830411712</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1728830411712</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Add infer workflow">
+      <option name="closed" value="true" />
+      <created>1728830826144</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1728830826144</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Add dependency check workflow">
+      <option name="closed" value="true" />
+      <created>1728837456962</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1728837456962</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Add dependency check workflow">
+      <option name="closed" value="true" />
+      <created>1728837556130</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1728837556130</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Add dependency check workflow">
+      <option name="closed" value="true" />
+      <created>1728837915230</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1728837915230</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Add dependency check workflow">
+      <option name="closed" value="true" />
+      <created>1728838200404</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1728838200404</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Add PMD workflow">
+      <option name="closed" value="true" />
+      <created>1728848517179</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1728848517179</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Add PMD workflow">
+      <option name="closed" value="true" />
+      <created>1728848798086</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1728848798086</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Add RefactorFirst workflow">
+      <option name="closed" value="true" />
+      <created>1728850089674</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1728850089674</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Add PMD workflow">
+      <option name="closed" value="true" />
+      <created>1728850139833</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1728850139833</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Add RefactorFirst workflow">
+      <option name="closed" value="true" />
+      <created>1728850183717</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1728850183717</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Add RefactorFirst workflow">
+      <option name="closed" value="true" />
+      <created>1728850525318</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1728850525318</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Add RefactorFirst workflow">
+      <option name="closed" value="true" />
+      <created>1728850629808</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1728850629808</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Add RefactorFirst workflow">
+      <option name="closed" value="true" />
+      <created>1728896771880</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1728896771881</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Update docs">
+      <option name="closed" value="true" />
+      <created>1728910186278</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1728910186278</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Update docs">
+      <option name="closed" value="true" />
+      <created>1728910449212</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1728910449212</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Add Qodana workflow">
+      <option name="closed" value="true" />
+      <created>1730812698335</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1730812698335</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Update owasp report">
+      <option name="closed" value="true" />
+      <created>1730834179329</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1730834179329</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Update owasp report">
+      <option name="closed" value="true" />
+      <created>1730834406968</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1730834406968</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Update pmd config to use all rules">
+      <option name="closed" value="true" />
+      <created>1731156439068</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1731156439068</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Update pmd config to use all rules">
+      <option name="closed" value="true" />
+      <created>1731159006500</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1731159006500</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734293530520</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1734293530521</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734293584945</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1734293584945</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734293736972</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1734293736972</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734293866337</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1734293866337</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734294020095</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1734294020095</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734294069341</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1734294069341</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734294244748</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1734294244748</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734294476512</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1734294476512</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734294750357</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1734294750357</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734295673457</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1734295673457</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734296246100</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1734296246100</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734296718982</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1734296718982</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734297231482</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1734297231482</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734297752774</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1734297752774</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734298115425</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1734298115425</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734298431342</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1734298431342</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734298668986</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1734298668986</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734299068605</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1734299068605</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734299876068</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1734299876068</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734300121916</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1734300121916</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734300454901</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1734300454901</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add tests workflow" />
+    <MESSAGE value="fix typo" />
+    <MESSAGE value="Update pom, add JaCoCo." />
+    <MESSAGE value="Update tests workflow" />
+    <MESSAGE value="Update coverage extracting" />
+    <MESSAGE value="Add fake fail test to chech if pipeline fails" />
+    <MESSAGE value="Remove fake fail test. Pipeline fails on test when test fails." />
+    <MESSAGE value="Add first version of Checker Framework workflow." />
+    <MESSAGE value="Add Checker Framework dependency." />
+    <MESSAGE value="Remove Checker Framework." />
+    <MESSAGE value="Add ck workflow" />
+    <MESSAGE value="Update ck workflow" />
+    <MESSAGE value="Add caching ck library" />
+    <MESSAGE value="Add DesigniteJava workflow" />
+    <MESSAGE value="Add forbidden-apis workflow" />
+    <MESSAGE value="Add spotbugs workflow" />
+    <MESSAGE value="Add infer workflow" />
+    <MESSAGE value="Add dependency check workflow" />
+    <MESSAGE value="Add PMD workflow" />
+    <MESSAGE value="Add RefactorFirst workflow" />
+    <MESSAGE value="Update docs" />
+    <MESSAGE value="Add Qodana workflow" />
+    <MESSAGE value="Update owasp report" />
+    <MESSAGE value="Update pmd config to use all rules" />
+    <MESSAGE value="Add ci test workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ci test workflow" />
+  </component>
+</project>
