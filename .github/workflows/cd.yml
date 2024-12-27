@@ -25,14 +25,13 @@ jobs:
       DOCR_USERNAME: ${{ secrets.DOCR_USERNAME }}
 
   approve-deploy:
-    name: Zatwierdzenie wdrożenia na produkcję
-    runs-on: ubuntu-latest
+    name: Manually Approve Deployment
     needs: deploy-stage
+    runs-on: ubuntu-latest
+    environment: production
     steps:
-      - name: Request approval for production deployment
-        uses: hmarr/auto-approve-action@v3
-        with:
-          label: "needs-approval"
+      - name: Waiting for approval
+        run: echo "Approved!"
 
   deploy-prod:
     name: Deploy to Production
