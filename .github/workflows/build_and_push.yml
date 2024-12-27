@@ -2,7 +2,14 @@ name: Build and Push Docker Image
 
 on:
   workflow_dispatch:
-  workflow_call: {}
+  workflow_call:
+    secrets:
+      DOCR_PASSWORD:
+        required: true
+      DOCR_REGISTRY:
+        required: true
+      DOCR_USERNAME:
+        required: true
 
 jobs:
   build-and-push:

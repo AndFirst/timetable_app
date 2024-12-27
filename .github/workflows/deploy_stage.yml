@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
+      DIGITALOCEAN_SSH_KEY:
+        required: true
       DOCR_PASSWORD:
         required: true
       DOCR_REGISTRY:
