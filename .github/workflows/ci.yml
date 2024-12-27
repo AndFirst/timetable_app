@@ -1,7 +1,10 @@
 name: Continuous Integration
 
 on:
-    push:
+#    push:
+#        branches:
+#        - main
+    pull_request:
         branches:
         - main
     workflow_dispatch:
@@ -27,12 +30,10 @@ jobs:
 
   analysis:
     name: Code analysis
-    needs: build
     uses: ./.github/workflows/analysis.yml
 
   tests:
     name: Tests and coverage
-    needs: [build]
     uses: ./.github/workflows/run_tests.yml
 
   review:
