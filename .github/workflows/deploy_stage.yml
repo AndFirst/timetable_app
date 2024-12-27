@@ -1,19 +1,16 @@
 name: Deploy to Staging
 
 on:
-#  push:
-#    branches:
-#      - develop
   workflow_dispatch:
+  workflow_call: {}
 
 jobs:
   deploy-stage:
     uses: ./.github/workflows/deploy.yml
     with:
-      droplet_ip: '165.227.133.120'  # Staging Droplet IP
-      droplet_url: 'http://stage.timatable.tech'  # Staging URL
-
-    secrets: # Pass necessary secrets to the reusable workflow
+      droplet_ip: '165.227.133.120'
+      droplet_url: 'http://stage.timatable.tech'
+    secrets:
       DIGITALOCEAN_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
       DOCR_PASSWORD: ${{ secrets.DOCR_PASSWORD }}
       DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
