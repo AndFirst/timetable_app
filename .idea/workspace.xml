@@ -8,11 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add ci test workflow">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/cd.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_and_push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_and_push.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cd.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/deploy_prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy_prod.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/deploy_stage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy_stage.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_pmd.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,23 +189,7 @@
       <workItem from="1732366227915" duration="17000" />
       <workItem from="1734289211347" duration="10229000" />
       <workItem from="1735299391785" duration="164000" />
-      <workItem from="1735303330052" duration="3167000" />
-    </task>
-    <task id="LOCAL-00075" summary="Add infer workflow">
-      <option name="closed" value="true" />
-      <created>1728827897929</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1728827897929</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Add infer workflow">
-      <option name="closed" value="true" />
-      <created>1728828902018</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1728828902018</updated>
+      <workItem from="1735303330052" duration="3671000" />
     </task>
     <task id="LOCAL-00077" summary="Add infer workflow">
       <option name="closed" value="true" />
@@ -585,7 +567,23 @@
       <option name="project" value="LOCAL" />
       <updated>1735305707892</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1735307257443</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1735307257443</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1735307341198</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1735307341198</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -9,11 +9,20 @@ jobs:
   build-and-push-image:
     name: Build and Push Docker Image
     uses: ./.github/workflows/build_and_push.yml
+    secrets:
+      DOCR_PASSWORD: ${{ secrets.DOCR_PASSWORD }}
+      DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+      DOCR_USERNAME: ${{ secrets.DOCR_USERNAME }}
 
   deploy-stage:
     name: Deploy to Staging
     needs: build-and-push-image
     uses: ./.github/workflows/deploy_stage.yml
+    secrets:
+      DIGITALOCEAN_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+      DOCR_PASSWORD: ${{ secrets.DOCR_PASSWORD }}
+      DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+      DOCR_USERNAME: ${{ secrets.DOCR_USERNAME }}
 
   approve-deploy:
     name: Zatwierdzenie wdrożenia na produkcję
@@ -29,5 +38,9 @@ jobs:
     name: Deploy to Production
     needs: approve-deploy
     uses: ./.github/workflows/deploy_prod.yml
-
+    secrets:
+      DIGITALOCEAN_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+      DOCR_PASSWORD: ${{ secrets.DOCR_PASSWORD }}
+      DOCR_REGISTRY: ${{ secrets.DOCR_REGISTRY }}
+      DOCR_USERNAME: ${{ secrets.DOCR_USERNAME }}
 
