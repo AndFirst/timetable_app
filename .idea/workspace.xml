@@ -8,6 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b286cbc1-3740-4ae8-ab92-25a8b1015f63" name="Changes" comment="Add ci test workflow">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/analysis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/analysis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/run_qodana.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/run_qodana.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -66,6 +67,8 @@
   "keyToString": {
     "JUnit.AccountTest.executor": "Run",
     "Maven.timetable [deploy].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
+    "Notification.DoNotAsk-Database detector": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -137,8 +140,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -183,15 +186,8 @@
       <workItem from="1732219801117" duration="1370000" />
       <workItem from="1732292967771" duration="681000" />
       <workItem from="1732366227915" duration="17000" />
-      <workItem from="1734289211347" duration="8730000" />
-    </task>
-    <task id="LOCAL-00071" summary="Add infer workflow">
-      <option name="closed" value="true" />
-      <created>1728824176378</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1728824176378</updated>
+      <workItem from="1734289211347" duration="10229000" />
+      <workItem from="1735299391785" duration="164000" />
     </task>
     <task id="LOCAL-00072" summary="Add infer workflow">
       <option name="closed" value="true" />
@@ -577,7 +573,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734300121916</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="Add ci test workflow">
+      <option name="closed" value="true" />
+      <created>1734300454901</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1734300454901</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
