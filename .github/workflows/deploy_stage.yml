@@ -2,7 +2,14 @@ name: Deploy to Staging
 
 on:
   workflow_dispatch:
-  workflow_call: {}
+  workflow_call:
+    secrets:
+      DOCR_PASSWORD:
+        required: true
+      DOCR_REGISTRY:
+        required: true
+      DOCR_USERNAME:
+        required: true
 
 jobs:
   deploy-stage:
