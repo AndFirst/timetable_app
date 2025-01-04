@@ -13,6 +13,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
       - uses: pmd/pmd-github-action@v2
         id: pmd
         with:
@@ -29,12 +30,7 @@ jobs:
           analyzeModifiedFilesOnly: false
 
       - name: Verify PMD Report
+        if: steps.pmd.outputs.violations != 0
         run: |
-          bug_count=$(grep -c "\"ruleId\"" pmd-report.sarif || echo 0)
-          
-          if [ "$bug_count" -gt 0 ]; then
-            echo "Error: PMD found $bug_count issues."
-            exit 1
-          else
-            echo "No issues found by PMD."
-          fi
+          echo ${{ steps.pmd.outputs.violations }} violations found by PMD
+          exit 1
