@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.util.Locale;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true, exclude = {"teachers"})
@@ -121,7 +122,7 @@ public class Class extends Event {
          * @return the label
          */
         public String getLabel() {
-            return this.name().charAt(0) + this.name().substring(1).toLowerCase().replace("_", " ");
+            return this.name().charAt(0) + this.name().substring(1).toLowerCase(Locale.ROOT).replace("_", " ");
         }
 
     }

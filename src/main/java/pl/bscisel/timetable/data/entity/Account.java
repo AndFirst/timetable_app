@@ -17,6 +17,7 @@ import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 import pl.bscisel.timetable.security.SecurityConfiguration;
 
+import java.util.Locale;
 import java.util.Set;
 import java.util.StringJoiner;
 
@@ -46,7 +47,7 @@ public class Account extends AbstractEntity {
      * @param emailAddress the email address to set
      */
     public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress.strip().toLowerCase();
+        this.emailAddress = emailAddress.strip().toLowerCase(Locale.ROOT);
     }
 
     /**
