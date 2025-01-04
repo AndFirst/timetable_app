@@ -38,7 +38,7 @@ jobs:
 
     - name: Verify Checkstyle Report
       run: |
-        bug_count=$(grep -c "<error line=" checkstyle-result.xml || echo 0)
+        bug_count=$(grep -c "<error line=" target/checkstyle-result.xml || echo 0)
 
         if [ "$bug_count" -gt 0 ]; then
           echo "Error: Checkstyle found $bug_count issues."
