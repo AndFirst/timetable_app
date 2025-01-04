@@ -28,10 +28,21 @@ jobs:
       run: mvn clean install
 
     - name: Run Checkstyle
-      run: mvn checkstyle:check
+      run: mvn checkstyle:checkstyle
 
     - name: Upload Checkstyle results
       uses: actions/upload-artifact@v4
       with:
         name: checkstyle-result
         path: target/checkstyle-result.xml
+
+    - name: Verify Checkstyle Report
+      run: |
+        bug_count=$(grep -c "<error line=" checkstyle-result.xml || echo 0)
+
+        if [ "$bug_count" -gt 0 ]; then
+          echo "Error: Checkstyle found $bug_count issues."
+          exit 1
+        else
+          echo "No issues found by Checkstyle."
+        fi

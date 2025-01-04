@@ -43,19 +43,19 @@ jobs:
           -output spotbugs-report.xml \
           target/classes
 
+    - name: Upload SpotBugs Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: spotbugs-report
+        path: spotbugs-report.xml
+
     - name: Verify SpotBugs Report
       run: |
         bug_count=$(grep -c "<BugInstance" spotbugs-report.xml || echo 0)
-
+        
         if [ "$bug_count" -gt 0 ]; then
           echo "Error: SpotBugs found $bug_count issues."
           exit 1
         else
           echo "No issues found by SpotBugs."
         fi
-
-    - name: Upload SpotBugs Report
-      uses: actions/upload-artifact@v4
-      with:
-        name: spotbugs-report
-        path: spotbugs-report.xml

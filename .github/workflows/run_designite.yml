@@ -37,14 +37,20 @@ jobs:
         
         java -jar DesigniteJava/target/DesigniteJava.jar -i src/main -o DesigniteJava_metrics
 
+    - name: Upload DesigniteJava Metrics Results
+      uses: actions/upload-artifact@v4
+      with:
+        name: DesigniteJava-metrics-results
+        path: DesigniteJava_metrics/
+
     - name: Check for DesigniteJava Errors
       run: |
         lines_design=$( [ -f "DesigniteJava_metrics/designCodeSmells.csv" ] && wc -l < "DesigniteJava_metrics/designCodeSmells.csv" || echo 0 )
         lines_implementation=$( [ -f "DesigniteJava_metrics/implementationCodeSmells.csv" ] && wc -l < "DesigniteJava_metrics/implementationCodeSmells.csv" || echo 0 )
-        
+
         echo "Lines in designCodeSmells.csv: $lines_design"
         echo "Lines in implementationCodeSmells.csv: $lines_implementation"
-        
+
         # if file has more than 1 line, it means there are errors
         if [ "$lines_design" -gt 1 ] || [ "$lines_implementation" -gt 1 ]; then
             echo "Error: One or both files have errors. This is not allowed."
@@ -52,9 +58,3 @@ jobs:
         else
             echo "Both files are either absent or have no errors. This is acceptable."
         fi
-
-    - name: Upload DesigniteJava Metrics Results
-      uses: actions/upload-artifact@v4
-      with:
-        name: DesigniteJava-metrics-results
-        path: DesigniteJava_metrics/
