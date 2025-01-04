@@ -29,4 +29,6 @@ jobs:
 
       - name: Fail build if there are violations
         if: steps.pmd.outputs.violations != 0
-        run: exit 1
+        run: |
+          echo ${{ steps.pmd.outputs.violations }} violations found by PMD
+          exit 1

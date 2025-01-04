@@ -45,8 +45,10 @@ jobs:
 
     - name: Verify SpotBugs Report
       run: |
-        if grep -q "<BugInstance" spotbugs-report.xml; then
-          echo "Error: SpotBugs found issues."
+        bug_count=$(grep -c "<BugInstance" spotbugs-report.xml || echo 0)
+
+        if [ "$bug_count" -gt 0 ]; then
+          echo "Error: SpotBugs found $bug_count issues."
           exit 1
         else
           echo "No issues found by SpotBugs."
