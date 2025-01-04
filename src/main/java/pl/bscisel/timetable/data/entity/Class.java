@@ -1,6 +1,12 @@
 package pl.bscisel.timetable.data.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -102,7 +108,7 @@ public class Class extends Event {
          * @return the frequency
          */
         public static ClassFrequency fromSymbol(char symbol) {
-            for (ClassFrequency frequency : ClassFrequency.values()) {
+            for (ClassFrequency frequency : values()) {
                 if (frequency.symbol == symbol) {
                     return frequency;
                 }
