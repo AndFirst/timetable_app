@@ -1,6 +1,13 @@
 package pl.bscisel.timetable.data.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +17,7 @@ import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 import pl.bscisel.timetable.security.SecurityConfiguration;
 
+import java.util.Locale;
 import java.util.Set;
 import java.util.StringJoiner;
 
@@ -39,7 +47,7 @@ public class Account extends AbstractEntity {
      * @param emailAddress the email address to set
      */
     public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress.strip().toLowerCase();
+        this.emailAddress = emailAddress.strip().toLowerCase(Locale.ROOT);
     }
 
     /**

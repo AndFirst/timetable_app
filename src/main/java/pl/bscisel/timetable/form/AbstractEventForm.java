@@ -11,6 +11,7 @@ import pl.bscisel.timetable.data.entity.Event;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Locale;
 
 public abstract class AbstractEventForm<T extends Event> extends AbstractForm<T> {
     TimePicker startTime = new TimePicker("Start time");
@@ -47,7 +48,7 @@ public abstract class AbstractEventForm<T extends Event> extends AbstractForm<T>
     @Override
     protected void populateFields() {
         dayOfWeek.setItems(DayOfWeek.values());
-        dayOfWeek.setItemLabelGenerator(item -> item.toString().charAt(0) + item.toString().substring(1).toLowerCase());
+        dayOfWeek.setItemLabelGenerator(item -> item.toString().charAt(0) + item.toString().substring(1).toLowerCase(Locale.ROOT));
     }
 
     @Override
