@@ -43,6 +43,15 @@ jobs:
           -output spotbugs-report.xml \
           target/classes
 
+    - name: Verify SpotBugs Report
+      run: |
+        if grep -q "<BugInstance" spotbugs-report.xml; then
+          echo "Error: SpotBugs found issues."
+          exit 1
+        else
+          echo "No issues found by SpotBugs."
+        fi
+
     - name: Upload SpotBugs Report
       uses: actions/upload-artifact@v4
       with:
