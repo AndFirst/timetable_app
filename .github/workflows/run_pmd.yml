@@ -16,6 +16,7 @@ jobs:
       - uses: pmd/pmd-github-action@v2
         id: pmd
         with:
+          version: '7.7.0'
           sourcePath: 'src/main/java'
           rulesets: 'category/java/bestpractices.xml,
                       category/java/codestyle.xml,
