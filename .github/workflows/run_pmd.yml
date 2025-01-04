@@ -27,8 +27,13 @@ jobs:
                       category/java/security.xml'
           analyzeModifiedFilesOnly: false
 
-      - name: Fail build if there are violations
-        if: steps.pmd.outputs.violations != 0
+      - name: Verify PMD Report
         run: |
-          echo ${{ steps.pmd.outputs.violations }} violations found by PMD
-          exit 1
+          bug_count=$(grep -c "\"ruleId\"" pmd-report.sarif || echo 0)
+          
+          if [ "$bug_count" -gt 0 ]; then
+            echo "Error: PMD found $bug_count issues."
+            exit 1
+          else
+            echo "No issues found by PMD."
+          fi
